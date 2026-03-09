@@ -1,0 +1,137 @@
+import * as images from "@/assets/images/images";
+
+// Mock Data - TODO: fetch from API
+export const petsData = [
+  {
+    id: 1,
+    name: "Max",
+    type: "Dog",
+    age: "2 years",
+    breed: "Golden Retriever Mix",
+    gender: "Male",
+    size: "Medium",
+    weight: "28 kg",
+    traits: ["Friendly", "Playful", "Loyal", "Good with kids", "Active"],
+    description:
+      "Max is an incredibly loving and energetic dog who thrives on playtime and human companionship. He loves fetch, long walks, and cuddling on the couch. Max has been neutered, vaccinated, and is great with other dogs and children.",
+    health: "Fully vaccinated, neutered, microchipped, heartworm negative",
+    specialNeeds: "None",
+    mainImage: images.dog, // Cover image for the pet page
+    gallery: [
+      images.max1,
+      images.max2,
+      images.max3,
+      images.max4,
+      images.max5,
+      images.max6,
+      images.max7,
+      images.max8,
+      images.max9,
+      images.max10,
+      images.max11,
+    ],
+  },
+  {
+    id: 2,
+    name: "Luna",
+    type: "Cat",
+    breed: "Domestic Shorthair",
+    age: "1.5 years",
+    gender: "Female",
+    size: "Small",
+    weight: "4.2 kg",
+    traits: ["Calm", "Affectionate", "Independent", "Litter trained", "Quiet"],
+    description:
+      "Luna is a gentle and sweet cat who enjoys quiet environments. She loves chin scratches, watching birds from the window, and napping in sunny spots. Luna is spayed and very clean.",
+    health: "Spayed, vaccinated, dewormed",
+    specialNeeds: "Prefers a calm home without very young children",
+    mainImage: images.lunacover, // Cover image for the pet page
+    gallery: [
+      images.luna1,
+      images.luna2,
+      images.luna3,
+      images.luna4,
+      images.luna5,
+      images.luna6,
+      images.luna7,
+    ],
+  },
+  // {
+  //   id: 3,
+  //   name: "Bella",
+  //   type: "Dog",
+  //   breed: "Labrador Mix",
+  //   age: "3 years",
+  //   gender: "Female",
+  //   size: "Large",
+  //   weight: "32 kg",
+  //   traits: ["Friendly", "Energetic", "Loyal", "Good with kids", "Trainable"],
+  //   description:
+  //     "Bella is a sweet and energetic dog who loves playing fetch, going on long walks, and spending time with her family. She is house-trained and gets along well with other dogs.",
+  //   health: "Fully vaccinated, spayed, microchipped, heartworm negative",
+  //   specialNeeds: "None",
+  //   mainImage: images.dog, // Cover image for the pet page
+  //   gallery: [
+  //     images.dog1,
+  //     images.dog2,
+  //     images.dog3,
+  //     images.dog4,
+  //     images.max1,
+  //     images.max2,
+  //     images.max3,
+  //     images.max4,
+  //   ],
+  // },
+  {
+    id: 4,
+    name: "Charlie",
+    type: "Bird",
+    breed: "Parakeet",
+    age: "1 year",
+    gender: "Male",
+    size: "Small",
+    weight: "0.1 kg",
+    traits: ["Playful", "Social", "Easy to care for", "Talkative"],
+    description:
+      "Charlie is a cheerful and playful parakeet who loves to chirp and interact with his human companions. He is easy to care for and enjoys being handled gently.",
+    health: "Healthy, vaccinated, no special needs",
+    specialNeeds: "Requires a spacious cage and daily interaction",
+    mainImage: images.charliecover, // Cover image for the pet page
+    gallery: [
+      images.charlie1,
+      images.charlie2,
+      images.charlie3,
+      images.charlie4,
+      images.charlie5,
+      images.charlie6,
+      images.charlie7,
+    ],
+  },
+  //   {
+  //     id: 5,
+  //     name: "Rex",
+  //     type: "Dog",
+  //     breed: "German Shepherd",
+  //     age: "4 years",
+  //     gender: "Male",
+  //     size: "Large",
+  //     weight: "35 kg",
+  //     traits: ["Loyal", "Protective", "Intelligent", "Trainable"],
+  //     description:
+  //       "Rex is a loyal and protective German Shepherd who is great with families and other pets. He is intelligent and eager to please, making him easy to train.",
+  //     health: "Fully vaccinated, spayed, microchipped, heartworm negative",
+  //     specialNeeds: "None",
+  //     mainImage: images.dog, // Cover image for the pet page
+  //     gallery: [
+  //       images.dog1,
+  //       images.dog2,
+  //       images.dog3,
+  //       images.dog4,
+  //       images.max1,
+  //       images.max2,
+  //       images.max3,
+  //       images.max4,
+  //     ],
+  //   },
+  // Add more pets as needed
+];
