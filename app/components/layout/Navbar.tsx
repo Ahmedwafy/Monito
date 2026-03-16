@@ -7,10 +7,10 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Available Pets", href: "/AvailablePets" },
-  { label: "Categories", href: "/Categories" },
-  { label: "About Us", href: "/About" },
-  { label: "Contact", href: "/Contact" },
+  { label: "Available Pets", href: "/availablePets" },
+  { label: "Categories", href: "/categories" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -40,7 +40,7 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Link href="/AvailablePets">
+          <Link href="/availablePets">
             <Button
               variant="primary"
               className="bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 flex items-center gap-2"

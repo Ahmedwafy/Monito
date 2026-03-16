@@ -4,19 +4,19 @@ import { socialIcons } from "@/assets/iconify-components/page";
 
 const footerLinks = {
   company: [
-    { label: "About Us", href: "/About" },
-    { label: "Our Story", href: "/About" },
-    { label: "Team", href: "/About" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Story", href: "/about" },
+    { label: "Team", href: "/about" },
   ],
   adopt: [
-    { label: "Available Pets", href: "/AvailablePets" },
+    { label: "Available Pets", href: "/availablePets" },
     { label: "Adoption Process", href: "/how-to-adopt" },
     { label: "Success Stories", href: "/success-stories" },
   ],
   support: [
-    { label: "Contact Us", href: "/Contact" },
-    { label: "FAQ", href: "/FAQs" },
-    { label: "Volunteer", href: "/Volunteer" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "FAQ", href: "/faqs" },
+    { label: "Volunteer", href: "/volunteer" },
   ],
 };
 
@@ -61,7 +61,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
@@ -97,7 +97,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
@@ -129,7 +129,7 @@ export default function Footer() {
               Terms of Service
             </Link>
             <Link
-              href="/Contact"
+              href="/contact"
               className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
             >
               Contact

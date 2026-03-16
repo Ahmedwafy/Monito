@@ -1,31 +1,35 @@
-import Image from "next/image";
-import { StaticImageData } from "next/image"; // To Added imported images > import * as images from "@/assets/images/images";
+import Image, { StaticImageData } from "next/image";
 
-interface HeroCardProps {
-  image: string | StaticImageData;
-  className?: string;
+interface CardProps {
+  card: {
+    id: number;
+    name: string;
+    breed: string;
+    gender: string;
+    age: string;
+    price: string;
+    image: StaticImageData;
+  };
 }
 
-const HeroCard = ({ image, className }: HeroCardProps) => {
+const HeroCard = ({ card }: CardProps) => {
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
-      <div>
-        <Image
-          // src="https://placehold.co/250x250/png"
-          src={image}
-          alt="aaa"
-          width={250}
-          height={150}
-          className="rounded-lg object-cover overflow-hidden h-[350px]"
-        />
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="text-[.9rem] font-semibold">MO231 - Pomeranian White</p>
-        <p className="text-[.8rem] font-light text-(--color-neutral-60)">
-          Gene: Male Age: 02 months
-        </p>
-        <p className="text-[.8rem] font-semibold ">6.900.000 VND</p>
-      </div>
+    <div className="w-[280px] rounded-xl bg-white p-4 shadow h-full flex flex-col">
+      <Image
+        src={card.image}
+        alt={card.breed}
+        className="rounded-lg w-full h-[400px] object-cover"
+      />
+
+      <h3 className="font-semibold mt-2">
+        {card.name} - {card.breed}
+      </h3>
+
+      <p className="text-sm text-gray-500">
+        Gene: {card.gender} Age: {card.age}
+      </p>
+
+      <p className="font-bold mt-auto">{card.price}</p>
     </div>
   );
 };

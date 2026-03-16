@@ -3,25 +3,40 @@ import Button from "../atoms/Button";
 import HeroCard from "./Card";
 import type { StaticImageData } from "next/image";
 import * as icons from "@/assets/icons";
-// import * as images from "@/assets/images/images";
 
 interface HeroCardsAreaProps {
   question?: string;
   title?: string;
   images?: StaticImageData[];
 }
-// const CardsSection: React.FC<HeroCardsAreaProps> = ({ question, title, image }) => {
-// normalize to array for rendering
-// const images = Array.isArray(image) ? image : image ? [image] : [];
 
 const HeroCardsArea = ({
   question,
   title,
   images = [],
 }: HeroCardsAreaProps) => {
-  // Split images into two rows
-  const firstRow = images.slice(0, 4);
-  const secondRow = images.slice(4, 8);
+  // build mock data using images
+  const cardInfo = images.map((image, index) => ({
+    id: index + 1,
+    name: `${index + 1}`,
+    breed:
+      index < 4
+        ? ["Black & White", "Tabby Cat", "White Persian", "Calico Cat"][index]
+        : [
+            "Bernese Mountain",
+            "Border Collie",
+            "Golden Retriever",
+            "Puppy Mix",
+          ][index - 4],
+    gender: "Male",
+    age: "2 months",
+    price: "6.900.000 VND",
+    image,
+  }));
+
+  // split rows
+  const firstRow = cardInfo.slice(0, 4);
+  const secondRow = cardInfo.slice(4, 8);
 
   return (
     <section className="py-20">
@@ -29,7 +44,7 @@ const HeroCardsArea = ({
         <div className="w-full mx-auto flex justify-between mb-10 px-4 md:px-2">
           <div>
             <p>{question}</p>
-            <h3 className="text-2xl font-semibold text-[]">{title}</h3>
+            <h3 className="text-2xl font-semibold">{title}</h3>
           </div>
 
           <div className="relative hidden sm:flex">
@@ -50,31 +65,28 @@ const HeroCardsArea = ({
 
         {/* Cards */}
         <div className="flex flex-col gap-10 justify-center">
-          {/* 1st row */}
-          <div className="flex flex-wrap gap-2 md:gap-0 lg:gap-30 justify-center items-center w-full">
-            {firstRow.map((image, index) => {
-              return (
-                <div
-                  key={index}
-                  className="md:w-1/2 lg:w-auto flex items-center justify-center p-2 rounded-2xl sm:bg-transparent shadow-lg"
-                >
-                  <HeroCard image={image} />
-                </div>
-              );
-            })}
+          {/* first row */}
+          <div className="flex flex-wrap gap-2 md:gap-0 lg:gap-20 justify-center items-stretch w-full">
+            {firstRow.map((card) => (
+              <div
+                key={card.id}
+                className="md:w-1/2 lg:w-auto flex p-2 rounded-2xl sm:bg-transparent shadow-lg h-full"
+              >
+                <HeroCard card={card} />
+              </div>
+            ))}
           </div>
-          {/* 2nd row */}
-          <div className="flex flex-wrap gap-2 md:gap-0 lg:gap-30 justify-center items-center w-full">
-            {secondRow.map((image, index) => {
-              return (
-                <div
-                  key={index}
-                  className="md:w-1/2 lg:w-auto flex items-center justify-center p-2 rounded-2xl sm:bg-transparent shadow-lg"
-                >
-                  <HeroCard image={image} />
-                </div>
-              );
-            })}
+
+          {/* second row */}
+          <div className="flex flex-wrap gap-2 md:gap-0 lg:gap-20 justify-center items-stretch w-full">
+            {secondRow.map((card) => (
+              <div
+                key={card.id}
+                className="md:w-1/2 lg:w-auto flex p-2 rounded-2xl sm:bg-transparent shadow-lg h-full"
+              >
+                <HeroCard card={card} />
+              </div>
+            ))}
           </div>
         </div>
 

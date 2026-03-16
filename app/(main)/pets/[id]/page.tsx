@@ -201,7 +201,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
               <p className="text-(--color-primary-darkBlue) font-medium">
                 Have questions about {pet.name}?
               </p>
-              <Link href="/Contact" className="mt-3 inline-block">
+              <Link href="/contact" className="mt-3 inline-block">
                 <Button
                   variant="outline"
                   className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
@@ -227,7 +227,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
             <Link href="/adopt-form">
               <Button variant="primary">Apply Now</Button>
             </Link>
-            <Link href="/AvailablePets">
+            <Link href="/availablePets">
               <Button
                 variant="outline"
                 className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"

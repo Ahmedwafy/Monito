@@ -2,7 +2,7 @@
 import * as icons from "@/assets/icons";
 import Button from "@/app/components/atoms/Button";
 import Link from "next/link";
-import { faqItems } from "../mock-data/mockFAQs";
+import { faqItems } from "@/app/mock-data/mockFAQs";
 
 const FAQPage = () => {
   return (
@@ -55,7 +55,7 @@ const FAQPage = () => {
           <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
             We&apos;re here to help! Reach out to us anytime.
           </p>
-          <Link href="/Contact">
+          <Link href="/contact">
             <Button variant="primary" className="text-xl px-12 py-5">
               Contact Us
             </Button>

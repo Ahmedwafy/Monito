@@ -16,7 +16,7 @@ const steps = [
     icon: (
       <icons.Search className="w-10 h-10 text-(--color-primary-darkBlue)" />
     ),
-    image: null, // أو ضع صورة إن وجدت
+    image: null, // Add an Image if Needed
   },
   {
     number: 2,
@@ -136,7 +136,7 @@ export default function AdoptionProcessPage() {
           <p className="text-lg text-(--color-primary-darkBlue)/90 mb-8">
             Browse our available pets and find the one who’s waiting for you.
           </p>
-          <Link href="/AvailablePets">
+          <Link href="/availablePets">
             <Button variant="primary" className="text-xl px-12 py-5">
               View Available Pets
             </Button>

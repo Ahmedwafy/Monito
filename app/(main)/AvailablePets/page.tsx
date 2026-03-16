@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
@@ -14,12 +13,11 @@ const AvailablePetsPage = () => {
   const [genderFilter, setGenderFilter] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
 
+  // Simulation Delay (In Real App >>> API call)
   useEffect(() => {
-    // Simulation Delay (In Real App >>> API call)
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1200); // 1.2
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -204,7 +202,7 @@ const AvailablePetsPage = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     fill
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 left-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-3 py-1 rounded-full font-medium text-sm shadow">
                     {pet.gender}
                   </div>

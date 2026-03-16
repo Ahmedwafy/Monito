@@ -17,9 +17,9 @@ const AdoptionCover = () => {
         </div>
         <div className="sm:w-1/2 relative z-10 px-2 sm:px-0 sm:max-md:px-2">
           <h1 className="text-3xl font-bold flex justify-center items-center gap-4 ">
-            <h2 className="text-(--color-secondary-monYellow)! sm:text-(--color-secondary-monYellow)! lg:text-(--color-primary-darkBlue)!">
+            <p className="text-(--color-secondary-monYellow)! sm:text-(--color-secondary-monYellow)! lg:text-(--color-primary-darkBlue)!">
               Adoption
-            </h2>
+            </p>
             <Image
               src={images.adoptionLogo}
               alt="Adoption-Logo"

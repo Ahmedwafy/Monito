@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Button from "@/app/components/atoms/Button";
-import * as icons from "@/assets/icons";
-import Image from "next/image";
 // import lostPet from "@/assets/images/404-lost-pet.png"; // Optional
 
 export default function NotFound() {
@@ -42,7 +40,7 @@ export default function NotFound() {
             </Button>
           </Link>
 
-          <Link href="/pets">
+          <Link href="/availablePets">
             <Button
               variant="outline"
               className="text-xl px-10 py-5 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white"
