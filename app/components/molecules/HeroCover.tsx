@@ -7,46 +7,69 @@ import Link from "next/link";
 // Hero Cover Component [ Dog with Cat Image ]
 const HeroCover = () => {
   return (
-    <section className="px-4 sm:px-4 rounded-2xl h-auto flex items-center">
-      <div className="container relative flex flex-col-reverse sm:flex-row justify-between mx-auto h-auto bg-(--color-primary-darkBlue) overflow-hidden rounded-2xl py-10">
-        <div className="sm:w-1/2 relative z-99 mt-3 sm:mt-16">
-          <Image
-            src={images.homeCover2}
-            alt="pets"
-            className="scale-160 z-100 pt-18 sm:pt-0 sm:max-md:scale-160 sm:absolute sm:-top-10"
-          />
-        </div>
-        <div className="sm:w-1/2 relative z-10 px-2 sm:px-3 lg:-mt-6 h-60 flex flex-col justify-center">
-          <h1 className="text-3xl font-bold flex justify-center sm:max-md:text-(--color-secondary-monYellow)!">
+    <section className="container mx-auto px-4 sm:px-0 my-6">
+      <div className="relative bg-[#fceed5] dark:bg-[#00171f] rounded-[20px] overflow-hidden flex flex-col-reverse md:flex-row items-stretch justify-between shadow-sm min-h-[350px] transition-colors duration-300">
+        {/* Decorative Background Elements */}
+        {/* Top Right Shape */}
+        <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-[50px] rotate-[25deg] bg-[#f7dba7] dark:bg-[#12212a] opacity-50 dark:opacity-80 z-0 pointer-events-none transition-colors duration-300"></div>
+        {/* Bottom Left Shape */}
+        <div className="absolute -bottom-[20%] -left-[10%] w-[200px] h-[200px] md:w-[350px] md:h-[350px] rounded-[40px] -rotate-[15deg] bg-[#003459] dark:bg-[#f7dba7] opacity-10 dark:opacity-5 z-0 pointer-events-none transition-colors duration-300"></div>
+
+        {/* Content Section (Text) */}
+        <div className="order-1 md:order-2 relative z-10 w-full md:w-1/2 px-6 py-10 md:px-12 md:py-14 text-center md:text-left flex flex-col justify-center items-center md:items-start transition-colors duration-300">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-2 transition-colors duration-300">
             One More Friend
           </h1>
-          <h2 className="text-xl flex justify-center font-semibold pt-4 pb-2 sm:max-md:text-(--color-secondary-monYellow)!">
+
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#002a48] dark:text-[#fdfdfd] transition-colors duration-300">
             Thousands more fun!
           </h2>
-          <p className="relative mb-4 sm:max-md:text-(--color-secondary-monYellow) md:text-(--color-primary-darkBlue) lg:w-full lg:px-10">
+
+          <p className="text-base md:text-lg font-medium mb-8 max-w-lg text-[#242b33] dark:text-[#ebeeef] transition-colors duration-300">
             Having a pet means you have more joy, a new friend, a happy person
             who will always be with you to have fun. We have 200+ different pets
             that can meet your needs!
           </p>
-          <div className="flex gap-4 justify-center sm:justify-end mt-5 sm:mt-2 sm:px-2 relative md:mt-0">
-            <Button
-              // variant="outline"
-              variant="primary"
-              className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow)"
-            >
-              View Intro
-              <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
-            </Button>
 
-            <Link href="/AvailablePets">
-              <Button className="sm:text-(--color-secondary-monYellow)">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <Link href="/" className="inline-block">
+              <Button
+                variant="primary"
+                className="group transition-all duration-300 flex items-center gap-2
+            sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)
+            dark:text-(--color-secondary-monYellow) dark:border-1
+            dark:border-(--color-primary-darkBlue)!
+            dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!
+            "
+              >
+                View Intro
+                <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
+              </Button>
+            </Link>
+
+            <Link href="/AvailablePets" className="inline-block">
+              <Button
+                variant="outline"
+                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f]"
+              >
                 Explore Now
               </Button>
             </Link>
           </div>
         </div>
-        <div className="h-[600px] w-[600px] lg:h-[800px] lg:w-[800px] absolute -right-30 rotate-20 sm:rotate-30 -top-60 sm:-top-70 bg-[#fceed5] rounded-[60px]"></div>
-        <div className="h-[700px] w-[700px] rotate-25 sm:rotate-30 sm:max-md:left-40 top-125 sm:max-md:top-10 absolute bg-(--color-primary-darkBlue-80) rounded-[60px]"></div>
+
+        {/* Image Section */}
+        <div className="hidden md:flex order-2 md:order-1 relative z-10 w-full md:w-1/2 justify-center md:justify-end items-end pt-0 px-0">
+          <div className="relative w-full h-full">
+            <Image
+              src={images.homeCover2}
+              alt="pets"
+              fill
+              className="object-contain object-bottom md:object-right-bottom drop-shadow-2xl z-20 md:scale-105 md:origin-bottom transition-transform duration-500 hover:scale-110"
+              priority
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

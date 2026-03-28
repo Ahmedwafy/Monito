@@ -43,7 +43,9 @@ const HeroCardsArea = ({
       <div className="container mx-auto">
         <div className="w-full mx-auto flex justify-between mb-10 px-4 md:px-2">
           <div>
-            <p>{question}</p>
+            <p className="dark:text-(--color-secondary-monYellow)">
+              {question}
+            </p>
             <h3 className="text-2xl font-semibold">{title}</h3>
           </div>
 
@@ -54,7 +56,8 @@ const HeroCardsArea = ({
             >
               <Button
                 variant="outline"
-                className="flex items-center gap-2 pr-6 transition-all duration-300"
+                className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! 
+                dark:text-(--color-primary-darkBlue)! dark:hover:text-(--color-secondary-monYellow)! dark:text-(--color-secondary-monYellow)! dark:border-none"
               >
                 View More
                 <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />

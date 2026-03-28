@@ -29,7 +29,9 @@ const KnowledgeCard = ({
         <h4 className="bg-(--color-blueSea) w-fit px-2 rounded-2xl text-[0.875rem] text-white mb-2">
           Pet Knowledge
         </h4>
-        <h4 className="font-semibold py-2">{title}</h4>
+        <h4 className="font-semibold py-2 dark:text-(--color-secondary-monYellow)">
+          {title}
+        </h4>
         <p className="text-(--color-neutral-60)">{description}</p>
       </div>
     </div>

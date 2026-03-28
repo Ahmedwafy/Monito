@@ -102,13 +102,13 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fceed5] pb-16">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-16">
       {/* Hero / Cover Like HeroSections */}
       <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) py-16 md:py-24 px-6 md:px-12">
+        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) py-16 md:py-24 px-6 md:px-12">
           {/* Decorative blobs */}
-          <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-60) md:h-[700px] md:w-[700px]"></div>
-          <div className="absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) md:h-[800px] md:w-[800px]"></div>
+          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
+          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
           <div className="relative z-10 max-w-3xl">
             <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
               Get in Touch
@@ -121,7 +121,9 @@ const ContactPage = () => {
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button
                 variant="primary"
-                className="group flex items-center gap-2 bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow)"
+                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
+                dark:text-(--color-secondary-monYellow) dark:border-1 dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
+                dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!"
                 onClick={handleClick}
               >
                 Send Message
@@ -130,7 +132,7 @@ const ContactPage = () => {
 
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)! hover:text-(--color-secondary-monYellow)!"
+                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
                 onClick={handleClick}
               >
                 Call Us Now
@@ -155,10 +157,10 @@ const ContactPage = () => {
           {/* Contact Info + Map / Image */}
           <div className="space-y-10">
             <div>
-              <h2 className="text-3xl font-bold text-(--color-primary-darkBlue)">
+              <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
                 Let&apos;s Connect
               </h2>
-              <p className="mt-4 text-lg text-gray-700">
+              <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300">
                 Whether you&apos;re ready to adopt, want to volunteer, or just
                 want to say hi to our team — we&apos;re all ears (and tails!).
               </p>
@@ -166,15 +168,15 @@ const ContactPage = () => {
 
             {/* Contact Cards */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl bg-white p-6 shadow-lg">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow)">
-                  {/* <icons.ChevronDown className="h-6 w-6" /> */}
+              <div className="rounded-2xl bg-white dark:bg-(--color-card-bg) border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48]! transition-colors duration-300">
+                  {/* <icons.Smartphone className="h-9 w-9" /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
-                    className="text-(--color-secondary-monYellow)"
+                    className="text-inherit"
                   >
                     <path
                       fill="currentColor"
@@ -182,21 +184,27 @@ const ContactPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold">Phone</h3>
-                <p className="mt-2 text-gray-600">+20 123 456 7890</p>
-                <p className="text-sm text-gray-500">Sun – Thu: 10AM – 7PM</p>
+                <h3 className="mt-4 text-xl font-semibold dark:text-[#fdfdfd] transition-colors duration-300">
+                  Phone
+                </h3>
+                <p className="mt-2 text-gray-600 dark:text-[#ebeeef] transition-colors duration-300">
+                  +20 123 456 7890
+                </p>
+                <p className="text-sm text-gray-500 dark:text-[#99a2a5] transition-colors duration-300">
+                  Sun – Thu: 10AM – 7PM
+                </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-6 shadow-lg">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow)">
-                  {/* <icons.ChevronDown className="h-6 w-6" />  --color-secondary-monYellow*/}
+              <div className="rounded-2xl bg-white dark:bg-[#002a48] border border-transparent dark:border-[#003459] p-6 shadow-lg transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300">
+                  {/* <icons.Smartphone className="h-9 w-9" /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
                     // className="text-(--color-primary-darkBlue)"
-                    className="text-(--color-secondary-monYellow)"
+                    className="text-inherit"
                   >
                     <path
                       fill="currentColor"
@@ -204,20 +212,26 @@ const ContactPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold">Email</h3>
-                <p className="mt-2 text-gray-600">hello@onemorefriend.com</p>
-                <p className="text-sm text-gray-500">
+                <h3 className="mt-4 text-xl font-semibold dark:text-[#fdfdfd] transition-colors duration-300">
+                  Email
+                </h3>
+                <p className="mt-2 text-gray-600 dark:text-[#ebeeef] transition-colors duration-300">
+                  hello@onemorefriend.com
+                </p>
+                <p className="text-sm text-gray-500 dark:text-[#99a2a5] transition-colors duration-300">
                   We reply within 24 hours
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-6 shadow-lg sm:col-span-2">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow)">
+              <div className="rounded-2xl bg-white dark:bg-[#002a48] border border-transparent dark:border-[#003459] p-6 shadow-lg sm:col-span-2 transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300">
+                  {/* <icons.Mail className="h-9 w-9" /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
+                    className="text-inherit"
                   >
                     <path
                       fill="currentColor"
@@ -225,11 +239,13 @@ const ContactPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold">Visit Us</h3>
-                <p className="mt-2 text-gray-600">
+                <h3 className="mt-4 text-xl font-semibold dark:text-[#fdfdfd] transition-colors duration-300">
+                  Visit Us
+                </h3>
+                <p className="mt-2 text-gray-600 dark:text-[#ebeeef] transition-colors duration-300">
                   123 Pet Street, New Cairo, Cairo Governorate, Egypt
                 </p>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-500 dark:text-[#99a2a5] transition-colors duration-300">
                   Come meet your new best friend!
                 </p>
               </div>
@@ -237,11 +253,11 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl bg-white p-8 shadow-xl lg:p-10">
-            <h2 className="text-3xl font-bold text-(--color-primary-darkBlue)">
+          <div className="rounded-3xl bg-white dark:bg-[#002a48] p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-[#003459]">
+            <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
               Send Us a Message
             </h2>
-            <p className="mt-3 text-gray-600">
+            <p className="mt-3 text-gray-600 dark:text-[#ebeeef] transition-colors duration-300">
               Fill out the form and we&apos;ll get back to you as soon as
               possible.
             </p>
@@ -251,7 +267,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-[#ebeeef] transition-colors duration-300"
                   >
                     Full Name
                   </label>
@@ -259,7 +275,7 @@ const ContactPage = () => {
                     type="text"
                     id="name"
                     name="fullname"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-[#00528c] bg-white dark:bg-[#00171f] text-gray-900 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
                     placeholder="Your name"
                     value={formData.fullname}
                     // value={fullname}
@@ -270,7 +286,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-[#ebeeef] transition-colors duration-300"
                   >
                     Email Address
                   </label>
@@ -278,7 +294,7 @@ const ContactPage = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-[#00528c] bg-white dark:bg-[#00171f] text-gray-900 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
                     placeholder="you@example.com"
                     value={formData.email}
                     // value={email}
@@ -290,7 +306,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ebeeef] transition-colors duration-300"
                 >
                   Subject
                 </label>
@@ -298,7 +314,7 @@ const ContactPage = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-[#00528c] bg-white dark:bg-[#00171f] text-gray-900 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
                   placeholder="Adoption inquiry / General question"
                   value={formData.subject}
                   // value={subject}
@@ -309,7 +325,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 dark:text-[#ebeeef] transition-colors duration-300"
                 >
                   Your Message
                 </label>
@@ -317,7 +333,7 @@ const ContactPage = () => {
                   id="message"
                   name="message"
                   rows={5}
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-[#00528c] bg-white dark:bg-[#00171f] text-gray-900 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
                   placeholder="Tell us how we can help you and your future furry friend..."
                   value={formData.message}
                   // value={message}
@@ -327,7 +343,7 @@ const ContactPage = () => {
 
               <Button
                 variant="primary"
-                className="w-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-secondary-monYellow)/90 hover:text-(--color-primary-darkBlue)!"
+                className="w-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-secondary-monYellow)/90 hover:text-(--color-primary-darkBlue)! dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-colors duration-300 font-bold"
               >
                 Send Message
               </Button>
@@ -338,20 +354,25 @@ const ContactPage = () => {
       ``
       {/* Optional small CTA at bottom */}
       <section className="px-4 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] py-12">
-          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) md:text-3xl">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-card-bg) border border-transparent dark:border-(--color-card-border) py-12 transition-colors duration-300 shadow-lg">
+          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300 md:text-3xl">
             Ready to meet your new friend?
           </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90">
+          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-[#ebeeef] transition-colors duration-300">
             Browse our available pets or schedule a visit today!
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link href="/">
-              <Button variant="primary">Explore Pets</Button>
+              <Button
+                variant="primary"
+                className="dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-colors duration-300"
+              >
+                Explore Pets
+              </Button>
             </Link>
             <Button
               variant="outline"
-              className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
+              className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f] transition-colors duration-300"
             >
               Book a Visit
             </Button>
@@ -363,6 +384,6 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-function tost(arg0: string) {
-  throw new Error("Function not implemented.");
-}
+// function tost(arg0: string) {
+//   throw new Error("Function not implemented.");
+// }

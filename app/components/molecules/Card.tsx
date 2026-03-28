@@ -14,7 +14,7 @@ interface CardProps {
 
 const HeroCard = ({ card }: CardProps) => {
   return (
-    <div className="w-[280px] rounded-xl bg-white p-4 shadow h-full flex flex-col">
+    <div className="w-[280px] rounded-xl bg-white p-4 shadow h-full flex flex-col dark:bg-(--color-neutral-0) dark:border dark:border-(--color-neutral-10)">
       <Image
         src={card.image}
         alt={card.breed}
@@ -29,7 +29,9 @@ const HeroCard = ({ card }: CardProps) => {
         Gene: {card.gender} Age: {card.age}
       </p>
 
-      <p className="font-bold mt-auto">{card.price}</p>
+      <p className="font-bold mt-auto dark:text-(--color-primary-darkBlue)">
+        {card.price}
+      </p>
     </div>
   );
 };

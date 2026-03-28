@@ -10,7 +10,7 @@ const Sellers = () => {
       <div className="container mx-auto px-4 rounded-2xl">
         <div className="flex flex-col sm:flex-row justify-between gap-2">
           <div className="flex flex-col gap-2 justify-between sm:w-1/2">
-            <p className="text-center sm:text-start text-2xl">
+            <p className="text-center sm:text-start text-2xl dark:text-(--color-secondary-monYellow)">
               Proud to be part of
             </p>
             <h3 className="-mt-1 text-center sm:text-start text-2xl">
@@ -19,12 +19,12 @@ const Sellers = () => {
           </div>
           <Link
             href="/"
-            className="group flex items-center gap-2 text-(--color-primary-darkBlue) mx-auto
-            transition-colors hover:text-(--color-secondary-monYellow) w-1/2 justify-center sm:justify-end"
+            className="group flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow)"
           >
             <Button
               variant="outline"
-              className="flex items-center gap-2 pr-6 transition-all duration-300 w-full sm:w-auto"
+              className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! 
+              dark:hover:text-(--color-secondary-monYellow)! dark:border-none dark:text-(--color-secondary-monYellow)!"
             >
               View all our seller
               <icons.ChevronRight
@@ -39,6 +39,7 @@ const Sellers = () => {
           flex gap-6 items-center mt-10
           overflow-x-auto whitespace-nowrap px-2 
           md:overflow-visible sm:justify-center sm:flex-nowrap
+          dark:invert
         "
         >
           <Image

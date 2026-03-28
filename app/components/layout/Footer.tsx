@@ -20,9 +20,15 @@ const footerLinks = {
   ],
 };
 
+const socialLinks = [
+  { name: "Facebook", icon: socialIcons.Facebook, href: "/coming-soon" },
+  { name: "Instagram", icon: socialIcons.Instagram, href: "/coming-soon" },
+  { name: "Twitter", icon: socialIcons.Twitter, href: "/coming-soon" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-(--color-primary-darkBlue) text-white pt-12 pb-8">
+    <footer className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-10) text-white pt-12 pb-8 w-[99%] mx-auto rounded-2xl mb-2">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Logo & Description */}
@@ -31,26 +37,18 @@ export default function Footer() {
               Giving every animal a second chance at a loving home. Join us in
               making tails wag and hearts full.
             </p>
+
+            {/* Social Media Icons & Links */}
             <div className="flex gap-4">
-              <Link
-                href="/"
-                className="text-(--color-secondary-monYellow)! hover:text-(--color-secondary-monYellow)  transition-colors"
-              >
-                {/* <icons.Facebook className="w-6 h-6" />  */}
-                <socialIcons.Facebook className="w-6 h-6" />
-              </Link>
-              <Link
-                href="/"
-                className="text-(--color-secondary-monYellow)! hover:text-(--color-secondary-monYellow) transition-colors"
-              >
-                <socialIcons.Instagram className="w-6 h-6" />
-              </Link>
-              <Link
-                href="/"
-                className="text-(--color-secondary-monYellow)! hover:text-(--color-secondary-monYellow) transition-colors"
-              >
-                <socialIcons.Twitter className="w-6 h-6" />
-              </Link>
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-(--color-secondary-monYellow)! hover:text-(--color-secondary-monYellow)  transition-colors"
+                >
+                  <link.icon className="w-6 h-6" />
+                </Link>
+              ))}
             </div>
           </div>
 

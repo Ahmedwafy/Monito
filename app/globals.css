@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+/* This tells Tailwind v4 to stop relying on your system's dark mode, 
+and instead only apply dark: classes when Next-Themes has actually added the .dark class to the page. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Quicksand */
 
 :root {
@@ -6,6 +11,11 @@
 }
 body {
   font-family: var(--font-poppins), sans-serif;
+  background-color: var(--color-neutral-0);
+  color: var(--color-neutral-100);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @layer base {
@@ -36,6 +46,40 @@ body {
     --color-orangeShine: #ff912c;
     --color-blueSea: #00a7e7;
   }
+
+  .dark {
+    /* --- Dark Mode Colors --- */
+    /* Lighter blue for dark backgrounds */
+    --color-primary-darkBlue: #4a90e2;
+    --color-primary-darkBlue-80: #5ba0f2;
+    --color-primary-darkBlue-60: #6bb0ff;
+    --color-primary-darkBlue-40: #7cc0ff;
+
+    --color-secondary-monYellow: #f7dba7; /* Keep similar or adjust */
+    --color-secondary-monYellow-80: #eec77e;
+    --color-secondary-monYellow-60: #f1d092;
+    --color-secondary-monYellow-40: #fceed5;
+
+    /* Neutrals - inverted for dark mode */
+    --color-neutral-100: #fdfdfd; /* Lightest becomes darkest */
+    --color-neutral-80: #ebeeef;
+    --color-neutral-60: #ccd1d2;
+    --color-neutral-40: #99a2a5;
+    --color-neutral-20: #667479;
+    --color-neutral-10: #242b33;
+    --color-neutral-5: #12212a;
+    --color-neutral-0: #00171f; /* Darkest becomes lightest */
+
+    /* Cards BG */
+    --color-card-bg: #002a48;
+    --color-card-border: #003459;
+
+    /* Extra colors - keep similar or adjust if needed */
+    --color-pinkRed: #ff564f;
+    --color-greenLight: #34c759;
+    --color-orangeShine: #ff912c;
+    --color-blueSea: #00a7e7;
+  }
   /* End of root */
 }
 
@@ -56,4 +100,18 @@ a {
   &:hover {
     color: var(--color-secondary-monYellow);
   }
+}
+
+/* Sun animation in Navbar */
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-once {
+  animation: spin-once 0.7s ease-in-out;
 }

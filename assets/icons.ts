@@ -17,6 +17,11 @@ import {
   HeartHandshake,
   Home,
   Camera,
+  RefreshCw,
+  Sun,
+  Moon,
+  Smartphone,
+  Mail,
 } from "lucide-react";
 
 export {
@@ -38,4 +43,9 @@ export {
   HeartHandshake,
   Home,
   Camera,
+  RefreshCw,
+  Sun,
+  Moon,
+  Smartphone,
+  Mail,
 };

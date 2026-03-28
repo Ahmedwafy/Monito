@@ -49,31 +49,35 @@ const categories = [
 
 const CategoryPage = () => {
   return (
-    <div className="min-h-screen bg-[#fceed5] pb-20">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
       {/* Hero / Cover Section */}
       <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) py-16 md:py-24 px-6 md:px-12 text-center">
+        <div className="container relative mx-auto overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) py-16 md:py-24 px-6 md:px-12 text-center">
           {/* Decorative blobs */}
-          <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-60) md:h-[700px] md:w-[700px]"></div>
-          <div className="absolute -left-60 bottom-10 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) md:h-[800px] md:w-[800px]"></div>
+          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
+          <div className="dark:opacity-50 absolute -left-60 bottom-10 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
               Find Your Perfect Friend
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-(--color-primary-darkBlue)/90">
+            <p className="mt-6 text-lg md:text-xl text-(--color-primary-darkBlue)/90 dark:text-(--color-primary-darkBlue)">
               Browse our categories and discover the pet that matches your
               lifestyle and heart!
             </p>
-
-            <div className="mt-10">
-              <Button
-                variant="primary"
-                className="group bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-primary-darkBlue)/90"
-              >
-                Explore All Pets
-                <icons.CircleArrowRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" />
-              </Button>
+            <div className="mt-10 w-fit mx-auto">
+              {/* dark:border-none */}
+              <Link href="/">
+                <Button
+                  variant="primary"
+                  className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
+                dark:text-(--color-secondary-monYellow) dark:border-1 dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
+                dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)! mx-auto"
+                >
+                  Explore All Pets
+                  <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -135,19 +139,24 @@ const CategoryPage = () => {
 
       {/* Bottom CTA */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] py-12 px-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue)">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-card-bg) border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
+          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
             Can&apos;t decide? Let us help you!
           </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90">
+          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-[#ebeeef] transition-colors duration-300">
             Take our quick quiz and find the perfect pet match for you.
           </p>
           <div className="mt-8 flex justify-center gap-6 flex-wrap">
-            <Button variant="primary">Take the Quiz</Button>
+            <Button
+              variant="primary"
+              className="dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-colors duration-300 sm:text-(--color-secondary-monYellow) flex"
+            >
+              Take the Quiz
+            </Button>
             <Link href="/contact">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white"
+                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f] transition-colors duration-300"
               >
                 Ask for Help
               </Button>

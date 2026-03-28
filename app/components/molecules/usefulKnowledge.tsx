@@ -10,16 +10,19 @@ const Knowledge = () => {
       <div className="container flex flex-col mx-auto pt-15 pb-10 px-4">
         <div className="flex justify-between">
           <div>
-            <p>You already know ?</p>
+            <p className="dark:text-(--color-secondary-monYellow)">
+              You already know ?
+            </p>
             <h3>Useful pet knowledge</h3>
           </div>
           <Link
             href="/"
-            className="group hidden sm:flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow)"
+            className="group flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow)"
           >
             <Button
               variant="outline"
-              className="flex items-center gap-2 pr-6 transition-all duration-300"
+              className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! hidden sm:flex
+                dark:text-(--color-primary-darkBlue)! dark:hover:text-(--color-secondary-monYellow)! dark:text-(--color-secondary-monYellow)! dark:border-none"
             >
               View More
               <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />
@@ -44,7 +47,7 @@ const Knowledge = () => {
         >
           <Button
             variant="outline"
-            className="flex items-center gap-2 pr-6 transition-all duration-300 w-full"
+            className="flex items-center gap-2 pr-6 transition-all duration-300 w-full dark:border-none dark:text-(--color-secondary-monYellow)!"
           >
             View More
             <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />
