@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Terms of Service ---  Privacy Policy */}
           <div className="flex sm:flex-row gap-4 px-4 sm:gap-0 justify-center items-center">
             <Link href="/" className="">
-              <Image src={images.logo} alt="logo" />
+              <Image src={images.logo} alt="logo" className="dark:invert" />
             </Link>
           </div>
         </footer>

@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const TermsOfServicePage = () => {
   return (
-    <div className="min-h-screen bg-[#fceed5] py-16 md:py-24">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) py-16 md:py-24">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl md:text-5xl font-bold text-(--color-primary-darkBlue) mb-8">
           Terms of Service
         </h1>
 
-        <div className="prose prose-lg text-gray-800 max-w-none">
+        <div className="prose prose-lg text-gray-800 dark:text-gray-300 max-w-none">
           <p className="text-lg mb-6">Last updated: March 9, 2026</p>
 
           <p>

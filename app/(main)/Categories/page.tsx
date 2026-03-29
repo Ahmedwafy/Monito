@@ -92,7 +92,7 @@ const CategoryPage = () => {
               className="
               group relative rounded-2xl overflow-hidden shadow-lg 
               hover:shadow-2xl transition-all duration-300 bg-white
-              w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-1/5
+              w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-1/5 dark:bg-(--color-neutral-0) border border-transparent dark:border-(--color-card-border)
               "
               // lg:w-[calc(33.333%-2rem)] or lg:w-1/5
             >
@@ -108,7 +108,7 @@ const CategoryPage = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
                 {/* Count badge */}
-                <div className="absolute top-4 right-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-4 py-1 rounded-full font-semibold text-sm shadow-md">
+                <div className="absolute top-4 right-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) dark:text-[#003459] px-4 py-1 rounded-full font-semibold text-sm shadow-md">
                   {category.count} Available
                 </div>
               </div>
@@ -118,13 +118,13 @@ const CategoryPage = () => {
                 <h3 className={`text-2xl font-bold ${category.textColor}`}>
                   {category.title}
                 </h3>
-                <p className="mt-3 text-gray-600">{category.description}</p>
+                <p className="mt-3 text-gray-600 dark:text-gray-300">{category.description}</p>
 
                 <div className="mt-6">
                   <Link href={`/category/${category.id}`}>
                     <Button
                       variant="primary"
-                      className="w-full bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 group-hover:translate-x-1 transition-transform"
+                      className="w-full bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] group-hover:translate-x-1 transition-all duration-300"
                     >
                       View {category.title}
                       <icons.ChevronRight className="ml-2" />

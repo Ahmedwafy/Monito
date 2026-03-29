@@ -60,16 +60,16 @@ const steps = [
 
 export default function AdoptionProcessPage() {
   return (
-    <div className="min-h-screen bg-[#fceed5] pb-20">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
       {/* Hero */}
-      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) text-white text-center relative overflow-hidden">
+      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5)! text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-10 right-10 w-64 h-64 bg-(--color-secondary-monYellow) rounded-full blur-3xl" />
           <div className="absolute bottom-10 left-10 w-80 h-80 bg-white rounded-full blur-3xl" />
         </div>
 
         <div className="relative container mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white! mb-6">
             Adoption Process
           </h1>
           <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
@@ -101,11 +101,11 @@ export default function AdoptionProcessPage() {
               </div>
 
               {/* Content */}
-              <div className="flex-1 bg-white rounded-2xl shadow-xl p-6 md:p-10">
+              <div className="flex-1 bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
                   {step.title}
                 </h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   {step.description}
                 </p>
 
@@ -129,15 +129,18 @@ export default function AdoptionProcessPage() {
 
       {/* Final CTA */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] dark:bg-(--color-neutral-10) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
             Ready to Start Your Journey?
           </h3>
-          <p className="text-lg text-(--color-primary-darkBlue)/90 mb-8">
+          <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-secondary-monYellow)/90 mb-8">
             Browse our available pets and find the one who’s waiting for you.
           </p>
           <Link href="/availablePets">
-            <Button variant="primary" className="text-xl px-12 py-5">
+            <Button
+              variant="primary"
+              className="text-xl px-12 py-5 hover:scale-103 hover:text-white transition-all duration-300"
+            >
               View Available Pets
             </Button>
           </Link>

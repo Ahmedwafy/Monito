@@ -59,18 +59,18 @@ export default function AdoptionFormPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#fceed5] flex items-center justify-center py-20 px-4">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-2xl w-full text-center">
+      <div className="min-h-screen bg-[#fceed5] dark:bg-(--color-neutral-0) flex items-center justify-center py-20 px-4">
+        <div className="bg-white dark:bg-(--color-neutral-10) rounded-3xl shadow-2xl p-8 md:p-12 max-w-2xl w-full text-center">
           <icons.Heart className="w-20 h-20 text-(--color-secondary-monYellow) mx-auto mb-6" />
           <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-4">
             Thank you!
           </h1>
-          <p className="text-lg text-gray-700 mb-8">
-            تم استلام طلب التبني بنجاح. فريقنا هيتواصل معاك خلال 24-48 ساعة
-            لمناقشة الخطوات التالية.
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            Your adoption request has been received successfully. Our team will
+            contact you within 24-48 hours to discuss the next steps.
           </p>
           <Button variant="primary" className="text-lg px-10 py-4">
-            العودة للصفحة الرئيسية
+            Back To Home
           </Button>
         </div>
       </div>
@@ -78,9 +78,9 @@ export default function AdoptionFormPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fceed5] py-16 px-4">
+    <div className="min-h-screen bg-[#fceed5] dark:bg-(--color-neutral-0) py-16 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white dark:bg-(--color-neutral-10) rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-(--color-primary-darkBlue) text-white p-8 md:p-12 text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">طلب تبني</h1>
@@ -99,7 +99,7 @@ export default function AdoptionFormPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -108,12 +108,12 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -122,12 +122,12 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -136,12 +136,12 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
                   />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Address <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -150,7 +150,7 @@ export default function AdoptionFormPage() {
                     value={formData.address}
                     onChange={handleChange}
                     rows={2}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
                   />
                 </div>
               </div>
@@ -164,14 +164,14 @@ export default function AdoptionFormPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Hosing
                   </label>
                   <select
                     name="housingType"
                     value={formData.housingType}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="flat">Flat</option>
                     <option value="villa">Villa</option>
@@ -181,14 +181,14 @@ export default function AdoptionFormPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Is there a garden or outdoor space?
                   </label>
                   <select
                     name="hasGarden"
                     value={formData.hasGarden}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -196,7 +196,7 @@ export default function AdoptionFormPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     family members in the household
                   </label>
                   <input
@@ -205,19 +205,19 @@ export default function AdoptionFormPage() {
                     min="1"
                     value={formData.householdMembers}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Do you have children?
                   </label>
                   <select
                     name="hasChildren"
                     value={formData.hasChildren}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -226,7 +226,7 @@ export default function AdoptionFormPage() {
 
                 {formData.hasChildren === "yes" && (
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Children&apos;s Ages (comma-separated)
                     </label>
                     <input
@@ -235,7 +235,7 @@ export default function AdoptionFormPage() {
                       value={formData.childrenAges}
                       onChange={handleChange}
                       placeholder="e.g. 3, 7, 12"
-                      className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                      className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                     />
                   </div>
                 )}
@@ -243,7 +243,7 @@ export default function AdoptionFormPage() {
             </div>
 
             {/* Commitment Checkboxes */}
-            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 p-6 rounded-2xl">
+            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 dark:bg-(--color-neutral-0)/50 p-6 rounded-2xl">
               <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) mb-4">
                 Please confirm the following commitments:
               </h3>
@@ -257,7 +257,7 @@ export default function AdoptionFormPage() {
                   required
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
-                <span className="text-gray-700">
+                <span className="text-gray-700 dark:text-gray-300">
                   I commit to providing appropriate healthcare (vaccinations,
                   treatment, good quality food)
                 </span>
@@ -272,7 +272,7 @@ export default function AdoptionFormPage() {
                   required
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
-                <span className="text-gray-700">
+                <span className="text-gray-700 dark:text-gray-300">
                   I commit to not abandoning or surrendering the animal in the
                   street or returning it
                 </span>
@@ -287,7 +287,7 @@ export default function AdoptionFormPage() {
                   required
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
-                <span className="text-gray-700">
+                <span className="text-gray-700 dark:text-gray-300">
                   I agree to home visits or regular communication to ensure the
                   animal&apos;s well-being
                 </span>

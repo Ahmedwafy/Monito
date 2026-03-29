@@ -28,7 +28,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-10) text-white pt-12 pb-8 w-[99%] mx-auto rounded-2xl mb-2">
+    <footer className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5) text-white pt-12 pb-8 w-[99%] mx-auto rounded-2xl mb-2">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Logo & Description */}
@@ -115,23 +115,23 @@ export default function Footer() {
           </p>
           <div className="mt-4 md:mt-0 flex flex-wrap justify-center gap-6">
             <Link
-              href="/Privacy"
+              href="/privacy"
               className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/Terms"
+              href="/terms"
               className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
             >
               Terms of Service
             </Link>
-            <Link
+            {/* <Link
               href="/contact"
               className="text-gray-300! hover:text-(--color-secondary-monYellow)! transition-colors"
             >
               Contact
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

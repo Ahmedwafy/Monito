@@ -71,7 +71,7 @@ const AboutPage = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-8 transition-colors duration-300">
             Our Story
           </h2>
-          <div className="prose prose-lg text-gray-700 dark:prose-p:text-[#ebeeef] dark:prose-strong:text-[#fdfdfd] mx-auto leading-relaxed space-y-6 transition-colors duration-300">
+          <div className="prose prose-lg text-gray-700 dark:text-gray-300! mx-auto leading-relaxed space-y-6 transition-colors duration-300">
             <p>
               <strong>Monito</strong> was born in 2022 from a heartfelt mission:
               to ensure no animal faces life alone. It all started when a small
@@ -114,10 +114,22 @@ const AboutPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-(--color-secondary-monYellow)/60 dark:bg-(--color-secondary-monYellow)/20 transition-colors duration-300">
-                <icons.Heart
+                {/* <icons.Heart
                   className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 border-none! transition-colors duration-300"
                   fill="currentColor"
-                />
+                /> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 transition-colors duration-300"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 5a3 3 0 1 1 0 6a3 3 0 0 1 0-6M5 7a2 2 0 1 1 0 4a2 2 0 0 1 0-4m14 0a2 2 0 1 1 0 4a2 2 0 0 1 0-4M12 13c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4"
+                  />
+                </svg>
               </div>
               <span className="font-semibold text-(--color-primary-darkBlue) dark:text-[#fdfdfd] transition-colors duration-300">
                 +200 Active Volunteers

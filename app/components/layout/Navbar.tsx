@@ -95,8 +95,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/">
           <div className="relative">
-            <div className="absolute w-[400px] h-[400px] -top-90 -left-50 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-500/40 z-0 rounded-[15%] transition-colors" />
-            <Image src={images.logo} alt="Logo" className="relative" />
+            <div className="absolute w-[400px] h-[400px] -top-90 -left-50 rotate-25 bg-(--color-secondary-monYellow) dark:bg-gray-900/90 z-0 rounded-[15%] transition-colors" />
+            <Image
+              src={images.logo}
+              alt="Logo"
+              className="relative dark:invert"
+            />
           </div>
         </Link>
 

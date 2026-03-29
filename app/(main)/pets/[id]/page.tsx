@@ -28,12 +28,12 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
   if (!pet) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fceed5]">
+      <div className="min-h-screen flex items-center justify-center bg-[#fceed5] dark:bg-(--color-neutral-0)">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-(--color-primary-darkBlue)">
             Pet not found
           </h1>
-          <p className="mt-4 text-lg text-gray-700">
+          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
             The pet you&apos;re looking for might have found a home already!
           </p>
           <Link href="/pets" className="mt-8 inline-block">
@@ -45,7 +45,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-[#fceed5] pb-20">
+    <div className="min-h-screen bg-[#fceed5] dark:bg-(--color-neutral-0) pb-20">
       {/* Hero / Main Image Section */}
       <section className="relative pb-4">
         <div className="h-[50vh] md:h-[70vh] lg:h-screen lg:w-screen relative">
@@ -83,7 +83,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
           {/* Left/Main Content - Gallery + Description */}
           <div className="flex-1 space-y-8 order-2 lg:order-1">
             {/* Gallery */}
-            <div className="bg-white rounded-2xl shadow-xl p-4 md:p-6">
+            <div className="bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-4 md:p-6">
               <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) mb-4">
                 Gallery
               </h2>
@@ -110,11 +110,11 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
             </div>
 
             {/* Description */}
-            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+            <div className="bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-8">
               <h2 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-6">
                 About {pet.name}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 {pet.description}
               </p>
 
@@ -128,7 +128,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
                     {pet.traits.map((trait, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) rounded-full text-sm font-medium"
+                        className="px-4 py-2 bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow-80) rounded-full text-sm font-medium"
                       >
                         {trait}
                       </span>
@@ -140,7 +140,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
                   <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) mb-3">
                     Health & Care
                   </h3>
-                  <ul className="space-y-2 text-gray-700">
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li>• {pet.health}</li>
                     {pet.specialNeeds && (
                       <li>• Special needs: {pet.specialNeeds}</li>
@@ -153,31 +153,31 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
           {/* Right Sidebar - Info & Apply Button */}
           <div className="w-full lg:w-96 lg:min-w-[380px] order-1 lg:order-2 lg:sticky lg:top-8 h-fit space-y-6">
-            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border-t-4 border-(--color-secondary-monYellow)">
+            <div className="bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-8 border-t-4 border-(--color-secondary-monYellow)">
               <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) mb-6">
                 Quick Info
               </h2>
 
               <div className="space-y-4">
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-gray-600">Age</span>
-                  <span className="font-medium">{pet.age}</span>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-gray-600 dark:text-gray-400">Age</span>
+                  <span className="font-medium dark:text-gray-200">{pet.age}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-gray-600">Gender</span>
-                  <span className="font-medium">{pet.gender}</span>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-gray-600 dark:text-gray-400">Gender</span>
+                  <span className="font-medium dark:text-gray-200">{pet.gender}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-gray-600">Size</span>
-                  <span className="font-medium">{pet.size}</span>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-gray-600 dark:text-gray-400">Size</span>
+                  <span className="font-medium dark:text-gray-200">{pet.size}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-gray-600">Weight</span>
-                  <span className="font-medium">{pet.weight}</span>
+                <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-gray-600 dark:text-gray-400">Weight</span>
+                  <span className="font-medium dark:text-gray-200">{pet.weight}</span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-gray-600">Breed</span>
-                  <span className="font-medium">{pet.breed}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Breed</span>
+                  <span className="font-medium dark:text-gray-200">{pet.breed}</span>
                 </div>
               </div>
 
@@ -191,20 +191,20 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
                     <icons.Heart className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <p className="mt-4 text-center text-sm text-gray-500">
+                <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
                   This will start the adoption process
                 </p>
               </div>
             </div>
 
-            <div className="bg-(--color-secondary-monYellow)/10 rounded-2xl p-6 text-center">
-              <p className="text-(--color-primary-darkBlue) font-medium">
+            <div className="bg-(--color-secondary-monYellow)/10 dark:bg-(--color-neutral-10) rounded-2xl p-6 text-center shadow-lg">
+              <p className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) font-medium">
                 Have questions about {pet.name}?
               </p>
               <Link href="/contact" className="mt-3 inline-block">
                 <Button
                   variant="outline"
-                  className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
+                  className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
                 >
                   Contact Us
                 </Button>
@@ -216,11 +216,11 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
       {/* Bottom CTA */}
       <section className="mt-16 px-4 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] dark:bg-(--color-neutral-10) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue)">
             Ready to give {pet.name} a forever home?
           </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90">
+          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-secondary-monYellow)/90">
             Start your adoption journey today — we can&apos;t wait to help you!
           </p>
           <div className="mt-8 flex justify-center gap-6 flex-wrap">
@@ -230,7 +230,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
             <Link href="/availablePets">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
+                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
               >
                 See More Pets
               </Button>
