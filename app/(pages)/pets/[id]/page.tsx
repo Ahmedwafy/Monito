@@ -23,8 +23,8 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
   const resolvedParams = await params;
   const petId = Number(resolvedParams.id);
   const pet = getPetById(petId);
-  console.log("Found pet:", pet);
-  console.log(petId, resolvedParams.id);
+  // console.log("Found pet:", pet);
+  // console.log(petId, resolvedParams.id);
 
   if (!pet) {
     return (
@@ -161,23 +161,39 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
               <div className="space-y-4">
                 <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
                   <span className="text-gray-600 dark:text-gray-400">Age</span>
-                  <span className="font-medium dark:text-gray-200">{pet.age}</span>
+                  <span className="font-medium dark:text-gray-200">
+                    {pet.age}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-600 dark:text-gray-400">Gender</span>
-                  <span className="font-medium dark:text-gray-200">{pet.gender}</span>
+                  <span className="text-gray-600 dark:text-gray-400">
+                    Gender
+                  </span>
+                  <span className="font-medium dark:text-gray-200">
+                    {pet.gender}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
                   <span className="text-gray-600 dark:text-gray-400">Size</span>
-                  <span className="font-medium dark:text-gray-200">{pet.size}</span>
+                  <span className="font-medium dark:text-gray-200">
+                    {pet.size}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-600 dark:text-gray-400">Weight</span>
-                  <span className="font-medium dark:text-gray-200">{pet.weight}</span>
+                  <span className="text-gray-600 dark:text-gray-400">
+                    Weight
+                  </span>
+                  <span className="font-medium dark:text-gray-200">
+                    {pet.weight}
+                  </span>
                 </div>
                 <div className="flex justify-between py-2">
-                  <span className="text-gray-600 dark:text-gray-400">Breed</span>
-                  <span className="font-medium dark:text-gray-200">{pet.breed}</span>
+                  <span className="text-gray-600 dark:text-gray-400">
+                    Breed
+                  </span>
+                  <span className="font-medium dark:text-gray-200">
+                    {pet.breed}
+                  </span>
                 </div>
               </div>
 
