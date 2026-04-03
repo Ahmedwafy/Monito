@@ -5,8 +5,8 @@ import { socialIcons } from "@/assets/iconify-components/page";
 const footerLinks = {
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Our Story", href: "/about" },
-    { label: "Team", href: "/about" },
+    { label: "Our Story", href: "/about#our-story" },
+    { label: "Team", href: "/about#team" },
   ],
   adopt: [
     { label: "Available Pets", href: "/availablePets" },

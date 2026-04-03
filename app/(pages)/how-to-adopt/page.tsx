@@ -129,7 +129,7 @@ export default function AdoptionProcessPage() {
 
       {/* Final CTA */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] dark:bg-(--color-neutral-10) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-10) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
             Ready to Start Your Journey?
           </h3>

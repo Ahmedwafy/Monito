@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as icons from "@/assets/icons";
 import Button from "@/app/components/atoms/Button";
+import Link from "next/link";
 
 export default function AdoptionFormPage() {
   const router = useRouter();
@@ -69,9 +70,11 @@ export default function AdoptionFormPage() {
             Your adoption request has been received successfully. Our team will
             contact you within 24-48 hours to discuss the next steps.
           </p>
-          <Button variant="primary" className="text-lg px-10 py-4">
-            Back To Home
-          </Button>
+          <Link href="/">
+            <Button variant="primary" className="text-lg px-10 py-4">
+              Back To Home
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -82,8 +85,10 @@ export default function AdoptionFormPage() {
       <div className="container mx-auto max-w-4xl">
         <div className="bg-white dark:bg-(--color-neutral-10) rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-(--color-primary-darkBlue) text-white p-8 md:p-12 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">طلب تبني</h1>
+          <div className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5) text-white p-8 md:p-12 text-center">
+            <h1 className="text-3xl text-white! md:text-4xl font-bold mb-3">
+              Adoption Form
+            </h1>
             <p className="text-lg opacity-90">
               Fill out this form carefully to help us find your new friend
             </p>
@@ -296,14 +301,18 @@ export default function AdoptionFormPage() {
 
             {/* Submit */}
             <div className="pt-6">
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full py-5 text-xl bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 transition"
-              >
-                Submit Adoption Request
-                <icons.Heart className="ml-3 w-6 h-6" />
-              </Button>
+              <div className="flex justify-center w-full">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="flex items-center justify-center w-full max-w-full max-w-xs hover:max-w-[350px] py-5 text-xl bg-(--color-primary-darkBlue) 
+                  hover:bg-(--color-primary-darkBlue) dark:text-white! dark:bg-(--color-neutral-0)! dark:hover:bg-(--color-neutral-0)! transition-[max-width,background-color] 
+                  duration-500 ease-in-out whitespace-nowrap overflow-hidden"
+                >
+                  Submit Adoption Request
+                  <icons.Heart className="ml-3 w-6 h-6" />
+                </Button>
+              </div>
             </div>
           </form>
         </div>

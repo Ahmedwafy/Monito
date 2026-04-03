@@ -1,5 +1,6 @@
 // app/about/page.tsx
 "use client";
+import { useEffect } from "react";
 // import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
@@ -8,6 +9,20 @@ import Button from "@/app/components/atoms/Button";
 import { teamMembers } from "@/app/mock-data/mockTeamMembers";
 
 const AboutPage = () => {
+  // This useEffect handles the smooth scrolling when the page is loaded with a hash in the URL.
+  // For example, if the URL is /about#team, the page will scroll to the element with id="team".
+  useEffect(() => {
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, []);
+
   // Scroll to a specific section with id="team"
   const handleClick = () => {
     document.getElementById("team")?.scrollIntoView({
@@ -16,7 +31,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-card-border)/10! pb-20 w-[99%] mx-auto rounded-2xl my-2">
       {/* Hero / Cover Section */}
       <section className="px-4 py-12 md:py-24">
         <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) py-16 md:py-32 px-6 md:px-16">
@@ -66,7 +81,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container mx-auto px-4 py-16 md:py-24" id="our-story">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-8 transition-colors duration-300">
             Our Story
@@ -228,7 +243,7 @@ const AboutPage = () => {
       </section>
 
       {/* Mission & Values */}
-      <section className="bg-[#FDECCE] dark:bg-[#002a48] py-16 md:py-24 transition-colors duration-300">
+      <section className="bg-(--color-secondary-monYellow-special)! dark:bg-(--color-card-bg)! py-16 md:py-24 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">

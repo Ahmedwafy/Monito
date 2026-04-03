@@ -9,6 +9,12 @@ and instead only apply dark: classes when Next-Themes has actually added the .da
 :root {
   font-family: var(--font-poppins), sans-serif;
 }
+
+/* automatically handles smooth scrolling natively whenever an element with an ID is triggered. */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-poppins), sans-serif;
   background-color: var(--color-neutral-0);
@@ -20,7 +26,7 @@ body {
 
 @layer base {
   :root {
-    /* --- Colors --- */
+    /* --- Colors --- #FDECCE*/
     --color-primary-darkBlue: #003459;
     --color-primary-darkBlue-80: #002a48;
     --color-primary-darkBlue-60: #00528c;
@@ -30,6 +36,7 @@ body {
     --color-secondary-monYellow-80: #eec77e;
     --color-secondary-monYellow-60: #f1d092;
     --color-secondary-monYellow-40: #fceed5;
+    --color-secondary-monYellow-special: #fdecce;
 
     /* Neutrals */
     --color-neutral-100: #00171f;

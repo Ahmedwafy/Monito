@@ -47,7 +47,7 @@ export default function VolunteerPage() {
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
       {/* Hero */}
-      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5)! text-white text-center relative overflow-hidden">
+      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-card-bg) text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-(--color-secondary-monYellow) rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl translate-y-1/3 -translate-x-1/3" />
@@ -70,7 +70,7 @@ export default function VolunteerPage() {
           {volunteerOpportunities.map((opp, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 flex flex-col"
+              className="bg-white dark:bg-(--color-card-bg) rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 flex flex-col"
             >
               <div className="mb-6 flex justify-center">{opp.icon}</div>
               <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) mb-4 text-center">
@@ -88,7 +88,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* How to Apply */}
-      <section className="bg-white dark:bg-(--color-neutral-10) py-16 md:py-24">
+      <section className="bg-white dark:bg-(--color-card-bg) py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-8">
             Ready to Help?
@@ -121,7 +121,7 @@ export default function VolunteerPage() {
 
       {/* CTA Bottom */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-[#FFB775] dark:bg-(--color-neutral-10) py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-card-bg) py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
             Every Hour Counts
           </h3>
@@ -132,7 +132,7 @@ export default function VolunteerPage() {
           <Link href="/contact">
             <Button
               variant="primary"
-              className="text-xl px-12 py-5 hover:scale-103 hover:text-white transition-all duration-300"
+              className="text-xl px-8 py-5 hover:scale-103 hover:text-white transition-all duration-300"
             >
               Start Volunteering Today
             </Button>
