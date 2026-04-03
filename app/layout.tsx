@@ -5,6 +5,7 @@ import Footer from "@/app/components/layout/Footer";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "next-themes";
 import RouteLoader from "@/app/components/ui/RouteLoader";
+import { Suspense } from "react";
 // import NextTopLoader from "nextjs-toploader";  // old loader ... blue bar at top
 import "./globals.css";
 
@@ -34,7 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange // disable transition when switching theme
         >
-          <RouteLoader />
+          <Suspense fallback={null}>
+            <RouteLoader />
+          </Suspense>
           {/* <NextTopLoader
             color="var(--color-primary-darkBlue)"  // old loader ... blue bar at top
             showSpinner={false}
