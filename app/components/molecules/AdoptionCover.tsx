@@ -37,15 +37,12 @@ const AdoptionCover = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-            <Link href="/" className="inline-block">
+            <Link href="/explore" className="inline-block">
               <Button
                 variant="primary"
-                className="group transition-all duration-300 flex items-center gap-2
-            sm:text-(--color-secondary-monYellow) dark:bg-[#002a48]
-            dark:text-(--color-secondary-monYellow) dark:border-1
-            dark:border-(--color-primary-darkBlue)!
-            dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!
-            "
+                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-[#002a48] 
+                dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) dark:border 
+                dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!"
               >
                 View Intro
                 <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
