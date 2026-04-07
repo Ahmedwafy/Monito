@@ -103,7 +103,7 @@ export default function Navbar() {
 
           {/* Adopt Now Button */}
           <div className="hidden md:block">
-            <Link href="/availablePets">
+            <Link href="/available-pets">
               <Button
                 variant="primary"
                 className="bg-(--color-primary-darkBlue) dark:bg-blue-600 text-white hover:bg-(--color-primary-darkBlue)/90 dark:hover:bg-blue-700 flex items-center gap-2 transition-colors"

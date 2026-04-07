@@ -16,7 +16,7 @@ const Knowledge = () => {
             <h3>Useful pet knowledge</h3>
           </div>
           <Link
-            href="/"
+            href="/explore"
             className="group flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow)"
           >
             <Button

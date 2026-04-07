@@ -31,11 +31,11 @@ const HeroSection = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-6 z-10 w-full sm:w-auto pb-20">
-            <Link href="/">
+            <Link href="/explore" className="inline-block w-full sm:w-auto">
               <Button
                 variant="primary"
                 className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:border-1 dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
+                dark:text-(--color-secondary-monYellow)  dark:hover:bg-(--color-secondary-monYellow) 
                 dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)! mx-auto"
               >
                 View Intro
@@ -43,7 +43,7 @@ const HeroSection = () => {
               </Button>
             </Link>
 
-            <Link href="/adopt-form" className="inline-block">
+            <Link href="/explore" className="inline-block">
               <Button
                 variant="outline"
                 className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
