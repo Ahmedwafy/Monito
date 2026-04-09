@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function AdoptionFormPage() {
   const router = useRouter();
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -30,6 +31,7 @@ export default function AdoptionFormPage() {
     agreeFollowUp: false,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
@@ -39,6 +41,7 @@ export default function AdoptionFormPage() {
   ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -47,32 +50,38 @@ export default function AdoptionFormPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // هنا هتبعت البيانات لـ backend (API route أو email service)
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    // simulate network delay and processing time
+    // in real app, you would send formData to your backend API here
+    await new Promise((resolve) => setTimeout(resolve, 1800));
+
+    setIsSubmitting(false);
     setSubmitted(true);
 
-    // محاكاة إرسال (في الواقع ممكن تبعت لـ API route أو email service)
-    await new Promise((resolve) => setTimeout(resolve, 1200)); // تأخير وهمي 1.2 ثانية
-
-    // بعد النجاح → redirect لصفحة الشكر
-    router.push("/adoption-success");
+    // After showing success state, redirect to success page (optional)
+    setTimeout(() => {
+      router.push("/adoption-success");
+    }, 1500);
   };
 
+  // Success State
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#fceed5] dark:bg-(--color-neutral-0) flex items-center justify-center py-20 px-4">
-        <div className="bg-white dark:bg-(--color-neutral-10) rounded-3xl shadow-2xl p-8 md:p-12 max-w-2xl w-full text-center">
-          <icons.Heart className="w-20 h-20 text-(--color-secondary-monYellow) mx-auto mb-6" />
-          <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-4">
-            Thank you!
+      <div className="min-h-screen bg-[#fceed5] dark:bg-gray-950 flex items-center justify-center py-20 px-4">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-10 md:p-16 max-w-2xl w-full text-center">
+          <icons.Heart className="w-24 h-24 text-(--color-secondary-monYellow) mx-auto mb-6" />
+          <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) dark:text-white mb-4">
+            Thank You!
           </h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Your adoption request has been received successfully. Our team will
-            contact you within 24-48 hours to discuss the next steps.
+            Your adoption request has been received successfully.
+            <br />
+            Our team will contact you within 24-48 hours.
           </p>
           <Link href="/">
-            <Button variant="primary" className="text-lg px-10 py-4">
-              Back To Home
+            <Button variant="primary" className="text-lg px-12 py-4">
+              Back to Home
             </Button>
           </Link>
         </div>
@@ -81,27 +90,28 @@ export default function AdoptionFormPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fceed5] dark:bg-(--color-neutral-0) py-16 px-4">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)! py-16 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="bg-white dark:bg-(--color-neutral-10) rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white dark:bg-(--color-neutral-0)! rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5) text-white p-8 md:p-12 text-center">
+          <div className="bg-(--color-primary-darkBlue) dark:bg-(--color-card-bg)! text-white p-8 md:p-12 text-center">
             <h1 className="text-3xl text-white! md:text-4xl font-bold mb-3">
               Adoption Form
             </h1>
             <p className="text-lg opacity-90">
-              Fill out this form carefully to help us find your new friend
+              Please fill out this form carefully so we can help you find your
+              new friend.
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="p-6 md:p-10 space-y-8">
-            {/* Personal Info */}
+          <form onSubmit={handleSubmit} className="p-6 md:p-10 space-y-10">
+            {/* Personal Information */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) border-b border-(--color-secondary-monYellow)/30 pb-3">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-white border-b border-(--color-secondary-monYellow)/30 pb-3">
                 Personal Information
               </h2>
 
+              {/* Full Name */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -113,10 +123,11 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   />
                 </div>
 
+                {/* Phone Number */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Phone Number <span className="text-red-500">*</span>
@@ -127,10 +138,11 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email <span className="text-red-500">*</span>
@@ -141,29 +153,30 @@ export default function AdoptionFormPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   />
                 </div>
 
+                {/* Address */}
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Address <span className="text-red-500">*</span>
+                    Full Address <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     name="address"
                     required
                     value={formData.address}
                     onChange={handleChange}
-                    rows={2}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow)/30"
+                    rows={3}
+                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Housing Info */}
+            {/* Housing Information */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) border-b border-(--color-secondary-monYellow)/30 pb-3">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-white border-b border-(--color-secondary-monYellow)/30 pb-3">
                 Housing Information
               </h2>
 
@@ -247,10 +260,10 @@ export default function AdoptionFormPage() {
               </div>
             </div>
 
-            {/* Commitment Checkboxes */}
-            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 dark:bg-(--color-neutral-0)/50 p-6 rounded-2xl">
-              <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) mb-4">
-                Please confirm the following commitments:
+            {/* Commitments */}
+            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 dark:bg-gray-800 p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-white mb-4">
+                Commitments
               </h3>
 
               <label className="flex items-start gap-3 cursor-pointer">
@@ -263,11 +276,10 @@ export default function AdoptionFormPage() {
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
                 <span className="text-gray-700 dark:text-gray-300">
-                  I commit to providing appropriate healthcare (vaccinations,
-                  treatment, good quality food)
+                  I commit to providing proper healthcare, vaccinations,
+                  treatment, and quality food.
                 </span>
               </label>
-
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -299,20 +311,28 @@ export default function AdoptionFormPage() {
               </label>
             </div>
 
-            {/* Submit */}
+            {/* Submit Button with Loading */}
             <div className="pt-6">
-              <div className="flex justify-center w-full">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  className="flex items-center justify-center w-full max-w-full max-w-xs hover:max-w-[350px] py-5 text-xl bg-(--color-primary-darkBlue) 
-                  hover:bg-(--color-primary-darkBlue) dark:text-white! dark:bg-(--color-neutral-0)! dark:hover:bg-(--color-neutral-0)! transition-[max-width,background-color] 
-                  duration-500 ease-in-out whitespace-nowrap overflow-hidden"
-                >
-                  Submit Adoption Request
-                  <icons.Heart className="ml-3 w-6 h-6" />
-                </Button>
-              </div>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={isSubmitting}
+                className="group flex items-center justify-center w-full mx-auto max-w-xs hover:max-w-[350px] py-5 text-xl bg-(--color-primary-darkBlue)
+                  hover:bg-(--color-primary-darkBlue) dark:text-white! dark:bg-(--color-neutral-0)! dark:hover:bg-(--color-card-bg)! 
+                  transition-[max-width,background-color] duration-500 ease-in-out whitespace-nowrap overflow-hidden"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    Submit Adoption Request
+                    <icons.Heart className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </>
+                )}
+              </Button>
             </div>
           </form>
         </div>

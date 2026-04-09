@@ -253,7 +253,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl bg-white dark:bg-[#002a48] p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-[#003459]">
+          <div className="rounded-3xl bg-white dark:bg-(--color-card-bg) p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-[#003459]">
             <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
               Send Us a Message
             </h2>
