@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Navbar from "@/app/components/layout/Navbar";
-import Footer from "@/app/components/layout/Footer";
+import Navbar from "@/app/layouts/Navbar";
+import Footer from "@/app/layouts/Footer";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "next-themes";
 import RouteLoader from "@/app/components/ui/RouteLoader";

@@ -4,7 +4,7 @@ import AdoptionCover from "@/app/components/molecules/AdoptionCover";
 import HeroSection from "@/app/components/molecules/HeroSection";
 import Sellers from "@/app/components/molecules/Sellers";
 import Knowledge from "@/app/components/molecules/usefulKnowledge";
-import RegisterBar from "@/app/components/layout/RegisterBar";
+import RegisterBar from "@/app/layouts/RegisterBar";
 import * as images from "@/assets/images/images";
 
 const HomePage = () => {

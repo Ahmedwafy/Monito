@@ -1,4 +1,4 @@
-// components/layout/Footer.tsx
+// layouts/Footer.tsx
 import Link from "next/link";
 import { socialIcons } from "@/assets/iconify-components/page";
 

@@ -68,16 +68,17 @@ export default function AdoptionSuccessPage() {
             <Link href="/">
               <Button
                 variant="primary"
-                className="text-lg px-10 py-4 dark:text-white! dark:bg-[var(--color-primary-darkBlue)] dark:hover:bg-white dark:hover:text-[var(--color-primary-darkBlue)]!"
+                className="text-lg px-10 py-4 dark:text-white! dark:bg-(--color-primary-darkBlue) dark:hover:bg-white dark:hover:text-(--color-primary-darkBlue)!"
               >
                 return to Home
               </Button>
             </Link>
 
-            <Link href="/availablePets">
+            <Link href="/available-pets">
               <Button
                 variant="outline"
-                className="text-lg px-10 py-4 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-[var(--color-secondary-monYellow)] dark:text-[var(--color-secondary-monYellow)] dark:hover:bg-[var(--color-secondary-monYellow)] dark:hover:text-[#00171f]"
+                className="text-lg px-10 py-4 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow)
+                 dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f]"
               >
                 explore more pets
               </Button>

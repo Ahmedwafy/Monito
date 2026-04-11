@@ -1,11 +1,12 @@
+// layouts/RegisterBar.tsx
 import Link from "next/link";
-import Button from "../atoms/Button";
+import Button from "@/app/components/atoms/Button";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 
 // const style = "text-(--color-neutral-100) hover:text-(--color-blueSea)";
 
-const Footer = () => {
+const RegisterBar = () => {
   return (
     <section className="mx-4 lg:mx-0 ">
       <div className="bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) dark:border dark:border-(--color-neutral-10) rounded-2xl px-4 py-10 lg:py-16 max-w-[99%] mx-auto mb-2">
@@ -43,4 +44,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default RegisterBar;
