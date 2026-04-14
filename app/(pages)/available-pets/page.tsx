@@ -1,5 +1,7 @@
 "use client";
+
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation"; // ← أضفنا ده
 import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
@@ -8,25 +10,28 @@ import Button from "@/app/components/atoms/Button";
 import { petsData } from "@/app/mock-data/mockPets";
 
 const AvailablePetsPage = () => {
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search")?.toLowerCase() || "";
+
   const [typeFilter, setTypeFilter] = useState("All");
   const [ageFilter, setAgeFilter] = useState("All");
   const [genderFilter, setGenderFilter] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulation Delay (In Real App >>> API call)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500); // 1.5
+    const timer = setTimeout(() => setIsLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Filter pets based on selected filters
+  // Filter: Type + Age + Gender + Search by name
   const filteredPets = petsData.filter((pet) => {
     const matchType = typeFilter === "All" || pet.type === typeFilter;
     const matchAge = ageFilter === "All" || pet.age === ageFilter;
     const matchGender = genderFilter === "All" || pet.gender === genderFilter;
-    return matchType && matchAge && matchGender;
+    const matchSearch =
+      !searchQuery || pet.name.toLowerCase().includes(searchQuery);
+
+    return matchType && matchAge && matchGender && matchSearch;
   });
 
   return (
