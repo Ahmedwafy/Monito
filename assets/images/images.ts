@@ -75,6 +75,7 @@ import Ahmed from "./ahmed.jpg";
 import David from "./David.jpg";
 import comingSoon from "./comingSoon.jpg";
 import soon from "./soon.png";
+import notFound from "./notFound.png";
 
 export {
   homeCover1,
@@ -153,4 +154,5 @@ export {
   David,
   comingSoon,
   soon,
+  notFound,
 };

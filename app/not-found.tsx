@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Button from "@/app/components/atoms/Button";
+import Image from "next/image";
+import * as images from "@/assets/images/images";
 // import lostPet from "@/assets/images/404-lost-pet.png"; // Optional
 
 export default function NotFound() {
@@ -7,15 +9,15 @@ export default function NotFound() {
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) flex items-center justify-center px-4 py-16">
       <div className="text-center max-w-2xl">
         {/* Optional Image */}
-        {/* <div className="mb-10">
+        <div className="mb-10">
           <Image
-            src={lostPet || "/404-placeholder.png"}
+            src={images.notFound}
             alt="Lost pet looking for home"
             width={400}
             height={300}
-            className="mx-auto rounded-2xl shadow-xl"
+            className="mx-auto rounded-2xl"
           />
-        </div> */}
+        </div>
 
         <h1 className="text-6xl md:text-8xl font-bold text-(--color-primary-darkBlue) mb-6">
           404

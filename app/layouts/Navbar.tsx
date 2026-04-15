@@ -1,6 +1,17 @@
 // components/layout/Navbar.tsx
-"use client";
 
+// Next line to disable the rule that prevents setting state in useEffect:
+/* eslint-disable react-hooks/set-state-in-effect */
+
+// like the following :
+
+// useEffect(() => {
+//   setMounted(true);
+// }, []);
+
+// which is necessary for theme handling
+
+"use client";
 import Link from "next/link";
 import Button from "@/app/components/atoms/Button";
 import * as icons from "@/assets/icons";
@@ -18,16 +29,16 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Navbar() {
+const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-  const router = useRouter();
-
+  const router = useRouter()
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Ensure theme is only applied after component mounts to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -244,4 +255,6 @@ export default function Navbar() {
       )}
     </>
   );
-}
+};
+
+export default Navbar;
