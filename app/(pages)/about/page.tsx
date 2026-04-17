@@ -31,10 +31,10 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-card-border)/10! pb-20 w-[99%] mx-auto rounded-2xl my-2">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-gray-950 pb-20 w-[99%] mx-auto rounded-2xl mt-2">
       {/* Hero / Cover Section */}
       <section className="px-4 py-12 md:py-24">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) py-16 md:py-32 px-6 md:px-16">
+        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-32 px-6 md:px-16">
           {/* Decorative rotated blobs */}
           <div className="dark:opacity-50 absolute -left-40 -top-60 h-[600px] w-[600px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[900px] md:w-[900px]"></div>
           <div className="dark:opacity-50 absolute -right-80 bottom-0 h-[700px] w-[700px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[1000px] md:w-[1000px]"></div>
@@ -306,7 +306,7 @@ const AboutPage = () => {
 
       {/* CTA Bottom */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-card-bg) border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
             Want to Be Part of the Story?
           </h3>
