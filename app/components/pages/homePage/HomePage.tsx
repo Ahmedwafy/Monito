@@ -9,9 +9,10 @@ import * as images from "@/assets/images/images";
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="dark:bg-gray-950">
       <HeroSection />
       <CardsSection
+        type="pets"
         question="Whats new?"
         title="Take A Look At Some Of Our Pets"
         images={[
@@ -27,6 +28,7 @@ const HomePage = () => {
       />
       <HeroCover />
       <CardsSection
+        type="products"
         question="Hard to choose right products for your pets?"
         title="Our Products"
         images={[

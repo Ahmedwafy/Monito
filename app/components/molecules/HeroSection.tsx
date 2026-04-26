@@ -7,7 +7,7 @@ import Link from "next/link";
 // Hero Section Component [ Girl with Pet Image ]
 const HeroSection = () => {
   return (
-    <section className="bg-[#FDECCE] dark:bg-(--color-neutral-0) w-full overflow-hidden md:h-[600px]">
+    <section className="bg-[#FDECCE] dark:bg-gray-950 w-full overflow-hidden md:h-[600px]">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-10 md:py-20 gap-10 md:gap-16">
         {/* Left Section (Text + Buttons) */}
         <div className="flex flex-col items-start sm:items-center text-center md:text-left w-full md:w-1/2">

@@ -4,6 +4,7 @@ import homeCover2 from "./catand dog.png";
 import Adoption from "./Adoption.png";
 import adoptionLogo from "./adoptionLogo.png";
 import cat1 from "./cat1.jpg";
+// import cat1 from "./cat1.png";
 import cat2 from "./cat2.jpg";
 import cat3 from "./cat3.jpg";
 import cat4 from "./cat4.jpg";

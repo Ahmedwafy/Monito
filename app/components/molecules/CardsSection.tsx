@@ -5,41 +5,66 @@ import type { StaticImageData } from "next/image";
 import * as icons from "@/assets/icons";
 
 interface HeroCardsAreaProps {
+  type: "pets" | "products";
   question?: string;
   title?: string;
   images?: StaticImageData[];
 }
 
 const HeroCardsArea = ({
+  type,
   question,
   title,
   images = [],
 }: HeroCardsAreaProps) => {
   // build mock data using images
-  const cardInfo = images.map((image, index) => ({
-    id: index + 1,
-    name: `${index + 1}`,
-    breed:
-      index < 4
-        ? ["Black & White", "Tabby Cat", "White Persian", "Calico Cat"][index]
-        : [
-            "Bernese Mountain",
-            "Border Collie",
-            "Golden Retriever",
-            "Puppy Mix",
-          ][index - 4],
-    gender: "Male",
-    age: "2 months",
-    price: "6.900.000 VND",
-    image,
-  }));
+  const cardInfo = images.map((image, index) => {
+    // 🐶 PETS
+    if (type === "pets") {
+      return {
+        id: index + 1,
+        name: `${index + 1}`,
+        breed:
+          index < 4
+            ? ["Black & White", "Tabby Cat", "White Persian", "Calico Cat"][
+                index
+              ]
+            : [
+                "Bernese Mountain",
+                "Border Collie",
+                "Golden Retriever",
+                "Puppy Mix",
+              ][index - 4],
+        gender: "Male",
+        age: "2 months",
+        image,
+      };
+    }
+
+    // 🛒 PRODUCTS
+    return {
+      id: index + 1,
+      name: [
+        "Dog Food Premium",
+        "Cat Scratcher",
+        "Pet Shampoo",
+        "Pet Carrier",
+        "Dog Leash",
+        "Cat Toy",
+        "Pet Bed",
+        "Pet Bowl",
+      ][index],
+      price: ["$20", "$15", "$10", "$30", "$12", "$8", "$25", "$7"][index],
+      image,
+    };
+  });
 
   // split rows
   const firstRow = cardInfo.slice(0, 4);
   const secondRow = cardInfo.slice(4, 8);
 
   return (
-    <section className="py-20">
+    <section className="py-20 dark:bg-gray-950">
       <div className="container mx-auto">
         <div className="w-full mx-auto flex justify-between mb-10 px-4 md:px-2">
           <div>
@@ -75,7 +100,7 @@ const HeroCardsArea = ({
                 key={card.id}
                 className="md:w-1/2 lg:w-auto flex p-2 rounded-2xl sm:bg-transparent shadow-lg h-full"
               >
-                <HeroCard card={card} />
+                <HeroCard card={card} type={type} />
               </div>
             ))}
           </div>
@@ -87,7 +112,7 @@ const HeroCardsArea = ({
                 key={card.id}
                 className="md:w-1/2 lg:w-auto flex p-2 rounded-2xl sm:bg-transparent shadow-lg h-full"
               >
-                <HeroCard card={card} />
+                <HeroCard card={card} type={type} />
               </div>
             ))}
           </div>
