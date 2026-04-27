@@ -122,8 +122,8 @@ const ContactPage = () => {
               <Button
                 variant="primary"
                 className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:border-1 dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
-                dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!"
+                dark:text-(--color-secondary-monYellow) dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
+                dark:hover:text-(--color-neutral-0) dark:hover:border-(--color-neutral-0)!"
                 onClick={handleClick}
               >
                 Send Message
@@ -168,7 +168,7 @@ const ContactPage = () => {
 
             {/* Contact Cards */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl bg-white dark:bg-(--color-card-bg) border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
+              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48]! transition-colors duration-300">
                   {/* <icons.Smartphone className="h-9 w-9" /> */}
                   <svg
@@ -195,7 +195,7 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white dark:bg-[#002a48] border border-transparent dark:border-[#003459] p-6 shadow-lg transition-colors duration-300">
+              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-[#003459] p-6 shadow-lg transition-colors duration-300">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300">
                   {/* <icons.Smartphone className="h-9 w-9" /> */}
                   <svg
@@ -223,7 +223,7 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white dark:bg-[#002a48] border border-transparent dark:border-[#003459] p-6 shadow-lg sm:col-span-2 transition-colors duration-300">
+              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-[#003459] p-6 shadow-lg sm:col-span-2 transition-colors duration-300">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300">
                   {/* <icons.Mail className="h-9 w-9" /> */}
                   <svg
@@ -253,7 +253,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl bg-white dark:bg-(--color-card-bg) p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-[#003459]">
+          <div className="rounded-3xl bg-white dark:bg-(--color-neutral-0)/50 p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-[#003459]">
             <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
               Send Us a Message
             </h2>
@@ -343,7 +343,10 @@ const ContactPage = () => {
 
               <Button
                 variant="primary"
-                className="w-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-secondary-monYellow)/90 hover:text-(--color-primary-darkBlue)! dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-colors duration-300 font-bold"
+                className="w-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-secondary-monYellow)/90 hover:text-(--color-primary-darkBlue)! 
+                 transition-colors duration-300 font-bold 
+                 dark:bg-gray-950 border-2 border-transparent dark:border-[#003459] dark:hover:bg-(--color-card-bg)! 
+                 dark:hover:text-(--color-primary-darkBlue-40) dark:hover:border-(--color-primary-darkBlue-40) hover:cursor-pointer"
               >
                 Send Message
               </Button>

@@ -390,7 +390,7 @@ const AvailablePetsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fceed5] dark:bg-gray-950 pb-20">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-gray-950 pb-20">
       {/* Hero Section */}
       <section className="px-4 py-12 md:py-20">
         <div className="container relative mx-auto overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12 text-center">
