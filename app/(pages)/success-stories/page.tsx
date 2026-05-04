@@ -1,5 +1,5 @@
 // app/success-stories/page.tsx
-import * as images from "@/assets/images/images";
+// import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,7 +91,7 @@ export default function SuccessStoriesPage() {
                 </p>
 
                 <div className="mt-auto">
-                  <Link href="/AvailablePets">
+                  <Link href="/available-pets">
                     <Button
                       variant="outline"
                       className="w-full border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) hover:bg-(--color-primary-darkBlue) hover:text-white dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
@@ -116,7 +116,7 @@ export default function SuccessStoriesPage() {
             The next success story could be yours — help an animal find a home
             full of love today.
           </p>
-          <Link href="/availablePets">
+          <Link href="/available-pets">
             <Button
               variant="primary"
               className="text-xl px-12 py-5 hover:scale-103 hover:text-white transition-all duration-300"

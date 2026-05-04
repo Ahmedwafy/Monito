@@ -9,7 +9,7 @@ const footerLinks = {
     { label: "Team", href: "/about#team" },
   ],
   adopt: [
-    { label: "Available Pets", href: "/availablePets" },
+    { label: "Available Pets", href: "/available-pets" },
     { label: "Adoption Process", href: "/how-to-adopt" },
     { label: "Success Stories", href: "/success-stories" },
   ],

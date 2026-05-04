@@ -1,5 +1,5 @@
+// this is the page that shows after the user submits the adoption form successfully
 "use client";
-
 import Link from "next/link";
 import Button from "@/app/components/atoms/Button";
 import confetti from "canvas-confetti";

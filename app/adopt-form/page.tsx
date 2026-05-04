@@ -1,4 +1,4 @@
-// app/adopt-form/page.tsx
+// this is the adoption form page where users can fill out the form to adopt a pet.
 "use client";
 
 import { useState } from "react";
