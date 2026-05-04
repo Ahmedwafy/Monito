@@ -20,6 +20,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Heart } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -27,12 +28,13 @@ const navLinks = [
   { label: "Categories", href: "/categories" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Join Our Family", href: "/join-our-family", icon: Heart },
 ];
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-  const router = useRouter()
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -86,8 +88,8 @@ const Navbar = () => {
               />
             </div>
           </Link>
-
-          {/* Desktop Menu */}
+          {/* ==================================================================================== */}
+          {/* =================================== Desktop Menu =================================== */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -99,19 +101,36 @@ const Navbar = () => {
                     font-medium transition-colors relative group
                     ${
                       isActive
-                        ? "text-(--color-secondary-monYellow) dark:text-yellow-400"
-                        : "text-(--color-primary-darkBlue) dark:text-gray-200 hover:text-(--color-secondary-monYellow) dark:hover:text-yellow-400"
+                        ? "text-(--color-neutral-5)! dark:text-yellow-400!"
+                        : "text-(--color-primary-darkBlue) dark-hover:text-(--color-secondary-monYellow) dark:hover:text-yellow-400"
                     }
                   `}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-(--color-secondary-monYellow) dark:bg-yellow-400 rounded-full transition-all duration-300" />
+                  {link.icon && (
+                    <link.icon
+                      className="inline-block ml-2 text-red-400"
+                      fill="currentColor"
+                    />
                   )}
+                  <span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 rounded-full origin-center transition-transform duration-300 ${
+                      isActive
+                        ? "scale-x-100 bg-(--color-primary-darkBlue)! dark:bg-yellow-400!"
+                        : "scale-x-0 bg-(--color-primary-darkBlue)! dark:bg-yellow-400! group-hover:scale-x-100"
+                    }`}
+                  />
                 </Link>
               );
             })}
           </div>
+          {/* <Link href="join-our-family" className="flex gap-2 ">
+            <span>Family</span>{" "}
+            <Heart
+              className="text-red-500 dark:text-red-400"
+              fill="currentColor"
+            />
+          </Link> */}
 
           {/* Desktop Search */}
           <div className="hidden md:block relative w-80">
@@ -190,7 +209,8 @@ const Navbar = () => {
         )}
       </header>
 
-      {/* Mobile Menu */}
+      {/* =================================================================================== */}
+      {/* =================================== Mobile Menu =================================== */}
       {isMobileMenuOpen && (
         <>
           <div

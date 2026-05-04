@@ -102,12 +102,12 @@ h3 {
   line-height: 1.2;
   color: var(--color-primary-darkBlue);
 }
-a {
+/* a {
   color: var(--color-primary-darkBlue);
   &:hover {
     color: var(--color-secondary-monYellow);
   }
-}
+} */
 
 /* Sun animation in Navbar */
 @keyframes spin-once {
