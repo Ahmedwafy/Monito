@@ -1,10 +1,10 @@
 // app/(pages)/products/[id]/page.tsx
-
-import * as icons from "@/assets/icons";
+// import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/app/components/atoms/Button";
 import { productsData } from "@/app/mock-data/mockProducts";
+import ProductDetailsCard from "@/app/components/molecules/ProductDetailsCard";
 
 const getProductById = (id: number) => {
   return productsData.find((product) => product.id === id) || null;
@@ -99,7 +99,8 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
           </div>
 
           {/* Right Sidebar - Info & Buy Button */}
-          <div className="w-full lg:w-96 lg:min-w-[380px] order-1 lg:order-2 lg:sticky lg:top-8 h-fit space-y-6">
+          <ProductDetailsCard product={product} />
+          {/* <div className="w-full lg:w-96 lg:min-w-[380px] order-1 lg:order-2 lg:sticky lg:top-8 h-fit space-y-6">
             <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-2xl shadow-xl p-6 md:p-8">
               <div className="inline-block px-4 py-1 rounded-full bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) text-sm font-semibold mb-4">
                 {product.category}
@@ -144,7 +145,11 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
               <div className="mt-10">
                 <Button
                   variant="primary"
-                  className="w-full py-4 text-lg bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 transition"
+                  className="w-full py-4 text-lg dark:bg-blue-600 text-white hover:bg-(--color-primary-darkBlue)/90 dark:hover:bg-blue-700 transition"
+                  // onClick={() => {
+                  //   // handleAddToCart(product.id); // TODO: Implement add to cart functionality
+                  //   redirect("/cart");
+                  // }}
                 >
                   Add to Cart
                   <icons.ChevronRight className="ml-2 w-5 h-5" />
@@ -168,7 +173,7 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
                 </Button>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
