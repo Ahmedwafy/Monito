@@ -68,7 +68,7 @@ export default function RouteLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-500 ease-in-out dark:bg-(--color-neutral-0)/70 ${
+      className={`fixed inset-0 z-10000 flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-500 ease-in-out dark:bg-(--color-neutral-0)/70 ${
         isLoading
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
@@ -76,22 +76,22 @@ export default function RouteLoader() {
     >
       <div className="relative flex items-center justify-center space-x-2">
         <PawPrint
-          className="h-12 w-12 animate-bounce text-[var(--color-primary-darkBlue)]"
+          className="h-12 w-12 animate-bounce text-(--color-primary-darkBlue)"
           strokeWidth={2}
           style={{ animationDelay: "0ms" }}
         />
         <PawPrint
-          className="h-10 w-10 animate-bounce text-[var(--color-pinkRed)]"
+          className="h-10 w-10 animate-bounce text-(--color-pinkRed)"
           strokeWidth={2}
           style={{ animationDelay: "150ms" }}
         />
         <PawPrint
-          className="h-12 w-12 animate-bounce text-[var(--color-secondary-monYellow)]"
+          className="h-12 w-12 animate-bounce text-(--color-secondary-monYellow)"
           strokeWidth={2}
           style={{ animationDelay: "300ms" }}
         />
       </div>
-      <p className="mt-4 animate-pulse text-lg font-bold text-[var(--color-primary-darkBlue)]">
+      <p className="mt-4 animate-pulse text-lg font-bold text-(--color-primary-darkBlue)">
         Loading...
       </p>
     </div>

@@ -209,16 +209,15 @@ const Navbar = () => {
         )}
       </header>
 
-      {/* =================================================================================== */}
       {/* =================================== Mobile Menu =================================== */}
       {isMobileMenuOpen && (
         <>
           <div
-            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-60 bg-black/60 backdrop-blur-sm md:hidden"
             onClick={closeMobileMenu}
           />
           <div
-            className={`fixed right-0 top-0 h-full w-4/5 max-w-xs bg-white dark:bg-(--color-neutral-5) shadow-2xl z-[70] p-6 flex flex-col md:hidden transition-transform duration-300 ${
+            className={`fixed right-0 top-0 h-full w-4/5 max-w-xs bg-white dark:bg-(--color-neutral-5) shadow-2xl z-70 p-6 flex flex-col md:hidden transition-transform duration-300 ${
               isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -228,7 +227,7 @@ const Navbar = () => {
                   <div className="w-10 h-10 bg-(--color-secondary-monYellow) rounded-full flex items-center justify-center text-(--color-primary-darkBlue) font-bold text-xl">
                     OMF
                   </div>
-                  <span className="font-bold text-2xl dark:text-(--color-neutral-100)">
+                  <span className="font-bold text-2xl dark:text-neutral-100">
                     One More Friend
                   </span>
                 </div>

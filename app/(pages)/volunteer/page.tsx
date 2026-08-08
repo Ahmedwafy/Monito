@@ -76,7 +76,7 @@ export default function VolunteerPage() {
               "
             >
               <div className="mb-5 flex justify-center">{opp.icon}</div>
-              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-3 text-center">
+              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3 text-center">
                 {opp.title}
               </h3>
               <p className="text-gray-700 dark:text-(--color-secondary-monYellow) mb-4 flex-1 text-center leading-relaxed">
@@ -93,7 +93,7 @@ export default function VolunteerPage() {
       {/* How to Apply */}
       <section className="bg-white dark:bg-(--color-neutral-10) py-16 md:py-20 border-y border-transparent dark:border-(--color-card-border)">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-6">
             Ready to Help?
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed">

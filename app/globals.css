@@ -88,6 +88,8 @@ body {
     --color-greenLight: #58d07a;
     --color-orangeShine: #ffb07a;
     --color-blueSea: #3cc0ff;
+
+    --subscription-btn-bg: #004080;
   }
   /* End of root */
 }

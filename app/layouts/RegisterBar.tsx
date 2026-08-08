@@ -4,8 +4,6 @@ import Button from "@/components/atoms/Button";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 
-// const style = "text-(--color-neutral-100) hover:text-(--color-blueSea)";
-
 const RegisterBar = () => {
   return (
     <section className="mx-4 lg:mx-0 ">
@@ -18,10 +16,14 @@ const RegisterBar = () => {
             <div className="sm:w-2/3 rounded-2xl flex flex-col sm:flex-row gap-4 py-10 sm:py-4 px-4 items-center bg-(--color-neutral-0) h-2/3 my-auto mx-2">
               <input
                 type="text"
-                className="rounded-xl h-2/3 w-full py-4 px-4 outline-none border border-gray-400 transition-all duration-200 focus:border-blue-400 focus:ring-blue-200 focus:ring-2 dark:focus:border-(--color-neutral-10)! dark:focus:ring-(--color-neutral-10)! dark:text-(--color-neutral-100)!"
+                className="rounded-xl h-2/3 w-full py-4 px-4 outline-none border border-gray-400 transition-all duration-200 focus:border-blue-400
+                 focus:ring-blue-200 focus:ring-2 dark:focus:border-(--color-neutral-10)! dark:focus:ring-(--color-neutral-10)! dark:text-neutral-100!"
                 placeholder="Enter your Email"
               />
-              <Button className="rounded-xl sm:w-1/3 sm:h-2/3 py-4 px-4 sm:py-1 lg:py-4 dark:text-(--color-neutral-100)">
+              <Button
+                className="rounded-xl sm:w-1/3 sm:h-2/3 py-4 px-4 sm:py-1 lg:py-4 dark:text-neutral-100 
+              dark:bg-(--subscription-btn-bg) dark:hover:bg-(--color-primary-darkBlue) dark:hover:text-(--color-neutral-0) transition-all duration-200"
+              >
                 Subscribe Now
               </Button>
             </div>
