@@ -1,6 +1,6 @@
 // app/faq/page.tsx
 import * as icons from "@/assets/icons";
-import Button from "@/app/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import Link from "next/link";
 import { faqItems } from "@/app/mock-data/mockFAQs";
 

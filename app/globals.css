@@ -57,40 +57,42 @@ body {
   .dark {
     /* --- Dark Mode Colors --- */
     /* Lighter blue for dark backgrounds */
-    --color-primary-darkBlue: #4a90e2;
-    --color-primary-darkBlue-80: #5ba0f2;
-    --color-primary-darkBlue-60: #6bb0ff;
-    --color-primary-darkBlue-40: #7cc0ff;
+    /* Primary — softened for dark backgrounds */
+    --color-primary-darkBlue: #5aa0d8;
+    --color-primary-darkBlue-80: #4f93c6;
+    --color-primary-darkBlue-60: #6bb6e5;
+    --color-primary-darkBlue-40: #89ccef;
 
-    --color-secondary-monYellow: #f7dba7; /* Keep similar or adjust */
-    --color-secondary-monYellow-80: #eec77e;
-    --color-secondary-monYellow-60: #f1d092;
-    --color-secondary-monYellow-40: #fceed5;
+    /* Secondary — muted warm yellow for highlights */
+    --color-secondary-monYellow: #e9d8b7;
+    --color-secondary-monYellow-80: #d8c7a2;
+    --color-secondary-monYellow-60: #cfc2a0;
+    --color-secondary-monYellow-40: #f2e9d0;
 
-    /* Neutrals - inverted for dark mode */
-    --color-neutral-100: #fdfdfd; /* Lightest becomes darkest */
-    --color-neutral-80: #ebeeef;
-    --color-neutral-60: #ccd1d2;
-    --color-neutral-40: #99a2a5;
-    --color-neutral-20: #667479;
-    --color-neutral-10: #242b33;
-    --color-neutral-5: #12212a;
-    --color-neutral-0: #00171f; /* Darkest becomes lightest */
+    /* Neutrals - comfortable, low-contrast dark theme */
+    --color-neutral-0: #07121a; /* page background (very dark navy) */
+    --color-neutral-5: #0e1a22; /* slightly lighter for cards */
+    --color-neutral-10: #16262e;
+    --color-neutral-20: #27414b;
+    --color-neutral-40: #48636d;
+    --color-neutral-60: #7c9aa3;
+    --color-neutral-80: #b7c9cf;
+    --color-neutral-100: #e7f0f4; /* primary text */
 
-    /* Cards BG */
-    --color-card-bg: #002a48;
-    --color-card-border: #003459;
+    /* Cards and surfaces */
+    --color-card-bg: #0d262f;
+    --color-card-border: #1b3b46;
 
-    /* Extra colors - keep similar or adjust if needed */
-    --color-pinkRed: #ff564f;
-    --color-greenLight: #34c759;
-    --color-orangeShine: #ff912c;
-    --color-blueSea: #00a7e7;
+    /* Extra colors (kept similar but usable on dark) */
+    --color-pinkRed: #ff7b76;
+    --color-greenLight: #58d07a;
+    --color-orangeShine: #ffb07a;
+    --color-blueSea: #3cc0ff;
   }
   /* End of root */
 }
 
-h1 {
+/* h1 {
   line-height: 1.2;
   color: var(--color-primary-darkBlue);
 }
@@ -101,7 +103,7 @@ h2 {
 h3 {
   line-height: 1.2;
   color: var(--color-primary-darkBlue);
-}
+} */
 /* a {
   color: var(--color-primary-darkBlue);
   &:hover {

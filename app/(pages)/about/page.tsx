@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/app/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import { teamMembers } from "@/app/mock-data/mockTeamMembers";
 
 const AboutPage = () => {
@@ -31,7 +31,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-gray-950 pb-20 w-[99%] mx-auto rounded-2xl mt-2">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20 w-[99%] mx-auto rounded-2xl mt-2">
       {/* Hero / Cover Section */}
       <section className="px-4 py-12 md:py-24">
         <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-32 px-6 md:px-16">
@@ -123,7 +123,7 @@ const AboutPage = () => {
                   />
                 </svg>
               </div>
-              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-[#fdfdfd] transition-colors duration-300">
+              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) transition-colors duration-300">
                 +500 Pets Found Homes
               </span>
             </div>
@@ -146,7 +146,7 @@ const AboutPage = () => {
                   />
                 </svg>
               </div>
-              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-[#fdfdfd] transition-colors duration-300">
+              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) transition-colors duration-300">
                 +200 Active Volunteers
               </span>
             </div>
@@ -156,7 +156,7 @@ const AboutPage = () => {
 
       {/* Team Section */}
       <section
-        className="bg-white dark:bg-[#00171f] py-16 md:py-24 transition-colors duration-300"
+        className="bg-white dark:bg-(--color-neutral-0) py-16 md:py-24 transition-colors duration-300"
         id="team"
       >
         <div className="container mx-auto px-4">
@@ -164,7 +164,7 @@ const AboutPage = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
               Meet Our Team
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-[#ebeeef] max-w-3xl mx-auto transition-colors duration-300">
+            <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) max-w-3xl mx-auto transition-colors duration-300">
               The dedicated people behind One More Friend who work tirelessly to
               help animals find loving homes.
             </p>
@@ -174,7 +174,7 @@ const AboutPage = () => {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="group bg-white dark:bg-[#002a48] rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent dark:border-[#003459]"
+                className="group bg-white dark:bg-(--color-primary-darkBlue-80) rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent dark:border-(--color-primary-darkBlue-60)"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -187,13 +187,13 @@ const AboutPage = () => {
                 </div>
 
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-[#fdfdfd] mb-1 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-1 transition-colors duration-300">
                     {member.name}
                   </h3>
                   <p className="text-[#00528c] dark:text-(--color-secondary-monYellow) font-semibold mb-3 transition-colors duration-300">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 dark:text-[#ebeeef] text-sm mb-4 line-clamp-3 transition-colors duration-300">
+                  <p className="text-gray-600 dark:text-(--color-neutral-80) text-sm mb-4 line-clamp-3 transition-colors duration-300">
                     {member.bio}
                   </p>
 
@@ -205,7 +205,7 @@ const AboutPage = () => {
                           href={member.social.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-[#99a2a5] dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
                         >
                           {/* <icons.Twitter className="w-5 h-5" />  */}
                           Twitter
@@ -216,7 +216,7 @@ const AboutPage = () => {
                           href={member.social.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-[#99a2a5] dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
                         >
                           {/* <icons.Instagram className="w-5 h-5" /> */}
                           Instagram
@@ -227,7 +227,7 @@ const AboutPage = () => {
                           href={member.social.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-[#99a2a5] dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
                         >
                           {/* <icons.Linkedin className="w-5 h-5" /> */}
                           Linkedin
@@ -249,7 +249,7 @@ const AboutPage = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
               Our Mission & Values
             </h2>
-            <p className="mt-4 text-lg text-gray-700 dark:text-[#ebeeef] max-w-3xl mx-auto transition-colors duration-300">
+            <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) max-w-3xl mx-auto transition-colors duration-300">
               Every day we work toward a better world for companion animals
               through:
             </p>
@@ -260,7 +260,7 @@ const AboutPage = () => {
               {
                 icon: (
                   <icons.Heart
-                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300"
+                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300"
                     fill="currentColor"
                   />
                 ),
@@ -270,7 +270,7 @@ const AboutPage = () => {
               {
                 icon: (
                   <icons.Users
-                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300"
+                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300"
                     fill="currentColor"
                   />
                 ),
@@ -279,7 +279,7 @@ const AboutPage = () => {
               },
               {
                 icon: (
-                  <icons.ShieldPlus className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-[#002a48] transition-colors duration-300" />
+                  <icons.ShieldPlus className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300" />
                 ),
                 title: "Responsibility & Transparency",
                 desc: "Every step we take prioritizes the health, happiness, and well-being of the animals.",
@@ -287,15 +287,15 @@ const AboutPage = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-white dark:bg-[#00171f] p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300 border border-transparent dark:border-[#003459]"
+                className="rounded-2xl bg-white dark:bg-(--color-neutral-0) p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300 border border-transparent dark:border-(--color-primary-darkBlue-60)"
               >
                 <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) shadow-md transition-colors duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-[#fdfdfd] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-[#99a2a5] transition-colors duration-300">
+                <p className="mt-4 text-gray-600 dark:text-(--color-neutral-80) transition-colors duration-300">
                   {item.desc}
                 </p>
               </div>
@@ -310,7 +310,7 @@ const AboutPage = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
             Want to Be Part of the Story?
           </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-[#ebeeef] transition-colors duration-300">
+          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-neutral-80) transition-colors duration-300">
             Whether it&apos;s adopting, donating, volunteering, or simply
             helping spread the word — every action makes a difference!
           </p>
@@ -318,7 +318,7 @@ const AboutPage = () => {
             <Link href="/adopt-form">
               <Button
                 variant="primary"
-                className="dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-colors duration-300 sm:text-(--color-secondary-monYellow) flex w-full!"
+                className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300 sm:text-(--color-secondary-monYellow) flex w-full!"
               >
                 Support Now
               </Button>
@@ -326,7 +326,7 @@ const AboutPage = () => {
             <Link href="/contact">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f] transition-colors duration-300"
+                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
               >
                 Get in Touch
               </Button>

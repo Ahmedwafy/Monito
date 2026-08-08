@@ -64,7 +64,7 @@ const HeroCardsArea = ({
   const secondRow = cardInfo.slice(4, 8);
 
   return (
-    <section className="py-20 dark:bg-gray-950">
+    <section className="py-20 dark:bg-(--color-neutral-0)">
       <div className="container mx-auto">
         <div className="w-full mx-auto flex justify-between mb-10 px-4 md:px-2">
           <div>

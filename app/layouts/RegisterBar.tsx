@@ -1,6 +1,6 @@
 // layouts/RegisterBar.tsx
 import Link from "next/link";
-import Button from "@/app/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 

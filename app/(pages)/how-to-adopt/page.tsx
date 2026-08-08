@@ -2,10 +2,7 @@
 import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/app/components/atoms/Button";
-// import step1Img from "@/assets/images/adoption-step1.jpg"; // لو عندك صور توضيحية
-// import step2Img from "@/assets/images/adoption-step2.jpg";
-// import step3Img from "@/assets/images/adoption-step3.jpg";
+import Button from "@/components/atoms/Button";
 
 const steps = [
   {
@@ -62,7 +59,7 @@ export default function AdoptionProcessPage() {
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
       {/* Hero */}
-      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5)! text-white text-center relative overflow-hidden">
+      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-0) text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-10 right-10 w-64 h-64 bg-(--color-secondary-monYellow) rounded-full blur-3xl" />
           <div className="absolute bottom-10 left-10 w-80 h-80 bg-white rounded-full blur-3xl" />
@@ -86,7 +83,7 @@ export default function AdoptionProcessPage() {
             <div
               key={step.number}
               className={`
-                flex flex-col md:flex-row items-center gap-8 md:gap-12
+                flex flex-col md:flex-row items-center gap-8 md:gap-12 
                 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}
               `}
             >
@@ -101,7 +98,7 @@ export default function AdoptionProcessPage() {
               </div>
 
               {/* Content */}
-              <div className="flex-1 bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-10">
+              <div className="flex-1 bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-xl p-6 md:p-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
                   {step.title}
                 </h3>
@@ -129,17 +126,17 @@ export default function AdoptionProcessPage() {
 
       {/* Final CTA */}
       <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-10) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
             Ready to Start Your Journey?
           </h3>
           <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-secondary-monYellow)/90 mb-8">
             Browse our available pets and find the one who’s waiting for you.
           </p>
-          <Link href="/availablePets">
+          <Link href="/available-pets">
             <Button
-              variant="primary"
-              className="text-xl px-12 py-5 hover:scale-103 hover:text-white transition-all duration-300"
+              variant="outline"
+              className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
             >
               View Available Pets
             </Button>

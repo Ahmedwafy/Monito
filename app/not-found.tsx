@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from "@/app/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import Image from "next/image";
 import * as images from "@/assets/images/images";
 // import lostPet from "@/assets/images/404-lost-pet.png"; // Optional
@@ -36,7 +36,7 @@ export default function NotFound() {
           <Link href="/">
             <Button
               variant="primary"
-              className="text-xl px-10 py-5 bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-[#00171f] dark:hover:bg-[#eec77e] transition-all duration-300"
+              className="text-xl px-10 py-5 bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-all duration-300"
             >
               Go Back Home
             </Button>
@@ -45,7 +45,7 @@ export default function NotFound() {
           <Link href="/availablePets">
             <Button
               variant="outline"
-              className="text-xl px-10 py-5 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f] transition-all duration-300"
+              className="text-xl px-10 py-5 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-all duration-300"
             >
               Browse Available Pets
             </Button>

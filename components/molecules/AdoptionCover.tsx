@@ -7,12 +7,12 @@ import Link from "next/link";
 const AdoptionCover = () => {
   return (
     <section className="container mx-auto px-4 sm:px-0 my-6">
-      <div className="relative bg-(--color-secondary-monYellow-40) dark:bg-[#002a48] rounded-[20px] overflow-hidden flex flex-col-reverse md:flex-row items-stretch justify-between shadow-sm min-h-[280px]">
+      <div className="relative bg-(--color-secondary-monYellow-40) dark:bg-(--color-primary-darkBlue-60) rounded-[20px] overflow-hidden flex flex-col-reverse md:flex-row items-stretch justify-between shadow-sm min-h-[280px]">
         {/* Decorative Background Elements */}
         {/* Top Right Shape */}
-        <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-[50px] rotate-[25deg] bg-(--color-secondary-monYellow-80) dark:bg-[#00528c] opacity-40 dark:opacity-40 z-0 pointer-events-none transition-colors duration-300"></div>
+        <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-[50px] rotate-[25deg] bg-(--color-secondary-monYellow-80) dark:bg-(--color-primary-darkBlue-60) opacity-40 dark:opacity-40 z-0 pointer-events-none transition-colors duration-300"></div>
         {/* Bottom Left Shape */}
-        <div className="absolute -bottom-[20%] -left-[10%] w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-[30px] -rotate-[15deg] bg-(--color-primary-darkBlue) dark:bg-[#00171f] opacity-10 dark:opacity-30 z-0 pointer-events-none transition-colors duration-300"></div>
+        <div className="absolute -bottom-[20%] -left-[10%] w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-[30px] -rotate-[15deg] bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-0) opacity-10 dark:opacity-30 z-0 pointer-events-none transition-colors duration-300"></div>
 
         {/* Content Section (Text) */}
         <div className="order-1 md:order-2 relative z-10 w-full md:w-1/2 px-6 py-6 md:px-10 md:py-8 text-center md:text-left flex flex-col justify-center items-center md:items-start transition-colors duration-300">
@@ -27,11 +27,11 @@ const AdoptionCover = () => {
             />
           </div>
 
-          <h3 className="text-xl md:text-2xl font-bold mb-3 text-(--color-primary-darkBlue-80) dark:text-[#fdfdfd] transition-colors duration-300">
+          <h3 className="text-xl md:text-2xl font-bold mb-3 text-(--color-primary-darkBlue-80) dark:text-(--color-neutral-100) transition-colors duration-300">
             We Need Help. So Do They.
           </h3>
 
-          <p className="text-sm md:text-base font-medium mb-6 max-w-md text-(--color-neutral-80) dark:text-[#ebeeef] transition-colors duration-300">
+          <p className="text-sm md:text-base font-medium mb-6 max-w-md text-(--color-neutral-80) dark:text-(--color-neutral-80) transition-colors duration-300">
             Adopt a pet and give it a home, and it will love you back
             unconditionally.
           </p>
@@ -40,7 +40,7 @@ const AdoptionCover = () => {
             <Link href="/explore" className="inline-block">
               <Button
                 variant="primary"
-                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-[#002a48] 
+                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-primary-darkBlue-60) 
                 dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) dark:border 
                 dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!"
               >
@@ -52,7 +52,7 @@ const AdoptionCover = () => {
             <Link href="/adopt-form" className="inline-block">
               <Button
                 variant="outline"
-                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#002a48]"
+                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-primary-darkBlue-80)"
               >
                 Explore Now
               </Button>

@@ -35,7 +35,7 @@ export default function RouteLoader() {
           if (!isExternal && !isSamePage && !isNewTab) {
             setIsRouting(true);
             setIsMinTimePassed(false);
-            
+
             // Ensure the loader stays for at least 800ms
             setTimeout(() => {
               setIsMinTimePassed(true);
@@ -68,8 +68,10 @@ export default function RouteLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-500 ease-in-out dark:bg-[#00171f]/70 ${
-        isLoading ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-500 ease-in-out dark:bg-(--color-neutral-0)/70 ${
+        isLoading
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
       }`}
     >
       <div className="relative flex items-center justify-center space-x-2">

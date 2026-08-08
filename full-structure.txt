@@ -1,0 +1,195 @@
+﻿.vscode
+    settings.json
+app
+    (auth)
+        login
+            page.tsx
+        signUp
+            page.tsx
+        layout.tsx
+    (pages)
+        about
+            page.tsx
+        available-pets
+            page.tsx
+        cart
+            page.tsx
+        categories
+            page.tsx
+        coming-soon
+            page.tsx
+        contact
+            page.tsx
+        explore
+            page.tsx
+        faqs
+            page.tsx
+        home
+            page.tsx
+        how-to-adopt
+            page.tsx
+        join-our-family
+            page.tsx
+        pets
+            [id]
+        privacy
+            page.tsx
+        products
+            [id]
+        success-stories
+            page.tsx
+        terms
+            page.tsx
+        volunteer
+            page.tsx
+    adopt-form
+        page.tsx
+    adoption-success
+        page.tsx
+    layouts
+        Footer.tsx
+        Navbar.tsx
+        RegisterBar.tsx
+    mock-data
+        mockCardData.ts
+        mockFAQs.ts
+        mockPets.ts
+        mockProducts.ts
+        mockSuccessStories.ts
+        mockTeamMembers.ts
+    favicon.ico
+    globals.css
+    layout.tsx
+    not-found.tsx
+    page.tsx
+assets
+    iconify-components
+        facebook.tsx
+        instagram.tsx
+        page.tsx
+        twitter.tsx
+    images
+        Adoption.png
+        adoptionLogo.png
+        ahmed.jpg
+        bird.jpg
+        cat.jpg
+        cat1.jpg
+        cat1.png
+        cat2.jpg
+        cat3.jpg
+        cat4.jpg
+        catand dog.png
+        charlie1.jpg
+        charlie2.jpg
+        charlie3.jpg
+        charlie4.jpg
+        charlie5.jpg
+        charlie6.jpg
+        charlie7.jpg
+        charliecover.png
+        ChewyAfter.jpg
+        ChewyBefore.jpg
+        comingSoon.jpg
+        David.jpg
+        dog.png
+        dog1.jpg
+        dog2.jpg
+        dog3.jpg
+        dog4.jpg
+        empty.png
+        GizmoAfter.jpg
+        GizmoBefore.jpg
+        homeCover1.png
+        images.ts
+        knowledge1.png
+        knowledge2.png
+        knowledge3.png
+        logo.png
+        luna1.jpg
+        luna2.jpg
+        luna3.jpg
+        luna4.jpg
+        luna5.jpg
+        luna6.jpg
+        luna7.jpg
+        lunacover.png
+        maria.jpg
+        max1.jpg
+        max10.jpg
+        max11.jpg
+        max2.jpg
+        max3.jpg
+        max4.jpg
+        max5.jpg
+        max6.webp
+        max7.jpg
+        max8.jpeg
+        max9.jpg
+        miloAfter.jpg
+        miloBefore.jpg
+        MollyAfter.jpg
+        MollyBefore.jpg
+        notFound.png
+        product1.jpg
+        product2.jpg
+        product3.jpg
+        product4.jpg
+        product5.jpg
+        product6.jpg
+        product7.jpg
+        product8.jpg
+        rabbit.jpg
+        sarah.jpg
+        seller1.png
+        seller2.png
+        seller3.png
+        seller4.png
+        seller5.webp
+        seller6.png
+        soon.png
+        ss.jpg
+    icons.ts
+components
+    atoms
+        Button.tsx
+        Input.tsx
+    molecules
+        AdoptionCover.tsx
+        Card.tsx
+        CardsSection.tsx
+        HeroCover.tsx
+        HeroSection.tsx
+        KnowledgeCard.tsx
+        ProductDetailsCard.tsx
+        ProductImageAndDescription.tsx
+        Sellers.tsx
+        usefulKnowledge.tsx
+    organisms
+    pages
+        AvailablePets
+            AvailablePetsPage.tsx
+        homePage
+            HomePage.tsx
+    templates
+    ui
+        RouteLoader.tsx
+lib
+    utils.ts
+public
+    file.svg
+    globe.svg
+    next.svg
+    vercel.svg
+    window.svg
+.gitignore
+eslint.config.mjs
+full-structure.txt
+next-env.d.ts
+next.config.ts
+package-lock.json
+package.json
+postcss.config.mjs
+project_dump.txt
+README.md
+tsconfig.json

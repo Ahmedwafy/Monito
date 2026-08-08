@@ -1,15 +1,15 @@
-import CardsSection from "@/app/components/molecules/CardsSection";
-import HeroCover from "@/app/components/molecules/HeroCover";
-import AdoptionCover from "@/app/components/molecules/AdoptionCover";
-import HeroSection from "@/app/components/molecules/HeroSection";
-import Sellers from "@/app/components/molecules/Sellers";
-import Knowledge from "@/app/components/molecules/usefulKnowledge";
+import CardsSection from "@/components/molecules/CardsSection";
+import HeroCover from "@/components/molecules/HeroCover";
+import AdoptionCover from "@/components/molecules/AdoptionCover";
+import HeroSection from "@/components/molecules/HeroSection";
+import Sellers from "@/components/molecules/Sellers";
+import Knowledge from "@/components/molecules/usefulKnowledge";
 import RegisterBar from "@/app/layouts/RegisterBar";
 import * as images from "@/assets/images/images";
 
 const HomePage = () => {
   return (
-    <main className="dark:bg-gray-950">
+    <main className="dark:bg-(--color-neutral-0)">
       <HeroSection />
       <CardsSection
         type="pets"

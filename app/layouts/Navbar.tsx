@@ -13,7 +13,7 @@
 
 "use client";
 import Link from "next/link";
-import Button from "@/app/components/atoms/Button";
+import Button from "@/components/atoms/Button";
 import * as icons from "@/assets/icons";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
@@ -75,7 +75,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md shadow-sm transition-colors duration-300">
+      <header className="sticky top-0 z-50 bg-white/90 dark:bg-(--color-neutral-0)/90 backdrop-blur-md shadow-sm transition-colors duration-300">
         <nav className="container mx-auto px-4 py-4 md:py-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
@@ -140,7 +140,7 @@ const Navbar = () => {
                 placeholder="Search pets by name..."
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                className="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-2.5 text-sm focus:outline-none focus:border-(--color-secondary-monYellow) transition-all"
+                className="w-full bg-white dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-2.5 text-sm focus:outline-none focus:border-(--color-secondary-monYellow) transition-all"
               />
               <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
@@ -159,7 +159,7 @@ const Navbar = () => {
             {/* Dark Mode Toggle with animation */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all active:scale-90"
+              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-all active:scale-90"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -194,14 +194,14 @@ const Navbar = () => {
 
         {/* Mobile Search Bar */}
         {isSearchOpen && (
-          <div className="md:hidden px-4 pb-4 bg-white dark:bg-gray-900 border-b">
+          <div className="md:hidden px-4 pb-4 bg-white dark:bg-(--color-neutral-5) border-b">
             <div className="relative">
               <input
                 type="text"
                 placeholder="Search pets by name..."
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                className="w-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
+                className="w-full bg-gray-100 dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
               />
               <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
@@ -218,7 +218,7 @@ const Navbar = () => {
             onClick={closeMobileMenu}
           />
           <div
-            className={`fixed right-0 top-0 h-full w-4/5 max-w-xs bg-white dark:bg-gray-900 shadow-2xl z-[70] p-6 flex flex-col md:hidden transition-transform duration-300 ${
+            className={`fixed right-0 top-0 h-full w-4/5 max-w-xs bg-white dark:bg-(--color-neutral-5) shadow-2xl z-[70] p-6 flex flex-col md:hidden transition-transform duration-300 ${
               isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -228,7 +228,7 @@ const Navbar = () => {
                   <div className="w-10 h-10 bg-(--color-secondary-monYellow) rounded-full flex items-center justify-center text-(--color-primary-darkBlue) font-bold text-xl">
                     OMF
                   </div>
-                  <span className="font-bold text-2xl dark:text-white">
+                  <span className="font-bold text-2xl dark:text-(--color-neutral-100)">
                     One More Friend
                   </span>
                 </div>
