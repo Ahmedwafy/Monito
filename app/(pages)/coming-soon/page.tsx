@@ -5,11 +5,11 @@ const ComingSoon = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <Image
-        src={images.comingSoon}
+        src={images.soon}
         alt="Coming Soon"
-        // width={1000}
-        // height={1000}
-        className="w-full h-full object-contain"
+        className="mx-auto my-10 w-1/2"
+        width={500}
+        height={500}
       />
     </div>
   );

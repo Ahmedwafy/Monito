@@ -1,74 +1,96 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { PawPrint } from "lucide-react";
 
 export default function RouteLoader() {
-  const [isRouting, setIsRouting] = useState(false);
-  const [isMinTimePassed, setIsMinTimePassed] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const safetyRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Navigation is finished when pathname or searchParams change
+  const clearTimers = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (safetyRef.current) clearTimeout(safetyRef.current);
+    timeoutRef.current = null;
+    safetyRef.current = null;
+  }, []);
+
+  const startLoading = useCallback(() => {
+    setIsLoading(true);
+    clearTimers();
+
+    // Safety timer to ensure the loader doesn't stay indefinitely
+    safetyRef.current = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, [clearTimers]);
+
+  // Ensure the loader stays for at least 400ms [ spinner animation duration 400ms ]
   useEffect(() => {
-    setIsRouting(false);
-  }, [pathname, searchParams]);
+    if (!isLoading) return;
+
+    const minDelay = setTimeout(() => {
+      setIsLoading(false);
+      clearTimers();
+    }, 800); // 800ms minimum display time
+
+    return () => clearTimeout(minDelay);
+  }, [pathname, searchParams, isLoading, clearTimers]);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest("a");
 
-      if (anchor && anchor.href) {
-        // Handle potentially different bases
-        try {
-          const url = new URL(anchor.href);
-          const currentUrl = new URL(window.location.href);
+      if (!anchor || !anchor.href) return;
 
-          const isExternal = url.origin !== currentUrl.origin;
-          const isSamePage =
-            url.pathname === currentUrl.pathname &&
-            url.search === currentUrl.search;
-          const isNewTab = anchor.target === "_blank";
+      try {
+        const url = new URL(anchor.href, window.location.href);
+        const currentUrl = new URL(window.location.href);
 
-          if (!isExternal && !isSamePage && !isNewTab) {
-            setIsRouting(true);
-            setIsMinTimePassed(false);
+        const isExternal = url.origin !== currentUrl.origin;
+        const isSamePage =
+          url.pathname === currentUrl.pathname &&
+          url.search === currentUrl.search;
+        const isNewTab =
+          anchor.target === "_blank" ||
+          e.metaKey ||
+          e.ctrlKey ||
+          e.shiftKey ||
+          e.button === 1;
+        const isHashOnly =
+          url.pathname === currentUrl.pathname &&
+          url.search === currentUrl.search &&
+          url.hash !== "";
 
-            // Ensure the loader stays for at least 800ms
-            setTimeout(() => {
-              setIsMinTimePassed(true);
-            }, 800);
-          }
-        } catch (err) {
-          // Ignore invalid URLs
+        if (!isExternal && !isSamePage && !isNewTab && !isHashOnly) {
+          startLoading();
         }
+      } catch {
+        // ignore invalid urls
       }
     };
 
-    // Use capture phase to ensure we catch the click before navigation starts
-    document.addEventListener("click", handleClick, true);
-
-    // Also listen to popstate (back/forward browser buttons)
     const handlePopState = () => {
-      setIsRouting(true);
-      setIsMinTimePassed(false);
-      setTimeout(() => setIsMinTimePassed(true), 800);
+      startLoading();
     };
+
+    document.addEventListener("click", handleClick, true);
     window.addEventListener("popstate", handlePopState);
 
     return () => {
       document.removeEventListener("click", handleClick, true);
       window.removeEventListener("popstate", handlePopState);
+      clearTimers();
     };
-  }, []);
-
-  const isLoading = isRouting || !isMinTimePassed;
+  }, [startLoading, clearTimers]);
 
   return (
     <div
-      className={`fixed inset-0 z-10000 flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-500 ease-in-out dark:bg-(--color-neutral-0)/70 ${
+      className={`fixed inset-0 z-10000 flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-300 ease-in-out dark:bg-(--color-neutral-0)/70 ${
         isLoading
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"

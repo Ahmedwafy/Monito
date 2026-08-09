@@ -14,15 +14,15 @@ const HeroSection = () => {
           <div className="relative mb-6">
             <div className="absolute -top-2 -left-3 w-10 h-10 rotate-25 bg-[--color-secondary-monYellow] rounded-[30%] z-0"></div>
 
-            <h1 className="relative flex text-4xl sm:text-5xl md:text-5xl font-bold z-10">
+            <h1 className="relative flex text-4xl sm:text-5xl md:text-5xl font-bold z-10 text-(--color-primary-darkBlue)! dark:text-(--color-secondary-monYellow)!">
               One More Friend
             </h1>
 
-            <h2 className="relative flex text-2xl sm:text-3xl md:text-4xl font-semibold mt-2 z-10">
+            <h2 className="relative flex text-2xl sm:text-3xl md:text-4xl font-semibold mt-2 z-10 text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow)">
               Thousands More Fun!
             </h2>
 
-            <p className="mt-6 text-[#555] dark:text-(--color-neutral-40) leading-relaxed max-w-md mx-auto md:mx-0">
+            <p className="mt-6 leading-relaxed max-w-md mx-auto md:mx-0 text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow)">
               Having a pet means you have more joy, a new friend, a happy person
               who will always be with you to have fun. We have 200+ different
               pets that can meet your needs!
@@ -61,7 +61,7 @@ const HeroSection = () => {
           <div className="absolute bg-(--color-secondary-monYellow) dark:bg-(--color-secondary-monYellow-80) top-0 sm:-top-8 left-20 sm:left-32 w-64 sm:w-96 h-64 sm:h-96 md:h-160 md:w-125 md:-left-2 md:-top-10 rotate-25 rounded-[20%] z-0"></div>
 
           {/* Girl Carrying Her Pet Image */}
-          <div className="relative z-10 -top-8 sm:top-0">
+          <div className="relative z-10 -top-8 sm:top-1">
             <Image
               src={images.homeCover1}
               alt="homeCover1"

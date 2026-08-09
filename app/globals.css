@@ -94,25 +94,6 @@ body {
   /* End of root */
 }
 
-/* h1 {
-  line-height: 1.2;
-  color: var(--color-primary-darkBlue);
-}
-h2 {
-  line-height: 1.2;
-  color: var(--color-primary-darkBlue);
-}
-h3 {
-  line-height: 1.2;
-  color: var(--color-primary-darkBlue);
-} */
-/* a {
-  color: var(--color-primary-darkBlue);
-  &:hover {
-    color: var(--color-secondary-monYellow);
-  }
-} */
-
 /* Sun animation in Navbar */
 @keyframes spin-once {
   from {

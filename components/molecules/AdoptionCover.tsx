@@ -28,7 +28,7 @@ const AdoptionCover = () => {
           </div>
 
           <h3 className="text-xl md:text-2xl font-bold mb-3 text-(--color-primary-darkBlue-80) dark:text-neutral-100 transition-colors duration-300">
-            We Need Help. So Do They.00
+            We Need Help. So Do They.
           </h3>
 
           <p className="text-sm md:text-base font-medium mb-6 max-w-md text-(--color-neutral-80) dark:text-(--color-neutral-80) transition-colors duration-300">
@@ -68,7 +68,7 @@ const AdoptionCover = () => {
               src={images.Adoption}
               alt="Adopt a pet"
               fill
-              className="object-contain object-bottom md:object-right-bottom drop-shadow-xl z-20 md:scale-105 md:origin-bottom transition-transform duration-500 hover:scale-110"
+              className="object-contain object-bottom md:object-bottom-right drop-shadow-xl z-20 md:scale-105 md:origin-bottom transition-transform duration-500 hover:scale-110"
               priority
             />
           </div>
