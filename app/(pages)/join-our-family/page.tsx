@@ -111,7 +111,7 @@ export default function JoinOurFamilyPage() {
             or contact us without signing up.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/">
+            <Link href="/signUp">
               <Button
                 variant="outline"
                 className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
@@ -119,7 +119,7 @@ export default function JoinOurFamilyPage() {
                 Sign Up (Coming Soon)
               </Button>
             </Link>
-            <Link href="/">
+            <Link href="/login">
               <Button
                 variant="outline"
                 className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
