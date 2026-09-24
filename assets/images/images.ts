@@ -77,6 +77,9 @@ import David from "./David.jpg";
 import comingSoon from "./comingSoon.jpg";
 import soon from "./soon.png";
 import notFound from "./notFound.png";
+import Sunny from "./Sunny.jpg";
+import petsCover from "./petsCover.png";
+import Snow from "./Snow.jpg";
 
 export {
   homeCover1,
@@ -156,4 +159,7 @@ export {
   comingSoon,
   soon,
   notFound,
+  Sunny,
+  petsCover,
+  Snow,
 };

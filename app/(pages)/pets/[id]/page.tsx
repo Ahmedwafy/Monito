@@ -1,10 +1,10 @@
 // app/(pages)/pets/[id]/page.tsx
 import * as icons from "@/assets/icons";
+import * as images from "@/assets/images/images";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { petsData } from "@/app/mock-data/mockPets";
-
 const getPetById = (id: number) => {
   return petsData.find((pet) => pet.id === id) || null;
 };
@@ -41,7 +41,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
       {/* ========== Hero Image ========== */}
       <section className="relative h-[50vh] md:h-[65vh] lg:h-[70vh] w-full overflow-hidden">
         <Image
-          src={pet.mainImage}
+          src={images.petsCover}
           alt={pet.name}
           fill
           priority
@@ -72,7 +72,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
           <div className="flex-1 space-y-8 order-2 lg:order-1">
             {/* Gallery */}
             <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-2xl shadow-xl p-5 md:p-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-4">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-4">
                 Gallery
               </h2>
               <div className="flex flex-wrap gap-3">
@@ -94,7 +94,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
             {/* About */}
             <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-2xl shadow-xl p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-5">
+              <h2 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-5">
                 About {pet.name}
               </h2>
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -103,7 +103,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
               <div className="mt-8 flex flex-col md:flex-row gap-8">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-3">
+                  <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3">
                     Personality & Traits
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-3">
+                  <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3">
                     Health & Care
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
@@ -136,7 +136,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
           {/* Right Sidebar */}
           <div className="w-full lg:w-96 lg:min-w-[360px] order-1 lg:order-2 lg:sticky lg:top-24 h-fit space-y-6">
             <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-2xl shadow-xl p-6 md:p-8">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-6">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-6">
                 Quick Info
               </h2>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { Smartphone } from "lucide-react";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -139,19 +140,7 @@ const ContactPage = () => {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80)! transition-colors duration-300">
-                  {/* <icons.Smartphone className="h-9 w-9" /> */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
-                    className="text-inherit"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M17 19H7V5h10m0-4H7c-1.11 0-2 .89-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2"
-                    />
-                  </svg>
+                  <Smartphone className="w-8 h-8 dark:text-(--color-primary-darkBlue)" />
                 </div>
                 <h3 className="mt-4 text-xl font-semibold dark:text-neutral-100 transition-colors duration-300">
                   Phone
@@ -335,7 +324,7 @@ const ContactPage = () => {
             Browse our available pets or schedule a visit today!
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Link href="/">
+            <Link href="/available-pets">
               <Button
                 variant="primary"
                 className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300"
@@ -343,12 +332,13 @@ const ContactPage = () => {
                 Explore Pets
               </Button>
             </Link>
-            <Button
-              variant="outline"
+            <Link
+              href={"/available-pets"}
+              // variant="outline"
               className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
             >
               Book a Visit
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

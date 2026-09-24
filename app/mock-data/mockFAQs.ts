@@ -1,4 +1,3 @@
-// Mock Data FAQs
 export const faqItems = [
   {
     question: "What is the adoption process like?",

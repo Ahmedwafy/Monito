@@ -26,13 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning → handle theme hydration error
+    <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           // defaultTheme="system" // follow system (light/dark)
           defaultTheme="light"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange // disable transition when switching theme
         >
           <Suspense fallback={null}>

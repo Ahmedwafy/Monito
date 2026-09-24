@@ -17,13 +17,19 @@ const AvailablePetsPage = () => {
   const router = useRouter();
 
   // Read search query from URL
-  const urlSearchQuery = searchParams.get("search")?.toLowerCase().trim() || "";
+  const urlSearchQuery = searchParams.get("search")?.trim() || "";
+  const categoryFromUrl = searchParams.get("type")?.trim() || "All"; // if no searchParams → Set filter to default "All"
 
-  const [typeFilter, setTypeFilter] = useState("All");
+  const [typeFilter, setTypeFilter] = useState(categoryFromUrl);
   const [ageFilter, setAgeFilter] = useState("All");
   const [genderFilter, setGenderFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery); // Sync with URL
   const [isLoading, setIsLoading] = useState(true);
+
+  // edit filter according to category type from url if exist.
+  useEffect(() => {
+    setTypeFilter(categoryFromUrl);
+  }, [categoryFromUrl]);
 
   // Loading simulation
   useEffect(() => {
@@ -48,17 +54,17 @@ const AvailablePetsPage = () => {
   });
 
   // Handle search input from Navbar or Mobile Search
-  const handleSearchChange = (value: string) => {
-    setSearchQuery(value);
-    if (value.trim() !== "") {
-      router.push(
-        `/available-pets?search=${encodeURIComponent(value.trim())}`,
-        { scroll: false },
-      );
-    } else {
-      router.push("/available-pets", { scroll: false });
-    }
-  };
+  // const handleSearchChange = (value: string) => {
+  //   setSearchQuery(value);
+  //   if (value.trim() !== "") {
+  //     router.push(
+  //       `/available-pets?search=${encodeURIComponent(value.trim())}`,
+  //       { scroll: false },
+  //     );
+  //   } else {
+  //     router.push("/available-pets", { scroll: false });
+  //   }
+  // };
 
   // Clear all filters and search
   const clearAll = () => {
@@ -239,7 +245,7 @@ const AvailablePetsPage = () => {
                     src={pet.mainImage}
                     alt={pet.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    fill
+                    // fill
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 left-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-3 py-1 rounded-full font-medium text-sm shadow">

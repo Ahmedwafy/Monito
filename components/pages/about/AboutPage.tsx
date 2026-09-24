@@ -1,12 +1,12 @@
 // app/about/page.tsx
 "use client";
 import { useEffect } from "react";
-// import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { teamMembers } from "@/app/mock-data/mockTeamMembers";
+import { Heart, Users } from "lucide-react";
 
 const AboutPage = () => {
   // This useEffect handles the smooth scrolling when the page is loaded with a hash in the URL.
@@ -108,18 +108,7 @@ const AboutPage = () => {
           <div className="flex flex-wrap gap-6 mt-12 justify-center">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--color-secondary-monYellow)/60 dark:bg-(--color-secondary-monYellow)/20 transition-colors duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 transition-colors duration-300"
-                >
-                  <path
-                    fill="currentColor"
-                    d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"
-                  />
-                </svg>
+                <Heart className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 border-none! transition-colors duration-300" />
               </div>
               <span className="font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 transition-colors duration-300">
                 +500 Pets Found Homes
@@ -127,22 +116,7 @@ const AboutPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--color-secondary-monYellow)/60 dark:bg-(--color-secondary-monYellow)/20 transition-colors duration-300">
-                {/* <icons.Heart
-                  className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 border-none! transition-colors duration-300"
-                  fill="currentColor"
-                /> */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 transition-colors duration-300"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 5a3 3 0 1 1 0 6a3 3 0 0 1 0-6M5 7a2 2 0 1 1 0 4a2 2 0 0 1 0-4m14 0a2 2 0 1 1 0 4a2 2 0 0 1 0-4M12 13c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4"
-                  />
-                </svg>
+                <Users className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 transition-colors duration-300" />
               </div>
               <span className="font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 transition-colors duration-300">
                 +200 Active Volunteers

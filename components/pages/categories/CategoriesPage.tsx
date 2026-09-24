@@ -1,53 +1,15 @@
 // app/category/page.tsx
-import * as images from "@/assets/images/images";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
-
-// Mock data for categories ... TODO: Replace with real data fetching later
-const categories = [
-  {
-    id: "dogs",
-    title: "Dogs",
-    description:
-      "Loyal, playful, and full of love. Find your perfect companion!",
-    image: images.dog,
-    count: 124,
-    bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
-  },
-  {
-    id: "cats",
-    title: "Cats",
-    description: "Independent yet affectionate. Perfect for cozy moments.",
-    image: images.cat,
-    count: 89,
-    bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
-  },
-  {
-    id: "birds",
-    title: "Birds",
-    description: "Colorful, chirpy, and full of personality.",
-    image: images.bird,
-    count: 42,
-    bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
-  },
-  {
-    id: "rabbits",
-    title: "Rabbits",
-    description: "Soft, gentle, and super cute. Great for families!",
-    image: images.rabbit,
-    count: 31,
-    bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
-  },
-  // أضف المزيد إذا أردت لاحقًا
-];
+import { categories } from "@/app/mock-data/mockCategories";
+import { petsData } from "@/app/mock-data/mockPets";
 
 const CategoryPage = () => {
+  const getCount = (type: string) =>
+    petsData.filter((pet) => pet.type === type).length;
+
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
       {/* Hero / Cover Section */}
@@ -110,7 +72,8 @@ const CategoryPage = () => {
 
                 {/* Count badge */}
                 <div className="absolute top-4 right-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) dark:text-(--color-primary-darkBlue) px-4 py-1 rounded-full font-semibold text-sm shadow-md">
-                  {category.count} Available
+                  {/* {category.count} Available */}
+                  {getCount(category.typeParam)} Available
                 </div>
               </div>
 
@@ -124,7 +87,7 @@ const CategoryPage = () => {
                 </p>
 
                 <div className="mt-6">
-                  <Link href={`./`}>
+                  <Link href={`./available-pets?type=${category.typeParam}`}>
                     <Button
                       variant="primary"
                       className="w-full bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) group-hover:translate-x-1 transition-all duration-300"

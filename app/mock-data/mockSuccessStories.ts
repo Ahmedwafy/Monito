@@ -1,6 +1,5 @@
 import * as images from "@/assets/images/images";
 
-// Mock data – you can expand this or fetch from a JSON/CMS later
 export const successStories = [
   {
     id: 1,

@@ -1,6 +1,5 @@
 import * as images from "@/assets/images/images";
 
-// Mock data for team members
 export const teamMembers = [
   {
     name: "Sarah Johnson",
