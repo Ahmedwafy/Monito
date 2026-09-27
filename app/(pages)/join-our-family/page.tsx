@@ -60,7 +60,7 @@ export default function JoinOurFamilyPage() {
       {/* Benefits / Ways to Join */}
       <section className="container mx-auto px-4 py-12 md:py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-4">
             How You Can Join
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
@@ -80,7 +80,7 @@ export default function JoinOurFamilyPage() {
               "
             >
               <div className="mb-5 flex justify-center">{item.icon}</div>
-              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-3 text-center">
+              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3 text-center">
                 {item.title}
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-6 flex-1 text-center leading-relaxed">
@@ -103,7 +103,7 @@ export default function JoinOurFamilyPage() {
       {/* Optional Auth Note */}
       <section className="container mx-auto px-4 pb-8">
         <div className="max-w-3xl mx-auto text-center bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-lg p-8 border border-transparent dark:border-(--color-card-border)">
-          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-3">
+          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3">
             Want an account?
           </h3>
           <p className="text-gray-700 dark:text-gray-300 mb-6">

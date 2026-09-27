@@ -1,3 +1,4 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Navbar from "@/app/layouts/Navbar";
@@ -7,7 +8,6 @@ import { ThemeProvider } from "next-themes";
 import RouteLoader from "@/components/ui/RouteLoader";
 import { Suspense } from "react";
 // import NextTopLoader from "nextjs-toploader";  // old loader ... blue bar at top
-import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
