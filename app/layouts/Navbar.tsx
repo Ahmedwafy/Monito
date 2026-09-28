@@ -213,7 +213,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link href="/login">
+                  <Link href="/Login">
                     <Button
                       variant="outline"
                       // className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
@@ -223,7 +223,7 @@ const Navbar = () => {
                       Log in
                     </Button>
                   </Link>
-                  <Link href="/signUp">
+                  <Link href="/SignUp">
                     <Button
                       variant="outline"
                       // className="px-4 py-2"
@@ -341,12 +341,12 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link href="/login" onClick={closeMobileMenu}>
+                  <Link href="/Login" onClick={closeMobileMenu}>
                     <Button variant="outline" className="w-full py-3">
                       Log in
                     </Button>
                   </Link>
-                  <Link href="/signUp" onClick={closeMobileMenu}>
+                  <Link href="/SignUp" onClick={closeMobileMenu}>
                     <Button variant="primary" className="w-full py-3">
                       Sign up
                     </Button>

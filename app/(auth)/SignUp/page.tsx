@@ -63,7 +63,7 @@ export default function SignUpPage() {
       }
 
       toast.success("Account created successfully!");
-      router.push("/login");
+      router.push("/Login");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -153,7 +153,7 @@ export default function SignUpPage() {
         <p className="mt-6 text-center text-gray-600 dark:text-gray-300">
           Already have an account?{" "}
           <Link
-            href="/login"
+            href="/Login"
             className="font-semibold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) hover:underline"
           >
             Log in

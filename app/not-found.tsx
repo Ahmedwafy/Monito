@@ -42,7 +42,7 @@ export default function NotFound() {
             </Button>
           </Link>
 
-          <Link href="/availablePets">
+          <Link href="/available-pets">
             <Button
               variant="outline"
               className="text-xl px-10 py-5 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-all duration-300"

@@ -65,7 +65,7 @@ const AboutPage = () => {
                 <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
               </Button>
 
-              <Link href="/availablePets" className="inline-block">
+              <Link href="/available-pets" className="inline-block">
                 <Button
                   variant="outline"
                   className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
