@@ -2,7 +2,7 @@
 import * as icons from "@/assets/icons";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { useState } from "react";
 import { Smartphone } from "lucide-react";
 

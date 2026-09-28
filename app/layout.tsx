@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Navbar from "@/app/layouts/Navbar";
 import Footer from "@/app/layouts/Footer";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import RouteLoader from "@/components/ui/RouteLoader";
 import { Suspense } from "react";
@@ -46,7 +46,7 @@ export default function RootLayout({
           /> */}
           <Navbar />
           {children}
-          <Toaster position="top-right" />
+          <Toaster position="top-right" richColors />
           <Footer />
         </ThemeProvider>
       </body>

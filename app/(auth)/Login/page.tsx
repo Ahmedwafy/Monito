@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "@/components/atoms/Button";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();

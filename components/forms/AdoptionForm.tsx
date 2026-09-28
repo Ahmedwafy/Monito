@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as icons from "@/assets/icons";
 import Button from "@/components/atoms/Button";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 interface FormData {
   fullName: string;

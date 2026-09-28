@@ -11,7 +11,7 @@ import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 
 type AuthUser = {
   id: string;
@@ -111,11 +111,14 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/">
             <div className="relative">
-              <div className="absolute w-[400px] h-[400px] -top-90 -left-60 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-600/30 z-0 rounded-[15%] transition-colors" />
+              <div
+                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-600/30 z-0 
+              rounded-[15%] transition-colors"
+              />
               <Image
                 src={images.logo}
                 alt="Logo"
-                className="relative dark:invert right-10"
+                className="relative dark:invert right-10 left-8 sm:-left-10"
               />
             </div>
           </Link>
