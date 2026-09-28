@@ -52,6 +52,24 @@ body {
     --color-greenLight: #34c759;
     --color-orangeShine: #ff912c;
     --color-blueSea: #00a7e7;
+
+    /* Semantic surfaces and content colors */
+    --surface-page: #fdfdfd;
+    --surface-card: #ffffff;
+    --surface-elevated: #ffffff;
+    --border-subtle: #ebeeef;
+    --text-primary: #00171f;
+    --text-secondary: #242b33;
+    --text-muted: #667479;
+    --action-primary: #003459;
+    --action-primary-hover: #002a48;
+    --action-secondary: #0078cd;
+    --action-secondary-hover: #00528c;
+    --action-outline-hover: #003459;
+    --action-ghost-hover: #003459;
+    --action-hover-text: #fdfdfd;
+    --action-accent: #f7dba7;
+    --focus-ring: #0078cd;
   }
 
   .dark {
@@ -70,18 +88,18 @@ body {
     --color-secondary-monYellow-40: #f2e9d0;
 
     /* Neutrals - comfortable, low-contrast dark theme */
-    --color-neutral-0: #07121a; /* page background (very dark navy) */
+    --color-neutral-0: #0b151a; /* page background */
     --color-neutral-5: #0e1a22; /* slightly lighter for cards */
-    --color-neutral-10: #16262e;
-    --color-neutral-20: #27414b;
-    --color-neutral-40: #48636d;
-    --color-neutral-60: #7c9aa3;
-    --color-neutral-80: #b7c9cf;
-    --color-neutral-100: #e7f0f4; /* primary text */
+    --color-neutral-10: #12232b;
+    --color-neutral-20: #2b4a55;
+    --color-neutral-40: #59757f;
+    --color-neutral-60: #8fa8b0;
+    --color-neutral-80: #b8c9ce;
+    --color-neutral-100: #f3f7f8; /* primary text */
 
     /* Cards and surfaces */
-    --color-card-bg: #0d262f;
-    --color-card-border: #1b3b46;
+    --color-card-bg: #12232b;
+    --color-card-border: #2b4a55;
 
     /* Extra colors (kept similar but usable on dark) */
     --color-pinkRed: #ff7b76;
@@ -89,7 +107,25 @@ body {
     --color-orangeShine: #ffb07a;
     --color-blueSea: #3cc0ff;
 
-    --subscription-btn-bg: #004080;
+    --subscription-btn-bg: #18313a;
+
+    /* Semantic surfaces and content colors */
+    --surface-page: #0b151a;
+    --surface-card: #12232b;
+    --surface-elevated: #18313a;
+    --border-subtle: #2b4a55;
+    --text-primary: #f3f7f8;
+    --text-secondary: #b8c9ce;
+    --text-muted: #8fa8b0;
+    --action-primary: #6fb7e8;
+    --action-primary-hover: #f3d39a;
+    --action-secondary: #89ccef;
+    --action-secondary-hover: #f3d39a;
+    --action-outline-hover: #f3d39a;
+    --action-ghost-hover: #f3d39a;
+    --action-hover-text: #0b151a;
+    --action-accent: #f3d39a;
+    --focus-ring: #9ad7ff;
   }
   /* End of root */
 }

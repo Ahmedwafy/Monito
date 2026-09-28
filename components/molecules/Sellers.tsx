@@ -24,7 +24,7 @@ const Sellers = () => {
             <Button
               variant="outline"
               className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! 
-              dark:hover:text-(--color-secondary-monYellow)! dark:border-none dark:text-(--color-secondary-monYellow)!"
+              dark:hover:text-(--color-neutral-0)! dark:border-none dark:text-(--color-secondary-monYellow)!"
             >
               View all our seller
               <icons.ChevronRight

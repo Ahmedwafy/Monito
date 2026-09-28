@@ -74,4 +74,3 @@ const HeroCover = () => {
 };
 
 export default HeroCover;
-

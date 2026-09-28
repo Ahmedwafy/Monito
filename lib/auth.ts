@@ -19,7 +19,7 @@ export function signToken(payload: TokenPayload) {
   });
 }
 
-// Verify Token ( make sure it is valid )
+// Verify Token ( make sure it is valid or not expired)
 export function verifyToken(token: string): TokenPayload | null {
   try {
     return jwt.verify(token, JWT_SECRET!) as TokenPayload;

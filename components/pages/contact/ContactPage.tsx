@@ -140,7 +140,7 @@ const ContactPage = () => {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80)! transition-colors duration-300">
-                  <Smartphone className="w-8 h-8 dark:text-(--color-primary-darkBlue)" />
+                  <Smartphone className="w-8 h-8 dark:text-[#07121a]" />
                 </div>
                 <h3 className="mt-4 text-xl font-semibold dark:text-neutral-100 transition-colors duration-300">
                   Phone
@@ -162,7 +162,7 @@ const ContactPage = () => {
                     height="30"
                     viewBox="0 0 24 24"
                     // className="text-(--color-primary-darkBlue)"
-                    className="text-inherit"
+                    className="text-inherit dark:text-[#07121a]"
                   >
                     <path
                       fill="currentColor"
@@ -189,7 +189,7 @@ const ContactPage = () => {
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
-                    className="text-inherit"
+                    className="text-inherit dark:text-[#07121a]"
                   >
                     <path
                       fill="currentColor"
@@ -332,12 +332,13 @@ const ContactPage = () => {
                 Explore Pets
               </Button>
             </Link>
-            <Link
-              href={"/available-pets"}
-              // variant="outline"
-              className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
-            >
-              Book a Visit
+            <Link href={"/available-pets"}>
+              <Button
+                variant="outline"
+                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
+              >
+                Book a Visit
+              </Button>
             </Link>
           </div>
         </div>

@@ -34,27 +34,27 @@ export default function Button({
 
   const variants = {
     primary: `
-      bg-[var(--color-primary-darkBlue)] 
-      text-[var(--color-neutral-10)]
-      hover:bg-[#004080] 
-      focus:ring-[#004080]
-      disabled:bg-[#003366]/40 disabled:cursor-not-allowed
+      bg-[var(--action-primary)]
+      text-[var(--surface-page)]
+      hover:bg-[var(--action-primary-hover)] hover:text-[var(--action-hover-text)]
+      focus:ring-[var(--focus-ring)]
+      disabled:opacity-40 disabled:cursor-not-allowed
     `,
     secondary: `
-      bg-[#007BFF] text-white 
-      hover:bg-[#339CFF]
-      focus:ring-[#007BFF]
-      disabled:bg-[#007BFF]/40 disabled:cursor-not-allowed
+      bg-[var(--action-secondary)] text-[var(--surface-page)]
+      hover:bg-[var(--action-secondary-hover)] hover:text-[var(--action-hover-text)]
+      focus:ring-[var(--focus-ring)]
+      disabled:opacity-40 disabled:cursor-not-allowed
     `,
     outline: `
-      border border-[#003366] text-[#003366]
-      hover:bg-[#003366] hover:text-white
-      focus:ring-[#003366]
+      border border-[var(--action-primary)] text-[var(--action-primary)]
+      hover:bg-[var(--action-outline-hover)] hover:text-[var(--action-hover-text)]
+      focus:ring-[var(--focus-ring)]
       disabled:opacity-50 disabled:cursor-not-allowed
     `,
     ghost: `
-      text-[#003366] hover:bg-[#003366]/10
-      focus:ring-[#003366]
+      text-[var(--action-primary)] hover:bg-[var(--action-ghost-hover)]/10
+      focus:ring-[var(--focus-ring)]
       disabled:opacity-50 disabled:cursor-not-allowed
     `,
   };

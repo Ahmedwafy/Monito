@@ -6,21 +6,21 @@ import { faqItems } from "@/app/mock-data/mockFAQs";
 const FAQPage = () => {
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero */}
-      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5)! text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-(--color-secondary-monYellow) rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl translate-y-1/3 -translate-x-1/3" />
-        </div>
-
-        <div className="relative container mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white! mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            Got questions? We&apos;ve got answers. If you don&apos;t find what
-            you&apos;re looking for, feel free to contact us.
-          </p>
+      {/* Hero / Cover */}
+      <section className="px-4 py-12 md:py-20">
+        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12">
+          {/* Decorative blobs */}
+          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
+          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
+          <div className="relative z-10 max-w-auto">
+            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
+              Frequently Asked Questions
+            </h1>
+            <p className="mt-6 text-lg text-(--color-primary-darkBlue) md:text-xl">
+              Got questions? We&apos;ve got answers. If you don&apos;t find what
+              you&apos;re looking for, feel free to contact us.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -57,7 +57,7 @@ const FAQPage = () => {
           <Link href="/contact">
             <Button
               variant="primary"
-              className="text-xl px-12 py-5 hover:scale-103 hover:text-white transition-all duration-300"
+              className="text-xl px-12 py-5 hover:scale-103 hover:text-(--action-hover-text) transition-all duration-300"
             >
               Contact Us
             </Button>

@@ -19,7 +19,7 @@ const HeroCardsArea = ({
 }: HeroCardsAreaProps) => {
   // build mock data using images
   const cardInfo = images.map((image, index) => {
-    // 🐶 PETS
+    // PETS
     if (type === "pets") {
       return {
         id: index + 1,
@@ -41,7 +41,7 @@ const HeroCardsArea = ({
       };
     }
 
-    // 🛒 PRODUCTS
+    // PRODUCTS
     return {
       id: index + 1,
       name: [
@@ -82,7 +82,7 @@ const HeroCardsArea = ({
               <Button
                 variant="outline"
                 className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! 
-                 dark:hover:text-(--color-secondary-monYellow)! dark:text-(--color-secondary-monYellow)! dark:border-none"
+                 dark:hover:text-(--color-neutral-0)! dark:text-(--color-secondary-monYellow)! dark:border-none"
               >
                 View More
                 <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />

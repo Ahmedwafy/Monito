@@ -1,9 +1,9 @@
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 
-const layout = () => {
+export default function profile() {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen">
       <Image
         src={images.soon}
         alt="Coming Soon"
@@ -13,6 +13,4 @@ const layout = () => {
       />
     </div>
   );
-};
-
-export default layout;
+}

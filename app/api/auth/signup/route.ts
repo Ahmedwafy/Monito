@@ -59,10 +59,20 @@ export async function POST(request: Request) {
       },
       { status: 201 },
     );
+    // } catch (error) {
+    //   console.error("Signup error:", error);
+    //   return NextResponse.json(
+    //     { error: "Something went wrong" },
+    //     { status: 500 },
+    //   );
+    // }
   } catch (error) {
     console.error("Signup error:", error);
     return NextResponse.json(
-      { error: "Something went wrong" },
+      {
+        error: "Something went wrong",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 },
     );
   }

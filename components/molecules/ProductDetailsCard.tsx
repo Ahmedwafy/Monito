@@ -61,7 +61,7 @@ const ProductDetailsCard = ({
         <div className="mt-10">
           <Button
             variant="primary"
-            className="w-full py-4 text-lg dark:bg-blue-600 text-white hover:bg-(--color-primary-darkBlue)/90 dark:hover:bg-blue-700 transition"
+            className="w-full py-4 text-lg dark:bg-(--action-primary) dark:text-(--surface-page) hover:bg-(--color-primary-darkBlue)/90 dark:hover:bg-(--action-accent) dark:hover:text-(--action-hover-text) transition"
             onClick={() => {
               // handleAddToCart(product.id); // TODO: Implement add to cart functionality
               redirect("/cart");

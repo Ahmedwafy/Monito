@@ -22,7 +22,7 @@ const RegisterBar = () => {
               />
               <Button
                 className="rounded-xl sm:w-1/3 sm:h-2/3 py-4 px-4 sm:py-1 lg:py-4 dark:text-neutral-100 
-              dark:bg-(--subscription-btn-bg) dark:hover:bg-(--color-primary-darkBlue) dark:hover:text-(--color-neutral-0) transition-all duration-200"
+              dark:bg-(--subscription-btn-bg) dark:hover:bg-(--action-accent) dark:hover:text-(--action-hover-text) transition-all duration-200"
               >
                 Subscribe Now
               </Button>
