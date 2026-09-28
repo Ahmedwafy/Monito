@@ -74,12 +74,13 @@ import Sarah from "./sarah.jpg";
 import Maria from "./maria.jpg";
 import Ahmed from "./ahmed.jpg";
 import David from "./David.jpg";
-import comingSoon from "./comingSoon.jpg";
+// import comingSoon from "./comingSoon.jpg";
 import soon from "./soon.png";
 import notFound from "./notFound.png";
 import Sunny from "./Sunny.jpg";
 import petsCover from "./petsCover.png";
 import Snow from "./Snow.jpg";
+import comingSoon from "./coming-soon.png";
 
 export {
   homeCover1,
