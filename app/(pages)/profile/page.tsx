@@ -1,9 +1,6 @@
-import ComingSoon from "../coming-soon/page";
+// app/(pages)/profile/page.tsx
+import ProfilePage from "@/components/pages/profile/ProfilePage";
 
-export default function profile() {
-  return (
-    <div className="flex items-center justify-center h-screen">
-      <ComingSoon />
-    </div>
-  );
+export default function Profile() {
+  return <ProfilePage />;
 }

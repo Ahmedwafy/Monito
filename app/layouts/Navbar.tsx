@@ -331,9 +331,11 @@ const Navbar = () => {
             <div className="mt-8 flex flex-col gap-3">
               {user ? (
                 <>
-                  <p className="text-(--color-primary-darkBlue) dark:text-gray-200 font-medium">
-                    Hi, {user.name}
-                  </p>
+                  <Link href="/profile">
+                    <p className="text-(--color-primary-darkBlue) dark:text-gray-200 font-medium mb-8">
+                      {user.name}
+                    </p>
+                  </Link>
                   <Button
                     variant="outline"
                     onClick={handleLogout}

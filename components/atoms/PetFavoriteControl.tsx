@@ -50,6 +50,7 @@ export default function PetFavoriteControl({
       toast.success(
         isFavorite ? "Removed from favorites" : "Added to favorites",
       );
+      router.refresh();
     } catch {
       toast.error("Something went wrong");
     } finally {

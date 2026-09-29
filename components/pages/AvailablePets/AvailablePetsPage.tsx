@@ -367,6 +367,29 @@ const AvailablePetsPage = () => {
                   >
                     {pet.gender}
                   </div>
+
+                  {/* Favorite indicator + quick toggle on image -------------- */}
+                  <button
+                    type="button"
+                    onClick={(e) => handleFavoriteClick(e, pet.id)}
+                    disabled={
+                      !favoritesChecked || favoriteLoadingIds.has(pet.id)
+                    }
+                    className="absolute top-4 right-4 z-10 rounded-full bg-white/90 dark:bg-(--color-neutral-0)/90 p-2.5 shadow-md hover:scale-105 transition disabled:opacity-50"
+                    aria-label={
+                      favoriteIds.has(pet.id)
+                        ? "Remove from favorites"
+                        : "Add to favorites"
+                    }
+                  >
+                    <icons.Heart
+                      className={`w-5 h-5 ${
+                        favoriteIds.has(pet.id)
+                          ? "text-red-500 fill-red-500"
+                          : "text-gray-500"
+                      }`}
+                    />
+                  </button>
                 </div>
 
                 <div className="p-6 flex flex-col gap-4 justify-between flex-1">

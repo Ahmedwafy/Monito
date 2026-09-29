@@ -79,6 +79,10 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
                 {pet.name}
               </h1>
+
+              {favorite && (
+                <icons.Heart className="w-8 h-8 md:w-10 md:h-10 text-red-500 fill-red-500 drop-shadow" />
+              )}
             </div>
             <p className="mt-3 text-lg md:text-xl text-white/90">
               {pet.breed} • {pet.age} • {pet.size}
