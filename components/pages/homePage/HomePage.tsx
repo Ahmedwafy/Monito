@@ -1,3 +1,4 @@
+// components/pages/homePage/HomePage.tsx
 import CardsSection from "@/components/molecules/CardsSection";
 import HeroCover from "@/components/molecules/HeroCover";
 import AdoptionCover from "@/components/molecules/AdoptionCover";

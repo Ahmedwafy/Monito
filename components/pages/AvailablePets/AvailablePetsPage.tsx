@@ -10,7 +10,9 @@ import * as icons from "@/assets/icons";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
+import FavoriteButton from "@/components/atoms/FavoriteButton";
 import { petsData } from "@/app/mock-data/mockPets";
+import { toast } from "sonner";
 
 const AvailablePetsPage = () => {
   const searchParams = useSearchParams();
@@ -25,6 +27,113 @@ const AvailablePetsPage = () => {
   const [genderFilter, setGenderFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery); // Sync with URL
   const [isLoading, setIsLoading] = useState(true);
+
+  // used new Set() coz → O(1)
+  //  using Array [1, 5, 8] then check if pet's id exists: favorites.includes(5) will cause → O(n)
+  // Set<number> : Generic Type → Set of Numbers Only
+  const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set()); // ex: Set {1,5,8}
+  const [favoritesChecked, setFavoritesChecked] = useState(false);
+
+  // keep / save the loading IDs ( Currently Adding / Removing from Favorites )
+  const [favoriteLoadingIds, setFavoriteLoadingIds] = useState<Set<number>>(
+    new Set(),
+  );
+  // Load all favorite IDs once; individual cards read their state from this set.
+  useEffect(() => {
+    let cancelled = false; // for protection: if page closed during fetch
+
+    const loadFavorites = async () => {
+      try {
+        const res = await fetch("/api/favorites");
+        if (!res.ok) return;
+
+        const data = await res.json();
+        if (!cancelled) {
+          setFavoriteIds(new Set<number>(data.favorites ?? []));
+        }
+      } catch {
+        if (!cancelled) setFavoriteIds(new Set());
+      } finally {
+        if (!cancelled) setFavoritesChecked(true);
+      }
+    };
+
+    loadFavorites();
+    // Cleanup Function
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const handleFavoriteClick = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    petId: number,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (favoriteLoadingIds.has(petId)) return;
+
+    setFavoriteLoadingIds((current) => new Set(current).add(petId));
+
+    const isFavorite = favoriteIds.has(petId);
+
+    try {
+      if (isFavorite) {
+        const res = await fetch("/api/favorites", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ petId }),
+        });
+
+        if (res.status === 401) {
+          toast.error("Please log in to manage favorites");
+          router.push("/Login");
+          return;
+        }
+
+        if (!res.ok) {
+          toast.error("Could not remove from favorites");
+          return;
+        }
+
+        setFavoriteIds((current) => {
+          const next = new Set(current);
+          next.delete(petId);
+          return next;
+        });
+        toast.success("Removed from favorites");
+      } else {
+        const res = await fetch("/api/favorites", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ petId }),
+        });
+
+        if (res.status === 401) {
+          toast.error("Please log in to add favorites");
+          router.push("/Login");
+          return;
+        }
+
+        if (!res.ok) {
+          toast.error("Could not add to favorites");
+          return;
+        }
+
+        setFavoriteIds((current) => new Set(current).add(petId));
+        toast.success("Added to favorites");
+      }
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setFavoriteLoadingIds((current) => {
+        const next = new Set(current);
+        next.delete(petId);
+        return next;
+      });
+    }
+  };
 
   // edit filter according to category type from url if exist.
   useEffect(() => {
@@ -238,55 +347,76 @@ const AvailablePetsPage = () => {
             {filteredPets.map((pet) => (
               <div
                 key={pet.id}
-                className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white dark:bg-(--color-neutral-10) w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]"
+                className="group relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 
+                  max-h-[800px] overflow-hidden flex flex-col
+                  bg-white dark:bg-(--color-neutral-10) 
+                  w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]"
               >
-                <div className="relative h-64 overflow-hidden">
+                {/* Pet Image */}
+                <div className="relative h-96">
                   <Image
                     src={pet.mainImage}
                     alt={pet.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    // fill
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-3 py-1 rounded-full font-medium text-sm shadow">
+
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent group-hover:scale-105 transition-transform duration-500" />
+                  <div
+                    className="absolute top-4 left-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-3 py-1
+                   rounded-full font-medium text-sm shadow "
+                  >
                     {pet.gender}
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100">
-                      {pet.name}
-                    </h3>
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {pet.age}
-                    </span>
-                  </div>
-
-                  <p className="mt-1 text-(--color-primary-darkBlue) dark:text-gray-300 font-medium">
-                    {pet.type}
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {pet.traits.map((trait, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) dark:text-neutral-100 rounded-full text-xs font-medium"
-                      >
-                        {trait}
+                <div className="p-6 flex flex-col gap-4 justify-between flex-1">
+                  <div>
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100">
+                        {pet.name}
+                      </h3>
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {pet.age}
                       </span>
-                    ))}
+                    </div>
+
+                    <p className="mt-1 text-(--color-primary-darkBlue) dark:text-gray-300 font-medium">
+                      {pet.type}
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {pet.traits.map((trait, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) dark:text-neutral-100 rounded-full text-xs font-medium"
+                        >
+                          {trait}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className="mt-4 text-gray-600 dark:text-gray-400 line-clamp-2">
+                      {pet.description}
+                    </p>
                   </div>
 
-                  <p className="mt-4 text-gray-600 dark:text-gray-400 line-clamp-2">
-                    {pet.description}
-                  </p>
-
-                  <div className="mt-6">
+                  <div className="flex flex-col gap-2 h-auto">
+                    <div className="w-full">
+                      <FavoriteButton
+                        petId={pet.id}
+                        isFavorite={favoriteIds.has(pet.id)}
+                        isLoading={favoriteLoadingIds.has(pet.id)}
+                        checked={favoritesChecked}
+                        onClick={(event) => handleFavoriteClick(event, pet.id)}
+                        className="w-full"
+                      />
+                    </div>
                     <Link href={`/pets/${pet.id}`}>
                       <Button
-                        variant="primary"
-                        className="w-full bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 transition-all duration-300 hover:-translate-y-0.5"
+                        variant="outline"
+                        className="w-full !dark:bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 
+                        dark:hover:bg-(--surface-page) dark:hover:text-(--color-neutral-80)
+                        transition-all duration-300 hover:-translate-y-0.5"
                       >
                         View Details
                         <icons.ChevronRight className="ml-2" />

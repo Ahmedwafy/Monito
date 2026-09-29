@@ -3,10 +3,28 @@ import * as icons from "@/assets/icons";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import Button from "@/components/atoms/Button";
+import PetFavoriteControl from "@/components/atoms/PetFavoriteControl";
 import { petsData } from "@/app/mock-data/mockPets";
+import { AUTH_COOKIE_NAME, verifyToken } from "@/lib/auth";
+import { connectDB } from "@/lib/mongodb";
+import User from "@/lib/models/User";
+
 const getPetById = (id: number) => {
   return petsData.find((pet) => pet.id === id) || null;
+};
+
+const isPetFavorite = async (petId: number) => {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
+  const payload = token ? verifyToken(token) : null;
+
+  if (!payload) return false;
+
+  await connectDB();
+  const user = await User.findById(payload.userId).select("favorites");
+  return user?.favorites.includes(petId) ?? false;
 };
 
 interface PetPageProps {
@@ -22,7 +40,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)">
         <div className="text-center px-4">
-          <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100)">
+          <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100">
             Pet not found
           </h1>
           <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
@@ -35,6 +53,8 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
       </div>
     );
   }
+
+  const favorite = await isPetFavorite(pet.id);
 
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
@@ -55,9 +75,11 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
             <div className="inline-block px-4 py-1.5 rounded-full bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) font-semibold text-sm mb-4">
               {pet.type} • {pet.gender}
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-              {pet.name}
-            </h1>
+            <div className="flex items-center gap-3">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
+                {pet.name}
+              </h1>
+            </div>
             <p className="mt-3 text-lg md:text-xl text-white/90">
               {pet.breed} • {pet.age} • {pet.size}
             </p>
@@ -163,13 +185,19 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
               </div>
 
               <div className="mt-8">
-                <Link href="/adopt-form" className="block w-full">
+                <div className="mb-4">
+                  <PetFavoriteControl
+                    petId={pet.id}
+                    initialIsFavorite={favorite}
+                  />
+                </div>
+                <Link href="/adopt-form" className="flex w-full justify-center">
                   <Button
                     variant="primary"
-                    className="w-full py-4 text-lg bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90"
+                    className="group w-fit gap-0 whitespace-nowrap py-4 text-lg bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 transition-[background-color] duration-500 ease-in-out"
                   >
                     Apply to Adopt {pet.name}
-                    <icons.Heart className="ml-2 w-5 h-5" />
+                    <icons.Heart className="h-5 w-0 shrink-0 overflow-hidden opacity-0 group-hover:ml-2 group-hover:w-5 group-hover:opacity-100 transition-[width,margin,opacity] duration-500 ease-in-out" />
                   </Button>
                 </Link>
                 <p className="mt-3 text-center text-sm text-gray-500 dark:text-gray-400">
@@ -204,9 +232,15 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
           <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-gray-300">
             Start your adoption journey today — we can&apos;t wait to help you!
           </p>
+
           <div className="mt-8 flex justify-center gap-6 flex-wrap">
             <Link href="/adopt-form">
-              <Button variant="primary">Apply Now</Button>
+              <Button
+                variant="outline"
+                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
+              >
+                Apply Now
+              </Button>
             </Link>
             <Link href="/available-pets">
               <Button
