@@ -10,47 +10,43 @@ import Button from "@/components/atoms/Button";
 import { petsData } from "@/app/mock-data/mockPets";
 import * as icons from "@/assets/icons";
 import { toast } from "sonner";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useQueryClient } from "@tanstack/react-query";
+import { useMe } from "@/hooks/useMe";
 
 type AuthUser = {
   id: string;
   name: string;
   email: string;
+  phone?: string;
+  address?: string;
 };
 
 const ProfilePage = () => {
-  const router = useRouter();
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const router = useRouter();
+  const queryClient = useQueryClient();
+
+  // const [user, setUser] = useState<AuthUser | null>(null);
+  // const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
+  const { data: favoriteIds = [], isLoading, isSuccess } = useFavorites();
+  const { data: user, isLoading: isUserLoading } = useMe();
+
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        // 1) Current user ( Check if user logged in or not - check if token valid )
-        const meRes = await fetch("/api/auth/me");
-        if (!meRes.ok) {
-          router.push("/Login");
-          return;
-        }
-        const meData = await meRes.json();
-        setUser(meData.user);
-
-        // 2) Favorites ids
-        const favRes = await fetch("/api/favorites");
-        if (favRes.ok) {
-          const favData = await favRes.json();
-          setFavoriteIds(favData.favorites ?? []);
-        }
-      } catch {
-        toast.error("Could not load profile");
-        router.push("/Login");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    load();
-  }, [router]);
+    setForm({
+      name: user?.name ?? "",
+      phone: user?.phone ?? "",
+      address: user?.address ?? "",
+    });
+  }, [user]);
 
   const favoritePets = petsData.filter((pet) => favoriteIds.includes(pet.id));
 
@@ -66,11 +62,49 @@ const ProfilePage = () => {
         toast.error("Could not remove from favorites");
         return;
       }
-
-      setFavoriteIds((prev) => prev.filter((id) => id !== petId));
+      // TODO >>> remove this logic after move it inside useAddFavorites / useDeleteFavorites hooks (after successful Delete / Add)
+      // ---------------
+      await queryClient.invalidateQueries({ queryKey: ["favorites"] });
+      // ---------------
+      // setFavoriteIds((prev) => prev.filter((id) => id !== petId));
       toast.success("Removed from favorites");
     } catch {
       toast.error("Something went wrong");
+    }
+  };
+
+  // Handle Save Changes
+  const handleSaveProfile = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSaving) return;
+
+    setIsSaving(true);
+    try {
+      const res = await fetch("/api/auth/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          address: form.address.trim(),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.error || "Could not update profile");
+        return;
+      }
+
+      await queryClient.invalidateQueries({ queryKey: ["me"] });
+
+      // setUser(data.user);
+      toast.success("Profile updated");
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -106,6 +140,12 @@ const ProfilePage = () => {
               <p className="mt-2 text-gray-600 dark:text-gray-300">
                 {user.email}
               </p>
+              {user.phone && (
+                <p className="text-sm text-gray-500">{user.phone}</p>
+              )}
+              {user.address && (
+                <p className="text-sm text-gray-500">{user.address}</p>
+              )}
               <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
                 {favoritePets.length} favorite
                 {favoritePets.length === 1 ? "" : "s"}
@@ -116,6 +156,80 @@ const ProfilePage = () => {
               <Button variant="primary">Browse Pets</Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Form */}
+      <section className="container mx-auto px-4 max-w-5xl mb-12">
+        <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-3xl shadow-xl p-6 md:p-8">
+          <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-6">
+            Edit Profile
+          </h2>
+
+          <form onSubmit={handleSaveProfile} className="space-y-5 max-w-xl">
+            <div>
+              <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue) dark:text-gray-200">
+                Name
+              </label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, name: e.target.value }))
+                }
+                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue) dark:text-gray-200">
+                Email
+              </label>
+              <input
+                type="email"
+                value={user.email}
+                disabled
+                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 px-4 py-3 opacity-70 cursor-not-allowed"
+              />
+              <p className="mt-1 text-xs text-gray-500">
+                Email cannot be changed
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue) dark:text-gray-200">
+                Phone
+              </label>
+              <input
+                type="text"
+                value={form.phone}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, phone: e.target.value }))
+                }
+                placeholder="01xxxxxxxxx"
+                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue) dark:text-gray-200">
+                Address
+              </label>
+              <input
+                type="text"
+                value={form.address}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, address: e.target.value }))
+                }
+                placeholder="Your city / address"
+                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+              />
+            </div>
+
+            <Button type="submit" variant="primary" disabled={isSaving}>
+              {isSaving ? "Saving..." : "Save changes"}
+            </Button>
+          </form>
         </div>
       </section>
 

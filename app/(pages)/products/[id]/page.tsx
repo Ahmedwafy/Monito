@@ -26,10 +26,6 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
 
   const productId = Number(resolvedParams.id);
   const product = getProductById(productId);
-  console.log(`-----------${params}`); // params = Promise
-
-  // console.log("Found product:", product);
-  // console.log(productId, resolvedParams.id);
 
   if (!product) {
     return (

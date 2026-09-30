@@ -67,7 +67,7 @@ const ContactPage = () => {
     }
 
     // TODO: Send form data to your backend API
-    console.log("Form data to send:", formData);
+    // console.log("Form data to send:", formData);
 
     // Show success message
     toast.success("Message sent! We will get back to you soon.");

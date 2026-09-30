@@ -12,12 +12,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
+import { useMe } from "@/hooks/useMe";
+import { useQueryClient } from "@tanstack/react-query";
 
-type AuthUser = {
-  id: string;
-  name: string;
-  email: string;
-};
+// type AuthUser = {
+//   id: string;
+//   name: string;
+//   email: string;
+// };
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -36,34 +38,34 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { data: user, isLoading: isUserLoading } = useMe();
 
-  // Auth state
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   // Fetch current user once mounted
-  useEffect(() => {
-    if (!mounted) return;
+  // useEffect(() => {
+  //   if (!mounted) return;
 
-    const fetchUser = async () => {
-      try {
-        const res = await fetch("/api/auth/me");
-        if (!res.ok) {
-          setUser(null);
-          return;
-        }
-        const data = await res.json();
-        setUser(data.user ?? null);
-      } catch {
-        setUser(null);
-      }
-    };
+  //   const fetchUser = async () => {
+  //     try {
+  //       const res = await fetch("/api/auth/me");
+  //       if (!res.ok) {
+  //         setUser(null);
+  //         return;
+  //       }
+  //       const data = await res.json();
+  //       setUser(data.user ?? null);
+  //     } catch {
+  //       setUser(null);
+  //     }
+  //   };
 
-    fetchUser();
-  }, [mounted, pathname]); // re-check after navigation (e.g. after login)
+  //   fetchUser();
+  // }, [mounted, pathname]); // re-check after navigation (e.g. after login)
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -83,7 +85,8 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
-      setUser(null);
+      // Clear cached user immediately
+      queryClient.setQueryData(["me"], null);
       toast.success("Logged out");
       closeMobileMenu();
       router.push("/");

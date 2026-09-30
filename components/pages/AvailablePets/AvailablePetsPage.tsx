@@ -13,10 +13,13 @@ import Button from "@/components/atoms/Button";
 import FavoriteButton from "@/components/atoms/FavoriteButton";
 import { petsData } from "@/app/mock-data/mockPets";
 import { toast } from "sonner";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useQueryClient } from "@tanstack/react-query";
 
 const AvailablePetsPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   // Read search query from URL
   const urlSearchQuery = searchParams.get("search")?.trim() || "";
@@ -26,44 +29,18 @@ const AvailablePetsPage = () => {
   const [ageFilter, setAgeFilter] = useState("All");
   const [genderFilter, setGenderFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState(urlSearchQuery); // Sync with URL
-  const [isLoading, setIsLoading] = useState(true);
 
   // used new Set() coz → O(1)
   //  using Array [1, 5, 8] then check if pet's id exists: favorites.includes(5) will cause → O(n)
   // Set<number> : Generic Type → Set of Numbers Only
-  const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set()); // ex: Set {1,5,8}
-  const [favoritesChecked, setFavoritesChecked] = useState(false);
+  // const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set()); // ex: Set {1,5,8}
+
+  const { data: favoriteIds = [], isLoading, isSuccess } = useFavorites();
 
   // keep / save the loading IDs ( Currently Adding / Removing from Favorites )
   const [favoriteLoadingIds, setFavoriteLoadingIds] = useState<Set<number>>(
     new Set(),
   );
-  // Load all favorite IDs once; individual cards read their state from this set.
-  useEffect(() => {
-    let cancelled = false; // for protection: if page closed during fetch
-
-    const loadFavorites = async () => {
-      try {
-        const res = await fetch("/api/favorites");
-        if (!res.ok) return;
-
-        const data = await res.json();
-        if (!cancelled) {
-          setFavoriteIds(new Set<number>(data.favorites ?? []));
-        }
-      } catch {
-        if (!cancelled) setFavoriteIds(new Set());
-      } finally {
-        if (!cancelled) setFavoritesChecked(true);
-      }
-    };
-
-    loadFavorites();
-    // Cleanup Function
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const handleFavoriteClick = async (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -76,7 +53,10 @@ const AvailablePetsPage = () => {
 
     setFavoriteLoadingIds((current) => new Set(current).add(petId));
 
-    const isFavorite = favoriteIds.has(petId);
+    // const isFavorite = favoriteIds.includes(petId); // Array → O(n)
+
+    const favoriteSet = new Set(favoriteIds); // used Set coz → O(1)
+    const isFavorite = favoriteSet.has(petId);
 
     try {
       if (isFavorite) {
@@ -97,11 +77,10 @@ const AvailablePetsPage = () => {
           return;
         }
 
-        setFavoriteIds((current) => {
-          const next = new Set(current);
-          next.delete(petId);
-          return next;
-        });
+        // TODO >>> move this logic into useDeleteFavorites hook (after successful Delete)
+        // ---------------
+        await queryClient.invalidateQueries({ queryKey: ["favorites"] });
+        // ---------------
         toast.success("Removed from favorites");
       } else {
         const res = await fetch("/api/favorites", {
@@ -120,8 +99,11 @@ const AvailablePetsPage = () => {
           toast.error("Could not add to favorites");
           return;
         }
+        // TODO >>> move this logic into useAddFavorites hook (after successful Add)
+        // ---------------
+        await queryClient.invalidateQueries({ queryKey: ["favorites"] });
+        // ---------------
 
-        setFavoriteIds((current) => new Set(current).add(petId));
         toast.success("Added to favorites");
       }
     } catch {
@@ -141,10 +123,10 @@ const AvailablePetsPage = () => {
   }, [categoryFromUrl]);
 
   // Loading simulation
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setIsLoading(false), 1200);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   // Sync searchQuery with URL when it changes
   useEffect(() => {
@@ -372,19 +354,17 @@ const AvailablePetsPage = () => {
                   <button
                     type="button"
                     onClick={(e) => handleFavoriteClick(e, pet.id)}
-                    disabled={
-                      !favoritesChecked || favoriteLoadingIds.has(pet.id)
-                    }
+                    disabled={!isSuccess || favoriteLoadingIds.has(pet.id)}
                     className="absolute top-4 right-4 z-10 rounded-full bg-white/90 dark:bg-(--color-neutral-0)/90 p-2.5 shadow-md hover:scale-105 transition disabled:opacity-50"
                     aria-label={
-                      favoriteIds.has(pet.id)
+                      favoriteIds.includes(pet.id)
                         ? "Remove from favorites"
                         : "Add to favorites"
                     }
                   >
                     <icons.Heart
                       className={`w-5 h-5 ${
-                        favoriteIds.has(pet.id)
+                        favoriteIds.includes(pet.id)
                           ? "text-red-500 fill-red-500"
                           : "text-gray-500"
                       }`}
@@ -427,9 +407,10 @@ const AvailablePetsPage = () => {
                     <div className="w-full">
                       <FavoriteButton
                         petId={pet.id}
-                        isFavorite={favoriteIds.has(pet.id)}
+                        isFavorite={favoriteIds.includes(pet.id)}
                         isLoading={favoriteLoadingIds.has(pet.id)}
-                        checked={favoritesChecked}
+                        // checked={favoritesChecked}
+                        checked={isSuccess}
                         onClick={(event) => handleFavoriteClick(event, pet.id)}
                         className="w-full"
                       />

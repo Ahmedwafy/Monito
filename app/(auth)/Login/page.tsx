@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function LoginPage() {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -51,6 +53,10 @@ export default function LoginPage() {
         return;
       }
 
+      // TODO >>> move this logic into useLogin hook (after successful login)
+      // ---------------
+      await queryClient.invalidateQueries({ queryKey: ["me"] });
+      // ---------------
       toast.success("Welcome back!");
       router.push("/");
       router.refresh(); // refresh server components with new cookie

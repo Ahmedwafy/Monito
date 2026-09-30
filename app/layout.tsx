@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import RouteLoader from "@/components/ui/RouteLoader";
 import { Suspense } from "react";
-// import NextTopLoader from "nextjs-toploader";  // old loader ... blue bar at top
+import QueryProvider from "@/components/providers/QueryProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,29 +26,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // suppressHydrationWarning → handle theme hydration error
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          // defaultTheme="system" // follow system (light/dark)
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange // disable transition when switching theme
-        >
-          <Suspense fallback={null}>
-            <RouteLoader />
-          </Suspense>
-          {/* <NextTopLoader
-            color="var(--color-primary-darkBlue)"  // old loader ... blue bar at top
-            showSpinner={false}
-            height={3}
-          /> */}
-          <Navbar />
-          {children}
-          <Toaster position="top-right" richColors />
-          <Footer />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <Suspense fallback={null}>
+              <RouteLoader />
+            </Suspense>
+            <Navbar />
+            {children}
+            <Toaster position="top-right" richColors />
+            <Footer />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

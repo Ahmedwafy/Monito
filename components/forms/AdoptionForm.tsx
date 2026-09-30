@@ -281,7 +281,7 @@ const AdoptionFormPage = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // TODO: Send cleanedDataToSend to your backend API
-    console.log("Form data to send:", cleanedDataToSend);
+    // console.log("Form data to send:", cleanedDataToSend);
 
     // Show success message
     toast.success("Message sent! We will get back to you soon.");
