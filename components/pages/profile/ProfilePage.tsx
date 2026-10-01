@@ -3,7 +3,6 @@
 // if not logged in → /Login
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
@@ -13,26 +12,22 @@ import { toast } from "sonner";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMe } from "@/hooks/useMe";
-
-type AuthUser = {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  address?: string;
-};
+import { useToggleFavorite } from "@/hooks/useToggleFavorite";
+import { useUpdateProfile } from "@/hooks/useUpdateProfile";
 
 const ProfilePage = () => {
   // const router = useRouter();
   const queryClient = useQueryClient();
 
-  // const [user, setUser] = useState<AuthUser | null>(null);
-  // const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
-  const { data: favoriteIds = [], isLoading, isSuccess } = useFavorites();
-  const { data: user, isLoading: isUserLoading } = useMe();
+  // "DELETE" / "POST"
 
-  // const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const toggleFavorite = useToggleFavorite();
+  const updateProfile = useUpdateProfile();
+  const { data: user, isLoading: isUserLoading } = useMe();
+  const { data: favoriteIds = [], isLoading: isFavoritesLoading } =
+    useFavorites();
+
+  const favoritePets = petsData.filter((pet) => favoriteIds.includes(pet.id));
 
   const [form, setForm] = useState({
     name: "",
@@ -48,67 +43,24 @@ const ProfilePage = () => {
     });
   }, [user]);
 
-  const favoritePets = petsData.filter((pet) => favoriteIds.includes(pet.id));
-
-  const handleRemoveFavorite = async (petId: number) => {
-    try {
-      const res = await fetch("/api/favorites", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ petId }),
-      });
-
-      if (!res.ok) {
-        toast.error("Could not remove from favorites");
-        return;
-      }
-      // TODO >>> remove this logic after move it inside useAddFavorites / useDeleteFavorites hooks (after successful Delete / Add)
-      // ---------------
-      await queryClient.invalidateQueries({ queryKey: ["favorites"] });
-      // ---------------
-      // setFavoriteIds((prev) => prev.filter((id) => id !== petId));
-      toast.success("Removed from favorites");
-    } catch {
-      toast.error("Something went wrong");
-    }
+  const handleRemoveFavorite = (petId: number) => {
+    toggleFavorite.mutate({
+      petId,
+      isFavorite: true, // true = currently favorite → DELETE
+    });
   };
 
   // Handle Save Changes
-  const handleSaveProfile = async (e: React.FormEvent) => {
+  const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSaving) return;
-
-    setIsSaving(true);
-    try {
-      const res = await fetch("/api/auth/profile", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          phone: form.phone.trim(),
-          address: form.address.trim(),
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.error || "Could not update profile");
-        return;
-      }
-
-      await queryClient.invalidateQueries({ queryKey: ["me"] });
-
-      // setUser(data.user);
-      toast.success("Profile updated");
-    } catch {
-      toast.error("Something went wrong");
-    } finally {
-      setIsSaving(false);
-    }
+    updateProfile.mutate({
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      address: form.address.trim(),
+    });
   };
 
-  if (isLoading) {
+  if (isUserLoading || isFavoritesLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)">
         <p className="text-lg font-medium text-(--color-primary-darkBlue) dark:text-gray-200 animate-pulse">
@@ -226,8 +178,12 @@ const ProfilePage = () => {
               />
             </div>
 
-            <Button type="submit" variant="primary" disabled={isSaving}>
-              {isSaving ? "Saving..." : "Save changes"}
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={updateProfile.isPending}
+            >
+              {updateProfile.isPending ? "Saving..." : "Save changes"}
             </Button>
           </form>
         </div>
@@ -289,10 +245,17 @@ const ProfilePage = () => {
                     </Link>
                     <Button
                       variant="outline"
-                      className="w-full border-red-300 text-red-600 hover:bg-red-50 hover:text-red-400 dark:border-red-500/50 dark:text-red-400"
+                      className="w-full border-red-300 text-red-600 ..."
+                      disabled={
+                        toggleFavorite.isPending &&
+                        toggleFavorite.variables?.petId === pet.id
+                      }
                       onClick={() => handleRemoveFavorite(pet.id)}
                     >
-                      Remove
+                      {toggleFavorite.isPending &&
+                      toggleFavorite.variables?.petId === pet.id
+                        ? "Removing..."
+                        : "Remove"}
                     </Button>
                   </div>
                 </div>

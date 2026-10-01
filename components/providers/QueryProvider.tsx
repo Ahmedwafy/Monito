@@ -17,6 +17,13 @@ export default function QueryProvider({
           queries: {
             staleTime: 60 * 1000, // 1 minute — avoid refetch spam
             refetchOnWindowFocus: false,
+
+            // refetch on window focus to get the latest data
+            // ( if open 2 or 3 tabs and update data in one browser tab, the other tabs will get the latest data when they are focused or clicked )
+            // staleTime: 0, // 0 means data is always stale and will be refetched on window focus
+            // refetchOnWindowFocus: true,
+            // refetchOnWindowFocus: true, // refetch data on window focus
+            // refetchOnReconnect: true, // refetch data on network reconnect
           },
         },
       }),

@@ -14,12 +14,7 @@ import { Heart } from "lucide-react";
 import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
 import { useQueryClient } from "@tanstack/react-query";
-
-// type AuthUser = {
-//   id: string;
-//   name: string;
-//   email: string;
-// };
+import { useLogout } from "@/hooks/useLogout";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -39,33 +34,13 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { data: user, isLoading: isUserLoading } = useMe();
+  const logout = useLogout();
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Fetch current user once mounted
-  // useEffect(() => {
-  //   if (!mounted) return;
-
-  //   const fetchUser = async () => {
-  //     try {
-  //       const res = await fetch("/api/auth/me");
-  //       if (!res.ok) {
-  //         setUser(null);
-  //         return;
-  //       }
-  //       const data = await res.json();
-  //       setUser(data.user ?? null);
-  //     } catch {
-  //       setUser(null);
-  //     }
-  //   };
-
-  //   fetchUser();
-  // }, [mounted, pathname]); // re-check after navigation (e.g. after login)
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -79,20 +54,6 @@ const Navbar = () => {
       router.push(`/available-pets?search=${encodeURIComponent(query.trim())}`);
     } else {
       router.push("/available-pets");
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" });
-      // Clear cached user immediately
-      queryClient.setQueryData(["me"], null);
-      toast.success("Logged out");
-      closeMobileMenu();
-      router.push("/");
-      router.refresh();
-    } catch {
-      toast.error("Logout failed");
     }
   };
 
@@ -210,7 +171,9 @@ const Navbar = () => {
                   </Link>
                   <Button
                     variant="outline"
-                    onClick={handleLogout}
+                    // onClick={handleLogout}
+                    onClick={() => logout.mutate()}
+                    disabled={logout.isPending}
                     className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
                     dark:text-(--color-secondary-monYellow) px-4 py-2"
                   >
@@ -341,7 +304,9 @@ const Navbar = () => {
                   </Link>
                   <Button
                     variant="outline"
-                    onClick={handleLogout}
+                    // onClick={handleLogout}
+                    onClick={() => logout.mutate()}
+                    disabled={logout.isPending}
                     className="w-full py-3 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
                   >
                     Logout

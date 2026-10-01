@@ -22,5 +22,7 @@ export function useFavorites() {
     queryKey: ["favorites"],
     queryFn: fetchFavorites,
     retry: false,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
   });
 }

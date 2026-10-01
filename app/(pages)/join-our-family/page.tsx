@@ -107,8 +107,9 @@ export default function JoinOurFamilyPage() {
             Want an account?
           </h3>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
-            Account features are coming soon. For now, you can adopt, volunteer,
-            or contact us without signing up.
+            Create an account to save your favorite pets, track your volunteer
+            hours, and receive updates on new arrivals. It&apos;s quick and
+            easy!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/SignUp">
@@ -116,7 +117,7 @@ export default function JoinOurFamilyPage() {
                 variant="outline"
                 className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
               >
-                Sign Up (Coming Soon)
+                Sign Up
               </Button>
             </Link>
             <Link href="/Login">
@@ -124,7 +125,7 @@ export default function JoinOurFamilyPage() {
                 variant="outline"
                 className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
               >
-                Login (Coming Soon)
+                Login
               </Button>
             </Link>
           </div>

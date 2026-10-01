@@ -23,7 +23,7 @@ async function fetchMe(): Promise<AuthUser | null> {
   }
 
   const data = await res.json();
-  return data.user ?? null;
+  return data.user ?? null; // const { data: user, isLoading, isError, refetch } = useMe();
 }
 
 export function useMe() {

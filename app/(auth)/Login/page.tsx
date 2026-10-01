@@ -2,27 +2,23 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
-import { useQueryClient } from "@tanstack/react-query";
+import { useLogin } from "@/hooks/useLogin";
 
 export default function LoginPage() {
-  const router = useRouter();
-  const queryClient = useQueryClient();
-
+  const login = useLogin();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.email.trim()) {
@@ -34,37 +30,10 @@ export default function LoginPage() {
       return;
     }
 
-    setIsLoading(true);
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: formData.email.trim(),
-          password: formData.password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.error || "Login failed");
-        return;
-      }
-
-      // TODO >>> move this logic into useLogin hook (after successful login)
-      // ---------------
-      await queryClient.invalidateQueries({ queryKey: ["me"] });
-      // ---------------
-      toast.success("Welcome back!");
-      router.push("/");
-      router.refresh(); // refresh server components with new cookie
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    login.mutate({
+      email: formData.email.trim(),
+      password: formData.password,
+    });
   };
 
   return (
@@ -111,10 +80,10 @@ export default function LoginPage() {
           <Button
             type="submit"
             variant="primary"
-            disabled={isLoading}
+            disabled={login.isPending}
             className="w-full py-4 text-lg mt-2"
           >
-            {isLoading ? "Logging in..." : "Log In"}
+            {login.isPending ? "Logging in..." : "Log In"}
           </Button>
         </form>
 
