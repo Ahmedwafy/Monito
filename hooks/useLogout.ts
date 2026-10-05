@@ -19,6 +19,7 @@ export function useLogout() {
     onSuccess: () => {
       queryClient.setQueryData(["me"], null);
       queryClient.setQueryData(["favorites"], []);
+      queryClient.setQueryData(["cart"], []);
       toast.success("Logged out");
       router.push("/");
       router.refresh();

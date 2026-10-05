@@ -13,6 +13,7 @@ and instead only apply dark: classes when Next-Themes has actually added the .da
 /* automatically handles smooth scrolling natively whenever an element with an ID is triggered. */
 html {
   scroll-behavior: smooth;
+  data-scroll-behavior: smooth;
 }
 
 body {

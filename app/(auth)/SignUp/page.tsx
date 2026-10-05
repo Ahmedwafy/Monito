@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
+import { useSignup } from "@/hooks/useSignup";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
+  // const router = useRouter();
+  const signup = useSignup();
   const router = useRouter();
+  const { isPending } = useSignup();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +20,6 @@ export default function SignUpPage() {
     password: "",
     confirmPassword: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -41,34 +45,22 @@ export default function SignUpPage() {
       toast.error("Passwords do not match");
       return;
     }
+    const input = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      password: formData.password,
+    };
 
-    setIsLoading(true);
-
-    try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          password: formData.password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.error || "Signup failed");
-        return;
-      }
-
-      toast.success("Account created successfully!");
-      router.push("/Login");
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    signup.mutate(input, {
+      onSuccess: () => {
+        toast.success("Account created successfully!");
+        // After signup → go to login (no auto-login unless your API sets a cookie)
+        router.push("/Login");
+      },
+      onError: (error: Error) => {
+        toast.error(error.message);
+      },
+    });
   };
 
   return (
@@ -143,10 +135,10 @@ export default function SignUpPage() {
           <Button
             type="submit"
             variant="primary"
-            disabled={isLoading}
+            disabled={isPending}
             className="w-full py-4 text-lg mt-2"
           >
-            {isLoading ? "Creating account..." : "Sign Up"}
+            {isPending ? "Creating account..." : "Sign Up"}
           </Button>
         </form>
 

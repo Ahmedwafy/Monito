@@ -1,4 +1,4 @@
-import mongoose, { Schema, models, model } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
 export interface IUser {
   name: string;
@@ -9,6 +9,10 @@ export interface IUser {
   favorites: number[]; // pet ids from mock data
   createdAt?: Date;
   updatedAt?: Date;
+  cart: {
+    productId: number;
+    quantity: number;
+  }[];
 }
 
 const UserSchema = new Schema<IUser>(
@@ -41,6 +45,15 @@ const UserSchema = new Schema<IUser>(
     favorites: {
       type: [Number],
       default: [],
+    },
+    cart: {
+      type: [
+        {
+          productId: { type: Number, required: true },
+          quantity: { type: Number, required: true, min: 1, default: 1 },
+          // _id: false, // prevent Mongoose from creating an _id for each subdocument
+        },
+      ],
     },
   },
   {

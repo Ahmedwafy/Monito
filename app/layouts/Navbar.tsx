@@ -11,10 +11,9 @@ import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Heart } from "lucide-react";
-import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
-import { useQueryClient } from "@tanstack/react-query";
 import { useLogout } from "@/hooks/useLogout";
+import { useCart } from "@/hooks/useCart";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -36,7 +35,8 @@ const Navbar = () => {
   const { data: user, isLoading: isUserLoading } = useMe();
   const logout = useLogout();
 
-  const queryClient = useQueryClient();
+  const { data: cart = [] } = useCart();
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     setMounted(true);

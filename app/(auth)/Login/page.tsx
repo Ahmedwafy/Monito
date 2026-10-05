@@ -5,9 +5,12 @@ import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
 import { useLogin } from "@/hooks/useLogin";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const login = useLogin();
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,9 +33,18 @@ export default function LoginPage() {
       return;
     }
 
-    login.mutate({
+    const input = {
       email: formData.email.trim(),
       password: formData.password,
+    };
+
+    login.mutate(input, {
+      onSuccess: () => {
+        toast.success("Welcome back!");
+        router.push("/");
+        router.refresh();
+      },
+      onError: (e) => toast.error(e.message),
     });
   };
 
