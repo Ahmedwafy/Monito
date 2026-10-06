@@ -11,6 +11,8 @@ import { useCart } from "@/hooks/useCart";
 import { useUpdateCartItem } from "@/hooks/useUpdateCartItem";
 import { useRemoveFromCart } from "@/hooks/useRemoveFromCart";
 import { useMe } from "@/hooks/useMe";
+import CartLoadingSkeleton from "./CartLoadingSkeleton";
+import { toast } from "sonner";
 
 function parsePrice(price: string) {
   return Number(String(price).replace("$", "")) || 0;
@@ -20,8 +22,8 @@ export const CartItems = () => {
   const router = useRouter();
   const { data: user, isLoading: isUserLoading } = useMe();
   const { data: cart = [], isLoading: isCartLoading } = useCart();
-  const updateItem = useUpdateCartItem();
-  const removeItem = useRemoveFromCart();
+  const updateItem = useUpdateCartItem(); // +1 or -1 from quantity
+  const removeItem = useRemoveFromCart(); // remove item from cart
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -30,32 +32,27 @@ export const CartItems = () => {
   }, [user, isUserLoading, router]);
 
   if (isUserLoading || isCartLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)">
-        <p className="text-lg font-medium text-(--color-primary-darkBlue) dark:text-gray-200 animate-pulse">
-          Loading cart...
-        </p>
-      </div>
-    );
+    return <CartLoadingSkeleton />;
   }
 
   if (!user) return null;
 
-  const lines = cart
+  const cards = cart
     .map((item) => {
       const product = productsData.find((p) => p.id === item.productId);
       if (!product) return null;
-      const unit = parsePrice(product.price);
+      const unit = parsePrice(product.price); // parse price string "$5" to number 5
       return {
         product,
         quantity: item.quantity,
-        unit,
-        lineTotal: unit * item.quantity,
+        unit, // single unit price for each cart item
+        totalPrice: unit * item.quantity, // calculate line total price for each cart item
       };
     })
     .filter(Boolean);
 
-  const total = lines.reduce((sum, line) => sum + (line?.lineTotal ?? 0), 0);
+  // calculate total price for all cart items
+  const total = cards.reduce((sum, card) => sum + (card?.totalPrice ?? 0), 0);
 
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
@@ -64,7 +61,7 @@ export const CartItems = () => {
           Your Cart
         </h1>
 
-        {lines.length === 0 ? (
+        {cards.length === 0 ? (
           <div className="text-center py-16 bg-white dark:bg-(--color-neutral-0)/50 rounded-3xl shadow">
             <p className="text-xl text-(--color-primary-darkBlue) dark:text-gray-200 mb-6">
               Your cart is empty
@@ -75,9 +72,9 @@ export const CartItems = () => {
           </div>
         ) : (
           <div className="space-y-6">
-            {lines.map((line) => {
-              if (!line) return null;
-              const { product, quantity, unit, lineTotal } = line;
+            {cards.map((card) => {
+              if (!card) return null;
+              const { product, quantity, unit, totalPrice } = card;
 
               return (
                 <div
@@ -110,10 +107,18 @@ export const CartItems = () => {
                         className="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"
                         disabled={updateItem.isPending}
                         onClick={() =>
-                          updateItem.mutate({
-                            productId: product.id,
-                            quantity: quantity - 1,
-                          })
+                          updateItem.mutate(
+                            {
+                              productId: product.id,
+                              quantity: quantity - 1,
+                            },
+                            {
+                              onError: (error) =>
+                                toast.error(
+                                  error.message || "Failed to update item",
+                                ),
+                            },
+                          )
                         }
                       >
                         −
@@ -126,10 +131,15 @@ export const CartItems = () => {
                         className="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800"
                         disabled={updateItem.isPending}
                         onClick={() =>
-                          updateItem.mutate({
-                            productId: product.id,
-                            quantity: quantity + 1,
-                          })
+                          updateItem.mutate(
+                            {
+                              productId: product.id,
+                              quantity: quantity + 1,
+                            },
+                            {
+                              onError: (error) => toast.error(error.message),
+                            },
+                          )
                         }
                       >
                         +
@@ -140,7 +150,12 @@ export const CartItems = () => {
                         className="ml-auto text-red-500 text-sm font-medium hover:underline"
                         disabled={removeItem.isPending}
                         onClick={() =>
-                          removeItem.mutate({ productId: product.id })
+                          removeItem.mutate(
+                            { productId: product.id },
+                            {
+                              onError: (error) => toast.error(error.message),
+                            },
+                          )
                         }
                       >
                         Remove
@@ -149,7 +164,7 @@ export const CartItems = () => {
                   </div>
 
                   <div className="sm:text-right font-semibold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow)">
-                    ${lineTotal}
+                    ${totalPrice}
                   </div>
                 </div>
               );

@@ -10,7 +10,8 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
 import { useLogout } from "@/hooks/useLogout";
 import { useCart } from "@/hooks/useCart";
@@ -47,6 +48,17 @@ const Navbar = () => {
   };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const handleLogout = () => {
+    logout.mutate(undefined, {
+      onSuccess: () => {
+        toast.success("Logged out");
+        router.push("/");
+        router.refresh();
+      },
+      onError: () => toast.error(logout.error?.message || "Logout failed"),
+    });
+  };
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -147,6 +159,23 @@ const Navbar = () => {
               <icons.Search className="w-6 h-6" />
             </button>
 
+            {/* Cart */}
+            <Link
+              href="/cart"
+              className="relative p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-colors text-(--color-primary-darkBlue) dark:text-gray-200"
+              aria-label="Shopping cart"
+            >
+              {/* <icons.Mail className="w-6 h-6" /> */}
+
+              <ShoppingCart className="w-6 h-6" />
+
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 text-white text-xs font-bold">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
+            </Link>
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -171,8 +200,7 @@ const Navbar = () => {
                   </Link>
                   <Button
                     variant="outline"
-                    // onClick={handleLogout}
-                    onClick={() => logout.mutate()}
+                    onClick={handleLogout}
                     disabled={logout.isPending}
                     className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
                     dark:text-(--color-secondary-monYellow) px-4 py-2"
@@ -304,8 +332,7 @@ const Navbar = () => {
                   </Link>
                   <Button
                     variant="outline"
-                    // onClick={handleLogout}
-                    onClick={() => logout.mutate()}
+                    onClick={handleLogout}
                     disabled={logout.isPending}
                     className="w-full py-3 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
                   >

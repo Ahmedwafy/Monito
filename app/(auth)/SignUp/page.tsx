@@ -9,10 +9,8 @@ import { useSignup } from "@/hooks/useSignup";
 import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
-  // const router = useRouter();
   const signup = useSignup();
   const router = useRouter();
-  const { isPending } = useSignup();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -135,10 +133,10 @@ export default function SignUpPage() {
           <Button
             type="submit"
             variant="primary"
-            disabled={isPending}
+            disabled={signup.isPending}
             className="w-full py-4 text-lg mt-2"
           >
-            {isPending ? "Creating account..." : "Sign Up"}
+            {signup.isPending ? "Creating account..." : "Sign Up"}
           </Button>
         </form>
 

@@ -26,16 +26,5 @@ const fetchSignup = async (input: SignupInput) => {
 };
 
 export function useSignup() {
-  return useMutation({
-    mutationFn: fetchSignup,
-    onSuccess: async () => {
-      {
-        //  If API does auto-login → uncomment the following lines to invalidate queries and refresh the page
-        //   await queryClient.invalidateQueries({ queryKey: ["me"] });
-        //   await queryClient.invalidateQueries({ queryKey: ["favorites"] });
-        //   router.push("/");
-        //   router.refresh();
-      }
-    },
-  });
+  return useMutation({ mutationFn: fetchSignup });
 }

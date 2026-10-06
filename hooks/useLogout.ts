@@ -2,12 +2,9 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 export function useLogout() {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   return useMutation({
     mutationFn: async () => {
@@ -20,12 +17,6 @@ export function useLogout() {
       queryClient.setQueryData(["me"], null);
       queryClient.setQueryData(["favorites"], []);
       queryClient.setQueryData(["cart"], []);
-      toast.success("Logged out");
-      router.push("/");
-      router.refresh();
-    },
-    onError: () => {
-      toast.error("Logout failed");
     },
   });
 }

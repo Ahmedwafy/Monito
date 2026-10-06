@@ -8,17 +8,15 @@ import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { petsData } from "@/app/mock-data/mockPets";
 import * as icons from "@/assets/icons";
-// import { toast } from "sonner";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { useFavorites } from "@/hooks/useFavorites";
-// import { useQueryClient } from "@tanstack/react-query";
 import { useMe } from "@/hooks/useMe";
 import { useToggleFavorite } from "@/hooks/useToggleFavorite";
 import { useUpdateProfile } from "@/hooks/useUpdateProfile";
 
 const ProfilePage = () => {
-  // const router = useRouter();
-  // const queryClient = useQueryClient();
-
+  const router = useRouter();
   const toggleFavorite = useToggleFavorite();
   const updateProfile = useUpdateProfile();
   const { data: user, isLoading: isUserLoading } = useMe();
@@ -42,20 +40,39 @@ const ProfilePage = () => {
   }, [user]);
 
   const handleRemoveFavorite = (petId: number) => {
-    toggleFavorite.mutate({
-      petId,
-      isFavorite: true, // true = currently favorite → DELETE
-    });
+    toggleFavorite.mutate(
+      {
+        petId,
+        isFavorite: true, // true = currently favorite → DELETE
+      },
+      {
+        onSuccess: () => toast.success("Removed from favorites"),
+        onError: (error) => {
+          if (error.message === "Unauthorized") {
+            toast.error("Please log in to manage favorites");
+            router.push("/Login");
+            return;
+          }
+          toast.error(error.message);
+        },
+      },
+    );
   };
 
   // Handle Save Changes
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile.mutate({
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      address: form.address.trim(),
-    });
+    updateProfile.mutate(
+      {
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        address: form.address.trim(),
+      },
+      {
+        onSuccess: () => toast.success("Profile updated"),
+        onError: (error) => toast.error(error.message),
+      },
+    );
   };
 
   if (isUserLoading || isFavoritesLoading) {

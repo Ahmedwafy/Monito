@@ -5,7 +5,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) py-16 md:py-24">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-xl p-6 md:p-10 border border-transparent dark:border-(--color-card-border)">
-          <h1 className="text-4xl md:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100) mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-4">
             Privacy Policy
           </h1>
 

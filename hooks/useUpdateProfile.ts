@@ -2,7 +2,6 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
 import type { AuthUser } from "./useMe";
 
 type ProfileInput = {
@@ -30,10 +29,6 @@ export function useUpdateProfile() {
     },
     onSuccess: (user) => {
       queryClient.setQueryData(["me"], user);
-      toast.success("Profile updated");
-    },
-    onError: (error: Error) => {
-      toast.error(error.message);
     },
   });
 }

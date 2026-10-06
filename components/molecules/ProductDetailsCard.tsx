@@ -2,10 +2,16 @@
 import Link from "next/link";
 import Button from "../atoms/Button";
 import * as icons from "@/assets/icons";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useRemoveFromCart } from "@/hooks/useRemoveFromCart";
+import { productsData } from "@/app/mock-data/mockProducts";
+import { useCart } from "@/hooks/useCart";
+import { useAddToCart } from "@/hooks/useAddToCart";
+import { toast } from "sonner";
 
 interface ProductDetailsCardProps {
   product: {
+    id: number;
     name: string;
     price: string;
     category: string;
@@ -21,6 +27,48 @@ const ProductDetailsCard = ({
 }: {
   product: ProductDetailsCardProps["product"];
 }) => {
+  const router = useRouter();
+  const { data: cart = [] } = useCart();
+  const addToCart = useAddToCart();
+
+  const removeItem = useRemoveFromCart(); // remove item from cart
+
+  // Check if the product is already in the cart
+  const inCart = cart.some((item) => item.productId === product.id);
+
+  const handleAddToCart = () => {
+    addToCart.mutate(
+      { productId: product.id, quantity: 1 },
+      {
+        onSuccess: () => {
+          toast.success("Added to cart");
+        },
+        onError: (error) => {
+          if (error.message === "Unauthorized") {
+            toast.error("Please log in to manage your cart");
+            router.push("/Login");
+            return;
+          }
+          toast.error(error.message || "Failed to add to cart");
+        },
+      },
+    );
+  };
+
+  const handleRemoveFromCart = () => {
+    removeItem.mutate(
+      { productId: product.id },
+      {
+        onSuccess: () => {
+          toast.success("Removed from cart");
+        },
+        onError: (error: Error) => {
+          toast.error(error.message || "Failed to remove from cart");
+        },
+      },
+    );
+  };
+
   return (
     <div className="w-full lg:w-96 lg:min-w-[380px] order-1 lg:order-2 lg:sticky lg:top-8 h-fit space-y-6">
       <div className="bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-2xl shadow-xl p-6 md:p-8">
@@ -58,19 +106,38 @@ const ProductDetailsCard = ({
           </div>
         </div>
 
-        <div className="mt-10">
-          <Button
-            variant="primary"
-            className="w-full py-4 text-lg dark:bg-(--action-primary) dark:text-(--surface-page) hover:bg-(--color-primary-darkBlue)/90 dark:hover:bg-(--action-accent) dark:hover:text-(--action-hover-text) transition"
-            onClick={() => {
-              // handleAddToCart(product.id); // TODO: Implement add to cart functionality
-              redirect("/cart");
-            }}
-          >
-            Add to Cart
-            <icons.ChevronRight className="ml-2 w-5 h-5" />
-          </Button>
-          <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-10 space-y-3">
+          {!inCart ? (
+            <Button
+              variant="primary"
+              className="w-full py-4 text-lg ..."
+              disabled={addToCart.isPending}
+              onClick={handleAddToCart}
+            >
+              {addToCart.isPending ? "Adding..." : "Add to Cart"}
+              <icons.ChevronRight className="ml-2 w-5 h-5" />
+            </Button>
+          ) : (
+            <>
+              <Button
+                variant="primary"
+                className="w-full py-4 text-lg ..."
+                disabled={addToCart.isPending}
+                onClick={handleAddToCart}
+              >
+                {addToCart.isPending ? "Updating..." : "Add one more"}
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full py-3 text-red-600 border-red-300 ..."
+                disabled={removeItem.isPending}
+                onClick={handleRemoveFromCart}
+              >
+                {removeItem.isPending ? "Removing..." : "Remove from Cart"}
+              </Button>
+            </>
+          )}
+          <p className="mt-4 text-center text-sm text-gray-500">
             Free shipping on orders over $50
           </p>
         </div>

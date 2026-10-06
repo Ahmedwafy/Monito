@@ -16,8 +16,6 @@ interface ProductPageProps {
   params: Promise<{ id: string }>;
 }
 
-// const productId = 1; // For testing, replace with dynamic value from params
-
 const SingleProductPage = async ({ params }: ProductPageProps) => {
   // -- VIP: Always await the params promise to get the actual params object before trying to access its properties. even if it's not a promise,
   // awaiting it will just give you the same object back. In Next.js app router, params are passed as a promise, so you must await it to get the real params object.
