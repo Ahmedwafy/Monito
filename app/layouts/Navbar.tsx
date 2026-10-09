@@ -8,8 +8,8 @@ import * as icons from "@/assets/icons";
 import * as images from "@/assets/images/images";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { Heart, ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
@@ -29,14 +29,18 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams.get("search") ?? "";
+  const [searchQuery, setSearchQuery] = useState(urlSearch); // Initialize searchQuery with the value from the URL : Sync searchQuery with URL when it changes
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const { data: user, isLoading: isUserLoading } = useMe();
-  const logout = useLogout();
+  const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const { data: user } = useMe();
+  const logout = useLogout();
   const { data: cart = [] } = useCart();
+
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
@@ -53,25 +57,54 @@ const Navbar = () => {
     logout.mutate(undefined, {
       onSuccess: () => {
         toast.success("Logged out");
-        router.push("/");
+        router.replace("/");
         router.refresh();
       },
       onError: () => toast.error(logout.error?.message || "Logout failed"),
     });
   };
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    if (query.trim() !== "") {
-      router.push(`/available-pets?search=${encodeURIComponent(query.trim())}`);
-    } else {
-      router.push("/available-pets");
+  const handleSearchChange = (value: string) => {
+    // 1) Update the search query state immediately
+    setSearchQuery(value);
+
+    // 2) Clear any existing timeout to prevent multiple navigations
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
     }
+
+    // 3) Set a new timeout to navigate after 500ms of inactivity
+    // Store the timeout ID in the ref so we can clear it later if needed
+    searchTimeoutRef.current = setTimeout(() => {
+      searchTimeoutRef.current = null; // <-- جديد
+      if (value.trim() !== "") {
+        router.push(
+          `/available-pets?search=${encodeURIComponent(value.trim())}`,
+        );
+      } else {
+        router.push("/available-pets");
+      }
+    }, 500);
   };
 
+  // Cleanup the timeout timer when the component unmounts
   useEffect(() => {
-    setIsSearchOpen(false);
-    setSearchQuery("");
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!searchTimeoutRef.current) setSearchQuery(urlSearch);
+  }, [urlSearch]);
+
+  useEffect(() => {
+    if (pathname !== "/available-pets") {
+      setIsSearchOpen(false);
+      setSearchQuery("");
+    }
   }, [pathname]);
 
   if (!mounted) {
@@ -142,7 +175,7 @@ const Navbar = () => {
                 type="text"
                 placeholder="Search pets by name..."
                 value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full bg-white dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-2.5 text-sm focus:outline-none focus:border-(--color-secondary-monYellow) transition-all"
               />
               <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -170,7 +203,7 @@ const Navbar = () => {
               <ShoppingCart className="w-6 h-6" />
 
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 text-white text-xs font-bold">
+                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 dark:bg-amber-100! dark:text-black! text-white text-xs font-bold">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -257,7 +290,7 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* Mobile Search Bar */}
+        {/* Mobile Search input */}
         {isSearchOpen && (
           <div className="md:hidden px-4 pb-4 bg-white dark:bg-(--color-neutral-5) border-b">
             <div className="relative">
@@ -265,7 +298,7 @@ const Navbar = () => {
                 type="text"
                 placeholder="Search pets by name..."
                 value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="w-full bg-gray-100 dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
               />
               <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -285,11 +318,9 @@ const Navbar = () => {
             <div className="flex justify-between items-center mb-10">
               <Link href="/" onClick={closeMobileMenu}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-(--color-secondary-monYellow) rounded-full flex items-center justify-center text-(--color-primary-darkBlue) font-bold text-xl">
-                    OMF
-                  </div>
+                  <div className="w-10 h-10 bg-(--color-secondary-monYellow) rounded-full flex items-center justify-center text-(--color-primary-darkBlue) font-bold text-xl"></div>
                   <span className="font-bold text-2xl dark:text-neutral-100">
-                    One More Friend
+                    Monito
                   </span>
                 </div>
               </Link>

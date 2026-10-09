@@ -38,7 +38,9 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <RouteLoader />
             </Suspense>
-            <Navbar />
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
             {children}
             <Toaster position="top-right" richColors />
             <Footer />

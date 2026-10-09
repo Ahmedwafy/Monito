@@ -21,14 +21,16 @@ const AvailablePetsPage = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  // Read search query from URL
-  const urlSearchQuery = searchParams.get("search")?.trim() || "";
+  // Read search query from URL → if exists
+  const searchQuery = (searchParams.get("search")?.trim() || "").toLowerCase();
+  const rawSearch = searchParams.get("search")?.trim() || "";
+
   const categoryFromUrl = searchParams.get("type")?.trim() || "All"; // if no searchParams → Set filter to default "All"
 
   const [typeFilter, setTypeFilter] = useState(categoryFromUrl);
   const [ageFilter, setAgeFilter] = useState("All");
   const [genderFilter, setGenderFilter] = useState("All");
-  const [searchQuery, setSearchQuery] = useState(urlSearchQuery); // Sync with URL
+  // const [searchQuery, setSearchQuery] = useState(urlSearchQuery); // Sync with URL
 
   // used new Set() coz → O(1)
   //  using Array [1, 5, 8] then check if pet's id exists: favorites.includes(5) will cause → O(n)
@@ -129,9 +131,9 @@ const AvailablePetsPage = () => {
   // }, []);
 
   // Sync searchQuery with URL when it changes
-  useEffect(() => {
-    setSearchQuery(urlSearchQuery);
-  }, [urlSearchQuery]);
+  // useEffect(() => {
+  //   setSearchQuery(urlSearchQuery);
+  // }, [urlSearchQuery]);
 
   // Combined filtering: Type + Age + Gender + Search by name
   const filteredPets = petsData.filter((pet) => {
@@ -157,14 +159,29 @@ const AvailablePetsPage = () => {
   //   }
   // };
 
+  const clearSearch = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("search");
+    const qs = params.toString();
+    router.replace(qs ? `/available-pets?${qs}` : "/available-pets", {
+      scroll: false,
+    });
+  };
+
   // Clear all filters and search
   const clearAll = () => {
     setTypeFilter("All");
     setAgeFilter("All");
     setGenderFilter("All");
-    setSearchQuery("");
     router.push("/available-pets", { scroll: false });
   };
+  // const clearAll = () => {
+  //   setTypeFilter("All");
+  //   setAgeFilter("All");
+  //   setGenderFilter("All");
+  //   setSearchQuery("");
+  //   router.push("/available-pets", { scroll: false });
+  // };
 
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
@@ -197,7 +214,7 @@ const AvailablePetsPage = () => {
             {(typeFilter !== "All" ||
               ageFilter !== "All" ||
               genderFilter !== "All" ||
-              searchQuery) && (
+              rawSearch) && (
               <button
                 onClick={clearAll}
                 className="text-sm font-medium text-(--color-primary-darkBlue) hover:text-(--color-secondary-monYellow) transition-colors flex items-center gap-1"
@@ -266,6 +283,17 @@ const AvailablePetsPage = () => {
               </select>
             </div>
           </div>
+
+          {rawSearch && (
+            <div className="mt-6 flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-(--color-secondary-monYellow)/30 px-4 py-1.5 text-sm font-medium text-(--color-primary-darkBlue) dark:text-neutral-100">
+                Search: “{rawSearch}”
+                <button onClick={clearSearch} aria-label="Clear search">
+                  <icons.CircleX className="w-4 h-4" />
+                </button>
+              </span>
+            </div>
+          )}
 
           <div className="mt-8 text-center md:text-left">
             <p className="text-base font-medium text-gray-700 dark:text-gray-300">
@@ -355,7 +383,8 @@ const AvailablePetsPage = () => {
                     type="button"
                     onClick={(e) => handleFavoriteClick(e, pet.id)}
                     disabled={!isSuccess || favoriteLoadingIds.has(pet.id)}
-                    className="absolute top-4 right-4 z-10 rounded-full bg-white/90 dark:bg-(--color-neutral-0)/90 p-2.5 shadow-md hover:scale-105 transition disabled:opacity-50"
+                    className="absolute top-4 right-4 z-10 rounded-full bg-white/90 dark:bg-(--color-neutral-0)/90 
+                    p-2.5 shadow-md hover:scale-105 transition disabled:opacity-50"
                     aria-label={
                       favoriteIds.includes(pet.id)
                         ? "Remove from favorites"
@@ -412,7 +441,7 @@ const AvailablePetsPage = () => {
                         // checked={favoritesChecked}
                         checked={isSuccess}
                         onClick={(event) => handleFavoriteClick(event, pet.id)}
-                        className="w-full"
+                        className="w-full dark:hover:bg-(--surface-page) dark:hover:text-(--color-neutral-80)"
                       />
                     </div>
                     <Link href={`/pets/${pet.id}`}>

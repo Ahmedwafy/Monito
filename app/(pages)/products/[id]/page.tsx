@@ -83,4 +83,3 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
 };
 
 export default SingleProductPage;
-// dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border)
