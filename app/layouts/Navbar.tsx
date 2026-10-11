@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
 import { useLogout } from "@/hooks/useLogout";
 import { useCart } from "@/hooks/useCart";
+import { useIsMobile } from "@/hooks/ui/useMobile";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -26,6 +27,7 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const isMobile = useIsMobile();
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
@@ -76,7 +78,7 @@ const Navbar = () => {
     // 3) Set a new timeout to navigate after 500ms of inactivity
     // Store the timeout ID in the ref so we can clear it later if needed
     searchTimeoutRef.current = setTimeout(() => {
-      searchTimeoutRef.current = null; // <-- جديد
+      searchTimeoutRef.current = null; // <-- New line added to reset the ref after the timeout executes
       if (value.trim() !== "") {
         router.push(
           `/available-pets?search=${encodeURIComponent(value.trim())}`,
@@ -113,10 +115,13 @@ const Navbar = () => {
     );
   }
 
+  if (isMobile === null) return null;
+
   return (
-    <>
-      <header className="sticky top-0 z-50 bg-white/90 dark:bg-(--color-neutral-0)/90 backdrop-blur-md shadow-sm transition-colors duration-300">
-        <nav className="container mx-auto px-4 py-4 md:py-5 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-(--color-neutral-0)/90 backdrop-blur-md shadow-sm transition-colors duration-300">
+      {/* ●──────────────────────────● Desktop View ●──────────────────────────● */}
+      {!isMobile && (
+        <nav className="container mx-auto px-4 py-5 flex items-center justify-between dark:shadow-lg transition-colors duration-300">
           {/* Logo */}
           <Link href="/">
             <div className="relative">
@@ -133,7 +138,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center md:gap-6 gap-8">
+          <div className="flex items-center gap-6">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -169,7 +174,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Search */}
-          <div className="hidden md:block relative w-60">
+          <div className="block relative w-60">
             <div className="relative">
               <input
                 type="text"
@@ -183,15 +188,7 @@ const Navbar = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-3 md:gap-6">
-            {/* Mobile Search */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="md:hidden p-2 text-(--color-primary-darkBlue) dark:text-gray-200"
-            >
-              <icons.Search className="w-6 h-6" />
-            </button>
-
+          <div className="flex items-center gap-6">
             {/* Cart */}
             <Link
               href="/cart"
@@ -223,7 +220,7 @@ const Navbar = () => {
             </button>
 
             {/* Auth section - Desktop */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-3">
               {user ? (
                 <>
                   <Link href="/profile">
@@ -268,7 +265,7 @@ const Navbar = () => {
             </div>
 
             {/* Adopt Now - Desktop */}
-            <div className="hidden lg:block">
+            <div>
               <Link href="/available-pets">
                 <Button
                   variant="primary"
@@ -279,125 +276,196 @@ const Navbar = () => {
                 </Button>
               </Link>
             </div>
+          </div>
+        </nav>
+      )}
+
+      {/* ●──────────────────────────● Mobile View ●──────────────────────────● */}
+      {isMobile && (
+        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/">
+            <div className="relative">
+              <div
+                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-600/30 z-0 
+              rounded-[15%] transition-colors"
+              />
+              <Image
+                src={images.logo}
+                alt="Logo"
+                className="relative dark:invert right-10 left-8 sm:-left-10"
+              />
+            </div>
+          </Link>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Search */}
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="p-2 text-(--color-primary-darkBlue) dark:text-gray-200"
+            >
+              <icons.Search className="w-6 h-6" />
+            </button>
+
+            {/* Cart Icon */}
+            <Link
+              href="/cart"
+              className="relative p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-colors text-(--color-primary-darkBlue) dark:text-gray-200"
+              aria-label="Shopping cart"
+            >
+              {/* <icons.Mail className="w-6 h-6" /> */}
+
+              <ShoppingCart className="w-6 h-6" />
+
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 dark:bg-amber-100! dark:text-black! text-white text-xs font-bold">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden text-(--color-primary-darkBlue) dark:text-gray-200 p-2"
+              className="text-(--color-primary-darkBlue) dark:text-gray-200 p-2"
             >
               <icons.Menu className="w-8 h-8" />
             </button>
           </div>
-        </nav>
 
-        {/* Mobile Search input */}
-        {isSearchOpen && (
-          <div className="md:hidden px-4 pb-4 bg-white dark:bg-(--color-neutral-5) border-b">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search pets by name..."
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full bg-gray-100 dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
-              />
-              <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            </div>
-          </div>
-        )}
-      </header>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-60 bg-black/60 backdrop-blur-sm md:hidden"
-            onClick={closeMobileMenu}
-          />
-          <div className="fixed right-0 top-0 h-full w-4/5 max-w-xs bg-white dark:bg-(--color-neutral-5) shadow-2xl z-70 p-6 flex flex-col md:hidden">
-            <div className="flex justify-between items-center mb-10">
-              <Link href="/" onClick={closeMobileMenu}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-(--color-secondary-monYellow) rounded-full flex items-center justify-center text-(--color-primary-darkBlue) font-bold text-xl"></div>
-                  <span className="font-bold text-2xl dark:text-neutral-100">
-                    Monito
-                  </span>
-                </div>
-              </Link>
-              <button
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <>
+              {/* Background overlay */}
+              <div
+                className="fixed inset-0 z-100 bg-black/60 backdrop-blur-sm"
                 onClick={closeMobileMenu}
-                className="text-3xl text-gray-500 dark:text-gray-400"
+              />
+
+              {/* Menu drawer */}
+              <div
+                className="fixed right-0 top-0 z-110 flex h-dvh w-4/5 max-w-xs flex-col
+                  bg-white p-6 shadow-2xl  dark:bg-neutral-900"
               >
-                ✕
-              </button>
-            </div>
+                <div className="mb-10 flex items-center justify-between">
+                  <Link href="/" onClick={closeMobileMenu}>
+                    <span className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-white">
+                      Monito
+                    </span>
+                  </Link>
 
-            <div className="flex flex-col gap-6 text-lg font-medium">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
+                  <button
+                    type="button"
                     onClick={closeMobileMenu}
-                    className={`py-3 transition-colors ${
-                      isActive
-                        ? "text-(--color-secondary-monYellow) dark:text-yellow-400 font-semibold"
-                        : "text-(--color-primary-darkBlue) dark:text-gray-200"
-                    }`}
+                    aria-label="Close menu"
+                    className="text-2xl text-gray-500 dark:text-gray-300"
                   >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
+                    ✕
+                  </button>
+                </div>
 
-            {/* Auth - Mobile */}
-            <div className="mt-8 flex flex-col gap-3">
-              {user ? (
-                <>
-                  <Link href="/profile">
-                    <p className="text-(--color-primary-darkBlue) dark:text-gray-200 font-medium mb-8">
-                      {user.name}
-                    </p>
-                  </Link>
-                  <Button
-                    variant="outline"
-                    onClick={handleLogout}
-                    disabled={logout.isPending}
-                    className="w-full py-3 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue)"
-                  >
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link href="/Login" onClick={closeMobileMenu}>
-                    <Button variant="outline" className="w-full py-3">
-                      Log in
+                {/* Theme Toggle */}
+                <button
+                  onClick={toggleTheme}
+                  className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-all active:scale-90"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <icons.Sun className="w-6 h-6 text-yellow-400 animate-spin-once" />
+                  ) : (
+                    <icons.Moon className="w-6 h-6 text-(--color-primary-darkBlue) animate-spin-once" />
+                  )}
+                </button>
+
+                <div className="flex flex-col gap-4 text-lg font-medium">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href;
+
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={closeMobileMenu}
+                        className={`py-3 transition-colors ${
+                          isActive
+                            ? "font-semibold text-amber-500"
+                            : "text-(--color-primary-darkBlue) dark:text-gray-200"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-8 flex flex-col gap-3">
+                  {user ? (
+                    <>
+                      <Link
+                        href="/profile"
+                        onClick={closeMobileMenu}
+                        className="font-medium text-(--color-primary-darkBlue) dark:text-white"
+                      >
+                        {user.name}
+                      </Link>
+
+                      <Button
+                        variant="outline"
+                        onClick={handleLogout}
+                        disabled={logout.isPending}
+                        className="w-full"
+                      >
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/Login" onClick={closeMobileMenu}>
+                        <Button variant="outline" className="w-full">
+                          Log in
+                        </Button>
+                      </Link>
+
+                      <Link href="/SignUp" onClick={closeMobileMenu}>
+                        <Button variant="primary" className="w-full">
+                          Sign up
+                        </Button>
+                      </Link>
+                    </>
+                  )}
+                </div>
+
+                <div className="mt-auto pt-8">
+                  <Link href="/available-pets" onClick={closeMobileMenu}>
+                    <Button variant="primary" className="w-full py-4">
+                      Adopt Now
+                      <icons.Heart className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
-                  <Link href="/SignUp" onClick={closeMobileMenu}>
-                    <Button variant="primary" className="w-full py-3">
-                      Sign up
-                    </Button>
-                  </Link>
-                </>
-              )}
-            </div>
-
-            <div className="mt-auto pt-10">
-              <Link href="/available-pets" onClick={closeMobileMenu}>
-                <Button variant="primary" className="w-full py-4 text-lg">
-                  Adopt Now
-                  <icons.Heart className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </>
+                </div>
+              </div>
+            </>
+          )}
+        </nav>
       )}
-    </>
+
+      {/* Mobile Search input */}
+      {isSearchOpen && (
+        <div className="px-4 pb-4 bg-white dark:bg-(--color-neutral-5) border-b">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search pets by name..."
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="w-full bg-gray-100 dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
+            />
+            <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 
