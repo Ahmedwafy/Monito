@@ -179,9 +179,13 @@ export const CartItems = () => {
               </span>
             </div>
 
-            <Button variant="primary" className="w-full py-4 text-lg" disabled>
+            {/* <Button variant="primary" className="w-full py-4 text-lg" disabled>
               Checkout (Coming Soon)
-            </Button>
+            </Button> */}
+
+            <Link href="/checkout">
+              <Button variant="primary">Checkout</Button>
+            </Link>
           </div>
         )}
       </div>
