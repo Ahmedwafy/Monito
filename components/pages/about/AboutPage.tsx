@@ -31,8 +31,8 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20 w-[99%] mx-auto rounded-2xl mt-2">
-      {/* Hero / Cover Section */}
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20 mx-auto">
+      {/* === Hero / Cover Section === */}
       <section className="px-4 py-12 md:py-24">
         <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-32 px-6 md:px-16">
           {/* Decorative rotated blobs */}
@@ -78,7 +78,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Story Section */}
+      {/* === Our Story Section === */}
       <section className="container mx-auto px-4 py-16 md:py-24" id="our-story">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-8 transition-colors duration-300">
@@ -126,7 +126,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* === Team Section === */}
       <section
         className="bg-white dark:bg-(--color-neutral-0) py-16 md:py-24 transition-colors duration-300"
         id="team"
@@ -214,7 +214,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Mission & Values */}
+      {/* === Mission & Values === */}
       <section className="bg-(--color-secondary-monYellow-special)! dark:bg-(--color-card-bg)! py-16 md:py-24 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -276,7 +276,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA Bottom */}
+      {/* === CTA Bottom === */}
       <section className="px-4 py-16 text-center">
         <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">

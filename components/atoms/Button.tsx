@@ -13,7 +13,7 @@ import { ButtonHTMLAttributes } from "react";
 // children?: ReactNode;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "outlineWithHeart";
   loading?: boolean;
 }
 
@@ -46,10 +46,16 @@ export default function Button({
       focus:ring-[var(--focus-ring)]
       disabled:opacity-40 disabled:cursor-not-allowed
     `,
+    // hover:bg-(--action-outline-hover) hover:text-(--action-hover-text) → was in outline style
     outline: `
+      border border-(--action-primary) text-(--action-primary)
+      hover:bg-(--action-outline-hover) hover:text-(--action-hover-text) 
+      focus:ring-(--focus-ring)
+      disabled:opacity-50 disabled:cursor-not-allowed
+    `,
+    outlineWithHeart: `
       border border-[var(--action-primary)] text-[var(--action-primary)]
-      hover:bg-[var(--action-outline-hover)] hover:text-[var(--action-hover-text)]
-      focus:ring-[var(--focus-ring)]
+      focus:ring-(--focus-ring)
       disabled:opacity-50 disabled:cursor-not-allowed
     `,
     ghost: `

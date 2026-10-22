@@ -190,6 +190,7 @@ const SinglePetPage = async ({ params }: PetPageProps) => {
 
               <div className="mt-8">
                 <div className="mb-4">
+                  {/* Add / Remove from Favorites btn */}
                   <PetFavoriteControl
                     petId={pet.id}
                     initialIsFavorite={favorite}

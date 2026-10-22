@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 import { useMe } from "@/hooks/useMe";
 import { useLogout } from "@/hooks/useLogout";
@@ -23,7 +23,8 @@ const navLinks = [
   { label: "Categories", href: "/categories" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Join Our Family", href: "/join-our-family", icon: Heart },
+  { label: "Join Our Family", href: "/join-our-family" },
+  // { label: "Explore", href: "/explore" },
 ];
 
 const Navbar = () => {
@@ -155,12 +156,6 @@ const Navbar = () => {
                   `}
                 >
                   {link.label}
-                  {link.icon && (
-                    <link.icon
-                      className="inline-block ml-2 text-red-400"
-                      fill="currentColor"
-                    />
-                  )}
                   <span
                     className={`absolute -bottom-1 left-0 w-full h-0.5 rounded-full origin-center transition-transform duration-300 ${
                       isActive

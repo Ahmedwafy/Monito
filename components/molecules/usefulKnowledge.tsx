@@ -21,8 +21,8 @@ const Knowledge = () => {
           >
             <Button
               variant="outline"
-              className="flex items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! hidden sm:flex
-                dark:text-(--color-primary-darkBlue)! dark:hover:text-(--color-secondary-monYellow)! dark:text-(--color-secondary-monYellow)! dark:border-none"
+              className="items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! hidden sm:flex
+                dark:text-(--color-secondary-monYellow)! dark:border-none dark:hover:text-(--color-neutral-0)!"
             >
               View More
               <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />
