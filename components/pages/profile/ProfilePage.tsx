@@ -94,7 +94,7 @@ const ProfilePage = () => {
 
   if (isUserLoading || isFavoritesLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40)">
+      <div className="min-h-screen flex items-center justify-center bg-(--page-bg)">
         <p className="text-lg font-medium text-(--color-primary-darkBlue) animate-pulse">
           Loading profile...
         </p>
@@ -107,37 +107,41 @@ const ProfilePage = () => {
   const initial = user.name?.charAt(0)?.toUpperCase() || "U";
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) pb-20">
-      {/* ========== Header ==========*/}
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* === Header === */}
       <section className="px-4 py-12 md:py-16">
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-white border border-transparent rounded-3xl shadow-xl p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6">
+          <div className="bg-(--profile-bg-1)! border border-transparent rounded-3xl shadow-xl p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6">
             {/* Avatar */}
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-(--color-primary-darkBlue) flex items-center justify-center text-4xl md:text-5xl font-bold text-white shadow-lg">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-(--profile-bg-2) text-(--profile-user-icon-text-1) flex items-center justify-center text-4xl md:text-5xl font-bold shadow-lg">
               {initial}
             </div>
 
             <div className="text-center sm:text-left flex-1">
-              <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue)">
+              <h1 className="text-3xl md:text-4xl font-bold text-(--profile-user-icon-text-2)">
                 {user.name}
               </h1>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-(--profile-user-icon-text-3)">
                 {user.email}
               </p>
               {user.phone && (
-                <p className="text-sm text-gray-500">{user.phone}</p>
+                <p className="text-sm text-(--profile-user-icon-text-3)">
+                  {user.phone}
+                </p>
               )}
               {user.address && (
-                <p className="text-sm text-gray-500">{user.address}</p>
+                <p className="text-sm text-(--profile-user-icon-text-3)">
+                  {user.address}
+                </p>
               )}
-              <p className="mt-3 text-sm text-gray-500">
+              <p className="mt-3 text-sm text-(--profile-user-icon-text-3)">
                 {favoritePets.length} favorite
                 {favoritePets.length === 1 ? "" : "s"}
               </p>
             </div>
 
             <Link href="/available-pets">
-              <Button variant="primary">Browse Pets</Button>
+              <Button variant="outline">Browse Pets</Button>
             </Link>
           </div>
         </div>
@@ -145,31 +149,28 @@ const ProfilePage = () => {
 
       {/* ========== Edit Profile ========== */}
       <section className="container mx-auto px-4 max-w-5xl mb-12">
-        <div
-          className="bg-white border border-transparent
-        rounded-3xl shadow-xl p-6 md:p-8"
-        >
+        <div className="bg-(--profile-bg-1) border border-transparent rounded-3xl shadow-xl p-6 md:p-8">
           <button
             type="button"
             onClick={() => toggleSection("profile")}
             className="w-full flex items-center justify-between p-6 md:p-8 text-left"
           >
-            <h2 className="text-2xl font-bold text-(--color-primary-darkBlue)">
+            <h2 className="text-2xl font-bold text-(--profile-user-icon-text-2)">
               Edit Profile
             </h2>
             <span
               className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full
-                border border-gray-200 bg-gray-50
-
+                 bg-(--edit-profile-arrow-bg)!
+                border-transparent
                 transition-all duration-300 ease-in-out 
                 ${
                   openSections.profile
-                    ? "rotate-180 bg-(--color-secondary-monYellow)/30 border-(--color-secondary-monYellow)/50"
+                    ? "rotate-180 bg-(--edit-profile-arrow-bg)!"
                     : "rotate-0"
                 }`}
             >
               <ChevronDown
-                className={`h-5 w-5 text-(--color-primary-darkBlue) transition-transform duration-300`}
+                className={`h-5 w-5 text-(--profile-bg-2) transition-transform duration-300 border-transparent`}
                 strokeWidth={2.5}
               />
             </span>
@@ -187,7 +188,7 @@ const ProfilePage = () => {
                   className="space-y-5 max-w-xl"
                 >
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue)">
+                    <label className="block text-sm font-medium mb-2 text-(--profile-user-icon-text-3)">
                       Name
                     </label>
                     <input
@@ -196,27 +197,27 @@ const ProfilePage = () => {
                       onChange={(e) =>
                         setForm((p) => ({ ...p, name: e.target.value }))
                       }
-                      className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+                      className="w-full rounded-xl border-2 border-(--profile-input-border) bg-(--profile-bg-3) px-4 py-3 focus:border-(--input-border-focus) hover:border-(--input-border-hover) focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue)">
+                    <label className="block text-sm font-medium mb-2 text-(--profile-user-icon-text-3)">
                       Email
                     </label>
                     <input
                       type="email"
                       value={user.email}
                       disabled
-                      className="w-full rounded-xl border-2 border-gray-200 bg-gray-100 px-4 py-3 opacity-70 cursor-not-allowed"
+                      className="w-full rounded-xl border-2 border-(--profile-input-border) bg-(--profile-bg-3) px-4 py-3 focus:border-(--input-border-focus) hover:border-(--input-border-hover) focus:outline-none"
                     />
-                    <p className="mt-1 text-xs text-gray-500">
+                    <p className="mt-1 text-xs text-(--profile-user-icon-text-2)">
                       Email cannot be changed
                     </p>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue)">
+                    <label className="block text-sm font-medium mb-2 text-(--profile-user-icon-text-3)">
                       Phone
                     </label>
                     <input
@@ -226,12 +227,12 @@ const ProfilePage = () => {
                         setForm((p) => ({ ...p, phone: e.target.value }))
                       }
                       placeholder="01xxxxxxxxx"
-                      className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+                      className="w-full rounded-xl border-2 border-(--profile-input-border) bg-(--profile-bg-3) px-4 py-3 focus:border-(--input-border-focus) hover:border-(--input-border-hover) focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-(--color-primary-darkBlue)">
+                    <label className="block text-sm font-medium mb-2 text-(--profile-user-icon-text-3)">
                       Address
                     </label>
                     <input
@@ -241,13 +242,13 @@ const ProfilePage = () => {
                         setForm((p) => ({ ...p, address: e.target.value }))
                       }
                       placeholder="Your city / address"
-                      className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 focus:border-(--color-secondary-monYellow) focus:outline-none"
+                      className="w-full rounded-xl border-2 border-(--profile-input-border) bg-(--profile-bg-3) px-4 py-3 focus:border-(--input-border-focus) hover:border-(--input-border-hover) focus:outline-none"
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    variant="primary"
+                    variant="outline"
                     disabled={updateProfile.isPending}
                   >
                     {updateProfile.isPending ? "Saving..." : "Save changes"}
@@ -262,7 +263,7 @@ const ProfilePage = () => {
       {/* ========== My Favorites ========== */}
       <section className="container mx-auto px-4 max-w-5xl mb-12">
         <div
-          className="bg-white border border-transparent
+          className="bg-(--profile-bg-1) border border-transparent
         rounded-3xl shadow-xl p-6 md:p-8"
         >
           <button
@@ -270,22 +271,22 @@ const ProfilePage = () => {
             onClick={() => toggleSection("favorites")}
             className="w-full flex items-center justify-between p-6 md:p-8 text-left"
           >
-            <h2 className="text-2xl font-bold text-(--color-primary-darkBlue)">
+            <h2 className="text-2xl font-bold text-(--profile-user-icon-text-2)">
               My Favorites ({favoritePets.length})
             </h2>
             <span
               className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full
-                border border-gray-200 bg-gray-50
-
+                 bg-(--edit-profile-arrow-bg)!
+                border-transparent
                 transition-all duration-300 ease-in-out 
                 ${
                   openSections.favorites
-                    ? "rotate-180 bg-(--color-secondary-monYellow)/30 border-(--color-secondary-monYellow)/50"
+                    ? "rotate-180 bg-(--edit-profile-arrow-bg)!"
                     : "rotate-0"
                 }`}
             >
               <ChevronDown
-                className={`h-5 w-5 text-(--color-primary-darkBlue) transition-transform duration-300`}
+                className={`h-5 w-5 text-(--profile-bg-2) transition-transform duration-300 border-transparent`}
                 strokeWidth={2.5}
               />
             </span>
@@ -299,12 +300,12 @@ const ProfilePage = () => {
             <div className="overflow-hidden">
               <div className="px-6 md:px-8 pb-6 md:pb-8">
                 {favoritePets.length === 0 ? (
-                  <div className="text-center py-16 bg-white rounded-3xl border border-transparent">
+                  <div className="text-center py-16 bg-(--profile-bg-1) rounded-3xl border border-transparent">
                     <div className="text-6xl mb-4 opacity-70">🐾</div>
-                    <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) mb-2">
+                    <h3 className="text-xl font-semibold text-(--edit-profile-card-title) mb-2">
                       No favorites yet
                     </h3>
-                    <p className="text-gray-600 mb-6">
+                    <p className="text-(--edit-profile-card-label) mb-6">
                       Save pets you love and find them here anytime.
                     </p>
                     <Link href="/available-pets">
@@ -316,7 +317,7 @@ const ProfilePage = () => {
                     {favoritePets.map((pet) => (
                       <div
                         key={pet.id}
-                        className="group relative rounded-2xl shadow-lg overflow-hidden flex flex-col bg-white w-full max-w-[340px] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
+                        className="group relative rounded-2xl shadow-lg overflow-hidden flex flex-col bg-(--page-bg) w-full max-w-[340px] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
                       >
                         <div className="relative h-56">
                           <Image
@@ -325,17 +326,17 @@ const ProfilePage = () => {
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                          <div className="absolute top-3 right-3 rounded-full bg-white/90 p-2 shadow">
+                          <div className="absolute top-3 right-3 rounded-full bg-(--profile-bg-1)/90 p-2 shadow">
                             <icons.Heart className="w-5 h-5 text-red-500 fill-red-500" />
                           </div>
                         </div>
 
                         <div className="p-5 flex flex-col gap-3 flex-1">
                           <div>
-                            <h3 className="text-xl font-bold text-(--color-primary-darkBlue)">
+                            <h3 className="text-xl font-bold text-(--profile-user-icon-text-3)">
                               {pet.name}
                             </h3>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-(--profile-user-icon-text-4)">
                               {pet.type} • {pet.age} • {pet.gender}
                             </p>
                           </div>
@@ -348,7 +349,7 @@ const ProfilePage = () => {
                             </Link>
                             <Button
                               variant="outline"
-                              className="w-full border-red-300 text-red-600 ..."
+                              className="w-full border-red-300 text-red-400 ..."
                               disabled={
                                 toggleFavorite.isPending &&
                                 toggleFavorite.variables?.petId === pet.id
@@ -374,14 +375,14 @@ const ProfilePage = () => {
 
       {/* ========== My Orders ========== */}
       <section className="container mx-auto px-4 max-w-5xl mt-16">
-        <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) mb-6">
+        <h2 className="text-2xl font-bold text-(--profile-user-icon-text-2) mb-6">
           My Orders ({orders.length})
         </h2>
 
         {isOrdersLoading ? (
-          <p className="text-gray-500">Loading orders...</p>
+          <p className="text-(--profile-user-icon-text-2)">Loading orders...</p>
         ) : orders.length === 0 ? (
-          <p className="text-gray-600">
+          <p className="text-(--profile-user-icon-text-2)">
             You haven&apos;t placed any orders yet.
           </p>
         ) : (
@@ -392,20 +393,20 @@ const ProfilePage = () => {
               return (
                 <div
                   key={order.id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden border border-transparent"
+                  className="bg-(--profile-bg-1) rounded-2xl shadow-lg overflow-hidden border border-transparent"
                 >
                   {/* Header — always visible */}
                   <button
                     type="button"
                     onClick={() => toggleOrder(order.id)}
                     // onClick={() => toggleSection("orders")}
-                    className="w-full flex flex-wrap items-center justify-between gap-3 p-5 text-left hover:bg-gray-50 transition-colors"
+                    className="w-full flex flex-wrap items-center justify-between gap-3 p-5 text-left hover:bg-(--profile-order-hover-bg) transition-colors"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm text-gray-500 font-mono truncate">
+                      <p className="text-sm text-(--profile-user-icon-text-3) font-mono truncate">
                         #{order.id}
                       </p>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-(--profile-user-icon-text-3) mt-1">
                         {order.createdAt
                           ? new Date(order.createdAt).toLocaleString()
                           : ""}
@@ -416,11 +417,11 @@ const ProfilePage = () => {
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-(--color-secondary-monYellow)/40 text-(--color-primary-darkBlue) capitalize">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-(--user-orders-badge-bg) text-(--user-orders-badge-text) capitalize">
                         {order.status}
                       </span>
                       <span
-                        className={`text-(--color-primary-darkBlue) transition-transform duration-300 ${
+                        className={`text-(--profile-user-icon-text-3) transition-transform duration-300 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                       >
@@ -436,31 +437,31 @@ const ProfilePage = () => {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="px-5 pb-5 pt-0 border-t border-gray-100">
+                      <div className="px-5 pb-5 pt-0 border-t border-(--profile-divider)">
                         <ul className="space-y-2 my-4">
                           {order.items.map((item, idx) => (
                             <li
                               key={`${order.id}-${item.productId}-${idx}`}
-                              className="flex justify-between text-sm text-(--color-primary-darkBlue)"
+                              className="flex justify-between text-sm text-(--profile-user-icon-text-3)"
                             >
                               <span>
                                 {item.name} × {item.quantity}
                               </span>
-                              <span className="text-gray-500">
+                              <span className="text-(--profile-user-icon-text-2)">
                                 {item.price}
                               </span>
                             </li>
                           ))}
                         </ul>
 
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-(--profile-user-icon-text-3)">
                           {order.fullName} · {order.phone}
                           <br />
                           {order.address}, {order.city}
                         </p>
 
                         {order.notes ? (
-                          <p className="mt-2 text-sm text-gray-500 italic">
+                          <p className="mt-2 text-sm text-(--profile-user-icon-text-3) italic">
                             Note: {order.notes}
                           </p>
                         ) : null}

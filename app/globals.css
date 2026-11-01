@@ -60,12 +60,42 @@ body {
     --description-color: #003459;
     --border-1: #003459;
     --btn-1-title: #003459;
-    --btn-1-hover-bg: #fbbf241a;
     --border-2: #003459;
     --btn-2-title: #003459;
     --btn-2-hover-bg: #00345956;
 
-    /*  >>> Available-pets Page Start <<< */
+    /* === #0F172A /////////////////////// Profile Page [Light] === /////////////////////// */
+
+    --profile-bg-1: #ffffff;
+    --profile-bg-2: #003459;
+    --profile-bg-3: #fef9ef;
+    --profile-user-icon-text-1: #ffffff;
+    --profile-user-icon-text-2: #003459;
+    --profile-user-icon-text-3: #4b5563;
+    --profile-user-icon-text-4: #667479;
+    --profile-input-border: #e5e7eb;
+    --profile-divider: #e5e7eb;
+    --profile-order-hover-bg: #fceed5;
+    --input-border-focus: #003459;
+    --input-border-hover: #f7dba7;
+
+    /* === Cart and Checkout [Light] === */
+    --commerce-page-bg: #fceed5;
+    --commerce-card-bg: #ffffff;
+    --commerce-title: #003459;
+    --commerce-text: #242b33;
+    --commerce-muted: #667479;
+    --commerce-border: #e5e7eb;
+    --commerce-input-bg: #ffffff;
+    --commerce-input-text: #1f2937;
+    --commerce-input-border: #e5e7eb;
+    --commerce-input-focus: #003459;
+    --commerce-control-hover-bg: #fceed5;
+    --commerce-skeleton: #e5e7eb;
+
+    /* === /////////////////////// Profile Page [Dark] === /////////////////////// */
+
+    /*  >>> Available-pets Page - Start - <<< */
     /* === Available-pets Page Card [Light] === */
     --available-pet-card-bg: #ffffff;
     --available-pet-name: #003459;
@@ -83,10 +113,7 @@ body {
     --filter-card-sub-title: #003459;
     --filter-card-clearAll: #003459;
     --filter-input-border: #ffedd3;
-    --filter-select-dropdown-text: #003459;
     --filter-select-dropdown-bg: #fceed5;
-    --filter-pets-found-badge-number: #003459;
-    --filter-pets-found-badge-text: #003459;
     --filter-input-focus-border: #f7dba7;
 
     /* >>> Dynamic Pet Page Start [Light] <<< */
@@ -188,7 +215,6 @@ body {
 
     /* === Pet Knowledge section === */
     --pet-knowledge-title: #00171f;
-    --pet-knowledge-description: #00171f;
 
     /* === Register section === */
     --register-section-bg: #fceed5;
@@ -228,14 +254,6 @@ body {
     --cta-border: transparent;
     --cta-title: #003459;
     --cta-description: #4b5563;
-    --cta-btn1-bg: #003459;
-    --cta-btn1-text: #f7dba7;
-    --cta-btn1-text-hover: #f7dba7;
-    --cta-btn1-border-hover: #003459;
-    --cta-btn2-bg: transparent;
-    --cta-btn2-border: #003459;
-    --cta-btn2-text: #003459;
-    --cta-btn2-text-hover: #f7dba7;
 
     /* === Footer [Light] === */
     --footer-bar-bg: #003459;
@@ -305,46 +323,22 @@ body {
     /* === Colors === */
     --color-primary-darkBlue: #003459;
     --color-primary-darkBlue-80: #002a48;
-    --color-primary-darkBlue-60: #00528c;
-    --color-primary-darkBlue-40: #0078cd;
-
     --color-secondary-monYellow: #f7dba7;
     --color-secondary-monYellow-80: #eec77e;
-    --color-secondary-monYellow-60: #f1d092;
     --color-secondary-monYellow-40: #fceed5;
     --color-secondary-monYellow-special: #fdecce;
 
     /* Neutrals */
     --color-neutral-100: #00171f;
     --color-neutral-80: #242b33;
-    --color-neutral-60: #667479;
-    --color-neutral-40: #99a2a5;
-    --color-neutral-20: #ccd1d2;
     --color-neutral-10: #ebeeef;
     --color-neutral-0: #fdfdfd;
 
     /* Extra colors*/
     --color-pinkRed: #ff564f;
-    --color-greenLight: #34c759;
-    --color-orangeShine: #ff912c;
     --color-blueSea: #00a7e7;
 
     /* Semantic surfaces and content colors */
-    --surface-page: #fdfdfd;
-    --surface-card: #ffffff;
-    --surface-elevated: #ffffff;
-    --border-subtle: #ebeeef;
-    --text-primary: #00171f;
-    --text-secondary: #242b33;
-    --text-muted: #667479;
-    --action-primary: #003459;
-    --action-primary-hover: #002a48;
-    --action-secondary: #0078cd;
-    --action-secondary-hover: #00528c;
-    --action-outline-hover: #003459;
-    --action-ghost-hover: #003459;
-    --action-hover-text: #fdfdfd;
-    --action-accent: #f7dba7;
     --focus-ring: #0078cd;
 
     /* Extra */
@@ -384,10 +378,38 @@ body {
     --description-color: #90a1b9;
     --border-1: #d9c08a;
     --btn-1-title: #d9c08a;
-    --btn-1-hover-bg: #fbbf241a;
     --border-2: #d9c08a;
     --btn-2-title: #d9c08a;
     --btn-2-hover-bg: #fbbf241a;
+
+    /* === Profile Page [Dark] === */
+    --profile-bg-1: #0f172a;
+    --profile-bg-2: #003459;
+    --profile-bg-3: #00345977;
+    --profile-user-icon-text-1: #ffffff;
+    --profile-user-icon-text-2: #f7dba7;
+    --profile-user-icon-text-3: #93c5fd;
+    --profile-user-icon-text-4: #667479;
+    --profile-input-border: #1e293b;
+    --profile-divider: #1e293b;
+    --profile-order-hover-bg: #1e293b;
+    --input-border-focus: #003459;
+    --input-border-hover: #f7dba7;
+    /* === Profile Page [Dark]  ===  */
+
+    /* === Cart and Checkout [Dark] === */
+    --commerce-page-bg: #0b0f19;
+    --commerce-card-bg: #0f172a;
+    --commerce-title: #bfdbfe;
+    --commerce-text: #e0f2fe;
+    --commerce-muted: #90a1b9;
+    --commerce-border: #1e293b;
+    --commerce-input-bg: #0b0f19;
+    --commerce-input-text: #e0f2fe;
+    --commerce-input-border: #1e293b;
+    --commerce-input-focus: #d9c08a;
+    --commerce-control-hover-bg: #1e293b;
+    --commerce-skeleton: #1e293b;
 
     /*  >>> Available-pets Page Start <<< */
     /* === Available-pets Card [Dark] === */
@@ -407,10 +429,7 @@ body {
     --filter-card-sub-title: #93c5fd;
     --filter-card-clearAll: #93c5fd;
     --filter-input-border: #93c4fd70;
-    --filter-select-dropdown-text: #ffedd3;
     --filter-select-dropdown-bg: #0f172a;
-    --filter-pets-found-badge-number: #003459;
-    --filter-pets-found-badge-text: #003459;
     --filter-input-focus-border: #93c5fd;
     /*  >>> Available-pets Page End <<< */
 
@@ -517,7 +536,6 @@ body {
 
     /* === Pet-Knowledge section === */
     --pet-knowledge-title: #99a2a5;
-    --pet-knowledge-description: #99a2a5;
 
     /* === Register section === */
     --register-section-bg: #222831;
@@ -536,7 +554,6 @@ body {
 
     /* === Success Stories [Dark] === */
     --success-card-bg: #0f172a;
-    --success-title-color: #bfdbfe;
     --success-subtitle-color: #90a1b9;
     --success-description-color: #90a1b9;
 
@@ -557,14 +574,6 @@ body {
     --cta-border: #1e293b;
     --cta-title: #93c5fd;
     --cta-description: #90a1b9;
-    --cta-btn1-bg: #d9c08a;
-    --cta-btn1-text: #0b0f19;
-    --cta-btn1-text-hover: #0b0f19;
-    --cta-btn1-border-hover: #fbbf24;
-    --cta-btn2-bg: transparent;
-    --cta-btn2-border: #d9c08a;
-    --cta-btn2-text: #d9c08a;
-    --cta-btn2-text-hover: #d9c08a;
 
     /* === Footer [Dark] === */
     --footer-bar-bg: #111827;
@@ -623,7 +632,6 @@ body {
     --primary-btn-bg-hover: #0a1217;
     --primary-btn-text: #c3a876;
     --primary-btn-text-hover: #c3a876;
-    --primary-btn-border-hover: #6b91b3;
 
     /* Button variant="outline" */
     --outline-btn-bg-hover: #0a1217;
@@ -634,56 +642,29 @@ body {
     /* Primary — muted blue */
     --color-primary-darkBlue: #6b91b3;
     --color-primary-darkBlue-80: #5a7fa3;
-    --color-primary-darkBlue-60: #426f91;
-    --color-primary-darkBlue-40: #315773;
 
     /* Secondary — muted gold */
     --color-secondary-monYellow: #d9c08a;
     --color-secondary-monYellow-80: #c3a876;
-    --color-secondary-monYellow-60: #a88e5d;
     --color-secondary-monYellow-40: #141f27;
     --color-secondary-monYellow-special: #222831;
 
     --color-neutral-0: #0d0e10;
     --color-neutral-10: #14232c;
-    --color-neutral-20: #2b414d;
-    --color-neutral-40: #536a77;
-    --color-neutral-60: #8da1ac;
     --color-neutral-80: #bdcbd2;
     --color-neutral-100: #e4ebef;
 
     /* Cards and surfaces */
-    --color-card-bg: #14232c;
-    --color-card-border: #2b414d;
 
     /* Extra colors — softened */
     --color-pinkRed: #e86f72;
-    --color-greenLight: #43b982;
-    --color-orangeShine: #df9858;
     --color-blueSea: #359fc2;
 
-    --subscription-btn-bg: #1b303b;
-
     /* Semantic surfaces */
-    --surface-page: #0a1217;
-    --surface-card: #14232c;
-    --surface-elevated: #1b303b;
-    --border-subtle: #2b414d;
 
     /* Semantic text */
-    --text-primary: #e4ebef;
-    --text-secondary: #bdcbd2;
-    --text-muted: #8da1ac;
 
     /* Actions */
-    --action-primary: #6b91b3;
-    --action-primary-hover: #82a6c5;
-    --action-secondary: #359fc2;
-    --action-secondary-hover: #55b4d2;
-    --action-outline-hover: #d9c08a;
-    --action-ghost-hover: #d9c08a;
-    --action-hover-text: #0a1217;
-    --action-accent: #d9c08a;
 
     /* Accessibility */
     --focus-ring: #79bde5;

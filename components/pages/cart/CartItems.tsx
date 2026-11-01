@@ -55,15 +55,15 @@ export const CartItems = () => {
   const total = cards.reduce((sum, card) => sum + (card?.totalPrice ?? 0), 0);
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) pb-20">
+    <div className="min-h-screen bg-(--commerce-page-bg) pb-20">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-(--commerce-title) mb-8">
           Your Cart
         </h1>
 
         {cards.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-3xl shadow">
-            <p className="text-xl text-(--color-primary-darkBlue) mb-6">
+          <div className="text-center py-16 bg-(--commerce-card-bg) rounded-3xl shadow">
+            <p className="text-xl text-(--commerce-title) mb-6">
               Your cart is empty
             </p>
             <Link href="/">
@@ -79,7 +79,7 @@ export const CartItems = () => {
               return (
                 <div
                   key={product.id}
-                  className="flex flex-col sm:flex-row gap-4 bg-white rounded-2xl p-4 md:p-5 shadow"
+                  className="flex flex-col sm:flex-row gap-4 bg-(--commerce-card-bg) rounded-2xl p-4 md:p-5 shadow"
                 >
                   <div className="relative w-full sm:w-28 h-28 rounded-xl overflow-hidden shrink-0">
                     <Image
@@ -91,20 +91,20 @@ export const CartItems = () => {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-bold text-(--color-primary-darkBlue)">
+                    <h2 className="text-lg font-bold text-(--commerce-title)">
                       {product.name}
                     </h2>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-(--commerce-muted)">
                       {product.brand}
                     </p>
-                    <p className="mt-1 font-medium text-gray-700">
+                    <p className="mt-1 font-medium text-(--commerce-text)">
                       ${unit}
                     </p>
 
                     <div className="mt-3 flex flex-wrap items-center gap-3">
                       <button
                         type="button"
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+                        className="w-8 h-8 rounded-full border border-(--commerce-border) text-(--commerce-text) flex items-center justify-center hover:bg-(--commerce-control-hover-bg)"
                         disabled={updateItem.isPending}
                         onClick={() =>
                           updateItem.mutate(
@@ -128,7 +128,7 @@ export const CartItems = () => {
                       </span>
                       <button
                         type="button"
-                        className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+                        className="w-8 h-8 rounded-full border border-(--commerce-border) text-(--commerce-text) flex items-center justify-center hover:bg-(--commerce-control-hover-bg)"
                         disabled={updateItem.isPending}
                         onClick={() =>
                           updateItem.mutate(
@@ -163,18 +163,18 @@ export const CartItems = () => {
                     </div>
                   </div>
 
-                  <div className="sm:text-right font-semibold text-(--color-primary-darkBlue)">
+                  <div className="sm:text-right font-semibold text-(--commerce-title)">
                     ${totalPrice}
                   </div>
                 </div>
               );
             })}
 
-            <div className="bg-white rounded-2xl p-6 flex justify-between items-center shadow">
-              <span className="text-xl font-bold text-(--color-primary-darkBlue)">
+            <div className="bg-(--commerce-card-bg) rounded-2xl p-6 flex justify-between items-center shadow">
+              <span className="text-xl font-bold text-(--commerce-title)">
                 Total
               </span>
-              <span className="text-2xl font-bold text-(--color-primary-darkBlue)">
+              <span className="text-2xl font-bold text-(--commerce-title)">
                 ${total}
               </span>
             </div>

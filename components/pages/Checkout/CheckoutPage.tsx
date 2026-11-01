@@ -104,8 +104,8 @@ export default function CheckoutPage() {
 
   if (isUserLoading || isCartLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40)">
-        <p className="text-lg text-(--color-primary-darkBlue)">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center bg-(--commerce-page-bg)">
+        <p className="text-lg text-(--commerce-title)">Loading...</p>
       </div>
     );
   }
@@ -114,8 +114,8 @@ export default function CheckoutPage() {
 
   if (cartLines.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-(--color-secondary-monYellow-40) px-4">
-        <h1 className="text-3xl font-bold text-(--color-primary-darkBlue)">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-(--commerce-page-bg) px-4">
+        <h1 className="text-3xl font-bold text-(--commerce-title)">
           Your cart is empty
         </h1>
         <Link href="/">
@@ -126,74 +126,74 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) pb-20">
+    <div className="min-h-screen bg-(--commerce-page-bg) pb-20">
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-10">
+        <h1 className="text-3xl md:text-4xl font-bold text-(--commerce-title) mb-10">
           Checkout
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Form */}
           <form onSubmit={handleSubmit} className="flex-1 space-y-5">
-            <div className="bg-white rounded-2xl p-6 shadow-lg space-y-4">
-              <h2 className="text-xl font-bold text-(--color-primary-darkBlue)">
+            <div className="bg-(--commerce-card-bg) rounded-2xl p-6 shadow-lg space-y-4">
+              <h2 className="text-xl font-bold text-(--commerce-title)">
                 Shipping details
               </h2>
 
               <div>
-                <label className="block text-sm font-medium mb-1 text-(--color-primary-darkBlue)">
+                <label className="block text-sm font-medium mb-1 text-(--commerce-text)">
                   Full name *
                 </label>
                 <input
                   name="fullName"
                   value={form.fullName}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
+                  className="w-full rounded-xl border-2 border-(--commerce-input-border) bg-(--commerce-input-bg) text-(--commerce-input-text) px-4 py-3 focus:border-(--commerce-input-focus) focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1 text-(--color-primary-darkBlue)">
+                <label className="block text-sm font-medium mb-1 text-(--commerce-text)">
                   Phone *
                 </label>
                 <input
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
+                  className="w-full rounded-xl border-2 border-(--commerce-input-border) bg-(--commerce-input-bg) text-(--commerce-input-text) px-4 py-3 focus:border-(--commerce-input-focus) focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1 text-(--color-primary-darkBlue)">
+                <label className="block text-sm font-medium mb-1 text-(--commerce-text)">
                   Address *
                 </label>
                 <input
                   name="address"
                   value={form.address}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
+                  className="w-full rounded-xl border-2 border-(--commerce-input-border) bg-(--commerce-input-bg) text-(--commerce-input-text) px-4 py-3 focus:border-(--commerce-input-focus) focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1 text-(--color-primary-darkBlue)">
+                <label className="block text-sm font-medium mb-1 text-(--commerce-text)">
                   City *
                 </label>
                 <input
                   name="city"
                   value={form.city}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
+                  className="w-full rounded-xl border-2 border-(--commerce-input-border) bg-(--commerce-input-bg) text-(--commerce-input-text) px-4 py-3 focus:border-(--commerce-input-focus) focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1 text-(--color-primary-darkBlue)">
+                <label className="block text-sm font-medium mb-1 text-(--commerce-text)">
                   Notes (optional)
                 </label>
                 <textarea
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
                   value={form.notes}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
+                  className="w-full rounded-xl border-2 border-(--commerce-input-border) bg-(--commerce-input-bg) text-(--commerce-input-text) px-4 py-3 focus:border-(--commerce-input-focus) focus:outline-none"
                 />
               </div>
             </div>
@@ -218,11 +218,11 @@ export default function CheckoutPage() {
 
           {/* Summary */}
           <aside className="lg:w-96">
-            <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
-              <h2 className="text-xl font-bold text-(--color-primary-darkBlue) mb-4">
+            <div className="bg-(--commerce-card-bg) rounded-2xl p-6 shadow-lg sticky top-24">
+              <h2 className="text-xl font-bold text-(--commerce-title) mb-4">
                 Order summary
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-(--commerce-muted) mb-4">
                 {totalItems} item{totalItems !== 1 ? "s" : ""}
               </p>
 
@@ -240,10 +240,10 @@ export default function CheckoutPage() {
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-(--color-primary-darkBlue) truncate">
+                      <p className="font-medium text-(--commerce-text) truncate">
                         {line.name}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-(--commerce-muted)">
                         × {line.quantity} · {line.price}
                       </p>
                     </div>
@@ -253,7 +253,7 @@ export default function CheckoutPage() {
 
               <Link
                 href="/cart"
-                className="mt-6 inline-block text-sm underline text-(--color-primary-darkBlue)"
+                className="mt-6 inline-block text-sm underline text-(--commerce-title)"
               >
                 Edit cart
               </Link>
