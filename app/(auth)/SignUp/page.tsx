@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
 import { useSignup } from "@/hooks/useSignup";
@@ -43,6 +42,7 @@ export default function SignUpPage() {
       toast.error("Passwords do not match");
       return;
     }
+
     const input = {
       name: formData.name.trim(),
       email: formData.email.trim(),
@@ -52,7 +52,6 @@ export default function SignUpPage() {
     signup.mutate(input, {
       onSuccess: () => {
         toast.success("Account created successfully!");
-        // After signup → go to login (no auto-login unless your API sets a cookie)
         router.push("/Login");
       },
       onError: (error: Error) => {
@@ -62,20 +61,20 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-3xl shadow-xl p-8 md:p-10">
+    <div className="min-h-screen bg-(--page-bg) flex items-center justify-center px-4 py-16 transition-colors duration-300">
+      <div className="w-full max-w-md bg-(--signUp-card-bg) border border-transparent rounded-3xl shadow-xl p-8 md:p-10 transition-colors duration-300">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow)">
+          <h1 className="text-3xl font-bold text-(--signUp-card-title)">
             Create Account
           </h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-(--signUp-card-sub-title)">
             Join Us and find your perfect pet
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-(--color-neutral-80) mb-2">
+            <label className="block text-sm font-medium text-(--signUp-card-label) mb-2">
               Full Name
             </label>
             <input
@@ -84,12 +83,18 @@ export default function SignUpPage() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--signUp-card-input-border)
+                bg-(--signUp-card-input-bg)
+                text-(--signUp-card-input-text)
+                hover:border-(--signUp-card-input-border-hover)
+                focus:border-(--signUp-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-(--color-neutral-80) mb-2">
+            <label className="block text-sm font-medium text-(--signUp-card-label) mb-2">
               Email
             </label>
             <input
@@ -98,12 +103,18 @@ export default function SignUpPage() {
               value={formData.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--signUp-card-input-border)
+                bg-(--signUp-card-input-bg)
+                text-(--signUp-card-input-text)
+                hover:border-(--signUp-card-input-border-hover)
+                focus:border-(--signUp-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-(--color-neutral-80) mb-2">
+            <label className="block text-sm font-medium text-(--signUp-card-label) mb-2">
               Password
             </label>
             <input
@@ -112,12 +123,18 @@ export default function SignUpPage() {
               value={formData.password}
               onChange={handleChange}
               placeholder="At least 6 characters"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--signUp-card-input-border)
+                bg-(--signUp-card-input-bg)
+                text-(--signUp-card-input-text)
+                hover:border-(--signUp-card-input-border-hover)
+                focus:border-(--signUp-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-(--color-neutral-80) mb-2">
+            <label className="block text-sm font-medium text-(--signUp-card-label) mb-2">
               Confirm Password
             </label>
             <input
@@ -126,7 +143,13 @@ export default function SignUpPage() {
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="Repeat your password"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--signUp-card-input-border)
+                bg-(--signUp-card-input-bg)
+                text-(--signUp-card-input-text)
+                hover:border-(--signUp-card-input-border-hover)
+                focus:border-(--signUp-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
@@ -140,11 +163,11 @@ export default function SignUpPage() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-gray-600 dark:text-gray-300">
+        <p className="mt-6 text-center text-(--signUp-card-sub-title)">
           Already have an account?{" "}
           <Link
             href="/Login"
-            className="font-semibold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) hover:underline"
+            className="font-semibold text-(--signUp-card-question) hover:underline"
           >
             Log in
           </Link>

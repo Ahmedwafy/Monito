@@ -3,10 +3,12 @@
 import { useEffect } from "react";
 import * as icons from "@/assets/icons";
 import Image from "next/image";
-import Link from "next/link";
-import Button from "@/components/atoms/Button";
+// import Link from "next/link";
+// import Button from "@/components/atoms/Button";
 import { teamMembers } from "@/app/mock-data/mockTeamMembers";
 import { Heart, Users } from "lucide-react";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 const AboutPage = () => {
   // This useEffect handles the smooth scrolling when the page is loaded with a hash in the URL.
@@ -31,60 +33,26 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20 mx-auto">
-      {/* === Hero / Cover Section === */}
-      <section className="px-4 py-12 md:py-24">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-32 px-6 md:px-16">
-          {/* Decorative rotated blobs */}
-          <div className="dark:opacity-50 absolute -left-40 -top-60 h-[600px] w-[600px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[900px] md:w-[900px]"></div>
-          <div className="dark:opacity-50 absolute -right-80 bottom-0 h-[700px] w-[700px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[1000px] md:w-[1000px]"></div>
+    <div className="min-h-screen bg-(--page-bg) pb-20 mx-auto">
+      {/* === Banner Section === */}
+      <div className="bg-(--bg-outer) pt-1 pb-25">
+        <TopPageBanner
+          handleClick={handleClick}
+          title="One More Friend"
+          subTitle="Thousands More Fun!"
+          description="We believe every animal deserves a second chance at a life filled with love, safety, and joy. Our journey began with the simple goal of connecting pets in need with loving families ready to open their hearts and homes."
+          btnTitle="Meet Our Team"
+          btnTitle2="See Available Pets"
+          href="/available-pets"
+        />
+      </div>
 
-          <div className="relative z-10 max-w-4xl">
-            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue)! md:text-5xl lg:text-6xl">
-              One More Friend
-            </h1>
-            <h2 className="mt-4 text-2xl font-semibold text-(--color-primary-darkBlue)! md:text-3xl">
-              Thousands More Fun!
-            </h2>
-            <p className="mt-8 text-lg text-(--color-primary-darkBlue)! md:text-xl leading-relaxed">
-              We believe every animal deserves a second chance at a life filled
-              with love, safety, and joy. Our journey began with the simple goal
-              of connecting pets in need with loving families ready to open
-              their hearts and homes.
-            </p>
-
-            <div className="mt-12 flex flex-wrap justify-center gap-6">
-              <Button
-                onClick={handleClick}
-                variant="primary"
-                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow)! 
-                dark:hover:text-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!"
-              >
-                Meet Our Team
-                <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
-              </Button>
-
-              <Link href="/available-pets" className="inline-block">
-                <Button
-                  variant="outline"
-                  className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
-                >
-                  See Available Pets
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* === Our Story Section === */}
       <section className="container mx-auto px-4 py-16 md:py-24" id="our-story">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-8 transition-colors duration-300">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--our-story-title) mb-8 transition-colors duration-300">
             Our Story
           </h2>
-          <div className="prose prose-lg text-gray-700 dark:text-gray-300! mx-auto leading-relaxed space-y-6 transition-colors duration-300">
+          <div className="prose prose-lg text-(--our-story-description) mx-auto leading-relaxed space-y-6 transition-colors duration-300">
             <p>
               <strong>Monito</strong> was born in 2022 from a heartfelt mission:
               to ensure no animal faces life alone. It all started when a small
@@ -107,18 +75,18 @@ const AboutPage = () => {
 
           <div className="flex flex-wrap gap-6 mt-12 justify-center">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--color-secondary-monYellow)/60 dark:bg-(--color-secondary-monYellow)/20 transition-colors duration-300">
-                <Heart className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 border-none! transition-colors duration-300" />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--our-story-stat-icon-bg) transition-colors duration-300">
+                <Heart className="text-(--our-story-stat-icon-color) scale-120 border-none! transition-colors duration-300" />
               </div>
-              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 transition-colors duration-300">
+              <span className="font-semibold text-(--our-story-stat-text) transition-colors duration-300">
                 +500 Pets Found Homes
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--color-secondary-monYellow)/60 dark:bg-(--color-secondary-monYellow)/20 transition-colors duration-300">
-                <Users className="text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) scale-120 transition-colors duration-300" />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--our-story-stat-icon-bg) transition-colors duration-300">
+                <Users className="text-(--our-story-stat-icon-color) scale-120 transition-colors duration-300" />
               </div>
-              <span className="font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 transition-colors duration-300">
+              <span className="font-semibold text-(--our-story-stat-text) transition-colors duration-300">
                 +200 Active Volunteers
               </span>
             </div>
@@ -128,15 +96,15 @@ const AboutPage = () => {
 
       {/* === Team Section === */}
       <section
-        className="bg-white dark:bg-(--color-neutral-0) py-16 md:py-24 transition-colors duration-300"
+        className="bg-(--team-bg) py-16 md:py-24 transition-colors duration-300"
         id="team"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-(--team-title-color) transition-colors duration-300">
               Meet Our Team
             </h2>
-            <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) max-w-3xl mx-auto transition-colors duration-300">
+            <p className="mt-4 text-lg text-(--team-desc-color) max-w-3xl mx-auto transition-colors duration-300">
               The dedicated people behind One More Friend who work tirelessly to
               help animals find loving homes.
             </p>
@@ -146,7 +114,7 @@ const AboutPage = () => {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="group bg-white dark:bg-(--color-primary-darkBlue-80) rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                className="group bg-(--team-card-bg) rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -155,21 +123,21 @@ const AboutPage = () => {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 </div>
 
-                <div className="p-6 text-center dark:bg-(--color-neutral-5)">
-                  <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-1 transition-colors duration-300">
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-(--team-name-color) mb-1 transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-[#00528c] dark:text-(--color-secondary-monYellow) font-semibold mb-3 transition-colors duration-300">
+                  <p className="text-(--team-role-color) font-semibold mb-3 transition-colors duration-300">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 dark:text-(--color-neutral-80) text-sm mb-4 line-clamp-3 transition-colors duration-300">
+                  <p className="text-(--team-bio-color) text-sm mb-4 line-clamp-3 transition-colors duration-300">
                     {member.bio}
                   </p>
 
-                  {/* Social Icons */}
                   {Object.keys(member.social).length > 0 && (
                     <div className="flex justify-center gap-4">
                       {member.social.twitter && (
@@ -177,9 +145,8 @@ const AboutPage = () => {
                           href={member.social.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-(--team-social-color) hover:text-(--team-social-hover) transition-colors duration-200"
                         >
-                          {/* <icons.Twitter className="w-5 h-5" />  */}
                           Twitter
                         </a>
                       )}
@@ -188,9 +155,8 @@ const AboutPage = () => {
                           href={member.social.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-(--team-social-color) hover:text-(--team-social-hover) transition-colors duration-200"
                         >
-                          {/* <icons.Instagram className="w-5 h-5" /> */}
                           Instagram
                         </a>
                       )}
@@ -199,9 +165,8 @@ const AboutPage = () => {
                           href={member.social.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-(--color-primary-darkBlue) dark:text-(--color-neutral-40) dark:hover:text-(--color-secondary-monYellow) transition-colors duration-200"
+                          className="text-(--team-social-color) hover:text-(--team-social-hover) transition-colors duration-200"
                         >
-                          {/* <icons.Linkedin className="w-5 h-5" /> */}
                           Linkedin
                         </a>
                       )}
@@ -215,13 +180,13 @@ const AboutPage = () => {
       </section>
 
       {/* === Mission & Values === */}
-      <section className="bg-(--color-secondary-monYellow-special)! dark:bg-(--color-card-bg)! py-16 md:py-24 transition-colors duration-300">
+      <section className="bg-(--mission-bg) py-16 md:py-24 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
+            <h2 className="text-3xl md:text-4xl font-bold text-(--mission-title-color) transition-colors duration-300">
               Our Mission & Values
             </h2>
-            <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) max-w-3xl mx-auto transition-colors duration-300">
+            <p className="mt-4 text-lg text-(--mission-desc-color) max-w-3xl mx-auto transition-colors duration-300">
               Every day we work toward a better world for companion animals
               through:
             </p>
@@ -232,7 +197,7 @@ const AboutPage = () => {
               {
                 icon: (
                   <icons.Heart
-                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300"
+                    className="h-10 w-10 text-(--mission-icon-color) transition-colors duration-300"
                     fill="currentColor"
                   />
                 ),
@@ -242,7 +207,7 @@ const AboutPage = () => {
               {
                 icon: (
                   <icons.Users
-                    className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300"
+                    className="h-10 w-10 text-(--mission-icon-color) transition-colors duration-300"
                     fill="currentColor"
                   />
                 ),
@@ -251,7 +216,7 @@ const AboutPage = () => {
               },
               {
                 icon: (
-                  <icons.ShieldPlus className="h-10 w-10 text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300" />
+                  <icons.ShieldPlus className="h-10 w-10 text-(--mission-icon-color) transition-colors duration-300" />
                 ),
                 title: "Responsibility & Transparency",
                 desc: "Every step we take prioritizes the health, happiness, and well-being of the animals.",
@@ -259,15 +224,15 @@ const AboutPage = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-white dark:bg-(--color-neutral-0) p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300 border border-transparent dark:border-(--color-primary-darkBlue-60)"
+                className="rounded-2xl bg-(--mission-card-bg) p-8 shadow-lg text-center hover:shadow-xl transition-all duration-300 border border-transparent"
               >
-                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) shadow-md transition-colors duration-300">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-(--mission-icon-bg) shadow-md transition-colors duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-(--mission-card-title) transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-gray-600 dark:text-(--color-neutral-80) transition-colors duration-300">
+                <p className="mt-4 text-(--mission-card-desc) transition-colors duration-300">
                   {item.desc}
                 </p>
               </div>
@@ -276,36 +241,15 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* === CTA Bottom === */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
-            Want to Be Part of the Story?
-          </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-neutral-80) transition-colors duration-300">
-            Whether it&apos;s adopting, donating, volunteering, or simply
-            helping spread the word — every action makes a difference!
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
-            <Link href="/adopt-form">
-              <Button
-                variant="primary"
-                className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300 sm:text-(--color-secondary-monYellow) flex w-full!"
-              >
-                Support Now
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
-              >
-                Get in Touch
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Want to Be Part of the Story?"
+        description="Whether it's adopting, donating, volunteering, or simply helping spread the word — every action makes a difference!"
+        btnName="Support Now"
+        btnName2="Get in Touch"
+        href1="/adopt-form"
+        href2="/contact"
+      />
     </div>
   );
 };

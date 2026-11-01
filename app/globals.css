@@ -27,7 +27,282 @@ body {
 
 @layer base {
   :root {
-    /* --- Colors --- #FDECCE*/
+    /* === Nav-bar === */
+    --nav-bg: #fdfdfd;
+    --link-text-color: #003459;
+    --Active-link-text-color: #003459;
+    --cart-icon: #003459;
+    --theme-icon: #003459;
+    --adopt-btn: #ffffff;
+    --adopt-btn-bg: #003459;
+    --search-input-border: #667479;
+    --search-input-border-hover: #f7dba7;
+
+    /* === Home Hero-Cover === */
+    --hero-bg: #fdecce;
+    --hero-title-color: #003459;
+    --hero-description-color: #003459;
+    --hero-shape-1-bg: #f7dba7;
+    --hero-shape-2-bg: #003459;
+
+    /* === Page Back ground Color === */
+    --page-bg: #fdecce;
+
+    /* === Page main-Banner - Light [Shared] === */
+    --bg-outer: #fceed5;
+    --bg-from: #f7dba7;
+    --bg-via: #f1d092;
+    --bg-to: #eec77e;
+    --shape-1-bg: #f0b00057;
+    --shape-2-bg: #43200417;
+    --title-color: #003459;
+    --sub-titele-color: #003459;
+    --description-color: #003459;
+    --border-1: #003459;
+    --btn-1-title: #003459;
+    --btn-1-hover-bg: #fbbf241a;
+    --border-2: #003459;
+    --btn-2-title: #003459;
+    --btn-2-hover-bg: #00345956;
+
+    /*  >>> Available-pets Page Start <<< */
+    /* === Available-pets Page Card [Light] === */
+    --available-pet-card-bg: #ffffff;
+    --available-pet-name: #003459;
+    --available-pet-gender-text: #003459;
+    --available-pet-gender-bg: #fceed5;
+    --available-pet-age: #003459;
+    --available-pet-type: #003459;
+    --available-pet-trait-text: #ffffff;
+    --available-pet-trait-bg: #003459;
+    --available-pet-details: #4b5563;
+    /* === Filter === */
+    --filter-card-bg: #ffffff;
+    --filter-card-border: #ffffff;
+    --filter-card-title: #003459;
+    --filter-card-sub-title: #003459;
+    --filter-card-clearAll: #003459;
+    --filter-input-border: #ffedd3;
+    --filter-select-dropdown-text: #003459;
+    --filter-select-dropdown-bg: #fceed5;
+    --filter-pets-found-badge-number: #003459;
+    --filter-pets-found-badge-text: #003459;
+    --filter-input-focus-border: #f7dba7;
+
+    /* >>> Dynamic Pet Page Start [Light] <<< */
+    --top-badge-bg: #f7dba7;
+    --top-badge-text: #003459;
+    --top-gallary-text: #003459;
+    --pet-name: #ffffff;
+    --pet-details: #ffffff;
+    --pet-image-bg: #ffffff;
+    --pet-image-border: #f7dba7;
+    --about-pet-name: #003459;
+    --about-pet-card-bg: #ffffff;
+    --about-card-title: #003459;
+    --about-card-subTitle: #003459;
+    --about-card-description: #4b5563;
+    --about-card-traits-text: #ffffff;
+    --about-card-traits-bg: #003459;
+    --quick-info-card-bg: #ffffff;
+    --quick-info-card-title: #003459;
+    --quick-info-card-text: #4b5563;
+    --quick-info-card-details: #003459;
+    --quick-info-border: #e8edf2;
+    /* >>> Dynamic Pet Page End [Light] <<< */
+
+    /*  >>> About Page Start <<< */ /* === Our Story [Light] === */
+    --our-story-title: #003459;
+    --our-story-description: #4b5563;
+    --our-story-stat-icon-bg: #f7dba7;
+    --our-story-stat-icon-color: #003459;
+    --our-story-stat-text: #003459;
+    /* === Team Section [Light] === */
+    --team-bg: #fceed5;
+    --team-title-color: #003459;
+    --team-desc-color: #4b5563;
+    --team-card-bg: #fef9ef;
+    --team-name-color: #003459;
+    --team-role-color: #00528c;
+    --team-bio-color: #6b7280;
+    --team-social-color: #9ca3af;
+    --team-social-hover: #003459;
+    /* === Mission & Values [Light] === */
+    --mission-bg: #f7dba7;
+    --mission-title-color: #003459;
+    --mission-desc-color: #4b5563;
+    --mission-card-bg: #fef9ef;
+    --mission-card-title: #003459;
+    --mission-card-desc: #6b7280;
+    --mission-icon-bg: #003459;
+    --mission-icon-color: #f7dba7;
+    /*  >>> About Page End <<< */
+
+    /* === Contact Section [Light] === */
+    --contact-title: #003459;
+    --contact-desc: #4b5563;
+    --contact-card-bg: #fef9ef;
+    --contact-card-border: transparent;
+    --contact-icon-bg: #003459;
+    --contact-icon-color: #f7dba7;
+    --contact-card-title: #003459;
+    --contact-card-text: #4b5563;
+    --contact-card-subtext: #6b7280;
+    --contact-form-bg: #fef9ef;
+    --contact-form-title: #003459;
+    --contact-form-desc: #4b5563;
+    --contact-label: #4b5563;
+    --contact-input-bg: #ffffff;
+    --contact-input-border: #e5e7eb;
+    --contact-input-text: #111827;
+    --contact-input-focus: #003459;
+    --contact-btn-bg: #003459;
+    --contact-btn-text: #ffffff;
+    --contact-btn-hover-bg: #f7dba7;
+    --contact-btn-hover-text: #003459;
+
+    /* === Join Benefits [Light] === */
+    --join-title: #003459;
+    --join-desc: #4b5563;
+    --join-card-bg: #fef9ef;
+    --join-card-border: transparent;
+    --join-card-title: #003459;
+    --join-card-text: #4b5563;
+    --join-btn-border: #003459;
+    --join-btn-text: #003459;
+
+    /* === Auth Note [Light] === */
+    --auth-note-bg: #fef9ef;
+    --auth-note-border: transparent;
+    --auth-note-title: #003459;
+    --auth-note-text: #4b5563;
+    --auth-note-btn-border: #003459;
+    --auth-note-btn-text: #003459;
+
+    /* === Categories Page Cards === */
+    --card-bg: #ffffff;
+    --card-title-color: #003459;
+    --card-description-color: #667479;
+    --card-badge-bg: #f7dba7;
+    --badge-text-color: #003459;
+
+    /* === Pet Knowledge section === */
+    --pet-knowledge-title: #00171f;
+    --pet-knowledge-description: #00171f;
+
+    /* === Register section === */
+    --register-section-bg: #fceed5;
+    --register-bar-bg: #003459;
+    --regester-text-1: #ebeeef;
+
+    /* === Adoption Process === */
+    --card-bg: #ffffff;
+    --card-title-color: #003459;
+    --card-description-color: #003459;
+    --icon-bg: #efc25a;
+    --icon-border: #efc25a;
+    --icon-color: #003459;
+    --number-bg: #003459;
+    --number-color: #ffffff;
+
+    /* === Success Stories [Light] === */
+    --success-card-bg: #fdfdfd;
+    --success-pet-name-color: #003459;
+    --success-subtitle-color: #003459;
+    --success-description-color: #003459;
+
+    /* === Volunteer Page [Light] === */
+    --volunteer-card-bg: #ffffff;
+    --volunteer-card-icon: #f7dba7;
+    --volunteer-card-title: #003459;
+    --volunteer-card-description: #364153;
+    --volunteer-card-footer: #003459;
+
+    /* === FAQs Page [Light] === */
+    --faq-card-bg: #ffffff;
+    --faq-card-question-color: #003459;
+    --faq-card-details: #364153;
+
+    /* === CTA Section [Light] === */
+    --cta-bg: #f7dba7;
+    --cta-border: transparent;
+    --cta-title: #003459;
+    --cta-description: #4b5563;
+    --cta-btn1-bg: #003459;
+    --cta-btn1-text: #f7dba7;
+    --cta-btn1-text-hover: #f7dba7;
+    --cta-btn1-border-hover: #003459;
+    --cta-btn2-bg: transparent;
+    --cta-btn2-border: #003459;
+    --cta-btn2-text: #003459;
+    --cta-btn2-text-hover: #f7dba7;
+
+    /* === Footer [Light] === */
+    --footer-bar-bg: #003459;
+    --footer-bg: #fceed5;
+
+    /* === 404 Not-Found Page [Light] === */
+    --not-found-title: #003459;
+    --not-found-sub-title: #003459;
+    --not-found-details: #4b5563;
+
+    /* === Auth login [Light] === */
+    --page-bg: #fceed5;
+    --login-card-bg: #fef9ef;
+    --login-card-title: #003459;
+    --login-card-sub-title: #4b5563;
+    --login-card-label: #003459;
+    --login-card-input-bg: #ffffff;
+    --login-card-input-border: #e5e7eb;
+    --login-card-input-border-hover: #f7dba7;
+    --login-card-input-border-focus: #003459;
+    --login-card-input-text: #1f2937;
+    --login-card-question: #003459;
+
+    /* === Auth Sign-up [Light] === */
+    --page-bg: #fceed5;
+    --signUp-card-bg: #fef9ef;
+    --signUp-card-title: #003459;
+    --signUp-card-sub-title: #4b5563;
+    --signUp-card-label: #003459;
+    --signUp-card-input-bg: #ffffff;
+    --signUp-card-input-border: #e5e7eb;
+    --signUp-card-input-border-hover: #f7dba7;
+    --signUp-card-input-border-focus: #003459;
+    --signUp-card-input-text: #1f2937;
+    --signUp-card-question: #003459;
+
+    /* === Privacy Ploicy Page [Light] === */
+    --privacy-bg: #ffffff;
+    --privacy-title: #003459;
+    --privacy-sub-title: #003459;
+    --privacy-details: #1f2937;
+    --privacy-link: #1a4dbb;
+    --privacy-hover-link: #f7dba7;
+
+    /* === Terms of Services Page [Light] === */
+    --terms-bg: #ffffff;
+    --terms-title: #003459;
+    --terms-sub-title: #003459;
+    --terms-details: #1f2937;
+    --terms-link: #1a4dbb;
+    --terms-hover-link: #f7dba7;
+
+    /* === Button variant="primary" === */
+    --primary-btn-bg: #003459;
+    --primary-btn-bg-hover: #002a48;
+    --primary-btn-text: #fdecce;
+    --primary-btn-text-hover: #fdecce;
+
+    /* === Button variant="outline" === */
+    --outline-btn-bg-hover: #003459;
+    --outline-btn-text: #003459;
+    --outline-btn-border: #003459;
+    --outline-btn-text-hover: #fdecce;
+
+    /* === Button variant="outlineWithHeart" === */
+
+    /* === Colors === */
     --color-primary-darkBlue: #003459;
     --color-primary-darkBlue-80: #002a48;
     --color-primary-darkBlue-60: #00528c;
@@ -71,76 +346,365 @@ body {
     --action-hover-text: #fdfdfd;
     --action-accent: #f7dba7;
     --focus-ring: #0078cd;
+
+    /* Extra */
+    --shape-1: #f7dba7;
+    --shape-2: #948979;
+    --shape-3: #fceed5;
   }
 
   .dark {
-    /* --- Dark Mode Colors --- */
-    /* Lighter blue for dark backgrounds */
-    /* Primary — softened for dark backgrounds */
-    --color-primary-darkBlue: #5aa0d8;
-    --color-primary-darkBlue-80: #4f93c6;
-    --color-primary-darkBlue-60: #6bb6e5;
-    --color-primary-darkBlue-40: #89ccef;
+    /* === Nav-bar === */
+    --nav-bg: #0d0e10;
+    --link-text-color: #e8b96dd7;
+    --Active-link-text-color: #e8b96dd7;
+    --cart-icon: #e8b96dd7;
+    --theme-icon: #e8b96dd7;
+    --adopt-btn: #6b91b3;
+    --adopt-btn-bg: #14232c;
+    --search-input-border: #667479;
+    --search-input-border-hover: #f7dba7e3;
 
-    /* Secondary — muted warm yellow for highlights */
-    --color-secondary-monYellow: #e9d8b7;
-    --color-secondary-monYellow-80: #d8c7a2;
-    --color-secondary-monYellow-60: #cfc2a0;
-    --color-secondary-monYellow-40: #f2e9d0;
+    /* === Home Hero-Cover === */
+    --hero-bg: #0d0e10;
+    --hero-title-color: #d9c08ae0;
+    --hero-description-color: #d9c08ae3;
+    --hero-shape-1-bg: #f7dba7;
+    --hero-shape-2-bg: #003459;
 
-    /* Neutrals - comfortable, low-contrast dark theme */
-    --color-neutral-0: #0b151a; /* page background */
-    --color-neutral-5: #0e1a22; /* slightly lighter for cards */
-    --color-neutral-10: #12232b;
-    --color-neutral-20: #2b4a55;
-    --color-neutral-40: #59757f;
-    --color-neutral-60: #8fa8b0;
-    --color-neutral-80: #b8c9ce;
-    --color-neutral-100: #f3f7f8; /* primary text */
+    /* === Page main-Banner - Dark [Shared] === */
+    --bg-outer: #0b0f19;
+    --bg-from: #111827;
+    --bg-via: #0b0f19;
+    --bg-to: #0f172a;
+    --shape-1-bg: #1e293b80;
+    --shape-2-bg: #0f172a99;
+    --title-color: #bfdbfe;
+    --sub-titele-color: #93c5fd;
+    --description-color: #90a1b9;
+    --border-1: #d9c08a;
+    --btn-1-title: #d9c08a;
+    --btn-1-hover-bg: #fbbf241a;
+    --border-2: #d9c08a;
+    --btn-2-title: #d9c08a;
+    --btn-2-hover-bg: #fbbf241a;
+
+    /*  >>> Available-pets Page Start <<< */
+    /* === Available-pets Card [Dark] === */
+    --available-pet-card-bg: #0f172a;
+    --available-pet-name: #bfdbfe;
+    --available-pet-gender-text: #d9c08a;
+    --available-pet-gender-bg: #0f172a99;
+    --available-pet-age: #bfdbfe;
+    --available-pet-type: #bfdbfe;
+    --available-pet-trait-text: #bfdbfe;
+    --available-pet-trait-bg: #003459;
+    --available-pet-details: #bfdbfec9;
+    /* === Filter === */
+    --filter-card-bg: #0f172a;
+    --filter-card-border: #003459;
+    --filter-card-title: #93c5fd;
+    --filter-card-sub-title: #93c5fd;
+    --filter-card-clearAll: #93c5fd;
+    --filter-input-border: #93c4fd70;
+    --filter-select-dropdown-text: #ffedd3;
+    --filter-select-dropdown-bg: #0f172a;
+    --filter-pets-found-badge-number: #003459;
+    --filter-pets-found-badge-text: #003459;
+    --filter-input-focus-border: #93c5fd;
+    /*  >>> Available-pets Page End <<< */
+
+    /* >>> Dynamic Pet Page Start [Dark] <<< */
+    --top-badge-bg: #f7dba7;
+    --top-badge-text: #003459;
+    --top-gallary-text: #ffffff;
+    --pet-name: #ffffff;
+    --pet-details: #ffffff;
+    --pet-image-bg: #0f172a;
+    --pet-image-border: #f7dba7;
+    --about-pet-card-bg: #0f172a;
+    --about-pet-name: #f7dba7dc;
+    --about-card-title: #93c5fd;
+    --about-card-subTitle: #93c5fd;
+    --about-card-description: #93c4fd70;
+    --about-card-traits-text: #93c5fd;
+    --about-card-traits-bg: #00345948;
+    --quick-info-card-bg: #0f172a;
+    --quick-info-card-title: #93c5fd;
+    --quick-info-card-text: #4b5563;
+    --quick-info-card-details: #93c5fd;
+    --quick-info-border: #93c5fd;
+    /* >>> Dynamic Pet Page End [Dark] <<< */
+
+    /*  >>> About Page Start <<< */
+    /* === Our Story [Dark] === */
+    --our-story-title: #bfdbfe;
+    --our-story-description: #90a1b9;
+    --our-story-stat-icon-bg: #1e293b;
+    --our-story-stat-icon-color: #d9c08a;
+    --our-story-stat-text: #e0f2fe;
+    /* === Team Section [Dark] === */
+    --team-bg: #0b0f19;
+    --team-title-color: #bfdbfe;
+    --team-desc-color: #90a1b9;
+    --team-card-bg: #111827;
+    --team-name-color: #e0f2fe;
+    --team-role-color: #d9c08a;
+    --team-bio-color: #94a3b8;
+    --team-social-color: #64748b;
+    --team-social-hover: #d9c08a;
+    /* === Mission & Values [Dark] === */
+    --mission-bg: #0f172a;
+    --mission-title-color: #93c5fd;
+    --mission-desc-color: #90a1b9;
+    --mission-card-bg: #0b0f19;
+    --mission-card-title: #93c5fd;
+    --mission-card-desc: #94a3b8;
+    --mission-icon-bg: #1e293b;
+    --mission-icon-color: #d9c08a;
+    /*  >>> About Page End <<< */
+
+    /* === Contact Section [Dark] === */
+    --contact-title: #bfdbfe;
+    --contact-desc: #90a1b9;
+    --contact-card-bg: #111827;
+    --contact-card-border: #1e293b;
+    --contact-icon-bg: #1e293b;
+    --contact-icon-color: #d9c08a;
+    --contact-card-title: #e0f2fe;
+    --contact-card-text: #94a3b8;
+    --contact-card-subtext: #64748b;
+    --contact-form-bg: #111827;
+    --contact-form-title: #bfdbfe;
+    --contact-form-desc: #90a1b9;
+    --contact-label: #94a3b8;
+    --contact-input-bg: #0f172a;
+    --contact-input-border: #1e293b;
+    --contact-input-text: #e0f2fe;
+    --contact-input-focus: #d9c08a;
+    --contact-btn-bg: #d9c08a;
+    --contact-btn-text: #0b0f19;
+    --contact-btn-hover-bg: #fbbf24;
+    --contact-btn-hover-text: #0b0f19;
+
+    /* === Join Benefits [Dark] === */
+    --join-title: #bfdbfe;
+    --join-desc: #90a1b9;
+    --join-card-bg: #111827;
+    --join-card-border: #1e293b;
+    --join-card-title: #e0f2fe;
+    --join-card-text: #94a3b8;
+    --join-btn-border: #d9c08a;
+    --join-btn-text: #d9c08a;
+
+    /* === Auth Note [Dark] === */
+    --auth-note-bg: #111827;
+    --auth-note-border: #1e293b;
+    --auth-note-title: #bfdbfe;
+    --auth-note-text: #90a1b9;
+    --auth-note-btn-border: #d9c08a;
+    --auth-note-btn-text: #d9c08a;
+
+    /* === Page Back-ground Color === */
+    --page-bg: #0b0f19;
+
+    /* === Categories Page Cards === */
+    --card-bg: #202734;
+    --card-title-color: #6b91b3;
+    --card-description-color: #667479;
+    --card-badge-bg: #f7dba7;
+    --badge-text-color: #003459;
+
+    /* === Pet-Knowledge section === */
+    --pet-knowledge-title: #99a2a5;
+    --pet-knowledge-description: #99a2a5;
+
+    /* === Register section === */
+    --register-section-bg: #222831;
+    --register-bar-bg: #1a1f25;
+    --regester-text-1: #ccd1d2;
+
+    /* === Adoption Process [Dark] === */
+    --card-bg: #0f172a;
+    --success-pet-name-color: #bfdbfee0;
+    --card-description-color: #90a1b9;
+    --icon-bg: #0b0f19;
+    --icon-border: #bfdbfecc;
+    --icon-color: #bfdbfecc;
+    --number-bg: #c1ab7b;
+    --number-color: #0b0f19;
+
+    /* === Success Stories [Dark] === */
+    --success-card-bg: #0f172a;
+    --success-title-color: #bfdbfe;
+    --success-subtitle-color: #90a1b9;
+    --success-description-color: #90a1b9;
+
+    /* === Volunteer Page [Dark] === */
+    --volunteer-card-bg: #0f172a;
+    --volunteer-card-icon: #f7dba7;
+    --volunteer-card-title: #bfdbfe;
+    --volunteer-card-description: #90a1b9;
+    --volunteer-card-footer: #90a1b9;
+
+    /* === FAQs Page [Dark] === */
+    --faq-card-bg: #0f172a;
+    --faq-card-question-color: #bfdbfeb7;
+    --faq-card-details: #90a1b9da;
+
+    /* === CTA Section [Dark] === */
+    --cta-bg: #111827;
+    --cta-border: #1e293b;
+    --cta-title: #93c5fd;
+    --cta-description: #90a1b9;
+    --cta-btn1-bg: #d9c08a;
+    --cta-btn1-text: #0b0f19;
+    --cta-btn1-text-hover: #0b0f19;
+    --cta-btn1-border-hover: #fbbf24;
+    --cta-btn2-bg: transparent;
+    --cta-btn2-border: #d9c08a;
+    --cta-btn2-text: #d9c08a;
+    --cta-btn2-text-hover: #d9c08a;
+
+    /* === Footer [Dark] === */
+    --footer-bar-bg: #111827;
+    --footer-bg: #0d0e10;
+
+    /* === 404 Not-Found Page [Dark] === */
+    --not-found-title: #93c5fd;
+    --not-found-sub-title: #93c5fd;
+    --not-found-details: #93c5fd;
+
+    /* === Auth login [Dark] === */
+    --page-bg: #0b0f19;
+    --login-card-bg: #111827;
+    --login-card-title: #bfdbfe;
+    --login-card-sub-title: #90a1b9;
+    --login-card-label: #94a3b8;
+    --login-card-input-bg: #0f172a;
+    --login-card-input-border: #1e293b;
+    --login-card-input-border-hover: #d9c08a;
+    --login-card-input-border-focus: #d9c08a;
+    --login-card-input-text: #e0f2fe;
+    --login-card-question: #d9c08a;
+
+    /* === Auth Sign-up [Dark] === */
+    --page-bg: #0b0f19;
+    --signUp-card-bg: #111827;
+    --signUp-card-title: #bfdbfe;
+    --signUp-card-sub-title: #90a1b9;
+    --signUp-card-label: #94a3b8;
+    --signUp-card-input-bg: #0f172a;
+    --signUp-card-input-border: #1e293b;
+    --signUp-card-input-border-hover: #d9c08a;
+    --signUp-card-input-border-focus: #d9c08a;
+    --signUp-card-input-text: #e0f2fe;
+    --signUp-card-question: #d9c08a;
+
+    /* === Privacy Page [Dark] === #0F172A */
+    --privacy-bg: #0f172a;
+    --privacy-title: #bfdbfe;
+    --privacy-sub-title: #bfdbfe;
+    --privacy-details: #bfdbfe;
+    --privacy-link: #f7dba7;
+    --privacy-hover-link: #1a4dbb;
+
+    /* === Terms of Services Page [Dark] === */
+    --terms-bg: #0f172a;
+    --terms-title: #bfdbfe;
+    --terms-sub-title: #bfdbfe;
+    --terms-details: #bfdbfe;
+    --terms-link: #f7dba7;
+    --terms-hover-link: #1a4dbb;
+
+    /* ------------ Button ------------- */
+    /* Button variant="primary" */
+    --primary-btn-bg: #0a1217;
+    --primary-btn-bg-hover: #0a1217;
+    --primary-btn-text: #c3a876;
+    --primary-btn-text-hover: #c3a876;
+    --primary-btn-border-hover: #6b91b3;
+
+    /* Button variant="outline" */
+    --outline-btn-bg-hover: #0a1217;
+    --outline-btn-text: #c3a876;
+    --outline-btn-border: #6b91b3;
+    --outline-btn-text-hover: #6b91b3;
+
+    /* Primary — muted blue */
+    --color-primary-darkBlue: #6b91b3;
+    --color-primary-darkBlue-80: #5a7fa3;
+    --color-primary-darkBlue-60: #426f91;
+    --color-primary-darkBlue-40: #315773;
+
+    /* Secondary — muted gold */
+    --color-secondary-monYellow: #d9c08a;
+    --color-secondary-monYellow-80: #c3a876;
+    --color-secondary-monYellow-60: #a88e5d;
+    --color-secondary-monYellow-40: #141f27;
+    --color-secondary-monYellow-special: #222831;
+
+    --color-neutral-0: #0d0e10;
+    --color-neutral-10: #14232c;
+    --color-neutral-20: #2b414d;
+    --color-neutral-40: #536a77;
+    --color-neutral-60: #8da1ac;
+    --color-neutral-80: #bdcbd2;
+    --color-neutral-100: #e4ebef;
 
     /* Cards and surfaces */
-    --color-card-bg: #12232b;
-    --color-card-border: #2b4a55;
+    --color-card-bg: #14232c;
+    --color-card-border: #2b414d;
 
-    /* Extra colors (kept similar but usable on dark) */
-    --color-pinkRed: #ff7b76;
-    --color-greenLight: #58d07a;
-    --color-orangeShine: #ffb07a;
-    --color-blueSea: #3cc0ff;
+    /* Extra colors — softened */
+    --color-pinkRed: #e86f72;
+    --color-greenLight: #43b982;
+    --color-orangeShine: #df9858;
+    --color-blueSea: #359fc2;
 
-    --subscription-btn-bg: #18313a;
+    --subscription-btn-bg: #1b303b;
 
-    /* Semantic surfaces and content colors */
-    --surface-page: #0b151a;
-    --surface-card: #12232b;
-    --surface-elevated: #18313a;
-    --border-subtle: #2b4a55;
-    --text-primary: #f3f7f8;
-    --text-secondary: #b8c9ce;
-    --text-muted: #8fa8b0;
-    --action-primary: #6fb7e8;
-    --action-primary-hover: #f3d39a;
-    --action-secondary: #89ccef;
-    --action-secondary-hover: #f3d39a;
-    --action-outline-hover: #f3d39a;
-    --action-ghost-hover: #f3d39a;
-    --action-hover-text: #0b151a;
-    --action-accent: #f3d39a;
-    --focus-ring: #9ad7ff;
+    /* Semantic surfaces */
+    --surface-page: #0a1217;
+    --surface-card: #14232c;
+    --surface-elevated: #1b303b;
+    --border-subtle: #2b414d;
+
+    /* Semantic text */
+    --text-primary: #e4ebef;
+    --text-secondary: #bdcbd2;
+    --text-muted: #8da1ac;
+
+    /* Actions */
+    --action-primary: #6b91b3;
+    --action-primary-hover: #82a6c5;
+    --action-secondary: #359fc2;
+    --action-secondary-hover: #55b4d2;
+    --action-outline-hover: #d9c08a;
+    --action-ghost-hover: #d9c08a;
+    --action-hover-text: #0a1217;
+    --action-accent: #d9c08a;
+
+    /* Accessibility */
+    --focus-ring: #79bde5;
+
+    /* Extra */
+    --shape-1: #09122c;
+    --shape-2: #030302;
+    --shape-3: #0a1217;
   }
-  /* End of root */
-}
 
-/* Sun animation in Navbar */
-@keyframes spin-once {
-  from {
-    transform: rotate(0deg);
+  /* Sun animation in Navbar */
+  @keyframes spin-once {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-.animate-spin-once {
-  animation: spin-once 0.7s ease-in-out;
+  .animate-spin-once {
+    animation: spin-once 0.7s ease-in-out;
+  }
 }

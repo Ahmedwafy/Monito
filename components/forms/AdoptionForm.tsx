@@ -318,11 +318,11 @@ const AdoptionFormPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)! py-16 px-4">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) py-16 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="bg-white dark:bg-(--color-neutral-0)! rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-(--color-primary-darkBlue) dark:bg-(--color-card-bg)! text-white p-8 md:p-12 text-center">
+          <div className="bg-(--color-primary-darkBlue) text-white p-8 md:p-12 text-center">
             <h1 className="text-3xl text-white! md:text-4xl font-bold mb-3">
               Adoption Form
             </h1>
@@ -339,14 +339,14 @@ const AdoptionFormPage = () => {
           >
             {/* Personal Information */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 border-b border-(--color-secondary-monYellow)/30 pb-3">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) border-b border-(--color-secondary-monYellow)/30 pb-3">
                 Personal Information
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -355,7 +355,7 @@ const AdoptionFormPage = () => {
                     // required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.fullName ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.fullName ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.fullName && (
                     <p className="mt-2 text-sm text-red-600">
@@ -366,7 +366,7 @@ const AdoptionFormPage = () => {
 
                 {/* Phone Number */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -375,7 +375,7 @@ const AdoptionFormPage = () => {
                     // required
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.phone ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.phone ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.phone && (
                     <p className="mt-2 text-sm text-red-600">{errors.phone}</p>
@@ -384,7 +384,7 @@ const AdoptionFormPage = () => {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -393,7 +393,7 @@ const AdoptionFormPage = () => {
                     // required
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.email ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.email ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.email && (
                     <p className="mt-2 text-sm text-red-600">{errors.email}</p>
@@ -402,7 +402,7 @@ const AdoptionFormPage = () => {
 
                 {/* Address */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Full Address <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -411,7 +411,7 @@ const AdoptionFormPage = () => {
                     value={formData.address}
                     onChange={handleChange}
                     rows={3}
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.address ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.address ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.address && (
                     <p className="mt-2 text-sm text-red-600">
@@ -424,21 +424,21 @@ const AdoptionFormPage = () => {
 
             {/* Housing Information */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 border-b border-(--color-secondary-monYellow)/30 pb-3">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) border-b border-(--color-secondary-monYellow)/30 pb-3">
                 Housing Information
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Housing Type */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Housing Type
                   </label>
                   <select
                     name="housingType"
                     value={formData.housingType}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="flat">Flat</option>
                     <option value="villa">Villa</option>
@@ -449,14 +449,14 @@ const AdoptionFormPage = () => {
 
                 {/*  Is there a garden or outdoor space? */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Is there a garden or outdoor space?
                   </label>
                   <select
                     name="hasGarden"
                     value={formData.hasGarden}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -465,7 +465,7 @@ const AdoptionFormPage = () => {
 
                 {/*  family members in the household */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     family members in the household{" "}
                     <span className="text-red-500">*</span>
                   </label>
@@ -475,7 +475,7 @@ const AdoptionFormPage = () => {
                     min="1"
                     value={formData.householdMembers}
                     onChange={handleChange}
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-0) dark:text-neutral-100 focus:outline-none ${errors.householdMembers ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.householdMembers ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.householdMembers && (
                     <p className="mt-2 text-sm text-red-600">
@@ -486,14 +486,14 @@ const AdoptionFormPage = () => {
 
                 {/* Do you have children? */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Do you have children?
                   </label>
                   <select
                     name="hasChildren"
                     value={formData.hasChildren}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -503,7 +503,7 @@ const AdoptionFormPage = () => {
                 {/*  Children's Ages */}
                 {formData.hasChildren === "yes" && (
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Children&apos;s Ages (comma-separated){" "}
                       <span className="text-red-500">*</span>
                     </label>
@@ -513,7 +513,7 @@ const AdoptionFormPage = () => {
                       value={formData.childrenAges}
                       onChange={handleChange}
                       placeholder="e.g. 3, 7, 12"
-                      className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-0) dark:text-neutral-100 focus:outline-none ${errors.childrenAges ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                      className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.childrenAges ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                     />
                     {errors.childrenAges && (
                       <p className="mt-2 text-sm text-red-600">
@@ -525,14 +525,14 @@ const AdoptionFormPage = () => {
 
                 {/* Do you have other pets? */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Do you have other pets?
                   </label>
                   <select
                     name="hasOtherPets"
                     value={formData.hasOtherPets}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -542,7 +542,7 @@ const AdoptionFormPage = () => {
                 {/* Tell us about your other pets */}
                 {formData.hasOtherPets === "yes" && (
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Tell us about your other pets
                     </label>
                     <textarea
@@ -551,7 +551,7 @@ const AdoptionFormPage = () => {
                       onChange={handleChange}
                       rows={3}
                       placeholder="Type, breed, age, temperament, etc."
-                      className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-0) dark:text-neutral-100 focus:outline-none ${errors.otherPetsDetails ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                      className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.otherPetsDetails ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                     />
                     {errors.otherPetsDetails && (
                       <p className="mt-2 text-sm text-red-600">
@@ -563,14 +563,14 @@ const AdoptionFormPage = () => {
 
                 {/* Do you have previous experience with pets? */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Do you have previous experience with pets?
                   </label>
                   <select
                     name="previousExperience"
                     value={formData.previousExperience}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-0) dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow)"
+                    className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-(--color-secondary-monYellow)"
                   >
                     <option value="no">No</option>
                     <option value="yes">Yes</option>
@@ -580,7 +580,7 @@ const AdoptionFormPage = () => {
                 {/* Describe your previous experience */}
                 {formData.previousExperience === "yes" && (
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Describe your previous experience{" "}
                       <span className="text-red-500">*</span>
                     </label>
@@ -590,7 +590,7 @@ const AdoptionFormPage = () => {
                       onChange={handleChange}
                       rows={3}
                       placeholder="Tell us about your pet ownership history..."
-                      className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-0) dark:text-neutral-100 focus:outline-none ${errors.experienceDetails ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                      className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.experienceDetails ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                     />
                     {errors.experienceDetails && (
                       <p className="mt-2 text-sm text-red-600">
@@ -604,14 +604,14 @@ const AdoptionFormPage = () => {
 
             {/* Adoption Reason & Availability */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 border-b border-(--color-secondary-monYellow)/30 pb-3">
+              <h2 className="text-2xl font-bold text-(--color-primary-darkBlue) border-b border-(--color-secondary-monYellow)/30 pb-3">
                 Adoption Reason & Availability
               </h2>
 
               <div className="grid grid-cols-1 gap-6">
                 {/* Why do you want to adopt? */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Why do you want to adopt?{" "}
                     <span className="text-red-500">*</span>
                   </label>
@@ -621,7 +621,7 @@ const AdoptionFormPage = () => {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Tell us about your motivation to adopt and what you're looking for in a pet..."
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.reasonForAdoption ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.reasonForAdoption ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.reasonForAdoption && (
                     <p className="mt-2 text-sm text-red-600">
@@ -632,7 +632,7 @@ const AdoptionFormPage = () => {
 
                 {/* Your availability for home visits/follow-ups */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your availability for home visits/follow-ups{" "}
                     <span className="text-red-500">*</span>
                   </label>
@@ -642,7 +642,7 @@ const AdoptionFormPage = () => {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Mention your availability and preferred contact methods for follow-up communications..."
-                    className={`w-full rounded-xl border-2 px-4 py-3 dark:bg-(--color-neutral-10) dark:text-neutral-100 focus:outline-none ${errors.availability ? "border-red-500 focus:border-red-500" : "border-gray-200 dark:border-gray-700 focus:border-(--color-secondary-monYellow)"}`}
+                    className={`w-full rounded-xl border-2 px-4 py-3 focus:outline-none ${errors.availability ? "border-red-500 focus:border-red-500" : "border-gray-200 focus:border-(--color-secondary-monYellow)"}`}
                   />
                   {errors.availability && (
                     <p className="mt-2 text-sm text-red-600">
@@ -654,14 +654,14 @@ const AdoptionFormPage = () => {
             </div>
 
             {/* Commitments */}
-            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 dark:bg-(--color-neutral-10) p-6 rounded-2xl">
-              <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-4">
+            <div className="space-y-4 bg-(--color-secondary-monYellow)/5 p-6 rounded-2xl">
+              <h3 className="text-xl font-semibold text-(--color-primary-darkBlue) mb-4">
                 Commitments
               </h3>
 
               <label
                 className={`flex items-start gap-3 cursor-pointer p-3 rounded-lg transition ${
-                  errors.agreeCare ? "bg-red-50 dark:bg-red-900/20" : ""
+                  errors.agreeCare ? "bg-red-50" : ""
                 }`}
               >
                 <input
@@ -672,7 +672,7 @@ const AdoptionFormPage = () => {
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
                 <div className="flex-1">
-                  <span className="text-gray-700 dark:text-gray-300">
+                  <span className="text-gray-700">
                     I commit to providing proper healthcare, vaccinations,
                     treatment, and quality food.
                   </span>
@@ -686,7 +686,7 @@ const AdoptionFormPage = () => {
 
               <label
                 className={`flex items-start gap-3 cursor-pointer p-3 rounded-lg transition ${
-                  errors.agreeNoAbandon ? "bg-red-50 dark:bg-red-900/20" : ""
+                  errors.agreeNoAbandon ? "bg-red-50" : ""
                 }`}
               >
                 <input
@@ -697,7 +697,7 @@ const AdoptionFormPage = () => {
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
                 <div className="flex-1">
-                  <span className="text-gray-700 dark:text-gray-300">
+                  <span className="text-gray-700">
                     I commit to not abandoning or surrendering the animal in the
                     street or returning it
                   </span>
@@ -711,7 +711,7 @@ const AdoptionFormPage = () => {
 
               <label
                 className={`flex items-start gap-3 cursor-pointer p-3 rounded-lg transition ${
-                  errors.agreeFollowUp ? "bg-red-50 dark:bg-red-900/20" : ""
+                  errors.agreeFollowUp ? "bg-red-50" : ""
                 }`}
               >
                 <input
@@ -722,7 +722,7 @@ const AdoptionFormPage = () => {
                   className="mt-1 w-5 h-5 accent-(--color-secondary-monYellow)"
                 />
                 <div className="flex-1">
-                  <span className="text-gray-700 dark:text-gray-300">
+                  <span className="text-gray-700">
                     I agree to home visits or regular communication to ensure
                     the animal&apos;s well-being
                   </span>
@@ -746,7 +746,7 @@ const AdoptionFormPage = () => {
                   (emptyInputs && !areAllRequiredFieldsFilled(formData))
                 }
                 className="group flex items-center justify-center w-full mx-auto max-w-xs hover:max-w-[350px] py-5 text-xl bg-(--color-primary-darkBlue)
-                  hover:bg-(--color-primary-darkBlue) dark:text-neutral-100! dark:bg-(--color-neutral-0)! dark:hover:bg-(--color-card-bg)! 
+                  hover:bg-(--color-primary-darkBlue)
                   transition-[max-width,background-color] duration-500 ease-in-out whitespace-nowrap overflow-hidden"
               >
                 {isSubmitting ? (

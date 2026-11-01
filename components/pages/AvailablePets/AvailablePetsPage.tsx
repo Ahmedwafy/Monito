@@ -14,12 +14,14 @@ import FavoriteButton from "@/components/atoms/FavoriteButton";
 import { petsData } from "@/app/mock-data/mockPets";
 import { toast } from "sonner";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useQueryClient } from "@tanstack/react-query";
+// import { useQueryClient } from "@tanstack/react-query";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 const AvailablePetsPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   // Read search query from URL → if exists
   const searchQuery = (searchParams.get("search")?.trim() || "").toLowerCase();
@@ -78,11 +80,6 @@ const AvailablePetsPage = () => {
           toast.error("Could not remove from favorites");
           return;
         }
-
-        // TODO >>> move this logic into useDeleteFavorites hook (after successful Delete)
-        // ---------------
-        await queryClient.invalidateQueries({ queryKey: ["favorites"] });
-        // ---------------
         toast.success("Removed from favorites");
       } else {
         const res = await fetch("/api/favorites", {
@@ -101,11 +98,6 @@ const AvailablePetsPage = () => {
           toast.error("Could not add to favorites");
           return;
         }
-        // TODO >>> move this logic into useAddFavorites hook (after successful Add)
-        // ---------------
-        await queryClient.invalidateQueries({ queryKey: ["favorites"] });
-        // ---------------
-
         toast.success("Added to favorites");
       }
     } catch {
@@ -124,17 +116,6 @@ const AvailablePetsPage = () => {
     setTypeFilter(categoryFromUrl);
   }, [categoryFromUrl]);
 
-  // Loading simulation
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setIsLoading(false), 1200);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // Sync searchQuery with URL when it changes
-  // useEffect(() => {
-  //   setSearchQuery(urlSearchQuery);
-  // }, [urlSearchQuery]);
-
   // Combined filtering: Type + Age + Gender + Search by name
   const filteredPets = petsData.filter((pet) => {
     const matchType = typeFilter === "All" || pet.type === typeFilter;
@@ -145,19 +126,6 @@ const AvailablePetsPage = () => {
 
     return matchType && matchAge && matchGender && matchSearch;
   });
-
-  // Handle search input from Navbar or Mobile Search
-  // const handleSearchChange = (value: string) => {
-  //   setSearchQuery(value);
-  //   if (value.trim() !== "") {
-  //     router.push(
-  //       `/available-pets?search=${encodeURIComponent(value.trim())}`,
-  //       { scroll: false },
-  //     );
-  //   } else {
-  //     router.push("/available-pets", { scroll: false });
-  //   }
-  // };
 
   const clearSearch = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -175,39 +143,22 @@ const AvailablePetsPage = () => {
     setGenderFilter("All");
     router.push("/available-pets", { scroll: false });
   };
-  // const clearAll = () => {
-  //   setTypeFilter("All");
-  //   setAgeFilter("All");
-  //   setGenderFilter("All");
-  //   setSearchQuery("");
-  //   router.push("/available-pets", { scroll: false });
-  // };
 
   return (
     <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero Section */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12 text-center">
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-(--color-primary-darkBlue)">
-              Available Pets
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-(--color-primary-darkBlue)/90">
-              Meet your new best friend! These wonderful animals are looking for
-              loving homes.
-            </p>
-          </div>
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-60) dark:bg-(--color-secondary-monYellow-60)/20 md:h-[700px] md:w-[700px]" />
-          <div className="dark:opacity-50 absolute -left-60 bottom-10 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]" />
-        </div>
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          title="Available Pets"
+          description="Meet your new best friend! These wonderful animals are looking for loving homes."
+        />
       </section>
 
-      {/* Filters Section */}
+      {/* === Filters Section === */}
       <section className="container mx-auto px-4 py-10 md:py-12">
-        <div className="bg-white dark:bg-(--color-neutral-5) rounded-3xl shadow-xl p-6 md:p-8 border border-(--color-secondary-monYellow)/20">
+        <div className="bg-(--filter-card-bg) rounded-3xl shadow-xl p-6 md:p-8 border border-(--filter-card-border)">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue)">
+            <h2 className="text-2xl md:text-3xl font-bold text-(--filter-card-title)">
               Find Your Perfect Match
             </h2>
 
@@ -217,7 +168,7 @@ const AvailablePetsPage = () => {
               rawSearch) && (
               <button
                 onClick={clearAll}
-                className="text-sm font-medium text-(--color-primary-darkBlue) hover:text-(--color-secondary-monYellow) transition-colors flex items-center gap-1"
+                className="text-sm font-medium text-(--filter-card-clearAll) transition-colors flex items-center gap-1"
               >
                 <icons.CircleX className="w-4 h-4" />
                 Clear All
@@ -226,17 +177,22 @@ const AvailablePetsPage = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            {/* Pet Type Filter */}
+            {/* === Pet Type Filter === */}
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-base font-semibold text-(--color-primary-darkBlue)">
-                <icons.PawPrint className="w-5 h-5 text-(--color-secondary-monYellow)" />
+              <label className="flex items-center gap-2 text-base font-semibold text-(--filter-card-sub-title)">
+                <icons.PawPrint className="w-5 h-5 text-(--filter-card-sub-title)" />
                 Pet Type
               </label>
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) dark:text-neutral-100 px-4 py-3.5 
-                focus:border-(--color-secondary-monYellow) focus:ring-2 focus:ring-(--color-secondary-monYellow)/30 transition-all"
+                className="w-full rounded-xl border-2 border-(--filter-input-border) px-4 py-3.5 
+                focus:border-(--filter-input-focus-border) 
+                focus:ring-2 
+                focus:ring-(--filter-input-focus-border)/30 
+                transition-all
+                bg-(--filter-select-dropdown-bg)
+                "
               >
                 <option value="All">All Types</option>
                 <option value="Dog">Dog</option>
@@ -247,16 +203,22 @@ const AvailablePetsPage = () => {
               </select>
             </div>
 
-            {/* Age Filter */}
+            {/* === Age Filter ===*/}
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-base font-semibold text-(--color-primary-darkBlue)">
-                <icons.CalendarHeart className="w-5 h-5 text-(--color-secondary-monYellow)" />
+              <label className="flex items-center gap-2 text-base font-semibold text-(--filter-card-sub-title)">
+                <icons.CalendarHeart className="w-5 h-5 text-(--filter-card-sub-title)" />
                 Age
               </label>
               <select
                 value={ageFilter}
                 onChange={(e) => setAgeFilter(e.target.value)}
-                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) dark:text-neutral-100 px-4 py-3.5 focus:border-(--color-secondary-monYellow) focus:ring-2 focus:ring-(--color-secondary-monYellow)/30 transition-all"
+                className="w-full rounded-xl border-2 border-(--filter-input-border) px-4 py-3.5 
+                focus:border-(--filter-input-focus-border) 
+                focus:ring-2 
+                focus:ring-(--filter-input-focus-border)/30 
+                transition-all
+                bg-(--filter-select-dropdown-bg)
+                "
               >
                 <option value="All">All Ages</option>
                 <option value="Puppy">Puppy / Kitten</option>
@@ -266,16 +228,23 @@ const AvailablePetsPage = () => {
               </select>
             </div>
 
-            {/* Gender Filter */}
+            {/* === Gender Filter === */}
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-base font-semibold text-(--color-primary-darkBlue)">
-                <icons.Venus className="w-5 h-5 text-(--color-secondary-monYellow)" />
+              <label className="flex items-center gap-2 text-base font-semibold text-(--filter-card-sub-title)">
+                <icons.Venus className="w-5 h-5 text-(--filter-card-sub-title)" />
                 Gender
               </label>
               <select
                 value={genderFilter}
                 onChange={(e) => setGenderFilter(e.target.value)}
-                className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) dark:text-neutral-100 px-4 py-3.5 focus:border-(--color-secondary-monYellow) focus:ring-2 focus:ring-(--color-secondary-monYellow)/30 transition-all"
+                className="w-full rounded-xl border-2 
+                border-(--filter-input-border)! px-4 py-3.5 
+                focus:border-(--filter-input-focus-border) 
+                focus:ring-2 
+                focus:ring-(--filter-input-focus-border)/30 
+                transition-all
+                bg-(--filter-select-dropdown-bg)
+                "
               >
                 <option value="All">Any Gender</option>
                 <option value="Male">Male</option>
@@ -286,7 +255,7 @@ const AvailablePetsPage = () => {
 
           {rawSearch && (
             <div className="mt-6 flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-(--color-secondary-monYellow)/30 px-4 py-1.5 text-sm font-medium text-(--color-primary-darkBlue) dark:text-neutral-100">
+              <span className="inline-flex items-center gap-2 rounded-full bg-(--filter-card-sub-title)/30 px-4 py-1.5 text-sm font-medium text-(--filter-card-title)">
                 Search: “{rawSearch}”
                 <button onClick={clearSearch} aria-label="Clear search">
                   <icons.CircleX className="w-4 h-4" />
@@ -309,7 +278,7 @@ const AvailablePetsPage = () => {
         </div>
       </section>
 
-      {/* Pets List / Skeleton */}
+      {/* === Pets List / Skeleton === */}
       <section className="container mx-auto px-4 py-8">
         {isLoading ? (
           <div className="flex flex-wrap justify-center gap-8">
@@ -359,7 +328,7 @@ const AvailablePetsPage = () => {
                 key={pet.id}
                 className="group relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 
                   max-h-[800px] overflow-hidden flex flex-col
-                  bg-white dark:bg-(--color-neutral-10) 
+                  bg-(--available-pet-card-bg) 
                   w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]"
               >
                 {/* Pet Image */}
@@ -372,7 +341,10 @@ const AvailablePetsPage = () => {
 
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent group-hover:scale-105 transition-transform duration-500" />
                   <div
-                    className="absolute top-4 left-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) px-3 py-1
+                    className="absolute top-4 left-4 
+                    bg-(--available-pet-gender-bg) 
+                    text-(--available-pet-gender-text) 
+                    px-3 py-1
                    rounded-full font-medium text-sm shadow "
                   >
                     {pet.gender}
@@ -404,15 +376,15 @@ const AvailablePetsPage = () => {
                 <div className="p-6 flex flex-col gap-4 justify-between flex-1">
                   <div>
                     <div className="flex justify-between items-start">
-                      <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100">
+                      <h3 className="text-2xl font-bold text-(--available-pet-name) ">
                         {pet.name}
                       </h3>
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <span className="text-sm font-medium text-(--available-pet-age)">
                         {pet.age}
                       </span>
                     </div>
 
-                    <p className="mt-1 text-(--color-primary-darkBlue) dark:text-gray-300 font-medium">
+                    <p className="mt-1 text-(--available-pet-type) font-medium">
                       {pet.type}
                     </p>
 
@@ -420,36 +392,37 @@ const AvailablePetsPage = () => {
                       {pet.traits.map((trait, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-(--color-secondary-monYellow)/20 text-(--color-primary-darkBlue) dark:text-neutral-100 rounded-full text-xs font-medium"
+                          className="px-3 py-1 
+                          text-(--available-pet-trait-text)
+                          bg-(--available-pet-trait-bg) 
+                          rounded-full text-xs font-medium"
                         >
                           {trait}
                         </span>
                       ))}
                     </div>
 
-                    <p className="mt-4 text-gray-600 dark:text-gray-400 line-clamp-2">
+                    <p className="mt-4 line-clamp-2 text-(--available-pet-details)">
                       {pet.description}
                     </p>
                   </div>
 
+                  {/* === Buttons === */}
                   <div className="flex flex-col gap-2 h-auto">
                     <div className="w-full">
                       <FavoriteButton
                         petId={pet.id}
                         isFavorite={favoriteIds.includes(pet.id)}
                         isLoading={favoriteLoadingIds.has(pet.id)}
-                        // checked={favoritesChecked}
                         checked={isSuccess}
                         onClick={(event) => handleFavoriteClick(event, pet.id)}
-                        className="w-full dark:hover:bg-(--surface-page) dark:hover:text-(--color-neutral-80)"
+                        className="w-full"
                       />
                     </div>
                     <Link href={`/pets/${pet.id}`}>
                       <Button
                         variant="outline"
-                        className="w-full !dark:bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 
-                        dark:hover:bg-(--surface-page) dark:hover:text-(--color-neutral-80)
-                        transition-all duration-300 hover:-translate-y-0.5"
+                        className="w-full transition-all duration-300 hover:-translate-y-0.5"
                       >
                         View Details
                         <icons.ChevronRight className="ml-2" />
@@ -463,35 +436,15 @@ const AvailablePetsPage = () => {
         )}
       </section>
 
-      {/* CTA Section */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100">
-            Ready to meet your new friend?
-          </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-gray-300">
-            Contact us or start the adoption process today!
-          </p>
-          <div className="mt-8 flex justify-center gap-6 flex-wrap">
-            <Link href="/contact">
-              <Button
-                variant="primary"
-                className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300"
-              >
-                Get in Touch
-              </Button>
-            </Link>
-            <Link href="/how-to-adopt">
-              <Button
-                variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-[#00171f] transition-colors duration-300"
-              >
-                Adoption Guide
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* === CTA === */}
+      <BottomCTA
+        title="Ready to meet your new friend?"
+        description=" Contact us or start the adoption process today!"
+        btnName="Get in Touch"
+        btnName2="Adoption Guide"
+        href1="/contact"
+        href2="/how-to-adopt"
+      />
     </div>
   );
 };

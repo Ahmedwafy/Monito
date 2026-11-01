@@ -20,10 +20,13 @@ const HeroCard = ({ card, type }: CardProps) => {
   return (
     <Link href={href} className="group block">
       <div
-        className="w-[280px] rounded-xl bg-white p-4 shadow h-full flex flex-col 
+        className="relative w-[280px] rounded-xl bg-(--color-neutral-10)! p-4 shadow h-full flex flex-col 
         transition-all duration-300 
         hover:shadow-2xl hover:-translate-y-2 
-        dark:bg-(--color-neutral-0) dark:border dark:border-(--color-neutral-10)"
+        hover:-rotate-5 
+        top-0 ease-in-out hover:-top-5 hover:scale-105
+        z-5
+       "
       >
         {/* Image wrapper */}
         <div className="overflow-hidden rounded-lg">
@@ -56,9 +59,7 @@ const HeroCard = ({ card, type }: CardProps) => {
               {card.name}
             </h3>
 
-            <p className="font-bold mt-auto text-lg dark:text-(--color-primary-darkBlue)">
-              {card.price}
-            </p>
+            <p className="font-bold mt-auto text-lg">{card.price}</p>
           </>
         )}
 

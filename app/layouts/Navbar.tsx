@@ -119,21 +119,21 @@ const Navbar = () => {
   if (isMobile === null) return null;
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-(--color-neutral-0)/90 backdrop-blur-md shadow-sm transition-colors duration-300">
+    <nav className="sticky bg-(--nav-bg) top-0 z-50 backdrop-blur-md shadow-sm transition-colors duration-300">
       {/* ●──────────────────────────● Desktop View ●──────────────────────────● */}
       {!isMobile && (
-        <nav className="container mx-auto px-4 py-5 flex items-center justify-between dark:shadow-lg transition-colors duration-300">
+        <nav className="container mx-auto px-4 py-5 flex items-center justify-between transition-colors duration-300">
           {/* Logo */}
           <Link href="/">
             <div className="relative">
               <div
-                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-600/30 z-0 
+                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) z-0
               rounded-[15%] transition-colors"
               />
               <Image
                 src={images.logo}
                 alt="Logo"
-                className="relative dark:invert right-10 left-8 sm:-left-10"
+                className="relative right-10 left-8 sm:-left-10"
               />
             </div>
           </Link>
@@ -150,8 +150,8 @@ const Navbar = () => {
                     font-medium transition-colors relative group
                     ${
                       isActive
-                        ? "text-(--color-neutral-5)! dark:text-yellow-400!"
-                        : "text-(--color-primary-darkBlue) dark:hover:text-yellow-400"
+                        ? "text-(--Active-link-text-color)"
+                        : "text-(--link-text-color)"
                     }
                   `}
                 >
@@ -159,8 +159,8 @@ const Navbar = () => {
                   <span
                     className={`absolute -bottom-1 left-0 w-full h-0.5 rounded-full origin-center transition-transform duration-300 ${
                       isActive
-                        ? "scale-x-100 bg-(--color-primary-darkBlue)! dark:bg-yellow-400!"
-                        : "scale-x-0 bg-(--color-primary-darkBlue)! dark:bg-yellow-400! group-hover:scale-x-100"
+                        ? "scale-x-100 bg-(--link-text-color)!"
+                        : "scale-x-0 bg-(--Active-link-text-color)! group-hover:scale-x-100"
                     }`}
                   />
                 </Link>
@@ -176,7 +176,8 @@ const Navbar = () => {
                 placeholder="Search pets by name..."
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full bg-white dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-2.5 text-sm focus:outline-none focus:border-(--color-secondary-monYellow) transition-all"
+                className="w-full bg border border-(--search-input-border) rounded-full pl-11 py-2.5 text-sm 
+                focus:outline-none focus:border-(--search-input-border-hover) transition-all"
               />
               <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             </div>
@@ -187,15 +188,19 @@ const Navbar = () => {
             {/* Cart */}
             <Link
               href="/cart"
-              className="relative p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-colors text-(--color-primary-darkBlue) dark:text-gray-200"
-              aria-label="Shopping cart"
+              className="relative isolate p-2.5 rounded-full text-(--cart-icon) 
+              after:absolute after:inset-0
+              after:rounded-full after:border
+              after:border-(--color-primary-darkBlue)
+              after:opacity-0 after:scale-90
+              after:transition-all after:duration-300
+              hover:after:opacity-100
+              hover:after:scale-110"
             >
-              {/* <icons.Mail className="w-6 h-6" /> */}
-
               <ShoppingCart className="w-6 h-6" />
 
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 dark:bg-amber-100! dark:text-black! text-white text-xs font-bold">
+                <span className="absolute z-10 -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-(--color-pinkRed) text-white text-xs font-bold">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -204,7 +209,14 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-all active:scale-90"
+              className="relative isolate p-2.5 rounded-full text-(--theme-icon) 
+              after:absolute after:inset-0
+              after:rounded-full after:border
+              after:border-(--color-primary-darkBlue)
+              after:opacity-0 after:scale-90
+              after:transition-all after:duration-300
+              hover:after:opacity-100
+              hover:after:scale-110"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -219,16 +231,15 @@ const Navbar = () => {
               {user ? (
                 <>
                   <Link href="/profile">
-                    <span className="text-sm font-medium text-(--color-primary-darkBlue) dark:text-gray-200 max-w-[120px] truncate">
-                      {user.name}
+                    <span className="text-sm font-medium text-(--color-primary-darkBlue) max-w-[120px] truncate">
+                      <strong>{user.name}</strong>
                     </span>
                   </Link>
                   <Button
                     variant="outline"
                     onClick={handleLogout}
                     disabled={logout.isPending}
-                    className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
-                    dark:text-(--color-secondary-monYellow) px-4 py-2"
+                    className="px-4 py-2"
                   >
                     Logout
                   </Button>
@@ -236,22 +247,12 @@ const Navbar = () => {
               ) : (
                 <>
                   <Link href="/Login">
-                    <Button
-                      variant="outline"
-                      // className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
-                      className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
-                      dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) px-4 py-2"
-                    >
+                    <Button variant="outline" className="px-4 py-2">
                       Log in
                     </Button>
                   </Link>
                   <Link href="/SignUp">
-                    <Button
-                      variant="outline"
-                      // className="px-4 py-2"
-                      className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
-                      dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) px-4 py-2"
-                    >
+                    <Button variant="outline" className="px-4 py-2">
                       Sign up
                     </Button>
                   </Link>
@@ -264,7 +265,7 @@ const Navbar = () => {
               <Link href="/available-pets">
                 <Button
                   variant="primary"
-                  className="bg-(--color-primary-darkBlue) dark:bg-blue-600 text-white flex items-center gap-2"
+                  className="bg-(--adopt-btn-bg) text-(--adopt-btn) flex items-center gap-2"
                 >
                   Adopt Now
                   {/* <icons.Heart className="w-5 h-5" /> */}
@@ -282,13 +283,13 @@ const Navbar = () => {
           <Link href="/">
             <div className="relative">
               <div
-                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) dark:bg-yellow-600/30 z-0 
+                className="absolute w-[400px] h-[400px] -top-90 -left-40 sm:-left-60 rotate-25 bg-(--color-secondary-monYellow) z-0
               rounded-[15%] transition-colors"
               />
               <Image
                 src={images.logo}
                 alt="Logo"
-                className="relative dark:invert right-10 left-8 sm:-left-10"
+                className="relative right-10 left-8 sm:-left-10"
               />
             </div>
           </Link>
@@ -298,7 +299,7 @@ const Navbar = () => {
             {/* Mobile Search */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 text-(--color-primary-darkBlue) dark:text-gray-200"
+              className="p-2 text-(--color-primary-darkBlue)"
             >
               <icons.Search className="w-6 h-6" />
             </button>
@@ -306,7 +307,7 @@ const Navbar = () => {
             {/* Cart Icon */}
             <Link
               href="/cart"
-              className="relative p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-colors text-(--color-primary-darkBlue) dark:text-gray-200"
+              className="relative p-2.5 rounded-full hover:bg-gray-100 transition-colors text-(--color-primary-darkBlue)"
               aria-label="Shopping cart"
             >
               {/* <icons.Mail className="w-6 h-6" /> */}
@@ -314,7 +315,7 @@ const Navbar = () => {
               <ShoppingCart className="w-6 h-6" />
 
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 dark:bg-amber-100! dark:text-black! text-white text-xs font-bold">
+                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 flex items-center justify-center rounded-full bg-red-400 text-white text-xs font-bold">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -323,7 +324,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="text-(--color-primary-darkBlue) dark:text-gray-200 p-2"
+              className="text-(--color-primary-darkBlue) p-2"
             >
               <icons.Menu className="w-8 h-8" />
             </button>
@@ -341,11 +342,11 @@ const Navbar = () => {
               {/* Menu drawer */}
               <div
                 className="fixed right-0 top-0 z-110 flex h-dvh w-4/5 max-w-xs flex-col
-                  bg-white p-6 shadow-2xl  dark:bg-neutral-900"
+                  bg-white p-6 shadow-2xl "
               >
                 <div className="mb-10 flex items-center justify-between">
                   <Link href="/" onClick={closeMobileMenu}>
-                    <span className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-white">
+                    <span className="text-2xl font-bold text-(--color-primary-darkBlue)">
                       Monito
                     </span>
                   </Link>
@@ -354,7 +355,7 @@ const Navbar = () => {
                     type="button"
                     onClick={closeMobileMenu}
                     aria-label="Close menu"
-                    className="text-2xl text-gray-500 dark:text-gray-300"
+                    className="text-2xl text-gray-500"
                   >
                     ✕
                   </button>
@@ -363,7 +364,7 @@ const Navbar = () => {
                 {/* Theme Toggle */}
                 <button
                   onClick={toggleTheme}
-                  className="p-2.5 rounded-full hover:bg-gray-100 dark:hover:bg-(--color-neutral-10) transition-all active:scale-90"
+                  className="p-2.5 rounded-full hover:bg-gray-100 transition-all active:scale-90"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -385,7 +386,7 @@ const Navbar = () => {
                         className={`py-3 transition-colors ${
                           isActive
                             ? "font-semibold text-amber-500"
-                            : "text-(--color-primary-darkBlue) dark:text-gray-200"
+                            : "text-(--color-primary-darkBlue)"
                         }`}
                       >
                         {link.label}
@@ -400,7 +401,7 @@ const Navbar = () => {
                       <Link
                         href="/profile"
                         onClick={closeMobileMenu}
-                        className="font-medium text-(--color-primary-darkBlue) dark:text-white"
+                        className="font-medium text-(--color-primary-darkBlue)"
                       >
                         {user.name}
                       </Link>
@@ -417,7 +418,7 @@ const Navbar = () => {
                   ) : (
                     <>
                       <Link href="/Login" onClick={closeMobileMenu}>
-                        <Button variant="outline" className="w-full">
+                        <Button variant="primary" className="w-full">
                           Log in
                         </Button>
                       </Link>
@@ -447,14 +448,14 @@ const Navbar = () => {
 
       {/* Mobile Search input */}
       {isSearchOpen && (
-        <div className="px-4 pb-4 bg-white dark:bg-(--color-neutral-5) border-b">
+        <div className="px-4 pb-4 bg-white border-b">
           <div className="relative">
             <input
               type="text"
               placeholder="Search pets by name..."
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full bg-gray-100 dark:bg-(--color-neutral-10) border border-gray-200 dark:border-gray-700 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
+              className="w-full bg-gray-100 border border-gray-200 rounded-full pl-11 py-3 text-sm focus:outline-none focus:border-(--color-secondary-monYellow)"
             />
             <icons.Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           </div>

@@ -6,7 +6,7 @@ import * as images from "@/assets/images/images";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-(--page-bg) flex items-center justify-center px-4 py-16">
       <div className="text-center max-w-2xl">
         {/* Optional Image */}
         <div className="mb-10">
@@ -19,40 +19,30 @@ export default function NotFound() {
           />
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-bold text-(--color-primary-darkBlue) mb-6">
+        <h1 className="text-6xl md:text-8xl font-bold text-(--not-found-title) mb-6">
           404
         </h1>
 
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+        <h2 className="text-3xl md:text-4xl font-semibold text-(--not-found-sub-title) mb-4">
           Oops! Page Not Found
         </h2>
 
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-(--not-found-details) mb-10 leading-relaxed">
           It looks like this page got lost chasing its tail. Don&apos;t worry —
           even the best pets wander off sometimes!
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link href="/">
-            <Button
-              variant="primary"
-              className="text-xl px-10 py-5 bg-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-all duration-300"
-            >
-              Go Back Home
-            </Button>
+            <Button variant="outline">Go Back Home</Button>
           </Link>
 
           <Link href="/available-pets">
-            <Button
-              variant="outline"
-              className="text-xl px-10 py-5 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) hover:bg-(--color-primary-darkBlue) hover:text-white dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-all duration-300"
-            >
-              Browse Available Pets
-            </Button>
+            <Button variant="outline">Browse Available Pets</Button>
           </Link>
         </div>
 
-        <p className="mt-12 text-gray-500 dark:text-gray-400">
+        <p className="mt-12 text-gray-500">
           If you think something&apos;s broken, feel free to{" "}
           <Link
             href="/contact"

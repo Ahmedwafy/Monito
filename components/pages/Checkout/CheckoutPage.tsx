@@ -104,7 +104,7 @@ export default function CheckoutPage() {
 
   if (isUserLoading || isCartLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)">
+      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40)">
         <p className="text-lg text-(--color-primary-darkBlue)">Loading...</p>
       </div>
     );
@@ -114,7 +114,7 @@ export default function CheckoutPage() {
 
   if (cartLines.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) px-4">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-(--color-secondary-monYellow-40) px-4">
         <h1 className="text-3xl font-bold text-(--color-primary-darkBlue)">
           Your cart is empty
         </h1>
@@ -126,7 +126,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) pb-20">
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <h1 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) mb-10">
           Checkout
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Form */}
           <form onSubmit={handleSubmit} className="flex-1 space-y-5">
-            <div className="bg-white dark:bg-(--color-neutral-5) rounded-2xl p-6 shadow-lg space-y-4">
+            <div className="bg-white rounded-2xl p-6 shadow-lg space-y-4">
               <h2 className="text-xl font-bold text-(--color-primary-darkBlue)">
                 Shipping details
               </h2>
@@ -148,7 +148,7 @@ export default function CheckoutPage() {
                   name="fullName"
                   value={form.fullName}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) px-4 py-3"
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
                   required
                 />
               </div>
@@ -161,7 +161,7 @@ export default function CheckoutPage() {
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) px-4 py-3"
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
                   required
                 />
               </div>
@@ -174,7 +174,7 @@ export default function CheckoutPage() {
                   name="address"
                   value={form.address}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) px-4 py-3"
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
                   required
                 />
               </div>
@@ -187,7 +187,7 @@ export default function CheckoutPage() {
                   name="city"
                   value={form.city}
                   onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) px-4 py-3"
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
                   required
                 />
               </div>
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
                   value={form.notes}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 dark:bg-(--color-neutral-10) px-4 py-3"
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3"
                 />
               </div>
             </div>
@@ -218,11 +218,11 @@ export default function CheckoutPage() {
 
           {/* Summary */}
           <aside className="lg:w-96">
-            <div className="bg-white dark:bg-(--color-neutral-5) rounded-2xl p-6 shadow-lg sticky top-24">
+            <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
               <h2 className="text-xl font-bold text-(--color-primary-darkBlue) mb-4">
                 Order summary
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <p className="text-sm text-gray-600 mb-4">
                 {totalItems} item{totalItems !== 1 ? "s" : ""}
               </p>
 

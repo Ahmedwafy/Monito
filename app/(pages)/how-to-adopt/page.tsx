@@ -1,8 +1,10 @@
 // app/how-to-adopt/page.tsx
 import * as icons from "@/assets/icons";
 import Image from "next/image";
-import Link from "next/link";
-import Button from "@/components/atoms/Button";
+// import Link from "next/link";
+// import Button from "@/components/atoms/Button";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 const steps = [
   {
@@ -10,9 +12,7 @@ const steps = [
     title: "Browse Available Pets",
     description:
       "Take your time to explore our available pets. Read their profiles, look at their photos, and see which one feels like the right match for you and your lifestyle.",
-    icon: (
-      <icons.Search className="w-10 h-10 text-(--color-primary-darkBlue)" />
-    ),
+    icon: <icons.Search className="w-10 h-10 " />,
     image: null, // Add an Image if Needed
   },
   {
@@ -20,9 +20,7 @@ const steps = [
     title: "Submit an Adoption Application",
     description:
       "Once you've found a pet you'd like to meet, fill out our adoption application form. This helps us learn more about you, your home, and your experience with pets.",
-    icon: (
-      <icons.FileText className="w-10 h-10 text-(--color-primary-darkBlue)" />
-    ),
+    icon: <icons.FileText className="w-10 h-10 " />,
     image: null,
   },
   {
@@ -30,9 +28,7 @@ const steps = [
     title: "Meet & Greet",
     description:
       "If your application looks like a good fit, we'll arrange a meet-and-greet at the shelter or a safe location. This is a chance for you and the pet to get to know each other.",
-    icon: (
-      <icons.HeartHandshake className="w-10 h-10 text-(--color-primary-darkBlue)" />
-    ),
+    icon: <icons.HeartHandshake className="w-10 h-10 " />,
     image: null,
   },
   {
@@ -40,7 +36,7 @@ const steps = [
     title: "Home Visit (if needed)",
     description:
       "In some cases, we may schedule a quick home visit to ensure the environment is safe and suitable for the pet. This step is done with your convenience in mind.",
-    icon: <icons.Home className="w-10 h-10 text-(--color-primary-darkBlue)" />,
+    icon: <icons.Home className="w-10 h-10 " />,
     image: null,
   },
   {
@@ -48,32 +44,20 @@ const steps = [
     title: "Sign Adoption Agreement & Take Your New Friend Home",
     description:
       "After everything is approved, you'll sign a simple adoption agreement, pay the adoption fee (which covers vaccinations, spay/neuter, microchip, etc.), and welcome your new family member home!",
-    icon: (
-      <icons.PawPrint className="w-10 h-10 text-(--color-primary-darkBlue)" />
-    ),
+    icon: <icons.PawPrint className="w-10 h-10 " />,
     image: null,
   },
 ];
 
 export default function AdoptionProcessPage() {
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero / Cover */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12">
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
-          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
-          <div className="relative z-10 max-w-auto">
-            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
-              Adoption Process
-            </h1>
-            <p className="mt-6 text-lg text-(--color-primary-darkBlue) md:text-xl">
-              Adopting a pet is simple, thoughtful, and rewarding. Here&apos;s
-              how it works step by step.
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          title=" Adoption Process"
+          description="Adopting a pet is simple, thoughtful, and rewarding. Here's how it works step by step."
+        />
       </section>
 
       {/* Steps */}
@@ -89,20 +73,20 @@ export default function AdoptionProcessPage() {
             >
               {/* Icon + Number */}
               <div className="flex flex-col items-center min-w-[120px]">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-(--color-secondary-monYellow) flex items-center justify-center shadow-lg mb-3">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-(--icon-bg) border-2 border-(--icon-border) text-(--icon-color)! flex items-center justify-center shadow-lg mb-3">
                   {step.icon}
                 </div>
-                <div className="w-12 h-12 rounded-full bg-(--color-primary-darkBlue) text-white flex items-center justify-center text-2xl font-bold">
+                <div className="w-12 h-12 rounded-full bg-(--number-bg) text-(--number-color) flex items-center justify-center text-2xl font-bold">
                   {step.number}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex-1 bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-xl p-6 md:p-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
+              <div className="flex-1 bg-(--card-bg) rounded-2xl shadow-xl p-6 md:p-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-(--card-title-color) mb-4">
                   {step.title}
                 </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-lg text-(--card-description-color) leading-relaxed">
                   {step.description}
                 </p>
 
@@ -124,25 +108,13 @@ export default function AdoptionProcessPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) dark:border dark:border-(--color-secondary-monYellow) dark:shadow-xl py-12 px-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) mb-4">
-            Ready to Start Your Journey?
-          </h3>
-          <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-secondary-monYellow)/90 mb-8">
-            Browse our available pets and find the one who’s waiting for you.
-          </p>
-          <Link href="/available-pets">
-            <Button
-              variant="outline"
-              className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
-            >
-              View Available Pets
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Ready to Start Your Journey?"
+        description="Browse our available pets and find the one who’s waiting for you."
+        btnName="View Available Pets"
+        href1="/available-pets"
+      />
     </div>
   );
 }

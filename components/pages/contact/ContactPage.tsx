@@ -1,10 +1,10 @@
 "use client";
-import * as icons from "@/assets/icons";
-import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Smartphone } from "lucide-react";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -82,55 +82,29 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-16">
-      {/* Hero / Cover Like HeroSections */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12">
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
-          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
-          <div className="relative z-10 max-w-3xl">
-            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
-              Get in Touch
-            </h1>
-            <p className="mt-6 text-lg text-(--color-primary-darkBlue) md:text-xl">
-              Have questions about adoption, fostering, or our furry friends?
-              We&apos;re here to help — drop us a message!
-            </p>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Button
-                variant="primary"
-                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:border-(--color-primary-darkBlue)! dark:hover:bg-(--color-secondary-monYellow) 
-                dark:hover:text-(--color-neutral-0) dark:hover:border-(--color-neutral-0)!"
-                onClick={handleClick}
-              >
-                Send Message
-                <icons.CircleArrowRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110" />
-              </Button>
-
-              <Button
-                variant="outline"
-                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
-                onClick={handleClick}
-              >
-                Call Us Now
-              </Button>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-16">
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          handleClick={handleClick}
+          title="Get in Touch"
+          subTitle="Thousands More Fun!"
+          description="Have questions about adoption, fostering, or our furry friends? We're here to help — drop us a message!"
+          btnTitle="Send Message"
+          btnTitle2="Call Us Now"
+        />
       </section>
+
       {/* Main Contact Content */}
       <section id="mail" className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact Info + Map / Image */}
           <div className="space-y-10">
             <div>
-              <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
+              <h2 className="text-3xl font-bold text-(--contact-title) transition-colors duration-300">
                 Let&apos;s Connect
               </h2>
-              <p className="mt-4 text-lg text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300">
+              <p className="mt-4 text-lg text-(--contact-desc) transition-colors duration-300">
                 Whether you&apos;re ready to adopt, want to volunteer, or just
                 want to say hi to our team — we&apos;re all ears (and tails!).
               </p>
@@ -138,31 +112,29 @@ const ContactPage = () => {
 
             {/* Contact Cards */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80)! transition-colors duration-300">
-                  <Smartphone className="w-8 h-8 dark:text-[#07121a]" />
+              <div className="rounded-2xl bg-(--contact-card-bg) border border-(--contact-card-border) p-6 shadow-lg transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--contact-icon-bg) text-(--contact-icon-color) transition-colors duration-300">
+                  <Smartphone className="w-8 h-8" />
                 </div>
-                <h3 className="mt-4 text-xl font-semibold dark:text-neutral-100 transition-colors duration-300">
+                <h3 className="mt-4 text-xl font-semibold text-(--contact-card-title) transition-colors duration-300">
                   Phone
                 </h3>
-                <p className="mt-2 text-gray-600 dark:text-(--color-neutral-80) transition-colors duration-300">
+                <p className="mt-2 text-(--contact-card-text) transition-colors duration-300">
                   +20 123 456 7890
                 </p>
-                <p className="text-sm text-gray-500 dark:text-(--color-neutral-40) transition-colors duration-300">
+                <p className="text-sm text-(--contact-card-subtext) transition-colors duration-300">
                   Sun – Thu: 10AM – 7PM
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg transition-colors duration-300">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300">
-                  {/* <icons.Smartphone className="h-9 w-9" /> */}
+              <div className="rounded-2xl bg-(--contact-card-bg) border border-(--contact-card-border) p-6 shadow-lg transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--contact-icon-bg) text-(--contact-icon-color) transition-colors duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
-                    // className="text-(--color-primary-darkBlue)"
-                    className="text-inherit dark:text-[#07121a]"
+                    className="text-inherit"
                   >
                     <path
                       fill="currentColor"
@@ -170,26 +142,25 @@ const ContactPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold dark:text-neutral-100 transition-colors duration-300">
+                <h3 className="mt-4 text-xl font-semibold text-(--contact-card-title) transition-colors duration-300">
                   Email
                 </h3>
-                <p className="mt-2 text-gray-600 dark:text-neutral-80 transition-colors duration-300">
+                <p className="mt-2 text-(--contact-card-text) transition-colors duration-300">
                   hello@onemorefriend.com
                 </p>
-                <p className="text-sm text-gray-500 dark:text-neutral-40 transition-colors duration-300">
+                <p className="text-sm text-(--contact-card-subtext) transition-colors duration-300">
                   We reply within 24 hours
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) p-6 shadow-lg sm:col-span-2 transition-colors duration-300">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--color-primary-darkBlue) dark:bg-(--color-secondary-monYellow) text-(--color-secondary-monYellow) dark:text-(--color-primary-darkBlue-80) transition-colors duration-300">
-                  {/* <icons.Mail className="h-9 w-9" /> */}
+              <div className="rounded-2xl bg-(--contact-card-bg) border border-(--contact-card-border) p-6 shadow-lg sm:col-span-2 transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--contact-icon-bg) text-(--contact-icon-color) transition-colors duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
-                    className="text-inherit dark:text-[#07121a]"
+                    className="text-inherit"
                   >
                     <path
                       fill="currentColor"
@@ -197,13 +168,13 @@ const ContactPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold dark:text-neutral-100 transition-colors duration-300">
+                <h3 className="mt-4 text-xl font-semibold text-(--contact-card-title) transition-colors duration-300">
                   Visit Us
                 </h3>
-                <p className="mt-2 text-gray-600 dark:text-neutral-80 transition-colors duration-300">
+                <p className="mt-2 text-(--contact-card-text) transition-colors duration-300">
                   123 Pet Street, New Cairo, Cairo Governorate, Egypt
                 </p>
-                <p className="mt-1 text-sm text-gray-500 dark:text-neutral-40 transition-colors duration-300">
+                <p className="mt-1 text-sm text-(--contact-card-subtext) transition-colors duration-300">
                   Come meet your new best friend!
                 </p>
               </div>
@@ -211,22 +182,21 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl bg-white dark:bg-(--color-neutral-0)/50 p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-transparent dark:border-(--color-card-border)">
-            <h2 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
+          <div className="rounded-3xl bg-(--contact-form-bg) p-8 shadow-xl lg:p-10 transition-colors duration-300 border border-(--contact-card-border)">
+            <h2 className="text-3xl font-bold text-(--contact-form-title) transition-colors duration-300">
               Send Us a Message
             </h2>
-            <p className="mt-3 text-gray-600 dark:text-(--color-neutral-80) transition-colors duration-300">
+            <p className="mt-3 text-(--contact-form-desc) transition-colors duration-300">
               Fill out the form and we&apos;ll get back to you as soon as
               possible.
             </p>
 
-            {/* Form */}
             <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300"
+                    className="block text-sm font-medium text-(--contact-label) transition-colors duration-300"
                   >
                     Full Name <span className="text-red-500">*</span>
                   </label>
@@ -234,8 +204,8 @@ const ContactPage = () => {
                     type="text"
                     id="name"
                     name="fullName"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-(--color-card-border) bg-white dark:bg-(--color-neutral-0)
-                     text-gray-900 dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
+                    className="mt-1 block w-full rounded-lg border border-(--contact-input-border) bg-(--contact-input-bg)
+                text-(--contact-input-text) px-4 py-3 focus:border-(--contact-input-focus) focus:ring-(--contact-input-focus) transition-colors duration-300"
                     placeholder="Your name"
                     value={formData.fullName}
                     onChange={handleChange}
@@ -245,7 +215,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300"
+                    className="block text-sm font-medium text-(--contact-label) transition-colors duration-300"
                   >
                     Email Address <span className="text-red-500">*</span>
                   </label>
@@ -253,8 +223,8 @@ const ContactPage = () => {
                     type="email"
                     id="email"
                     name="email"
-                    className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-(--color-card-border) bg-white dark:bg-(--color-neutral-0)
-                     text-gray-900 dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
+                    className="mt-1 block w-full rounded-lg border border-(--contact-input-border) bg-(--contact-input-bg)
+                text-(--contact-input-text) px-4 py-3 focus:border-(--contact-input-focus) focus:ring-(--contact-input-focus) transition-colors duration-300"
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleChange}
@@ -265,7 +235,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300"
+                  className="block text-sm font-medium text-(--contact-label) transition-colors duration-300"
                 >
                   Subject <span className="text-red-500">*</span>
                 </label>
@@ -273,9 +243,9 @@ const ContactPage = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-(--color-card-border) bg-white dark:bg-(--color-neutral-0)
-                   text-gray-900 dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) 
-                   dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
+                  className="mt-1 block w-full rounded-lg border border-(--contact-input-border) bg-(--contact-input-bg)
+              text-(--contact-input-text) px-4 py-3 focus:border-(--contact-input-focus) focus:ring-(--contact-input-focus)
+              transition-colors duration-300"
                   placeholder="Adoption inquiry / General question"
                   value={formData.subject}
                   onChange={handleChange}
@@ -285,7 +255,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-(--color-neutral-80) transition-colors duration-300"
+                  className="block text-sm font-medium text-(--contact-label) transition-colors duration-300"
                 >
                   Your Message <span className="text-red-500">*</span>
                 </label>
@@ -293,8 +263,8 @@ const ContactPage = () => {
                   id="message"
                   name="message"
                   rows={5}
-                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-(--color-card-border) bg-white dark:bg-(--color-neutral-0)
-                   text-gray-900 dark:text-neutral-100 px-4 py-3 focus:border-(--color-secondary-monYellow) focus:ring-(--color-secondary-monYellow) dark:focus:ring-(--color-secondary-monYellow) transition-colors duration-300 dark:placeholder-gray-400"
+                  className="mt-1 block w-full rounded-lg border border-(--contact-input-border) bg-(--contact-input-bg)
+              text-(--contact-input-text) px-4 py-3 focus:border-(--contact-input-focus) focus:ring-(--contact-input-focus) transition-colors duration-300"
                   placeholder="Tell us how we can help you and your future furry friend..."
                   value={formData.message}
                   onChange={handleChange}
@@ -303,9 +273,9 @@ const ContactPage = () => {
 
               <Button
                 variant="primary"
-                className="w-full bg-(--color-primary-darkBlue) text-(--color-secondary-monYellow) hover:bg-(--color-secondary-monYellow)/90 
-                hover:text-(--color-primary-darkBlue)! transition-colors duration-300 font-bold dark:bg-(--color-neutral-0) dark:text-neutral-100 
-                dark:border-(--color-card-border) dark:hover:bg-(--color-card-bg)!"
+                className="w-full bg-(--contact-btn-bg) text-(--contact-btn-text) 
+            hover:bg-(--contact-btn-hover-bg) hover:text-(--contact-btn-hover-text)! 
+            transition-colors duration-300 font-bold"
               >
                 Send Message
               </Button>
@@ -313,36 +283,16 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-      ``
-      {/* Optional small CTA at bottom */}
-      <section className="px-4 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
-          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300 md:text-3xl">
-            Ready to meet your new friend?
-          </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-neutral-80) transition-colors duration-300">
-            Browse our available pets or schedule a visit today!
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link href="/available-pets">
-              <Button
-                variant="primary"
-                className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300"
-              >
-                Explore Pets
-              </Button>
-            </Link>
-            <Link href={"/available-pets"}>
-              <Button
-                variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
-              >
-                Book a Visit
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Ready to meet your new friend?"
+        description="Browse our available pets or schedule a visit today!"
+        btnName="Explore Pets"
+        btnName2="Book a Visit"
+        href1="/available-pets"
+        handleClick={handleClick}
+      />
     </div>
   );
 };

@@ -13,7 +13,7 @@ import { ButtonHTMLAttributes } from "react";
 // children?: ReactNode;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "outlineWithHeart";
+  variant?: "primary" | "outline";
   loading?: boolean;
 }
 
@@ -34,33 +34,16 @@ export default function Button({
 
   const variants = {
     primary: `
-      bg-[var(--action-primary)]
-      text-[var(--surface-page)]
-      hover:bg-[var(--action-primary-hover)] hover:text-[var(--action-hover-text)]
-      focus:ring-[var(--focus-ring)]
+      bg-(--primary-btn-bg)
+      text-(--primary-btn-text)
+      hover:bg-(--primary-btn-bg-hover) hover:text-(--primary-btn-text-hover)
+      focus:ring-(--focus-ring)
       disabled:opacity-40 disabled:cursor-not-allowed
     `,
-    secondary: `
-      bg-[var(--action-secondary)] text-[var(--surface-page)]
-      hover:bg-[var(--action-secondary-hover)] hover:text-[var(--action-hover-text)]
-      focus:ring-[var(--focus-ring)]
-      disabled:opacity-40 disabled:cursor-not-allowed
-    `,
-    // hover:bg-(--action-outline-hover) hover:text-(--action-hover-text) → was in outline style
     outline: `
-      border border-(--action-primary) text-(--action-primary)
-      hover:bg-(--action-outline-hover) hover:text-(--action-hover-text) 
+      border border-(--outline-btn-border) text-(--outline-btn-text)
+      hover:bg-(--outline-btn-bg-hover) hover:text-(--outline-btn-text-hover)
       focus:ring-(--focus-ring)
-      disabled:opacity-50 disabled:cursor-not-allowed
-    `,
-    outlineWithHeart: `
-      border border-[var(--action-primary)] text-[var(--action-primary)]
-      focus:ring-(--focus-ring)
-      disabled:opacity-50 disabled:cursor-not-allowed
-    `,
-    ghost: `
-      text-[var(--action-primary)] hover:bg-[var(--action-ghost-hover)]/10
-      focus:ring-[var(--focus-ring)]
       disabled:opacity-50 disabled:cursor-not-allowed
     `,
   };

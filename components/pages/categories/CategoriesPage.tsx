@@ -5,48 +5,26 @@ import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { categories } from "@/app/mock-data/mockCategories";
 import { petsData } from "@/app/mock-data/mockPets";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 const CategoryPage = () => {
   const getCount = (type: string) =>
     petsData.filter((pet) => pet.type === type).length;
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero / Cover Section */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12 text-center">
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
-          <div className="dark:opacity-50 absolute -left-60 bottom-10 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
-
-          <div className="relative z-10 max-w-3xl mx-auto">
-            {/* <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold"> */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-(--color-primary-darkBlue)">
-              Find Your Perfect Friend
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-(--color-primary-darkBlue)/90 dark:text-(--color-primary-darkBlue)">
-              Browse our categories and discover the pet that matches your
-              lifestyle and heart!
-            </p>
-            <div className="mt-10 w-fit mx-auto">
-              {/* dark:border-none */}
-              <Link href="/">
-                <Button
-                  variant="primary"
-                  className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:border dark:hover:bg-(--color-secondary-monYellow) 
-                dark:hover:text-(--color-neutral-0) dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)! mx-auto"
-                >
-                  Explore All Pets
-                  <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* Banner Section */}
+      <section className="pt-1">
+        <TopPageBanner
+          title="Find Your Perfect Friend"
+          description="Browse our categories and discover the pet that matches your lifestyle and heart!"
+          btnTitle2="Explore All Pets"
+          href="/available-pets"
+        />
       </section>
 
-      {/* Categories */}
+      {/* Categories - Cards */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex flex-wrap justify-center gap-4">
           {categories.map((category) => (
@@ -54,8 +32,8 @@ const CategoryPage = () => {
               key={category.id}
               className="
               group relative rounded-2xl overflow-hidden shadow-lg 
-              hover:shadow-2xl transition-all duration-300 bg-white
-              w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-1/5 dark:bg-(--color-neutral-0) border border-transparent dark:border-(--color-card-border)
+              hover:shadow-2xl transition-all duration-300 bg-(--card-bg)
+              w-full max-w-[380px] sm:w-[calc(50%-1rem)] lg:w-1/5 border border-transparent
               "
               // lg:w-[calc(33.333%-2rem)] or lg:w-1/5
             >
@@ -71,18 +49,21 @@ const CategoryPage = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
                 {/* Count badge */}
-                <div className="absolute top-4 right-4 bg-(--color-secondary-monYellow) text-(--color-primary-darkBlue) dark:text-(--color-primary-darkBlue) px-4 py-1 rounded-full font-semibold text-sm shadow-md">
-                  {/* {category.count} Available */}
+                <div className="absolute top-4 right-4 bg-(--card-badge-bg) text-(--badge-text-color) px-4 py-1 rounded-full font-semibold text-sm shadow-md">
                   {getCount(category.typeParam)} Available
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className={`text-2xl font-bold ${category.textColor}`}>
+                <h3
+                  // className={`text-2xl font-bold ${category.textColor}`}
+                  className={`text-2xl font-bold text-(--card-title-color)`}
+                >
                   {category.title}
                 </h3>
-                <p className="mt-3 text-gray-600 dark:text-gray-300">
+                {/* <p className="mt-3 text-gray-600">{category.description}</p> */}
+                <p className="mt-3 text-(--card-description-color)">
                   {category.description}
                 </p>
 
@@ -90,7 +71,7 @@ const CategoryPage = () => {
                   <Link href={`./available-pets?type=${category.typeParam}`}>
                     <Button
                       variant="primary"
-                      className="w-full bg-(--color-primary-darkBlue) text-white hover:bg-(--color-primary-darkBlue)/90 dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) group-hover:translate-x-1 transition-all duration-300"
+                      className="w-full group-hover:translate-x-1 transition-all duration-300"
                     >
                       View {category.title}
                       <icons.ChevronRight className="ml-2" />
@@ -104,34 +85,14 @@ const CategoryPage = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) py-12 px-8 transition-colors duration-300 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) transition-colors duration-300">
-            Can&apos;t decide? Let us help you!
-          </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-neutral-80) transition-colors duration-300">
-            Take our quick quiz and find the perfect pet match for you.
-          </p>
-          <div className="mt-8 flex justify-center gap-6 flex-wrap">
-            <Link href="/">
-              <Button
-                variant="primary"
-                className="dark:bg-(--color-secondary-monYellow) dark:text-(--color-neutral-0) dark:hover:bg-(--color-secondary-monYellow-80) transition-colors duration-300 sm:text-(--color-secondary-monYellow) flex"
-              >
-                Take the Quiz
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors duration-300"
-              >
-                Ask for Help
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BottomCTA
+        title="Can't decide? Let us help you!"
+        description="Take our quick quiz and find the perfect pet match for you."
+        btnName="Take the Quiz"
+        btnName2="Ask for Help"
+        href1="/"
+        href2="/contact"
+      />
     </div>
   );
 };

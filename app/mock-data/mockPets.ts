@@ -13,7 +13,7 @@ export const petsData = [
     weight: "1.2 kg",
     traits: ["Playful", "Curious", "Energetic", "Friendly"],
     description:
-      "Milo is an adorable and energetic kitten who loves to explore his surroundings. He is always ready for a play session and enjoys chasing feather wands. He would make a perfect addition to any family.",
+      "is an adorable and energetic kitten who loves to explore his surroundings. He is always ready for a play session and enjoys chasing feather wands. He would make a perfect addition to any family.",
     health: "Vaccinated, dewormed, healthy",
     specialNeeds: "None",
     mainImage: images.cat1,
@@ -30,7 +30,7 @@ export const petsData = [
     weight: "1.1 kg",
     traits: ["Affectionate", "Calm", "Sweet", "Litter trained"],
     description:
-      "Luna is a gentle and sweet tabby kitten. She loves chin scratches and napping in sunny spots. She is very clean and already using the litter box like a pro.",
+      "is a gentle and sweet tabby kitten. She loves chin scratches and napping in sunny spots. She is very clean and already using the litter box like a pro.",
     health: "Vaccinated, dewormed",
     specialNeeds: "None",
     mainImage: images.cat2,
@@ -47,7 +47,7 @@ export const petsData = [
     weight: "1.3 kg",
     traits: ["Fluffy", "Snuggly", "Quiet", "Gentle"],
     description:
-      "Snowball is a fluffy and stunning White Persian kitten. He is incredibly soft and loves being held and snuggled. He requires regular brushing to keep his coat beautiful.",
+      "is a fluffy and stunning White Persian kitten. He is incredibly soft and loves being held and snuggled. He requires regular brushing to keep his coat beautiful.",
     health: "Vaccinated, vet checked",
     specialNeeds: "Requires regular grooming",
     mainImage: images.cat3,
@@ -64,7 +64,7 @@ export const petsData = [
     weight: "1.0 kg",
     traits: ["Independent", "Smart", "Playful", "Vocal"],
     description:
-      "Bella is a smart and colorful Calico kitten. She has a big personality and loves to 'talk' to her humans. She is very independent but also enjoys a good play session.",
+      "is a smart and colorful Calico kitten. She has a big personality and loves to 'talk' to her humans. She is very independent but also enjoys a good play session.",
     health: "Vaccinated, dewormed",
     specialNeeds: "None",
     mainImage: images.cat4,
@@ -82,7 +82,7 @@ export const petsData = [
     weight: "6.5 kg",
     traits: ["Loyal", "Gentle Giant", "Affectionate", "Good with kids"],
     description:
-      "Bear is a sweet Bernese Mountain Dog puppy. Although he's small now, he will grow into a large, gentle giant. He loves people and is very eager to please and learn.",
+      "is a sweet Bernese Mountain Dog puppy. Although he's small now, he will grow into a large, gentle giant. He loves people and is very eager to please and learn.",
     health: "Fully vaccinated, microchipped",
     specialNeeds: "None",
     mainImage: images.dog1,
@@ -99,7 +99,7 @@ export const petsData = [
     weight: "4.2 kg",
     traits: ["Intelligent", "Active", "Alert", "Trainable"],
     description:
-      "Chase is a highly intelligent Border Collie puppy. He learns commands incredibly fast and needs an active home that will provide him with plenty of mental and physical exercise.",
+      "is a highly intelligent Border Collie puppy. He learns commands incredibly fast and needs an active home that will provide him with plenty of mental and physical exercise.",
     health: "First shots, dewormed",
     specialNeeds: "Needs high activity",
     mainImage: images.dog2,
@@ -116,7 +116,7 @@ export const petsData = [
     weight: "5.5 kg",
     traits: ["Friendly", "Playful", "Family-oriented", "Happy"],
     description:
-      "Max is your classic Golden Retriever puppy - happy, friendly, and loves everyone he meets. He is eager to become a beloved family member and enjoys playing fetch.",
+      "is your classic Golden Retriever puppy - happy, friendly, and loves everyone he meets. He is eager to become a beloved family member and enjoys playing fetch.",
     health: "Vaccinated, healthy",
     specialNeeds: "None",
     mainImage: images.dog3,
@@ -133,7 +133,7 @@ export const petsData = [
     weight: "3.5 kg",
     traits: ["Unique", "Adaptable", "Loving", "Scrappy"],
     description:
-      "Buddy is a charming, one-of-a-kind puppy mix. He has a wonderful temperament and adapts quickly to new situations. He's looking for a loving home where he can thrive.",
+      "is a charming, one-of-a-kind puppy mix. He has a wonderful temperament and adapts quickly to new situations. He's looking for a loving home where he can thrive.",
     health: "Vet checked, dewormed",
     specialNeeds: "None",
     mainImage: images.dog4,
@@ -151,7 +151,7 @@ export const petsData = [
     weight: "0.9 kg",
     traits: ["Colorful", "Social", "Talkative", "Intelligent"],
     description:
-      "Rio is a bright and social macaw who loves attention and learning new sounds. He enjoys perching near people and playing with toys.",
+      "is a bright and social macaw who loves attention and learning new sounds. He enjoys perching near people and playing with toys.",
     health: "Vet checked, healthy",
     specialNeeds: "Needs a spacious cage and daily interaction",
     mainImage: images.bird,
@@ -168,7 +168,7 @@ export const petsData = [
     weight: "0.1 kg",
     traits: ["Friendly", "Chirpy", "Gentle", "Curious"],
     description:
-      "Sunny is a sweet cockatiel with a bright yellow crest and orange cheeks. She loves whistling, gentle interaction, and sitting near people.",
+      "is a sweet cockatiel with a bright yellow crest and orange cheeks. She loves whistling, gentle interaction, and sitting near people.",
     health: "Healthy, dewormed",
     specialNeeds: "None",
     mainImage: images.Sunny,
@@ -187,7 +187,7 @@ export const petsData = [
     weight: "1.5 kg",
     traits: ["Soft", "Calm", "Cute", "Gentle"],
     description:
-      "Coco is a calm and cuddly Holland Lop rabbit. She enjoys quiet spaces, gentle petting, and fresh greens.",
+      "is a calm and cuddly Holland Lop rabbit. She enjoys quiet spaces, gentle petting, and fresh greens.",
     health: "Vaccinated, healthy",
     specialNeeds: "None",
     mainImage: images.rabbit,
@@ -204,7 +204,7 @@ export const petsData = [
     weight: "1.0 kg",
     traits: ["Playful", "Curious", "Active", "Friendly"],
     description:
-      "Snow is a bright white rabbit who loves hopping around and exploring. He is energetic, friendly, and enjoys interaction and outdoor time.",
+      "is a bright white rabbit who loves hopping around and exploring. He is energetic, friendly, and enjoys interaction and outdoor time.",
     health: "Vet checked, healthy",
     specialNeeds: "Needs daily exercise space",
     mainImage: images.Snow,

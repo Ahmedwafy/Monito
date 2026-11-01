@@ -49,20 +49,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) rounded-3xl shadow-xl p-8 md:p-10">
+    <div className="min-h-screen bg-(--page-bg) flex items-center justify-center px-4 py-16 transition-colors duration-300">
+      <div className="w-full max-w-md bg-(--login-card-bg) border border-transparent rounded-3xl shadow-xl p-8 md:p-10 transition-colors duration-300">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow)">
+          <h1 className="text-3xl font-bold text-(--login-card-title)">
             Welcome Back
           </h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-(--login-card-sub-title)">
             Log in to continue your adoption journey
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-gray-200 mb-2">
+            <label className="block text-sm font-medium text-(--login-card-label) mb-2">
               Email
             </label>
             <input
@@ -71,12 +71,18 @@ export default function LoginPage() {
               value={formData.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--login-card-input-border)
+                bg-(--login-card-input-bg)
+                text-(--login-card-input-text)
+                hover:border-(--login-card-input-border-hover)
+                focus:border-(--login-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-(--color-primary-darkBlue) dark:text-gray-200 mb-2">
+            <label className="block text-sm font-medium text-(--login-card-label) mb-2">
               Password
             </label>
             <input
@@ -85,7 +91,13 @@ export default function LoginPage() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Your password"
-              className="w-full rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-(--color-secondary-monYellow) focus:outline-none transition-colors"
+              className="w-full rounded-xl border-2 px-4 py-3
+                border-(--login-card-input-border)
+                bg-(--login-card-input-bg)
+                text-(--login-card-input-text)
+                hover:border-(--login-card-input-border-hover)
+                focus:border-(--login-card-input-border-focus)
+                focus:outline-none transition-colors"
             />
           </div>
 
@@ -99,11 +111,11 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-gray-600 dark:text-gray-300">
+        <p className="mt-6 text-center text-(--login-card-sub-title)">
           Don&apos;t have an account?{" "}
           <Link
             href="/SignUp"
-            className="font-semibold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) hover:underline"
+            className="font-semibold text-(--login-card-question) hover:underline"
           >
             Sign up
           </Link>

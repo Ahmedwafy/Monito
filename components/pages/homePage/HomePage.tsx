@@ -10,7 +10,7 @@ import * as images from "@/assets/images/images";
 
 const HomePage = () => {
   return (
-    <main className="dark:bg-(--color-neutral-0)">
+    <main className="">
       <HeroSection />
       <CardsSection
         type="pets"

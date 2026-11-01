@@ -22,12 +22,12 @@ export default function FavoriteButton({
   return (
     <div className="w-full flex items-center justify-center">
       <Button
-        variant="outlineWithHeart"
+        variant="outline"
         type="button"
         onClick={onClick}
         disabled={isLoading || !checked || !onClick}
         aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-        className={`rounded-full p-2.5 shadow-md dark:text-(--action-primary-hover)
+        className={`rounded-full p-2.5 shadow-md
         disabled:opacity-50 group mx-auto w-fit gap-0 whitespace-nowrap overflow-hidden
         transition-colors duration-500 ease-in-out
         ${className}
@@ -36,7 +36,7 @@ export default function FavoriteButton({
         {isFavorite ? "Remove from favorites" : "Add to favorites"}
         <Heart
           className={`h-5 w-0 shrink-0 overflow-hidden opacity-0 group-hover:ml-2 group-hover:w-5 group-hover:opacity-100 transition-[width,margin,opacity] 
-            duration-500 ease-in-out ${isFavorite ? "text-red-500 fill-red-500" : "text-gray-500"}`}
+            duration-500 ease-in-out ${isFavorite ? "text-red-500 fill-red-500" : "text-(--available-pet-details)"}`}
         />
       </Button>
     </div>

@@ -26,13 +26,13 @@ const KnowledgeCard = ({
         />
       </div>
       <div>
-        <h4 className="bg-(--color-blueSea) w-fit px-2 rounded-2xl text-[0.875rem] text-white mb-2">
+        <h4 className="bg-(--color-blueSea) w-fit px-2 rounded-2xl text-[0.875rem] mb-2">
           Pet Knowledge
         </h4>
-        <h4 className="font-semibold py-2 dark:text-(--color-secondary-monYellow)">
+        <h4 className="font-semibold py-2 text-(--pet-knowledge-title)!">
           {title}
         </h4>
-        <p className="text-(--color-neutral-60)">{description}</p>
+        <p className="text-(--pet-knowledge-title)">{description}</p>
       </div>
     </div>
   );

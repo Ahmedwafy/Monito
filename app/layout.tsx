@@ -27,6 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* <body className={`${poppins.className} antialiased bg-(--page-bg)!`}> */}
       <body className={`${poppins.className} antialiased`}>
         <QueryProvider>
           <ThemeProvider

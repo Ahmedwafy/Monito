@@ -10,19 +10,19 @@ const Knowledge = () => {
       <div className="container flex flex-col mx-auto pt-15 pb-10 px-4">
         <div className="flex justify-between">
           <div>
-            <p className="dark:text-(--color-secondary-monYellow)">
-              You already know ?
-            </p>
-            <h3>Useful pet knowledge</h3>
+            <p className="text-(--pet-knowledge-title)">You already know ?</p>
+            <h3 className="text-(--pet-knowledge-title)">
+              Useful pet knowledge
+            </h3>
           </div>
           <Link
             href="/explore"
-            className="group flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow)"
+            className="group flex items-center gap-2 transition-colors"
           >
             <Button
               variant="outline"
-              className="items-center gap-2 pr-6 transition-all duration-300 dark:border-(--color-primary-darkBlue)! hidden sm:flex
-                dark:text-(--color-secondary-monYellow)! dark:border-none dark:hover:text-(--color-neutral-0)!"
+              className="items-center gap-2 pr-6 transition-all duration-300 hidden sm:flex
+                dark:border-none text-(--view-text)"
             >
               View More
               <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />
@@ -43,11 +43,11 @@ const Knowledge = () => {
         </div>
         <Link
           href="/"
-          className="group sm:hidden flex items-center gap-2 text-(--color-primary-darkBlue) transition-colors hover:text-(--color-secondary-monYellow) w-full"
+          className="group sm:hidden flex items-center gap-2 transition-colors hover:text-(--color-secondary-monYellow) w-full"
         >
           <Button
             variant="outline"
-            className="flex items-center gap-2 pr-6 transition-all duration-300 w-full dark:border-none dark:text-(--color-secondary-monYellow)!"
+            className="flex items-center gap-2 pr-6 transition-all duration-300 w-full dark:border-none text-(--view-text)"
           >
             View More
             <icons.ChevronRight className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1 scale-125" />

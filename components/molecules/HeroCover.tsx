@@ -8,24 +8,24 @@ import Link from "next/link";
 const HeroCover = () => {
   return (
     <section className="container mx-auto px-4 sm:px-0 my-6">
-      <div className="relative bg-[#fceed5] dark:bg-(--color-neutral-0) rounded-[20px] overflow-hidden flex flex-col-reverse md:flex-row items-stretch justify-between shadow-sm min-h-[350px] transition-colors duration-300">
+      <div className="relative bg-(--color-secondary-monYellow-special) rounded-[20px] overflow-hidden flex flex-col-reverse md:flex-row items-stretch justify-between shadow-sm min-h-[350px] transition-colors duration-300">
         {/* Decorative Background Elements */}
         {/* Top Right Shape */}
-        <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-[50px] rotate-25 bg-[#f7dba7] dark:bg-(--color-neutral-5) opacity-50 dark:opacity-80 z-0 pointer-events-none transition-colors duration-300"></div>
+        <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-[50px] rotate-25 bg-(--shape-1) opacity-50 z-0 pointer-events-none transition-colors duration-300"></div>
         {/* Bottom Left Shape */}
-        <div className="absolute -bottom-[20%] -left-[10%] w-[200px] h-[200px] md:w-[350px] md:h-[350px] rounded-[40px] -rotate-15 bg-[#003459] dark:bg-(--color-secondary-monYellow) opacity-10 dark:opacity-5 z-0 pointer-events-none transition-colors duration-300"></div>
+        <div className="absolute -bottom-[20%] -left-[10%] w-[200px] h-[200px] md:w-[350px] md:h-[350px] rounded-[40px] -rotate-15 bg-(--shape-2) opacity-10 z-0 pointer-events-none transition-colors duration-300"></div>
 
         {/* Content Section (Text) */}
         <div className="order-1 md:order-2 relative z-10 w-full md:w-1/2 px-6 py-10 md:px-12 md:py-14 text-center md:text-left flex flex-col justify-center items-center md:items-start transition-colors duration-300">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-2 transition-colors duration-300">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-(--color-primary-darkBlue) mb-2 transition-colors duration-300">
             One More Friend
           </h1>
 
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#002a48] dark:text-(--color-neutral-100) transition-colors duration-300">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-(--color-primary-darkBlue) transition-colors duration-300">
             Thousands more fun!
           </h2>
 
-          <p className="text-base md:text-lg font-medium mb-8 max-w-lg text-[#242b33] dark:text-(--color-neutral-80) transition-colors duration-300">
+          <p className="text-base md:text-lg font-medium mb-8 max-w-lg text-(--color-primary-darkBlue) transition-colors duration-300">
             Having a pet means you have more joy, a new friend, a happy person
             who will always be with you to have fun. We have 200+ different pets
             that can meet your needs!
@@ -35,10 +35,7 @@ const HeroCover = () => {
             <Link href="/explore" className="inline-block">
               <Button
                 variant="primary"
-                className="group transition-all duration-300 flex items-center gap-2 sm:text-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) 
-                dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) dark:border 
-                dark:border-(--color-secondary-monYellow)! dark:hover:border-(--color-neutral-0)!
-            "
+                className="group transition-all duration-300 flex items-center gap-2"
               >
                 View Intro
                 <icons.CircleArrowRight className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-115" />
@@ -46,10 +43,7 @@ const HeroCover = () => {
             </Link>
 
             <Link href="/explore" className="inline-block">
-              <Button
-                variant="outline"
-                className="transition-all duration-300 dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0)"
-              >
+              <Button variant="outline" className="transition-all duration-300">
                 Explore Now
               </Button>
             </Link>

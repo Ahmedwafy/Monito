@@ -1,6 +1,8 @@
 // app/volunteer/page.tsx
 import * as icons from "@/assets/icons";
 import Button from "@/components/atoms/Button";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 import Link from "next/link";
 
 const volunteerOpportunities = [
@@ -44,23 +46,13 @@ const volunteerOpportunities = [
 
 export default function VolunteerPage() {
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero / Cover */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12">
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
-          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
-          <div className="relative z-10 max-w-auto">
-            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
-              Become a Volunteer
-            </h1>
-            <p className="mt-6 text-lg text-(--color-primary-darkBlue) md:text-xl">
-              Your time and love can change an animal&apos;s life. Join our
-              volunteer family today!
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          title="Become a Volunteer"
+          description="Your time and love can change an animal's life. Join our volunteer family today!"
+        />
       </section>
 
       {/* Opportunities */}
@@ -70,19 +62,21 @@ export default function VolunteerPage() {
             <div
               key={index}
               className="
-                bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl p-6 md:p-8 
+                bg-(--volunteer-card-bg) rounded-2xl shadow-xl p-6 md:p-8
                 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 
-                flex flex-col border border-transparent dark:border-(--color-card-border)
+                flex flex-col border border-transparent
               "
             >
-              <div className="mb-5 flex justify-center">{opp.icon}</div>
-              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3 text-center">
+              <div className="mb-5 flex justify-center text-(--volunteer-card-icon)">
+                {opp.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-(--volunteer-card-title) mb-3 text-center">
                 {opp.title}
               </h3>
-              <p className="text-gray-700 dark:text-(--color-secondary-monYellow) mb-4 flex-1 text-center leading-relaxed">
+              <p className="text-(--volunteer-card-description) mb-4 flex-1 text-center leading-relaxed">
                 {opp.description}
               </p>
-              <p className="text-sm font-medium text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) text-center">
+              <p className="text-sm font-medium text-(--volunteer-card-footer) text-center">
                 Commitment: {opp.commitment}
               </p>
             </div>
@@ -91,12 +85,12 @@ export default function VolunteerPage() {
       </section>
 
       {/* How to Apply */}
-      <section className="bg-white dark:bg-(--color-neutral-10) py-16 md:py-20 border-y border-transparent dark:border-(--color-card-border)">
+      <section className="py-16 md:py-20 border-y border-transparent">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-(--volunteer-card-title) mb-6">
             Ready to Help?
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed">
+          <p className="text-lg text-(--volunteer-card-description) mb-10 leading-relaxed">
             Fill out a simple message through our contact form or reach out
             directly. We&apos;ll get back to you within 48 hours to discuss
             opportunities that match your schedule and interests.
@@ -104,46 +98,23 @@ export default function VolunteerPage() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
             <Link href="/contact">
-              <Button
-                variant="primary"
-                className="text-lg px-10 py-4 hover:scale-[1.02] transition-transform duration-300"
-              >
-                Contact Us to Volunteer
-              </Button>
+              <Button variant="outline">Contact Us to Volunteer</Button>
             </Link>
 
             <Link href="/contact">
-              <Button
-                variant="outline"
-                className="text-lg px-10 py-4 border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
-              >
-                Ask About Opportunities
-              </Button>
+              <Button variant="outline">Ask About Opportunities</Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Bottom */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-10) dark:border dark:border-(--color-card-border) py-12 px-8 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-4">
-            Every Hour Counts
-          </h3>
-          <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Your help means more pets get walked, played with, photographed, and
-            ultimately — adopted.
-          </p>
-          <Link href="/contact">
-            <Button
-              variant="primary"
-              className="text-lg px-10 py-4 hover:scale-[1.02] transition-transform duration-300"
-            >
-              Start Volunteering Today
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Every Hour Counts"
+        description="Your help means more pets get walked, played with, photographed, and ultimately — adopted."
+        btnName="Start Volunteering Today"
+        href1="/contact"
+      />
     </div>
   );
 }

@@ -28,8 +28,9 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-(--color-secondary-monYellow-40) h-full">
-      <div className="bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5) text-white pt-12 pb-8 w-[99%] mx-auto rounded-2xl mb-2 ">
+    <footer className="bg-(--footer-bg)">
+      {/* <footer> */}
+      <div className="bg-(--footer-bar-bg) pt-12 pb-8 w-[99%] mx-auto rounded-2xl mb-2 ">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             {/* Logo & Description */}

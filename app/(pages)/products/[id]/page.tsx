@@ -27,12 +27,12 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0)">
+      <div className="min-h-screen flex items-center justify-center bg-(--color-secondary-monYellow-40)">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-(--color-primary-darkBlue)">
             Product not found
           </h1>
-          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+          <p className="mt-4 text-lg text-gray-700">
             The product you&apos;re looking for might be out of stock or
             doesn&apos;t exist!
           </p>
@@ -45,7 +45,7 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20 pt-10">
+    <div className="min-h-screen bg-(--color-secondary-monYellow-40) pb-20 pt-10">
       <section className="container mx-auto px-4 relative z-10 ">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left/Main Content - Image + Description */}
@@ -58,11 +58,11 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
 
       {/* Bottom CTA */}
       <section className="mt-16 px-4 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-white dark:bg-(--color-neutral-0)/50 border border-transparent dark:border-(--color-card-border) dark:border shadow-xl py-12 px-8">
+        <div className="container mx-auto max-w-4xl rounded-3xl bg-white border border-transparent shadow-xl py-12 px-8">
           <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue)">
             Keep your pet happy and healthy
           </h3>
-          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90 dark:text-(--color-secondary-monYellow)/90">
+          <p className="mt-4 text-lg text-(--color-primary-darkBlue)/90">
             Explore our collection of premium quality products carefully
             selected for your furry friends.
           </p>
@@ -70,7 +70,7 @@ const SingleProductPage = async ({ params }: ProductPageProps) => {
             <Link href="/explore">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) bg-transparent text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) px-8"
+                className="border-(--color-primary-darkBlue) bg-transparent text-(--color-primary-darkBlue) px-8"
               >
                 Browse All Products
               </Button>

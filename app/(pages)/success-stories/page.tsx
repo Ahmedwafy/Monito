@@ -4,26 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/atoms/Button";
 import { successStories } from "@/app/mock-data/mockSuccessStories";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 
 export default function SuccessStoriesPage() {
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero / Cover */}
-      <section className="px-4 py-12 md:py-20">
-        <div className="container relative mx-auto flex flex-col items-center text-center overflow-hidden rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0)/50 py-16 md:py-24 px-6 md:px-12">
-          {/* Decorative blobs */}
-          <div className="dark:opacity-50 absolute -right-40 -top-40 h-[500px] w-[500px] rotate-12 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[700px] md:w-[700px]"></div>
-          <div className="dark:opacity-50 absolute -left-60 bottom-20 h-[600px] w-[600px] rotate-25 rounded-full bg-(--color-secondary-monYellow-80) dark:bg-(--color-secondary-monYellow-80)/20 md:h-[800px] md:w-[800px]"></div>
-          <div className="relative z-10 max-w-auto">
-            <h1 className="text-4xl font-bold text-(--color-primary-darkBlue) md:text-5xl lg:text-6xl">
-              Success Stories
-            </h1>
-            <p className="mt-6 text-lg text-(--color-primary-darkBlue) md:text-xl">
-              Every story here is proof that love and patience can change both
-              an animal&apos;s life and a human&apos;s forever.
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          title="Success Stories"
+          description="Every story here is proof that love and patience can change both an animal's life and a human's forever."
+        />
       </section>
 
       {/* Stories Grid */}
@@ -33,9 +25,9 @@ export default function SuccessStoriesPage() {
             <div
               key={story.id}
               className="
-                group bg-white dark:bg-(--color-neutral-10) rounded-2xl shadow-xl overflow-hidden 
+                group bg-(--success-card-bg) rounded-2xl shadow-xl overflow-hidden
                 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300
-                w-full max-w-md flex flex-col border border-transparent dark:border-(--color-card-border)
+                w-full max-w-md flex flex-col border border-transparent
               "
             >
               {/* Before / After Images */}
@@ -74,10 +66,10 @@ export default function SuccessStoriesPage() {
               {/* Content */}
               <div className="p-6 md:p-8 flex-1 flex flex-col">
                 <div className="flex justify-between items-start gap-3 mb-3">
-                  <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-neutral-100)!">
+                  <h3 className="text-2xl font-bold text-(--success-pet-name-color)">
                     {story.petName}
                   </h3>
-                  <div className="flex items-center gap-1.5 text-(--color-secondary-monYellow) shrink-0">
+                  <div className="flex items-center gap-1.5 text-(--success-subtitle-color) shrink-0">
                     <icons.Heart className="w-5 h-5 fill-current" />
                     <span className="font-medium text-sm">
                       {story.heartCount}
@@ -85,20 +77,17 @@ export default function SuccessStoriesPage() {
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                <p className="text-sm text-(--success-description-color) mb-4">
                   {story.petType} • Adopted by {story.adoptedBy} • {story.date}
                 </p>
 
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 flex-1">
+                <p className="text-(--success-description-color) leading-relaxed mb-6 flex-1">
                   {story.story}
                 </p>
 
                 <div className="mt-auto">
                   <Link href="/available-pets">
-                    <Button
-                      variant="outline"
-                      className="w-full border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow) hover:bg-(--color-primary-darkBlue) hover:text-white dark:hover:bg-(--color-secondary-monYellow) dark:hover:text-(--color-neutral-0) transition-colors"
-                    >
+                    <Button variant="outline" className="w-full">
                       Find Your Next Friend
                     </Button>
                   </Link>
@@ -109,26 +98,13 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="px-4 py-16 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-10) dark:border dark:border-(--color-card-border) py-12 px-8 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-4">
-            Your Story Starts Here
-          </h3>
-          <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            The next success story could be yours — help an animal find a home
-            full of love today.
-          </p>
-          <Link href="/available-pets">
-            <Button
-              variant="primary"
-              className="text-lg px-10 py-4 hover:scale-[1.02] transition-transform duration-300"
-            >
-              See Available Pets Now
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Your Story Starts Here"
+        description="The next success story could be yours — help an animal find a home full of love today."
+        btnName="See Available Pets Now"
+        href1="/available-pets"
+      />
     </div>
   );
 }

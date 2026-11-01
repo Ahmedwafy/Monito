@@ -90,7 +90,7 @@ export default function RouteLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-10000 flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-300 ease-in-out dark:bg-(--color-neutral-0)/70 ${
+      className={`fixed inset-0 z-10000 flex flex-col items-center justify-center bg-white/70 backdrop-blur-md transition-all duration-300 ease-in-out ${
         isLoading
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"

@@ -1,6 +1,8 @@
 // app/(pages)/join-our-family/page.tsx
 import * as icons from "@/assets/icons";
 import Button from "@/components/atoms/Button";
+import BottomCTA from "@/components/molecules/BottomCTA";
+import TopPageBanner from "@/components/molecules/TopPageBanner";
 import Link from "next/link";
 
 const benefits = [
@@ -38,32 +40,23 @@ const benefits = [
 
 export default function JoinOurFamilyPage() {
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) dark:bg-(--color-neutral-0) pb-20">
-      {/* Hero */}
-      <section className="px-4 py-16 md:py-24 bg-(--color-primary-darkBlue) dark:bg-(--color-neutral-5) text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-(--color-secondary-monYellow) rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl translate-y-1/3 -translate-x-1/3" />
-        </div>
-
-        <div className="relative container mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Join Our Family
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-            Whether you adopt, volunteer, or simply spread the word — you become
-            part of a community that gives animals a second chance.
-          </p>
-        </div>
+    <div className="min-h-screen bg-(--page-bg) pb-20">
+      {/* === Banner Section === */}
+      <section className="pt-1">
+        <TopPageBanner
+          title="Join Our Family"
+          description="Whether you adopt, volunteer, or simply spread the word — you become
+            part of a community that gives animals a second chance."
+        />
       </section>
 
       {/* Benefits / Ways to Join */}
       <section className="container mx-auto px-4 py-12 md:py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-(--join-title) mb-4 transition-colors duration-300">
             How You Can Join
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-(--join-desc) max-w-2xl mx-auto transition-colors duration-300">
             There are many ways to be part of One More Friend. Choose what fits
             you best.
           </p>
@@ -74,23 +67,22 @@ export default function JoinOurFamilyPage() {
             <div
               key={item.title}
               className="
-                bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-xl p-6 md:p-8
-                hover:shadow-2xl hover:-translate-y-1 transition-all duration-300
-                flex flex-col border border-transparent dark:border-(--color-card-border)
-              "
+          bg-(--join-card-bg) rounded-2xl shadow-xl p-6 md:p-8
+          hover:shadow-2xl hover:-translate-y-1 transition-all duration-300
+          flex flex-col border border-(--join-card-border)
+        "
             >
               <div className="mb-5 flex justify-center">{item.icon}</div>
-              <h3 className="text-xl md:text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3 text-center">
+              <h3 className="text-xl md:text-2xl font-bold text-(--join-card-title) mb-3 text-center transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 flex-1 text-center leading-relaxed">
+              <p className="text-(--join-card-text) mb-6 flex-1 text-center leading-relaxed transition-colors duration-300">
                 {item.description}
               </p>
               <Link href={item.href} className="mt-auto">
                 <Button
                   variant="outline"
-                  className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) 
-                  dark:text-(--color-secondary-monYellow) w-full"
+                  className="border-(--join-btn-border) text-(--join-btn-text) w-full transition-colors duration-300"
                 >
                   {item.cta}
                 </Button>
@@ -102,11 +94,11 @@ export default function JoinOurFamilyPage() {
 
       {/* Optional Auth Note */}
       <section className="container mx-auto px-4 pb-8">
-        <div className="max-w-3xl mx-auto text-center bg-white dark:bg-(--color-neutral-0) rounded-2xl shadow-lg p-8 border border-transparent dark:border-(--color-card-border)">
-          <h3 className="text-2xl font-bold text-(--color-primary-darkBlue) dark:text-neutral-100 mb-3">
+        <div className="max-w-3xl mx-auto text-center bg-(--auth-note-bg) rounded-2xl shadow-lg p-8 border border-(--auth-note-border) transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-(--auth-note-title) mb-3 transition-colors duration-300">
             Want an account?
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-6">
+          <p className="text-(--auth-note-text) mb-6 transition-colors duration-300">
             Create an account to save your favorite pets, track your volunteer
             hours, and receive updates on new arrivals. It&apos;s quick and
             easy!
@@ -115,7 +107,7 @@ export default function JoinOurFamilyPage() {
             <Link href="/SignUp">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
+                className="border-(--auth-note-btn-border) text-(--auth-note-btn-text) transition-colors duration-300"
               >
                 Sign Up
               </Button>
@@ -123,7 +115,7 @@ export default function JoinOurFamilyPage() {
             <Link href="/Login">
               <Button
                 variant="outline"
-                className="border-(--color-primary-darkBlue) text-(--color-primary-darkBlue) dark:border-(--color-secondary-monYellow) dark:text-(--color-secondary-monYellow)"
+                className="border-(--auth-note-btn-border) text-(--auth-note-btn-text) transition-colors duration-300"
               >
                 Login
               </Button>
@@ -132,26 +124,13 @@ export default function JoinOurFamilyPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="px-4 py-12 text-center">
-        <div className="container mx-auto max-w-4xl rounded-3xl bg-(--color-secondary-monYellow) dark:bg-(--color-neutral-0) dark:border dark:border-(--color-card-border) py-12 px-8 shadow-lg">
-          <h3 className="text-2xl md:text-3xl font-bold text-(--color-primary-darkBlue) dark:text-(--color-secondary-monYellow) mb-4">
-            Your Next Friend Is Waiting
-          </h3>
-          <p className="text-lg text-(--color-primary-darkBlue)/90 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Start with a simple step — browse pets, volunteer, or send us a
-            message.
-          </p>
-          <Link href="/available-pets">
-            <Button
-              variant="primary"
-              className="text-lg px-10 py-4 hover:scale-[1.02] transition-transform duration-300"
-            >
-              Explore Available Pets
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* === Bottom CTA === */}
+      <BottomCTA
+        title="Your Next Friend Is Waiting"
+        description="Start with a simple step — browse pets, volunteer, or send us a message."
+        btnName="Explore Pets"
+        href1="/available-pets"
+      />
     </div>
   );
 }

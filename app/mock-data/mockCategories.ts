@@ -10,7 +10,7 @@ export const categories = [
     image: images.dog,
     count: 124,
     bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
+    // textColor: "text-(--color-primary-darkBlue)",
   },
   {
     id: "cats",
@@ -20,7 +20,7 @@ export const categories = [
     image: images.cat,
     count: 89,
     bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
+    // textColor: "text-(--color-primary-darkBlue)",
   },
   {
     id: "birds",
@@ -30,7 +30,7 @@ export const categories = [
     image: images.bird,
     count: 42,
     bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
+    // textColor: "text-(--color-primary-darkBlue)",
   },
   {
     id: "rabbits",
@@ -40,6 +40,6 @@ export const categories = [
     image: images.rabbit,
     count: 31,
     bgColor: "bg-(--color-primary-darkBlue)",
-    textColor: "text-(--color-primary-darkBlue)",
+    // textColor: "text-(--color-primary-darkBlue)",
   },
 ];
