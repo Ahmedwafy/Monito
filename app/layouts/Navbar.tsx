@@ -342,11 +342,11 @@ const Navbar = () => {
               {/* Menu drawer */}
               <div
                 className="fixed right-0 top-0 z-110 flex h-dvh w-4/5 max-w-xs flex-col
-                  bg-white p-6 shadow-2xl "
+                  bg-(--nav-bg) p-6 text-(--link-text-color) shadow-2xl"
               >
                 <div className="mb-10 flex items-center justify-between">
                   <Link href="/" onClick={closeMobileMenu}>
-                    <span className="text-2xl font-bold text-(--color-primary-darkBlue)">
+                    <span className="text-2xl font-bold text-(--link-text-color)">
                       Monito
                     </span>
                   </Link>
@@ -355,7 +355,7 @@ const Navbar = () => {
                     type="button"
                     onClick={closeMobileMenu}
                     aria-label="Close menu"
-                    className="text-2xl text-gray-500"
+                    className="text-2xl text-(--link-text-color)"
                   >
                     ✕
                   </button>
@@ -364,7 +364,7 @@ const Navbar = () => {
                 {/* Theme Toggle */}
                 <button
                   onClick={toggleTheme}
-                  className="p-2.5 rounded-full hover:bg-gray-100 transition-all active:scale-90"
+                  className="mb-3 w-fit rounded-full p-2.5 text-(--theme-icon) transition-colors hover:bg-(--color-neutral-10) active:scale-90"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -374,7 +374,7 @@ const Navbar = () => {
                   )}
                 </button>
 
-                <div className="flex flex-col gap-4 text-lg font-medium">
+                <div className="flex flex-col gap-2 text-lg font-medium">
                   {navLinks.map((link) => {
                     const isActive = pathname === link.href;
 
@@ -383,10 +383,10 @@ const Navbar = () => {
                         key={link.href}
                         href={link.href}
                         onClick={closeMobileMenu}
-                        className={`py-3 transition-colors ${
+                        className={`rounded-xl px-4 py-3 transition-colors hover:bg-(--color-neutral-10) ${
                           isActive
-                            ? "font-semibold text-amber-500"
-                            : "text-(--color-primary-darkBlue)"
+                            ? "bg-(--color-neutral-10) font-semibold text-(--Active-link-text-color)"
+                            : "text-(--link-text-color)"
                         }`}
                       >
                         {link.label}
@@ -401,7 +401,7 @@ const Navbar = () => {
                       <Link
                         href="/profile"
                         onClick={closeMobileMenu}
-                        className="font-medium text-(--color-primary-darkBlue)"
+                        className="font-medium text-(--link-text-color)"
                       >
                         {user.name}
                       </Link>
