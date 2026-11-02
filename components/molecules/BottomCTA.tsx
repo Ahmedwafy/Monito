@@ -39,7 +39,7 @@ const BottomCTA = ({
             </Link>
           )}
 
-          {btnName2 && (
+          {btnName2 && !href2 && (
             <Button variant="outline" onClick={handleClick}>
               {btnName2}
             </Button>

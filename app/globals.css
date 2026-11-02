@@ -64,8 +64,7 @@ body {
     --btn-2-title: #003459;
     --btn-2-hover-bg: #00345956;
 
-    /* === #0F172A /////////////////////// Profile Page [Light] === /////////////////////// */
-
+    /* === Profile Page [Light] === */
     --profile-bg-1: #ffffff;
     --profile-bg-2: #003459;
     --profile-bg-3: #fef9ef;
@@ -225,7 +224,8 @@ body {
     --card-bg: #ffffff;
     --card-title-color: #003459;
     --card-description-color: #003459;
-    --icon-bg: #efc25a;
+    --icon-bg: #f0b00057;
+    /* --shape-1-bg: #f0b00057; */
     --icon-border: #efc25a;
     --icon-color: #003459;
     --number-bg: #003459;
@@ -305,6 +305,28 @@ body {
     --terms-details: #1f2937;
     --terms-link: #1a4dbb;
     --terms-hover-link: #f7dba7;
+
+    /* === Adoption Form [Light] === */
+    --adoption-form-card-bg: #ffffff;
+    --adoption-form-label: #374151;
+    --adoption-form-input-bg: #ffffff;
+    --adoption-form-input-border: #e5e7eb;
+    --adoption-form-input-text: #1f2937;
+    --adoption-form-commitment-text: #374151;
+    --adoption-form-error-bg: #fef2f2;
+
+    /* === Explore Page [Light] === */
+    --explore-hero-bg: #f7dba7;
+    --explore-hero-shape-bg: #eec77e;
+    --explore-title: #003459;
+    --explore-description: #003459;
+    --explore-card-bg: #ffffff;
+    --explore-card-title: #003459;
+    --explore-card-description: #4b5563;
+    --explore-accent: #eec77e;
+    --explore-cta-bg: #f7dba7;
+    --explore-cta-title: #003459;
+    --explore-cta-description: #003459;
 
     /* === Button variant="primary" === */
     --primary-btn-bg: #003459;
@@ -626,6 +648,28 @@ body {
     --terms-link: #f7dba7;
     --terms-hover-link: #1a4dbb;
 
+    /* === Adoption Form [Dark] === */
+    --adoption-form-card-bg: #0f172a;
+    --adoption-form-label: #d1d5db;
+    --adoption-form-input-bg: #0b0f19;
+    --adoption-form-input-border: #334155;
+    --adoption-form-input-text: #e0f2fe;
+    --adoption-form-commitment-text: #d1d5db;
+    --adoption-form-error-bg: #450a0a;
+
+    /* === Explore Page [Dark] === */
+    --explore-hero-bg: #111827;
+    --explore-hero-shape-bg: #1e293b;
+    --explore-title: #bfdbfe;
+    --explore-description: #90a1b9;
+    --explore-card-bg: #0f172a;
+    --explore-card-title: #bfdbfe;
+    --explore-card-description: #90a1b9;
+    --explore-accent: #d9c08a;
+    --explore-cta-bg: #111827;
+    --explore-cta-title: #bfdbfe;
+    --explore-cta-description: #90a1b9;
+
     /* ------------ Button ------------- */
     /* Button variant="primary" */
     --primary-btn-bg: #0a1217;
@@ -688,4 +732,38 @@ body {
   .animate-spin-once {
     animation: spin-once 0.7s ease-in-out;
   }
+}
+
+.adoption-form .text-gray-700 {
+  color: var(--adoption-form-label);
+}
+
+.adoption-form input:not([type="checkbox"]),
+.adoption-form textarea,
+.adoption-form select {
+  background-color: var(--adoption-form-input-bg);
+  border-color: var(--adoption-form-input-border);
+  color: var(--adoption-form-input-text);
+  color-scheme: light;
+}
+
+.dark .adoption-form input:not([type="checkbox"]),
+.dark .adoption-form textarea,
+.dark .adoption-form select {
+  color-scheme: dark;
+}
+
+.adoption-form input:not([type="checkbox"]):focus,
+.adoption-form textarea:focus,
+.adoption-form select:focus {
+  border-color: var(--color-secondary-monYellow);
+}
+
+.adoption-form input.border-red-500,
+.adoption-form textarea.border-red-500 {
+  border-color: #ef4444;
+}
+
+.adoption-form .bg-red-50 {
+  background-color: var(--adoption-form-error-bg);
 }

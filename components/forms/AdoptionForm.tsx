@@ -318,9 +318,9 @@ const AdoptionFormPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-(--color-secondary-monYellow-40) py-16 px-4">
+    <div className="adoption-form min-h-screen bg-(--color-secondary-monYellow-40) py-16 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-(--adoption-form-card-bg) rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-(--color-primary-darkBlue) text-white p-8 md:p-12 text-center">
             <h1 className="text-3xl text-white! md:text-4xl font-bold mb-3">
